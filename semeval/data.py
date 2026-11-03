@@ -70,9 +70,10 @@ def validate(rows):
                 raise ValueError(f"Entity offsets out of range: {key}")
             if row["text"][row["start"]:row["end_exclusive"]] != row["mention"]:
                 raise ValueError(f"Entity offset mismatch: {key}")
-            for role in row.get("labels", []):
-                if ROLE_PARENT.get(role) != row.get("main_role"):
-                    raise ValueError(f"Unknown or incompatible entity role: {role}")
+            if row.get("label_schema") != "native":
+                for role in row.get("labels", []):
+                    if role not in ROLE_PARENT or ROLE_PARENT[role] != row.get("main_role"):
+                        raise ValueError(f"Unknown or incompatible entity role: {role}")
 
 
 def check_splits(*splits, duplicate_groups=None):
@@ -144,13 +145,13 @@ def import_official(articles, annotations, task, offset_end="exclusive", unlabel
     return rows
 
 
-def load_taxonomy(path):
+def load_taxonomy(path, require_other=True):
     """Use exact release label strings; do not guess parents from colon splitting."""
     taxonomy = json.loads(Path(path).read_text(encoding="utf-8"))
     if not taxonomy or not all(isinstance(v.get("parent"), str) and isinstance(v.get("definition"), str)
                                for v in taxonomy.values()):
         raise ValueError("Taxonomy must map fine labels to parent and definition")
-    if "Other" not in taxonomy or taxonomy["Other"]["parent"] != "Other":
+    if require_other and ("Other" not in taxonomy or taxonomy["Other"]["parent"] != "Other"):
         raise ValueError("Include the global Other label with parent Other")
     return taxonomy
 

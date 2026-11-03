@@ -22,12 +22,14 @@ def evaluate(gold, predicted, bert_model=None, bert_layers=None):
     if any(row["task"] != task for row in gold + predicted):
         raise ValueError("Evaluate one subtask at a time")
     if task in (1, 2):
-        scores = classification_scores(gold, [r["labels"] for r in predicted])
+        native = gold[0].get("label_schema") == "native"
+        classes = list(predicted[0]["scores"]) if native else None
+        scores = classification_scores(gold, [r["labels"] for r in predicted], classes=classes)
         if task == 2:
             coarse = classification_scores([dict(r, labels=r["narratives"]) for r in gold], [r["narratives"] for r in predicted])
             scores["coarse_samples_f1"] = coarse["samples_f1"]
-        primary = "exact_match" if task == 1 else "samples_f1"
-        provenance = "local implementation of published metric; organizer scorer parity NOT verified"
+        primary = "macro_f1" if native else ("exact_match" if task == 1 else "samples_f1")
+        provenance = "native single-label auxiliary task; fixed-inventory macro F1, NOT a SemEval score" if native else "local implementation of published metric; organizer scorer parity NOT verified"
     else:
         scores = {"count": len(gold), "length_compliance": sum(0 < len(r["explanation"].split()) <= 80 for r in predicted) / len(gold),
                   "fallback_rate": sum(r.get("fallback", False) for r in predicted) / len(gold)}
@@ -47,13 +49,17 @@ def evaluate(gold, predicted, bert_model=None, bert_layers=None):
             scores["bertscore_hash"] = hashcode
             provenance = "explicit unrescaled BERTScore configuration; verify against organizer scorer before official comparison"
     return {"task": task, "primary_metric": primary, "metrics": scores, "scoring_provenance": provenance,
+            "dataset": gold[0].get("dataset", "unspecified"),
+            "label_schema": gold[0].get("label_schema", "semeval"),
             "python": platform.python_version(), "benchmark_claim": False}
 
 
 def export_tsv(rows, path):
     lines = []
     for row in rows:
-        if row["task"] == 1:
+        if row.get("label_schema") == "native":
+            fields = [row["article_id"], str(row.get("start", "")), str(row.get("end", "")), ";".join(row["labels"])]
+        elif row["task"] == 1:
             fields = [row["article_id"], row["mention"], str(row["start"]), str(row["end"]), row["main_role"], *row["labels"]]
         elif row["task"] == 2:
             fields = [row["article_id"], ";".join(row["narratives"]), ";".join(row["labels"])]

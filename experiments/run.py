@@ -37,7 +37,8 @@ def run(config_path):
         seeds = [13, 42, 87] if method == "graph" else [42]
         for seed in seeds:
             name = f"{method}-{ablation}-{seed}"
-            model = train(datasets["train"], datasets["dev"], method, config.get("taxonomy"), seed, ablation)
+            model = train(datasets["train"], datasets["dev"], method, config.get("taxonomy"), seed, ablation,
+                          native=config.get("label_schema") == "native")
             joblib.dump(model, output / (name + ".joblib"))
             started = time.perf_counter()
             predictions = predict(model, datasets["test"])
@@ -63,6 +64,8 @@ def run(config_path):
         comparisons["transformer_vs_graph_mean_of_three_seeds"] = paired_bootstrap(article_scores["transformer-none-42"], graph_mean)
         comparisons["self_loops_vs_taxonomy_graph"] = paired_bootstrap(averaged["self-loops"], graph_mean)
         comparisons["random_labels_vs_definition_labels"] = paired_bootstrap(averaged["random-labels"], graph_mean)
+        for comparison in comparisons.values():
+            comparison["metric"] = "accuracy" if config.get("label_schema") == "native" else "samples_f1"
     aggregates = []
     for method, ablation in variants:
         matching = [r for r in reports if r["method"] == method and r["ablation"] == ablation]
@@ -74,6 +77,7 @@ def run(config_path):
     except (OSError, subprocess.CalledProcessError):
         commit = None
     summary = {"config": config, "commit": commit, "python": platform.python_version(),
+               "dataset": config.get("dataset", "unspecified"), "label_schema": config.get("label_schema", "semeval"),
                "input_sha256": {name: hashlib.sha256(Path(config[name]).read_bytes()).hexdigest()
                                 for name in (*datasets, "taxonomy") if config.get(name)},
                "runs": reports, "aggregates": aggregates, "paired_comparisons": comparisons,

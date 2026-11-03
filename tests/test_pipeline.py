@@ -92,6 +92,18 @@ class PipelineChecks(unittest.TestCase):
             with self.assertRaises(ValueError):
                 build_taxonomy(coarse, fine)
 
+    def test_native_labels_do_not_become_semeval_roles(self):
+        from semeval.classify import decode
+        import numpy as np
+        self.assertEqual(decode(np.array([[.2, .8]]), ["positive", "negative"], .5, 1, "single"), [["negative"]])
+        row = {"task": 1, "article_id": "EN_native.txt", "language": "en", "text": "Good food.",
+               "mention": "food", "start": 5, "end": 9, "end_exclusive": 9,
+               "labels": ["positive"], "label_schema": "native"}
+        from semeval.data import validate
+        validate([row])
+        with self.assertRaises(ValueError):
+            validate([dict(row, label_schema="semeval")])
+
     @unittest.skipUnless(importlib.util.find_spec("torch"), "Optional model dependencies are not installed")
     def test_graph_shape_and_gradient(self):
         import torch
