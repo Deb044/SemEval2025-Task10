@@ -5,7 +5,7 @@ import numpy as np
 import torch
 from torch import nn
 
-from .features import FrozenEncoder
+from .features import get_encoder
 
 
 class LabelGCN(nn.Module):
@@ -27,10 +27,11 @@ class LabelGCN(nn.Module):
 
 
 def fit_graph(x, y, xd, yd, labels, taxonomy, seed, ablation):
+    torch.set_num_threads(min(4, torch.get_num_threads()))
     torch.manual_seed(seed)
     nodes = [("fine", label) for label in labels] + [("parent", p) for p in sorted({v["parent"] for v in taxonomy.values()})]
     lookup = {node: i for i, node in enumerate(nodes)}
-    initial = FrozenEncoder().encode([taxonomy[label]["definition"] + " " + label if kind == "fine" else label
+    initial = get_encoder().encode([taxonomy[label]["definition"] + " " + label if kind == "fine" else label
                                      for kind, label in nodes])
     if ablation == "random-labels":
         initial = np.random.default_rng(seed).normal(size=initial.shape).astype("float32")

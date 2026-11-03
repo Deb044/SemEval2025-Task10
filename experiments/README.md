@@ -27,6 +27,11 @@
    sample counts, runtime, measured peak RAM, and limitations. Keep raw predictions
    private. The website must not label smoke tests or leaderboard numbers as ours.
 
+After reviewing real-data identity, split integrity, and release permission, use
+`python -m experiments.publish artifacts/st2-comparison/summary.json --reviewed`
+to export aggregate metrics and an SVG comparison plot. Do not use this on toy
+data. The exporter preserves local-scoring provenance and includes no article text.
+
 Required ablations: graph with only self-loops; random label initialization;
 semantic versus leading evidence under the same generator input budget. Preserve
 architecture, examples, seeds, and training settings within each ablation.
@@ -42,6 +47,24 @@ check: source evidence support, attribution, label relevance, language, readabil
 and <=80 words. Preserve unsupported allegations as attributed claims. Reviewers
 must record which languages they can assess; machine translation is assistance,
 not an unqualified human fluency judgment.
+
+## ST3 runner
+
+With a running local generator:
+
+```powershell
+python -m experiments.explanations --data data/st3/test.jsonl --taxonomy data/taxonomy.json --gguf path/to/model.gguf --out artifacts/st3-comparison
+```
+
+This selects at most 250 examples using seed 42 and round-robin language/domain
+strata BEFORE generation, then runs all four gold-label variants on identical IDs.
+Set `--limit` to the full corpus size when the timing pilot permits. Add
+`--predicted-labels artifacts/st2-predictions.jsonl` for the end-to-end variant.
+Generation resumes from matching signatures. Add `--bert-model` and `--bert-layers`
+from the official scorer to compute BERTScore; otherwise no explanation-quality
+score is claimed. The overview paper identifies the encoder as
+`google-bert/bert-base-multilingual-cased`; verify layers and remaining settings
+against the scorer before official comparisons.
 
 ## Current limitations
 

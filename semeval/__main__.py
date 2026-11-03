@@ -15,7 +15,8 @@ def main():
     command = commands.add_parser("import", help="Convert a release gold TSV and article folder to JSONL")
     command.add_argument("--task", type=int, choices=(1, 2, 3), required=True)
     command.add_argument("--articles", required=True)
-    command.add_argument("--annotations", required=True)
+    command.add_argument("--annotations")
+    command.add_argument("--unlabeled", action="store_true", help="Import ST1 mentions, ST2 articles, or ST3 dominant labels without targets")
     command.add_argument("--offset-end", choices=("inclusive", "exclusive"), default="exclusive")
     command.add_argument("--out", required=True)
     command = commands.add_parser("audit")
@@ -39,6 +40,7 @@ def main():
     command.add_argument("--method", choices=("textrank", "semantic", "generate"), required=True)
     command.add_argument("--selection", choices=("semantic", "lead"), default="semantic")
     command.add_argument("--endpoint", default="http://127.0.0.1:8080/v1")
+    command.add_argument("--gguf", help="Required for generation: local model file, hashed for provenance")
     command.add_argument("--predicted-labels")
     command.add_argument("--out", required=True)
     command = commands.add_parser("evaluate")
@@ -52,7 +54,7 @@ def main():
     command.add_argument("--out", required=True)
     args = parser.parse_args()
     if args.command == "import":
-        write_jsonl(args.out, import_official(args.articles, args.annotations, args.task, args.offset_end))
+        write_jsonl(args.out, import_official(args.articles, args.annotations, args.task, args.offset_end, args.unlabeled))
     elif args.command == "audit":
         datasets = [read_jsonl(path) for path in args.paths]
         check_splits(*datasets)
@@ -76,10 +78,18 @@ def main():
         rows, taxonomy = read_jsonl(args.data), load_taxonomy(args.taxonomy)
         labels = {r["article_id"]: r for r in read_jsonl(args.predicted_labels)} if args.predicted_labels else None
         result = []
+        model_hash = None
+        if args.method == "generate":
+            if not args.gguf:
+                raise ValueError("Generation requires --gguf to record the actual local model file hash")
+            with open(args.gguf, "rb") as stream:
+                model_hash = hashlib.file_digest(stream, "sha256").hexdigest()
         # Resume only matching-input runs; never trust a partially unrelated file.
         signature = hashlib.sha256(json.dumps({"data": hashlib.sha256(Path(args.data).read_bytes()).hexdigest(),
             "taxonomy": taxonomy, "method": args.method, "selection": args.selection,
-            "labels": labels, "endpoint": args.endpoint}, sort_keys=True).encode()).hexdigest()
+            "labels": labels, "endpoint": args.endpoint, "gguf_sha256": model_hash,
+            "implementation": {name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
+                               for name in ("explain.py", "features.py")}}, sort_keys=True).encode()).hexdigest()
         output = Path(args.out)
         if output.exists():
             result = read_jsonl(output)
@@ -92,7 +102,7 @@ def main():
             started = time.perf_counter()
             value = explain_row(row, args.method, taxonomy, args.endpoint, args.selection,
                                 labels[row["article_id"]] if labels is not None else None)
-            value.update(run_signature=signature, seconds=time.perf_counter() - started)
+            value.update(run_signature=signature, seconds=time.perf_counter() - started, gguf_sha256=model_hash)
             result.append(value)
             write_jsonl(output, result)
     elif args.command == "evaluate":

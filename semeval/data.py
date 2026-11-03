@@ -50,6 +50,8 @@ def identity(row):
 
 
 def validate(rows):
+    if not rows:
+        raise ValueError("Dataset contains no examples")
     seen = set()
     for row in rows:
         key = (row["task"], *identity(row))
@@ -59,6 +61,8 @@ def validate(rows):
         if row["language"] not in LANGUAGES.values() or not row["text"].strip():
             raise ValueError(f"Invalid language or empty article: {key}")
         if row["task"] == 1:
+            if not 0 <= row["start"] < row["end_exclusive"] <= len(row["text"]):
+                raise ValueError(f"Entity offsets out of range: {key}")
             if row["text"][row["start"]:row["end_exclusive"]] != row["mention"]:
                 raise ValueError(f"Entity offset mismatch: {key}")
             for role in row.get("labels", []):
@@ -78,13 +82,21 @@ def check_splits(*splits):
                 owners[key] = index
 
 
-def import_official(articles, annotations, task, offset_end="exclusive"):
+def import_official(articles, annotations, task, offset_end="exclusive", unlabeled=False):
     files = {}
     for path in Path(articles).rglob("*.txt"):
         if path.name in files:
             raise ValueError(f"Ambiguous article basename: {path.name}")
         files[path.name] = path
     rows = []
+    if annotations is None:
+        if task != 2 or not unlabeled:
+            raise ValueError("Only unlabeled ST2 can be imported without an annotation file")
+        for article_id, path in sorted(files.items()):
+            with open(path, encoding="utf-8", newline="") as article:
+                rows.append({"task": 2, "article_id": article_id, "language": LANGUAGES.get(article_id[:2]), "text": article.read()})
+        validate(rows)
+        return rows
     with open(annotations, encoding="utf-8-sig", newline="") as stream:
         for number, line in enumerate(stream, 1):
             if not line.strip():
@@ -98,19 +110,22 @@ def import_official(articles, annotations, task, offset_end="exclusive"):
                 text = article.read()
             row = {"task": task, "article_id": article_id, "language": LANGUAGES.get(article_id[:2]), "text": text}
             if task == 1:
-                if len(fields) < 6:
-                    raise ValueError(f"Line {number}: expected entity gold columns")
+                if len(fields) < (4 if unlabeled else 6):
+                    raise ValueError(f"Line {number}: missing entity columns")
                 row.update(mention=fields[1], start=int(fields[2]), end=int(fields[3]),
-                           end_exclusive=int(fields[3]) + (offset_end == "inclusive"),
-                           main_role=fields[4], labels=fields[5:])
+                           end_exclusive=int(fields[3]) + (offset_end == "inclusive"))
+                if not unlabeled:
+                    row.update(main_role=fields[4], labels=fields[5:])
             elif task == 2:
                 if len(fields) != 3:
                     raise ValueError(f"Line {number}: expected three columns")
                 row.update(narratives=fields[1].split(";"), labels=fields[2].split(";"))
             elif task == 3:
-                if len(fields) != 4:
-                    raise ValueError(f"Line {number}: expected four gold columns")
-                row.update(dominant_narrative=fields[1], dominant_subnarrative=fields[2], explanation=fields[3])
+                if len(fields) != (3 if unlabeled else 4):
+                    raise ValueError(f"Line {number}: expected dominant labels and {'no reference' if unlabeled else 'reference explanation'}")
+                row.update(dominant_narrative=fields[1], dominant_subnarrative=fields[2])
+                if not unlabeled:
+                    row["explanation"] = fields[3]
             rows.append(row)
     validate(rows)
     return rows
@@ -122,6 +137,8 @@ def load_taxonomy(path):
     if not taxonomy or not all(isinstance(v.get("parent"), str) and isinstance(v.get("definition"), str)
                                for v in taxonomy.values()):
         raise ValueError("Taxonomy must map fine labels to parent and definition")
+    if "Other" not in taxonomy or taxonomy["Other"]["parent"] != "Other":
+        raise ValueError("Include the global Other label with parent Other")
     return taxonomy
 
 
@@ -129,8 +146,13 @@ def audit(rows):
     from collections import Counter
     validate(rows)
     articles = {r["article_id"]: r for r in rows}
+    def domain(row):
+        labels = row.get("labels", []) + [row.get("dominant_narrative", "")]
+        domains = sorted({label.split(":", 1)[0] for label in labels if label.startswith(("CC:", "URW:"))})
+        return "+".join(domains) or "not supplied"
     return {"examples": len(rows), "articles": len(articles),
             "languages": dict(Counter(r["language"] for r in articles.values())),
+            "domains_from_annotations_only": dict(Counter(domain(r) for r in articles.values())),
             "labels": dict(Counter(label for r in rows for label in r.get("labels", []))),
             "article_characters": {"min": min(len(r["text"]) for r in rows),
                                    "max": max(len(r["text"]) for r in rows)},

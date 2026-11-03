@@ -3,7 +3,7 @@
 CPU-first implementation of **SemEval-2025 Task 10**: entity framing, narrative
 classification, and evidence-grounded explanations. Focus: subtasks 2 and 3.
 
-**Status:** implementation in progress. No benchmark scores have been measured.
+**Status:** implementation and model verification in progress. No benchmark scores have been measured.
 Restricted news data is not included. Synthetic checks are not research results.
 
 ## Setup
@@ -16,6 +16,8 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
+For a CPU-only PyTorch installation, install `torch==2.9.1` from the official
+`https://download.pytorch.org/whl/cpu` package index first.
 Transformer/GNN/BERTScore experiments additionally require
 `python -m pip install -r requirements-models.txt`. The generator uses a local
 GGUF model and `llama-server`, installed separately; no paid API is required.
@@ -48,7 +50,9 @@ python -m semeval audit data/st2/train.jsonl data/st2/dev.jsonl data/st2/test.js
 
 ST1 imports require the correct `--offset-end inclusive` or `exclusive` for your
 release. A mismatched mention stops the import. Gold imports require all documented
-gold columns; unlabeled inference records use the same JSON fields without targets.
+gold columns. For unlabeled ST2, omit `--annotations` and add `--unlabeled`.
+For unlabeled ST1, provide a TSV of ID/mention/start/end; for ST3, provide
+ID/dominant narrative/dominant subnarrative. Add `--unlabeled` in both cases.
 
 Create `data/taxonomy.json`: a dictionary keyed by **exact fine label**, each with
 `parent` (exact broad label) and `definition` (annotation-guideline meaning).
@@ -87,13 +91,15 @@ SHA256. Run `llama-server -m path/to/model.gguf --host 127.0.0.1 --port 8080 -c 
 Keep the server local; the corpus agreement restricts public model APIs.
 
 ```powershell
-python -m semeval explain --data data/st3/test.jsonl --taxonomy data/taxonomy.json --method generate --out artifacts/generated.jsonl
+python -m semeval explain --data data/st3/test.jsonl --taxonomy data/taxonomy.json --method generate --gguf path/to/model.gguf --out artifacts/generated.jsonl
 ```
 
 `--selection lead` runs the evidence ablation. `--predicted-labels
 artifacts/st2-predictions.jsonl` runs the end-to-end setting; these predictions must
 cover the ST3 article IDs. Outputs resume only when their input signature matches.
-Quantized generation has not yet been validated with a downloaded model.
+An invented English example has passed the local generation path; broader
+multilingual quality and real-data performance remain unverified. Generated
+claims still require source-grounding review; length checks do not prove accuracy.
 
 For ST3 evaluation, `--bert-model` and `--bert-layers` are explicit, mandatory
 together. Match all settings to the organizer scorer before comparing official
@@ -109,6 +115,33 @@ python -m http.server 8000 --directory website/dist
 The checks use invented text, not SemEval data. The buildless website contains no
 model endpoint and no private corpus content. Its aggregate results file starts
 empty; measured findings must be reviewed before publication.
+
+[Open the private project website](https://semeval-narrative-lab-deb044.solidflask.chatgpt.site)
+(ChatGPT sign-in required). Built and published using the Sites workflow.
+
+The frozen encoder is pinned to revision
+`e8f8c211226b894fcb81acc59f3b34ba3efd5f42`; caches include that revision.
+CPU inference was checked with invented English/Hindi and long-text inputs.
+This check establishes functionality, not multilingual benchmark quality.
+
+The local generation probe used llama.cpp `b11960` (Windows CPU) and
+`unsloth/Qwen3-1.7B-GGUF`, revision `d7f544eead698dbd1f15126ef60b45a1e1933222`,
+file `Qwen3-1.7B-Q4_K_M.gguf`, SHA256
+`b139949c5bd74937ad8ed8c8cf3d9ffb1e99c866c823204dc42c0d91fa181897`.
+The tokenizer revision is pinned separately in the code. These model files are
+ignored and must not be committed. Downloaded runtime and model files are only
+verification assets; the server is not hosted by the project website.
+
+To reproduce the optional downloaded-model checks:
+Install `requirements-models.txt` first. The commands may download the pinned encoder.
+
+```powershell
+python -m experiments.verify_models
+python -m experiments.verify_models --gguf path/to/model.gguf
+```
+
+The second command requires the local generator server. Probe artifacts are
+explicitly marked synthetic and stay under ignored `artifacts/verification/`.
 
 ## References
 

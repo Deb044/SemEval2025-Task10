@@ -9,15 +9,15 @@ import platform
 import subprocess
 import sys
 import time
+from statistics import mean, stdev
 from pathlib import Path
 
 import joblib
-import numpy as np
-
 from semeval.classify import predict, train
 from semeval.data import check_splits, read_jsonl, write_json, write_jsonl
 from semeval.evaluate import evaluate, export_tsv
 from semeval.metrics import paired_bootstrap, set_f1
+from semeval.resources import peak_rss_mb
 
 
 def run(config_path):
@@ -47,6 +47,7 @@ def run(config_path):
             report = evaluate(datasets["test"], predictions)
             report.update(name=name, method=method, ablation=ablation, seed=seed,
                           fit_seconds=model["fit_seconds"], predict_seconds=predict_seconds,
+                          process_peak_rss_mb=peak_rss_mb(),
                           threshold=model["threshold"], regularization=model["regularization"])
             write_json(output / (name + ".metrics.json"), report)
             reports.append(report)
@@ -55,14 +56,22 @@ def run(config_path):
                                    for g, p in zip(datasets["test"], predictions, strict=True)]
     comparisons = {}
     if task == 2:
-        comparisons["transformer_vs_graph_seed42"] = paired_bootstrap(article_scores["transformer-none-42"], article_scores["graph-none-42"])
+        graph_mean = [mean(values) for values in zip(*(article_scores[f"graph-none-{seed}"] for seed in (13, 42, 87)), strict=True)]
+        comparisons["transformer_vs_graph_mean_of_three_seeds"] = paired_bootstrap(article_scores["transformer-none-42"], graph_mean)
+    aggregates = []
+    for method, ablation in variants:
+        matching = [r for r in reports if r["method"] == method and r["ablation"] == ablation]
+        values = [r["metrics"][r["primary_metric"]] for r in matching]
+        aggregates.append({"method": method, "ablation": ablation, "seeds": [r["seed"] for r in matching],
+                           "mean": mean(values), "sample_std": stdev(values) if len(values) > 1 else None})
     try:
         commit = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
     except (OSError, subprocess.CalledProcessError):
         commit = None
     summary = {"config": config, "commit": commit, "python": platform.python_version(),
                "input_sha256": {name: hashlib.sha256(Path(config[name]).read_bytes()).hexdigest() for name in datasets},
-               "runs": reports, "paired_comparisons": comparisons,
+               "runs": reports, "aggregates": aggregates, "paired_comparisons": comparisons,
+               "memory_note": "process_peak_rss_mb is cumulative high-water RSS across sequential runs, not isolated per-model peak",
                "status": "local_metrics_only", "organizer_scorer_verified": False}
     write_json(output / "summary.json", summary)
 

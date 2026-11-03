@@ -62,6 +62,10 @@ fetch('results.json').then(response => {
     Number.isFinite(run.value) && run.value >= 0 && run.value <= 1 &&
     Number.isInteger(run.count) && run.count > 0 && run.name && run.metric &&
     run.split && run.commit && run.scoring_provenance && [1,2,3].includes(run.task));
+  if (runs.length) {
+    const status = document.querySelector('.status-pill');
+    status.replaceChildren(document.createTextNode(data.organizer_scorer_verified ? 'MEASURED RUNS · ORGANIZER SCORER VERIFIED' : 'MEASURED RUNS · LOCAL SCORING'));
+  }
   renderResults();
 }).catch(() => {
   document.getElementById('result-count').textContent = 'Results unavailable';

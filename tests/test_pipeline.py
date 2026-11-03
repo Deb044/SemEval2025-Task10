@@ -1,5 +1,6 @@
 """Small correctness checks using invented text, never benchmark measurements."""
 import json
+import importlib.util
 import tempfile
 import unittest
 from pathlib import Path
@@ -56,7 +57,7 @@ class PipelineChecks(unittest.TestCase):
                      "labels": ["cost" if i % 2 else "energy"], "narratives": ["policy"]} for i in range(count)]
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder) / "taxonomy.json"
-            path.write_text(json.dumps({label: {"parent": "policy", "definition": label} for label in ("cost", "energy", "Other")}), encoding="utf-8")
+            path.write_text(json.dumps({label: {"parent": "Other" if label == "Other" else "policy", "definition": label} for label in ("cost", "energy", "Other")}), encoding="utf-8")
             for method in ("tfidf", "lsa"):
                 model = train(rows("train", 8), rows("dev", 4), method, path)
                 output = predict(model, rows("test", 4))
@@ -64,6 +65,7 @@ class PipelineChecks(unittest.TestCase):
                 self.assertEqual(report["metrics"]["count"], 4)
                 self.assertFalse(report["benchmark_claim"])
 
+    @unittest.skipUnless(importlib.util.find_spec("torch"), "Optional model dependencies are not installed")
     def test_graph_shape_and_gradient(self):
         import torch
         from semeval.graph import LabelGCN

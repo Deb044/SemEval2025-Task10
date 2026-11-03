@@ -38,6 +38,9 @@ def evaluate(gold, predicted, bert_model=None, bert_layers=None):
                 model_type=bert_model, num_layers=bert_layers, device="cpu", batch_size=4,
                 rescale_with_baseline=False, return_hash=True, verbose=False)
             scores[primary] = float(values.mean())
+            scores["by_language"] = {lang: {"count": sum(r["language"] == lang for r in gold),
+                primary: float(values[[r["language"] == lang for r in gold]].mean())}
+                for lang in sorted({r["language"] for r in gold})}
             scores["bertscore_hash"] = hashcode
             provenance = "explicit unrescaled BERTScore configuration; verify against organizer scorer before official comparison"
     return {"task": task, "primary_metric": primary, "metrics": scores, "scoring_provenance": provenance,
