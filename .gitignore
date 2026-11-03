@@ -9,6 +9,6 @@ work/
 *.gguf
 *.npz
 *.joblib
-.openai/
+/.openai/
 !results/
 
