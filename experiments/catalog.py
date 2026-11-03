@@ -44,6 +44,8 @@ def model_entry(row, study, index):
 
 def build():
     historical = json.loads(Path("results/history.json").read_text(encoding="utf-8"))
+    error_path = Path("results/error-analysis.json")
+    errors = json.loads(error_path.read_text(encoding="utf-8"))["studies"] if error_path.exists() else {}
     entries = []
     for index, row in enumerate(historical["runs"]):
         entry = model_entry(row, row["dataset"] + " · initial study", index)
@@ -61,8 +63,12 @@ def build():
             entry = model_entry(row, study, index)
             entry["kind"] = kind
             entry["details"]["paired_comparisons"] = summary.get("paired_comparisons", {})
+            diagnostic_name = next((value["name"] for value in row.get("seed_values", []) if value["name"].endswith("-42")), None)
+            if diagnostic_name in errors.get(study, {}):
+                entry["details"]["fixed_seed_42_error_analysis"] = errors[study][diagnostic_name]
             if kind == "review":
                 entry["role"] = "Model-based review"
+                entry["details"]["evaluation_protocol"] = {key: summary.get(key) for key in ("nli_model", "nli_revision", "nli_weights_sha256", "protocol", "llm_audit", "limitations")}
             entries.append(entry)
         for report in summary["runs"]:
             if report["metrics"].get(report["primary_metric"]) is not None:
@@ -92,6 +98,16 @@ def build():
                     "n": record["count"], "status": "measured", "details": record, "provenance": meta, "notes": summary["limitations"]})
     else:
         entries.append({"id": "scale-pending", "study": "Data processing scalability", "dataset": "Public news", "kind": "scalability", "name": "Benchmark results not exported yet", "value": None, "status": "not_measured"})
+    throughput = Path("artifacts/extensions-throughput/summary.json")
+    if throughput.exists():
+        summary = json.loads(throughput.read_text(encoding="utf-8"))
+        for record in summary["measurements"]:
+            entries.append({"id": f"throughput-{record['model']}-{record['count']}", "study": "Core model inference throughput", "dataset": summary["dataset"],
+                "kind": "scalability", "name": record["model"], "role": "Core", "metric": "repeat inference time (cached embeddings)", "unit": "seconds",
+                "value": record["repeat_inference_seconds"], "n": record["count"], "status": "measured", "details": record,
+                "notes": summary["limitations"], "provenance": {key: summary.get(key) for key in ("commit", "input_sha256", "source_sha256")}})
+    else:
+        entries.append({"id": "throughput-pending", "study": "Core model inference throughput", "dataset": "ProBel", "kind": "scalability", "name": "Timings not exported yet", "value": None, "status": "not_measured"})
     payload = {"experiments": entries,
                "review_method": "Independent blinded LLM audit plus pinned NLI diagnostics; not human validation.",
                "note": "Typed results have different units and tasks; compare within studies. Public alternatives are not SemEval benchmark scores."}

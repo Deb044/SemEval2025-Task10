@@ -106,11 +106,16 @@ def main():
         inputs = {name: ROOT / "raw" / name for name in CHECKSUMS if name.endswith(".jsonl")}
         if not verified(Path("artifacts/extensions-scalability/summary.json"), inputs):
             run("experiments.scalability")
+        from experiments.throughput import MODELS
+        if not verified(Path("artifacts/extensions-throughput/summary.json"), {"evaluation": "data/public/probel/test.jsonl", **MODELS}):
+            run("experiments.throughput")
     if selected("grounding"):
         # The local diagnostic is repeatable. A separate capable LLM can repeat
         # the ancillary blinded audit using docs/llm-review-prompt.md.
         run("experiments.grounding")
     if selected("export") or args.stage == "all":
+        if all(Path(path).exists() for path in ("artifacts/extensions-cards/summary.json", "artifacts/extensions-probel/summary.json", "artifacts/extensions-emm/summary.json")):
+            run("experiments.errors")
         run("experiments.catalog")
 
 
