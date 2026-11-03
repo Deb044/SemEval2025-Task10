@@ -56,7 +56,7 @@ averaged across the same three seeds; these intervals describe article-sampling
 uncertainty, while the separate seed standard deviation describes training variation.
 
 Optional free cloud compute can accelerate the exact same runs only if allowed by
-the data agreement. CPU inference is the reproducibility target. No neural model
+the data agreement. Inference is the reproducibility target. No neural model
 fine-tuning or paid service is necessary.
 
 ## Manual explanation review

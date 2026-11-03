@@ -1,6 +1,6 @@
 # Measured auxiliary experiments
 
-These are real local CPU measurements on author-released English datasets.
+These are real local measurements on author-released English datasets.
 **They are not SemEval-2025 Task 10 benchmark scores.** No official dataset or
 organizer scoring scripts were available. Public alternatives are the selected
 evaluation route; no official access is required to reproduce these experiments. Code for all three official task formats
@@ -139,7 +139,7 @@ retained to identify the exact measured implementation. Windows line endings
 can change byte hashes; regenerate into a fresh directory after source changes.
 
 The generator is Qwen3-1.7B Q4_K_M (pinned revision in the protocol), llama.cpp
-b11960, four CPU threads, temperature zero, maximum 768 output tokens and
+b11960, four threads, temperature zero, maximum 768 output tokens and
 thinking disabled. The evaluator is multilingual BERT revision
 `3f076fdb1ab68d5b2880cb87a0886f315b8146f8`, layer 9, BERTScore 0.3.13,
 no IDF or baseline rescaling, and all available references. Bootstrap uses seed

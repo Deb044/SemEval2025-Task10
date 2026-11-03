@@ -46,7 +46,10 @@ def build():
     historical = json.loads(Path("results/history.json").read_text(encoding="utf-8"))
     entries = []
     for index, row in enumerate(historical["runs"]):
-        entries.append(model_entry(row, row["dataset"] + " · initial study", index))
+        entry = model_entry(row, row["dataset"] + " · initial study", index)
+        comparisons = next((value.get("comparisons", {}) for value in historical.get("paired_comparisons", []) if value["dataset"] == row["dataset"]), {})
+        entry["details"]["paired_comparisons"] = comparisons
+        entries.append(entry)
     for path, study, kind in STUDIES:
         if not Path(path).exists():
             entries.append({"id": path, "study": study, "dataset": study.split(" · ")[0], "kind": kind,

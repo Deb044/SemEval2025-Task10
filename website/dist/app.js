@@ -18,6 +18,7 @@ function activateTab(name, focus = false) {
     if (active && focus) tab.focus();
   });
   history.replaceState(null, '', '#' + name);
+  window.scrollTo(0, 0);
 }
 tabs.forEach((tab, index) => {
   tab.addEventListener('click', () => activateTab(tab.dataset.tab));
