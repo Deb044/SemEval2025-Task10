@@ -86,5 +86,6 @@ against the scorer before official comparisons.
 ## Current limitations
 
 Authorized corpus and organizer scorers are not available in this checkout.
-No official benchmark results, throughput estimates, peak-RAM measurements, or
-scientific improvement claims have been established.
+Public auxiliary experiments are complete; see [measured results](../results/README.md).
+They do not establish official Task 10 performance or multilingual explanation
+quality. Runtime records are local measurements with cache/process limitations.

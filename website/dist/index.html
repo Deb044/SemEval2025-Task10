@@ -552,9 +552,15 @@
      <div class="status-pill">
       <span class="dot amber">
       </span>
-      PUBLIC-DATA EXPERIMENTS IN PROGRESS
+      MEASURED AUXILIARY EXPERIMENTS
      </div>
     </div>
+    <div class="measured-findings">
+     <article><span>01 / CLASSIFICATION</span><h3>A compact baseline leads.</h3><p>LSA achieved macro F1 of 0.551 on 2,897 CARDS examples and 0.439 on 305 YASO targets, ahead of the other two baseline methods in each fixed experiment.</p></article>
+     <article><span>02 / GRAPH ABLATION</span><h3>Connections need evidence.</h3><p>The full CARDS graph averaged 0.468 macro F1 across three seeds. Its accuracy difference from self-loops was +0.004; the paired 95% interval includes zero (−0.002 to +0.010).</p></article>
+     <article><span>03 / EXPLANATION METRIC</span><h3>Similarity has limits.</h3><p>On 60 e-SNLI pairs, copied input scored 0.806 BERTScore versus 0.733 for full-context generation. These scores measure reference similarity, not factuality or narrative quality.</p></article>
+    </div>
+    <p class="results-caption">Compare methods within one dataset. Graph rows show the mean across three seeds; other rows are single runs. <a href="https://github.com/Deb044/SemEval2025-Task10/tree/main/results">Protocol, diagnostics and paired intervals ↗</a></p>
     <div class="result-controls">
      <label for="task-filter">
       Component
@@ -585,10 +591,10 @@
        ∅
       </div>
       <h3>
-       Measured results will appear here.
+       Loading measured results.
       </h3>
       <p>
-       Public auxiliary experiments are running. We will publish verified aggregate results after each evaluation completes. Official Task 10 scores remain unavailable.
+       Scores are loaded from the reviewed aggregate export. Official Task 10 scores remain unavailable. JavaScript is needed for filtering; the repository also contains the complete measurements.
       </p>
       <strong>
        Missing results are not zero scores.
@@ -601,7 +607,7 @@
        VERIFIED SO FAR
       </span>
       <p>
-       Core synthetic correctness checks pass, including cross-task split audits and release-taxonomy mapping. Additional invented-text probes verified CPU embeddings, graph training and reload, both graph ablations, and an English local-generation example.
+       Real CPU runs completed: 12 CARDS classification runs, three YASO runs, and four e-SNLI explanation variants. Correctness checks cover imports, split audits, graph gradients, scorer handling and checkpoint reuse.
       </p>
      </div>
      <div>
@@ -614,10 +620,10 @@
      </div>
      <div>
       <span>
-       HOW WE WILL REPORT
+       HOW TO READ THE RESULTS
       </span>
       <p>
-       Per-language metrics, graph-seed variability, paired comparisons, explanation review, and explicit limitations. No assumed improvements.
+       CARDS and YASO use native single-label macro F1. Graph intervals use accuracy, while seed SD describes training variation. e-SNLI uses human references and supplied gold relation labels; no human grounding audit is claimed.
       </p>
      </div>
     </div>

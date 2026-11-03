@@ -24,13 +24,21 @@ document.querySelectorAll('[data-family]').forEach(button => {
 });
 
 let runs = [];
+const methodNames = {
+  tfidf: 'Character TF-IDF + logistic regression', lsa: 'LSA + logistic regression',
+  transformer: 'Frozen MiniLM + logistic regression', graph: 'Frozen MiniLM + label GCN',
+  'graph / self-loops': 'Self-loop GCN (ablation)',
+  'graph / random-labels': 'Random label vectors (ablation)',
+  'copy-input': 'Copy input (control)', 'label-template': 'Label template (control)',
+  'generate-full': 'Qwen: full context', 'generate-no-premise': 'Qwen: premise withheld'
+};
 const emptyState = document.getElementById('results').cloneNode(true);
 function renderResults() {
   const task = document.getElementById('task-filter').value;
   const dataset = document.getElementById('dataset-filter').value;
   const visible = runs.filter(run => (task === 'all' || String(run.task) === task) && (dataset === 'all' || run.dataset === dataset));
   const root = document.getElementById('results');
-  document.getElementById('result-count').textContent = visible.length ? `${visible.length} measured runs` : 'No measured runs';
+  document.getElementById('result-count').textContent = visible.length ? `${visible.length} measured variants` : 'No measured runs';
   root.replaceChildren();
   if (!visible.length) {
     root.append(...Array.from(emptyState.childNodes).map(node => node.cloneNode(true)));
@@ -45,9 +53,9 @@ function renderResults() {
     row.className = 'result-row';
     const details = document.createElement('div');
     const title = document.createElement('strong');
-    title.textContent = run.name;
+    title.textContent = methodNames[run.name] || run.name;
     const metadata = document.createElement('p');
-    metadata.textContent = `${run.dataset} · ${run.label_schema === 'native' ? 'Auxiliary, native labels' : 'Task 10'} · ${run.metric} · n=${run.count}${Number.isFinite(run.seed_std) ? ' · seed SD ' + run.seed_std.toFixed(3) : ''}`;
+    metadata.textContent = `${run.dataset} · ${run.label_schema === 'native' ? 'Auxiliary, native labels' : 'Task 10'} · ${run.metric} · n=${run.count}${Number.isFinite(run.seed_std) ? ' · ' + run.seeds.length + ' seeds · SD ' + run.seed_std.toFixed(3) : ''}`;
     const provenance = document.createElement('p');
     provenance.textContent = run.scoring_provenance;
     const progress = document.createElement('progress');
@@ -61,7 +69,7 @@ function renderResults() {
 }
 document.getElementById('task-filter').addEventListener('change', renderResults);
 document.getElementById('dataset-filter').addEventListener('change', renderResults);
-fetch('results.json').then(response => {
+fetch('results.json', { cache: 'no-store' }).then(response => {
   if (!response.ok) throw new Error('Results could not be loaded');
   return response.json();
 }).then(data => {

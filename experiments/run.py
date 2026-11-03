@@ -15,13 +15,17 @@ from pathlib import Path
 
 import joblib
 from semeval.classify import predict, train
-from semeval.data import check_splits, read_jsonl, write_json, write_jsonl
+from semeval.data import check_splits, read_jsonl, replace_file, write_json, write_jsonl
 from semeval.evaluate import evaluate, export_tsv
 from semeval.metrics import paired_bootstrap, set_f1
 from semeval.resources import peak_rss_mb
 
 
 def run(config_path, resume=False):
+    try:
+        commit = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    except (OSError, subprocess.CalledProcessError):
+        commit = None
     config = json.loads(Path(config_path).read_text(encoding="utf-8"))
     datasets = {name: read_jsonl(config[name]) for name in ("train", "dev", "test")}
     check_splits(*datasets.values())
@@ -69,7 +73,7 @@ def run(config_path, resume=False):
                 model["data_sha256"] = input_hashes
                 temporary = model_path.with_suffix(".joblib.tmp")
                 joblib.dump(model, temporary)
-                temporary.replace(model_path)
+                replace_file(temporary, model_path)
             started = time.perf_counter()
             predictions_path = output / (name + ".jsonl")
             predictions = None
@@ -121,10 +125,6 @@ def run(config_path, resume=False):
         values = [r["metrics"][r["primary_metric"]] for r in matching]
         aggregates.append({"method": method, "ablation": ablation, "seeds": [r["seed"] for r in matching],
                            "mean": mean(values), "sample_std": stdev(values) if len(values) > 1 else None})
-    try:
-        commit = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
-    except (OSError, subprocess.CalledProcessError):
-        commit = None
     summary = {"config": config, "commit": commit, "python": platform.python_version(),
                "dataset": config.get("dataset", "unspecified"), "label_schema": config.get("label_schema", "semeval"),
                "synthetic": bool(config.get("synthetic", False)),

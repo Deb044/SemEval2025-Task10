@@ -54,6 +54,10 @@ def evaluate(rows, predictions, model_path, layers):
 
 
 def main():
+    import subprocess
+    source_hashes = {name: hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in
+        ("experiments/public_explanations.py", "semeval/explain.py", "semeval/data.py", "semeval/evaluate.py")}
+    source_commit = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", default="data/public/esnli/evaluation.jsonl")
     parser.add_argument("--gguf", required=True)
@@ -63,7 +67,9 @@ def main():
     parser.add_argument("--endpoint", default="http://127.0.0.1:8080/v1")
     parser.add_argument("--out", default="artifacts/public-esnli")
     args = parser.parse_args()
-    if not (Path(args.bert_model) / "config.json").exists():
+    evaluator_files = ("config.json", "model.safetensors", "tokenizer.json", "tokenizer_config.json", "vocab.txt")
+    if not all((Path(args.bert_model) / name).is_file() and (Path(args.bert_model) / name).stat().st_size
+               for name in evaluator_files):
         if args.bert_model != ".cache/evaluation-mbert":
             raise ValueError("Custom evaluator directory is missing; do not silently substitute another model")
         download_evaluator()
@@ -83,6 +89,10 @@ def main():
         if any(record.get("signature") != signature for record in predictions):
             raise ValueError("Existing e-SNLI predictions belong to another input/code/model revision")
         done = {r["pair_id"] for r in predictions}
+        if len(done) != len(predictions) or any(r.get("method") != method for r in predictions):
+            raise ValueError("Duplicate IDs or wrong method in explanation checkpoint")
+        if not done <= {r["pair_id"] for r in rows}:
+            raise ValueError("Unknown evaluation IDs in explanation checkpoint")
         for row in rows:
             if row["pair_id"] in done:
                 continue
@@ -109,9 +119,18 @@ def main():
         write_json(output / (method + ".metrics.json"), report)
         reports.append(report)
         print(method, "evaluation complete", flush=True)
-    import subprocess
+    from semeval.metrics import paired_bootstrap
+    lookup = {report["name"]: report for report in reports}
+    comparisons = {}
+    for first in ("generate-no-premise", "label-template", "copy-input"):
+        comparison = paired_bootstrap(lookup[first]["metrics"]["per_example_f1"],
+                                      lookup["generate-full"]["metrics"]["per_example_f1"])
+        comparison.update(metric="bertscore_f1", difference="second minus first", first=first,
+                          second="generate-full", seed=42, repeats=2000)
+        comparisons[first + "_vs_generate-full"] = comparison
     write_json(output / "summary.json", {"dataset": "e-SNLI", "label_schema": "native", "runs": reports,
-        "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+        "commit": source_commit, "source_sha256": source_hashes, "run_signature": signature,
+        "paired_comparisons": comparisons,
         "input_sha256": {"evaluation": hashlib.sha256(Path(args.data).read_bytes()).hexdigest()},
         "generator_sha256": model_hash, "bert_revision": args.bert_revision, "bert_layers": args.bert_layers,
         "organizer_scorer_verified": False,

@@ -1,0 +1,560 @@
+{
+  "status": "measured_local_metrics",
+  "runs": [
+    {
+      "dataset": "Cleaned CARDS/4C",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "tfidf",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 2897,
+      "split": "held-out evaluation; see protocol",
+      "commit": "71763c915c1dc071f722ff7d9b780c578bb26e6e",
+      "scoring_provenance": "native single-label auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "ddab92ffc001981a8d707d0a04ef8651c2c4242f6babfc299b121486f26078f4",
+        "semeval/classify.py": "b95b639d93a4ec834e282b4bfc934cf3d30b32409ea1457d7973ff7839f169f3",
+        "semeval/data.py": "e013a9c414eaa276c65cd8305f173873de69e931f0cb5cfe31c9f81144e7a80e",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "07559e066ef22371ab633a92d65e95a82ffd92649385a294e62840c34437c815",
+        "semeval/evaluate.py": "40e4a19e33fbccb8e6c009db058f14b3564e5b165e49ad91e986bf51eb58324a"
+      },
+      "input_sha256": {
+        "train": "8d3d91f8c713ba9085cf700970948ab3462efcbf3af4839e86e8527b139d15cf",
+        "dev": "3dc05121b39b34065e007e650b239310e66ca5644a11a8887e6e50840f74fa68",
+        "test": "f0f051eecc84edfb98b31e758c56e817e658ba7c0d47af6a4e46809be5b7429e",
+        "taxonomy": "1f32f4094fbcb9685a7b195d6da509548b751b17f5e8adf03eccdb43f831b61c"
+      },
+      "fit_seconds": 25.576305599999614,
+      "predict_seconds": 1.5112091000009968,
+      "generation_seconds": null,
+      "run_names": [
+        "tfidf-none-42"
+      ],
+      "value": 0.43304132632859743,
+      "seed_std": null
+    },
+    {
+      "dataset": "Cleaned CARDS/4C",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "lsa",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 2897,
+      "split": "held-out evaluation; see protocol",
+      "commit": "71763c915c1dc071f722ff7d9b780c578bb26e6e",
+      "scoring_provenance": "native single-label auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "ddab92ffc001981a8d707d0a04ef8651c2c4242f6babfc299b121486f26078f4",
+        "semeval/classify.py": "b95b639d93a4ec834e282b4bfc934cf3d30b32409ea1457d7973ff7839f169f3",
+        "semeval/data.py": "e013a9c414eaa276c65cd8305f173873de69e931f0cb5cfe31c9f81144e7a80e",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "07559e066ef22371ab633a92d65e95a82ffd92649385a294e62840c34437c815",
+        "semeval/evaluate.py": "40e4a19e33fbccb8e6c009db058f14b3564e5b165e49ad91e986bf51eb58324a"
+      },
+      "input_sha256": {
+        "train": "8d3d91f8c713ba9085cf700970948ab3462efcbf3af4839e86e8527b139d15cf",
+        "dev": "3dc05121b39b34065e007e650b239310e66ca5644a11a8887e6e50840f74fa68",
+        "test": "f0f051eecc84edfb98b31e758c56e817e658ba7c0d47af6a4e46809be5b7429e",
+        "taxonomy": "1f32f4094fbcb9685a7b195d6da509548b751b17f5e8adf03eccdb43f831b61c"
+      },
+      "fit_seconds": 17.929486799999722,
+      "predict_seconds": 1.5664433000019926,
+      "generation_seconds": null,
+      "run_names": [
+        "lsa-none-42"
+      ],
+      "value": 0.5510297463977462,
+      "seed_std": null
+    },
+    {
+      "dataset": "Cleaned CARDS/4C",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "transformer",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 2897,
+      "split": "held-out evaluation; see protocol",
+      "commit": "71763c915c1dc071f722ff7d9b780c578bb26e6e",
+      "scoring_provenance": "native single-label auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "ddab92ffc001981a8d707d0a04ef8651c2c4242f6babfc299b121486f26078f4",
+        "semeval/classify.py": "b95b639d93a4ec834e282b4bfc934cf3d30b32409ea1457d7973ff7839f169f3",
+        "semeval/data.py": "e013a9c414eaa276c65cd8305f173873de69e931f0cb5cfe31c9f81144e7a80e",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "07559e066ef22371ab633a92d65e95a82ffd92649385a294e62840c34437c815",
+        "semeval/evaluate.py": "40e4a19e33fbccb8e6c009db058f14b3564e5b165e49ad91e986bf51eb58324a"
+      },
+      "input_sha256": {
+        "train": "8d3d91f8c713ba9085cf700970948ab3462efcbf3af4839e86e8527b139d15cf",
+        "dev": "3dc05121b39b34065e007e650b239310e66ca5644a11a8887e6e50840f74fa68",
+        "test": "f0f051eecc84edfb98b31e758c56e817e658ba7c0d47af6a4e46809be5b7429e",
+        "taxonomy": "1f32f4094fbcb9685a7b195d6da509548b751b17f5e8adf03eccdb43f831b61c"
+      },
+      "fit_seconds": 76.38276199999746,
+      "predict_seconds": 106.56915600000139,
+      "generation_seconds": null,
+      "run_names": [
+        "transformer-none-42"
+      ],
+      "value": 0.5273612595258679,
+      "seed_std": null
+    },
+    {
+      "dataset": "Cleaned CARDS/4C",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "graph",
+      "metric": "macro_f1",
+      "seeds": [
+        13,
+        42,
+        87
+      ],
+      "count": 2897,
+      "split": "held-out evaluation; see protocol",
+      "commit": "71763c915c1dc071f722ff7d9b780c578bb26e6e",
+      "scoring_provenance": "native single-label auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "ddab92ffc001981a8d707d0a04ef8651c2c4242f6babfc299b121486f26078f4",
+        "semeval/classify.py": "b95b639d93a4ec834e282b4bfc934cf3d30b32409ea1457d7973ff7839f169f3",
+        "semeval/data.py": "e013a9c414eaa276c65cd8305f173873de69e931f0cb5cfe31c9f81144e7a80e",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "07559e066ef22371ab633a92d65e95a82ffd92649385a294e62840c34437c815",
+        "semeval/evaluate.py": "40e4a19e33fbccb8e6c009db058f14b3564e5b165e49ad91e986bf51eb58324a"
+      },
+      "input_sha256": {
+        "train": "8d3d91f8c713ba9085cf700970948ab3462efcbf3af4839e86e8527b139d15cf",
+        "dev": "3dc05121b39b34065e007e650b239310e66ca5644a11a8887e6e50840f74fa68",
+        "test": "f0f051eecc84edfb98b31e758c56e817e658ba7c0d47af6a4e46809be5b7429e",
+        "taxonomy": "1f32f4094fbcb9685a7b195d6da509548b751b17f5e8adf03eccdb43f831b61c"
+      },
+      "fit_seconds": 51.21198863333242,
+      "predict_seconds": 6.698912599999555,
+      "generation_seconds": null,
+      "run_names": [
+        "graph-none-13",
+        "graph-none-42",
+        "graph-none-87"
+      ],
+      "value": 0.46821168956610004,
+      "seed_std": 0.013172143884621594
+    },
+    {
+      "dataset": "Cleaned CARDS/4C",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "graph / self-loops",
+      "metric": "macro_f1",
+      "seeds": [
+        13,
+        42,
+        87
+      ],
+      "count": 2897,
+      "split": "held-out evaluation; see protocol",
+      "commit": "71763c915c1dc071f722ff7d9b780c578bb26e6e",
+      "scoring_provenance": "native single-label auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "ddab92ffc001981a8d707d0a04ef8651c2c4242f6babfc299b121486f26078f4",
+        "semeval/classify.py": "b95b639d93a4ec834e282b4bfc934cf3d30b32409ea1457d7973ff7839f169f3",
+        "semeval/data.py": "e013a9c414eaa276c65cd8305f173873de69e931f0cb5cfe31c9f81144e7a80e",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "07559e066ef22371ab633a92d65e95a82ffd92649385a294e62840c34437c815",
+        "semeval/evaluate.py": "40e4a19e33fbccb8e6c009db058f14b3564e5b165e49ad91e986bf51eb58324a"
+      },
+      "input_sha256": {
+        "train": "8d3d91f8c713ba9085cf700970948ab3462efcbf3af4839e86e8527b139d15cf",
+        "dev": "3dc05121b39b34065e007e650b239310e66ca5644a11a8887e6e50840f74fa68",
+        "test": "f0f051eecc84edfb98b31e758c56e817e658ba7c0d47af6a4e46809be5b7429e",
+        "taxonomy": "1f32f4094fbcb9685a7b195d6da509548b751b17f5e8adf03eccdb43f831b61c"
+      },
+      "fit_seconds": 65.40277299999798,
+      "predict_seconds": 2.0577649000006204,
+      "generation_seconds": null,
+      "run_names": [
+        "graph-self-loops-13",
+        "graph-self-loops-42",
+        "graph-self-loops-87"
+      ],
+      "value": 0.4582083734431344,
+      "seed_std": 0.0210750082041985
+    },
+    {
+      "dataset": "Cleaned CARDS/4C",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "graph / random-labels",
+      "metric": "macro_f1",
+      "seeds": [
+        13,
+        42,
+        87
+      ],
+      "count": 2897,
+      "split": "held-out evaluation; see protocol",
+      "commit": "71763c915c1dc071f722ff7d9b780c578bb26e6e",
+      "scoring_provenance": "native single-label auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "ddab92ffc001981a8d707d0a04ef8651c2c4242f6babfc299b121486f26078f4",
+        "semeval/classify.py": "b95b639d93a4ec834e282b4bfc934cf3d30b32409ea1457d7973ff7839f169f3",
+        "semeval/data.py": "e013a9c414eaa276c65cd8305f173873de69e931f0cb5cfe31c9f81144e7a80e",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "07559e066ef22371ab633a92d65e95a82ffd92649385a294e62840c34437c815",
+        "semeval/evaluate.py": "40e4a19e33fbccb8e6c009db058f14b3564e5b165e49ad91e986bf51eb58324a"
+      },
+      "input_sha256": {
+        "train": "8d3d91f8c713ba9085cf700970948ab3462efcbf3af4839e86e8527b139d15cf",
+        "dev": "3dc05121b39b34065e007e650b239310e66ca5644a11a8887e6e50840f74fa68",
+        "test": "f0f051eecc84edfb98b31e758c56e817e658ba7c0d47af6a4e46809be5b7429e",
+        "taxonomy": "1f32f4094fbcb9685a7b195d6da509548b751b17f5e8adf03eccdb43f831b61c"
+      },
+      "fit_seconds": 89.12585146666606,
+      "predict_seconds": 2.6004946666665396,
+      "generation_seconds": null,
+      "run_names": [
+        "graph-random-labels-13",
+        "graph-random-labels-42",
+        "graph-random-labels-87"
+      ],
+      "value": 0.4430940195870179,
+      "seed_std": 0.019826332417547644
+    },
+    {
+      "dataset": "YASO clear-text subset",
+      "label_schema": "native",
+      "measured": true,
+      "task": 1,
+      "name": "tfidf",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 305,
+      "split": "held-out evaluation; see protocol",
+      "commit": "71763c915c1dc071f722ff7d9b780c578bb26e6e",
+      "scoring_provenance": "native single-label auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "ddab92ffc001981a8d707d0a04ef8651c2c4242f6babfc299b121486f26078f4",
+        "semeval/classify.py": "b95b639d93a4ec834e282b4bfc934cf3d30b32409ea1457d7973ff7839f169f3",
+        "semeval/data.py": "f114ad048bf17247bb789847c239273a4231b1e588fd4a54ecbc6cca1a35e346",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "07559e066ef22371ab633a92d65e95a82ffd92649385a294e62840c34437c815",
+        "semeval/evaluate.py": "2fac196fabd66d56ce4426958e1773456efb6afc59a5e56f079fa281236e6ed4"
+      },
+      "input_sha256": {
+        "train": "6b0a45cf2865542e4c4649965e4049088cee7264b7e63c3c83bdc7540888150a",
+        "dev": "b4a575287cbd81214cf9d159e5f4a4644ea2f684a7f44a8b903c6803a7f69187",
+        "test": "8982fa399095312ce905a0c01f5568f827e4569206bbdc00d7a4c06a0a3545f0",
+        "taxonomy": "d91268019fa0b953dea5fbaa7aabb9b310663ed13a163080c92cb9b8459cd1f9"
+      },
+      "fit_seconds": 0.7837135999980092,
+      "predict_seconds": 0.07120510000095237,
+      "generation_seconds": null,
+      "run_names": [
+        "tfidf-none-42"
+      ],
+      "value": 0.2944904942006151,
+      "seed_std": null
+    },
+    {
+      "dataset": "YASO clear-text subset",
+      "label_schema": "native",
+      "measured": true,
+      "task": 1,
+      "name": "lsa",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 305,
+      "split": "held-out evaluation; see protocol",
+      "commit": "71763c915c1dc071f722ff7d9b780c578bb26e6e",
+      "scoring_provenance": "native single-label auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "ddab92ffc001981a8d707d0a04ef8651c2c4242f6babfc299b121486f26078f4",
+        "semeval/classify.py": "b95b639d93a4ec834e282b4bfc934cf3d30b32409ea1457d7973ff7839f169f3",
+        "semeval/data.py": "f114ad048bf17247bb789847c239273a4231b1e588fd4a54ecbc6cca1a35e346",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "07559e066ef22371ab633a92d65e95a82ffd92649385a294e62840c34437c815",
+        "semeval/evaluate.py": "2fac196fabd66d56ce4426958e1773456efb6afc59a5e56f079fa281236e6ed4"
+      },
+      "input_sha256": {
+        "train": "6b0a45cf2865542e4c4649965e4049088cee7264b7e63c3c83bdc7540888150a",
+        "dev": "b4a575287cbd81214cf9d159e5f4a4644ea2f684a7f44a8b903c6803a7f69187",
+        "test": "8982fa399095312ce905a0c01f5568f827e4569206bbdc00d7a4c06a0a3545f0",
+        "taxonomy": "d91268019fa0b953dea5fbaa7aabb9b310663ed13a163080c92cb9b8459cd1f9"
+      },
+      "fit_seconds": 1.764724100001331,
+      "predict_seconds": 0.09827120000045397,
+      "generation_seconds": null,
+      "run_names": [
+        "lsa-none-42"
+      ],
+      "value": 0.4390346379572947,
+      "seed_std": null
+    },
+    {
+      "dataset": "YASO clear-text subset",
+      "label_schema": "native",
+      "measured": true,
+      "task": 1,
+      "name": "transformer",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 305,
+      "split": "held-out evaluation; see protocol",
+      "commit": "71763c915c1dc071f722ff7d9b780c578bb26e6e",
+      "scoring_provenance": "native single-label auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "ddab92ffc001981a8d707d0a04ef8651c2c4242f6babfc299b121486f26078f4",
+        "semeval/classify.py": "b95b639d93a4ec834e282b4bfc934cf3d30b32409ea1457d7973ff7839f169f3",
+        "semeval/data.py": "f114ad048bf17247bb789847c239273a4231b1e588fd4a54ecbc6cca1a35e346",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "07559e066ef22371ab633a92d65e95a82ffd92649385a294e62840c34437c815",
+        "semeval/evaluate.py": "2fac196fabd66d56ce4426958e1773456efb6afc59a5e56f079fa281236e6ed4"
+      },
+      "input_sha256": {
+        "train": "6b0a45cf2865542e4c4649965e4049088cee7264b7e63c3c83bdc7540888150a",
+        "dev": "b4a575287cbd81214cf9d159e5f4a4644ea2f684a7f44a8b903c6803a7f69187",
+        "test": "8982fa399095312ce905a0c01f5568f827e4569206bbdc00d7a4c06a0a3545f0",
+        "taxonomy": "d91268019fa0b953dea5fbaa7aabb9b310663ed13a163080c92cb9b8459cd1f9"
+      },
+      "fit_seconds": 44.5031650000019,
+      "predict_seconds": 12.774496199999703,
+      "generation_seconds": null,
+      "run_names": [
+        "transformer-none-42"
+      ],
+      "value": 0.4081914641213833,
+      "seed_std": null
+    },
+    {
+      "dataset": "e-SNLI",
+      "label_schema": "native",
+      "measured": true,
+      "task": 3,
+      "name": "copy-input",
+      "metric": "bertscore_f1",
+      "seeds": [],
+      "count": 60,
+      "split": "held-out evaluation; see protocol",
+      "commit": "ba2d37b2463e6b764265fd6e184b59af1c2de44b",
+      "scoring_provenance": "Auxiliary English NLI explanations, multi-reference BERTScore; NOT SemEval narrative scores",
+      "source_sha256": {
+        "experiments/public_explanations.py": "8ee604cedc8ce757aa81ba4f5c7587f07162fde0a0305df6e6abbed1da9478d6",
+        "semeval/explain.py": "d951a36eb50feae0146a3637fc3c9db071e91f85b3c1c72d4284bebdb9ce0030",
+        "semeval/data.py": "f114ad048bf17247bb789847c239273a4231b1e588fd4a54ecbc6cca1a35e346",
+        "semeval/evaluate.py": "2fac196fabd66d56ce4426958e1773456efb6afc59a5e56f079fa281236e6ed4"
+      },
+      "input_sha256": {
+        "evaluation": "d779311a0fc7b9be8c186816ba3f504f5601dc32b811667651933e7730b2b795"
+      },
+      "fit_seconds": null,
+      "predict_seconds": null,
+      "generation_seconds": 0.0005300999946484808,
+      "run_names": [
+        "copy-input"
+      ],
+      "value": 0.805802583694458,
+      "seed_std": null
+    },
+    {
+      "dataset": "e-SNLI",
+      "label_schema": "native",
+      "measured": true,
+      "task": 3,
+      "name": "label-template",
+      "metric": "bertscore_f1",
+      "seeds": [],
+      "count": 60,
+      "split": "held-out evaluation; see protocol",
+      "commit": "ba2d37b2463e6b764265fd6e184b59af1c2de44b",
+      "scoring_provenance": "Auxiliary English NLI explanations, multi-reference BERTScore; NOT SemEval narrative scores",
+      "source_sha256": {
+        "experiments/public_explanations.py": "8ee604cedc8ce757aa81ba4f5c7587f07162fde0a0305df6e6abbed1da9478d6",
+        "semeval/explain.py": "d951a36eb50feae0146a3637fc3c9db071e91f85b3c1c72d4284bebdb9ce0030",
+        "semeval/data.py": "f114ad048bf17247bb789847c239273a4231b1e588fd4a54ecbc6cca1a35e346",
+        "semeval/evaluate.py": "2fac196fabd66d56ce4426958e1773456efb6afc59a5e56f079fa281236e6ed4"
+      },
+      "input_sha256": {
+        "evaluation": "d779311a0fc7b9be8c186816ba3f504f5601dc32b811667651933e7730b2b795"
+      },
+      "fit_seconds": null,
+      "predict_seconds": null,
+      "generation_seconds": 0.00016110000069602393,
+      "run_names": [
+        "label-template"
+      ],
+      "value": 0.6935016512870789,
+      "seed_std": null
+    },
+    {
+      "dataset": "e-SNLI",
+      "label_schema": "native",
+      "measured": true,
+      "task": 3,
+      "name": "generate-full",
+      "metric": "bertscore_f1",
+      "seeds": [],
+      "count": 60,
+      "split": "held-out evaluation; see protocol",
+      "commit": "ba2d37b2463e6b764265fd6e184b59af1c2de44b",
+      "scoring_provenance": "Auxiliary English NLI explanations, multi-reference BERTScore; NOT SemEval narrative scores",
+      "source_sha256": {
+        "experiments/public_explanations.py": "8ee604cedc8ce757aa81ba4f5c7587f07162fde0a0305df6e6abbed1da9478d6",
+        "semeval/explain.py": "d951a36eb50feae0146a3637fc3c9db071e91f85b3c1c72d4284bebdb9ce0030",
+        "semeval/data.py": "f114ad048bf17247bb789847c239273a4231b1e588fd4a54ecbc6cca1a35e346",
+        "semeval/evaluate.py": "2fac196fabd66d56ce4426958e1773456efb6afc59a5e56f079fa281236e6ed4"
+      },
+      "input_sha256": {
+        "evaluation": "d779311a0fc7b9be8c186816ba3f504f5601dc32b811667651933e7730b2b795"
+      },
+      "fit_seconds": null,
+      "predict_seconds": null,
+      "generation_seconds": 205.3176468999991,
+      "run_names": [
+        "generate-full"
+      ],
+      "value": 0.7330672144889832,
+      "seed_std": null
+    },
+    {
+      "dataset": "e-SNLI",
+      "label_schema": "native",
+      "measured": true,
+      "task": 3,
+      "name": "generate-no-premise",
+      "metric": "bertscore_f1",
+      "seeds": [],
+      "count": 60,
+      "split": "held-out evaluation; see protocol",
+      "commit": "ba2d37b2463e6b764265fd6e184b59af1c2de44b",
+      "scoring_provenance": "Auxiliary English NLI explanations, multi-reference BERTScore; NOT SemEval narrative scores",
+      "source_sha256": {
+        "experiments/public_explanations.py": "8ee604cedc8ce757aa81ba4f5c7587f07162fde0a0305df6e6abbed1da9478d6",
+        "semeval/explain.py": "d951a36eb50feae0146a3637fc3c9db071e91f85b3c1c72d4284bebdb9ce0030",
+        "semeval/data.py": "f114ad048bf17247bb789847c239273a4231b1e588fd4a54ecbc6cca1a35e346",
+        "semeval/evaluate.py": "2fac196fabd66d56ce4426958e1773456efb6afc59a5e56f079fa281236e6ed4"
+      },
+      "input_sha256": {
+        "evaluation": "d779311a0fc7b9be8c186816ba3f504f5601dc32b811667651933e7730b2b795"
+      },
+      "fit_seconds": null,
+      "predict_seconds": null,
+      "generation_seconds": 150.5115957000089,
+      "run_names": [
+        "generate-no-premise"
+      ],
+      "value": 0.7120526432991028,
+      "seed_std": null
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "dataset": "Cleaned CARDS/4C",
+      "comparisons": {
+        "transformer_vs_graph_mean_of_three_seeds": {
+          "mean_difference": -0.003912092969738813,
+          "ci95": [
+            -0.011736278909216434,
+            0.004487400759406279
+          ],
+          "metric": "accuracy"
+        },
+        "self_loops_vs_taxonomy_graph": {
+          "mean_difference": 0.004027154527672304,
+          "ci95": [
+            -0.0018409849269359103,
+            0.009895293982280519
+          ],
+          "metric": "accuracy"
+        },
+        "random_labels_vs_definition_labels": {
+          "mean_difference": 0.006673570360142677,
+          "ci95": [
+            0.0006903693476009675,
+            0.012541709814750893
+          ],
+          "metric": "accuracy"
+        }
+      }
+    },
+    {
+      "dataset": "YASO clear-text subset",
+      "comparisons": {}
+    },
+    {
+      "dataset": "e-SNLI",
+      "comparisons": {
+        "generate-no-premise_vs_generate-full": {
+          "mean_difference": 0.0210145503282547,
+          "ci95": [
+            0.014150520985325177,
+            0.028152922491232555
+          ],
+          "metric": "bertscore_f1",
+          "difference": "second minus first",
+          "first": "generate-no-premise",
+          "second": "generate-full",
+          "seed": 42,
+          "repeats": 2000
+        },
+        "label-template_vs_generate-full": {
+          "mean_difference": 0.03956551055113475,
+          "ci95": [
+            0.03100441279510657,
+            0.04826923442383605
+          ],
+          "metric": "bertscore_f1",
+          "difference": "second minus first",
+          "first": "label-template",
+          "second": "generate-full",
+          "seed": 42,
+          "repeats": 2000
+        },
+        "copy-input_vs_generate-full": {
+          "mean_difference": -0.07273531258106232,
+          "ci95": [
+            -0.08266497507691384,
+            -0.06275412271420162
+          ],
+          "metric": "bertscore_f1",
+          "difference": "second minus first",
+          "first": "copy-input",
+          "second": "generate-full",
+          "seed": 42,
+          "repeats": 2000
+        }
+      }
+    }
+  ],
+  "organizer_scorer_verified": false,
+  "note": "Compare methods within each dataset only. Auxiliary tasks are not SemEval benchmark scores."
+}

@@ -39,7 +39,9 @@ def aggregate(summaries):
                     "task": run["task"], "name": name, "metric": metric, "values": [], "seeds": [],
                     "count": run["metrics"]["count"], "split": "held-out evaluation; see protocol",
                     "commit": summary["commit"], "scoring_provenance": run["scoring_provenance"],
-                    "input_sha256": summary["input_sha256"], "fit_seconds": [], "predict_seconds": [], "run_names": []}
+                    "source_sha256": summary.get("source_sha256", {}),
+                    "input_sha256": summary["input_sha256"], "fit_seconds": [], "predict_seconds": [],
+                    "generation_seconds": [], "run_names": []}
             record = groups[key]
             if record["count"] != run["metrics"]["count"]:
                 raise ValueError("Cannot aggregate variants with different evaluation counts")
@@ -53,11 +55,13 @@ def aggregate(summaries):
                 record["fit_seconds"].append(run["fit_seconds"])
             if run.get("predict_seconds") is not None:
                 record["predict_seconds"].append(run["predict_seconds"])
+            if run.get("generation_seconds") is not None:
+                record["generation_seconds"].append(run["generation_seconds"])
     for record in groups.values():
         values = record.pop("values")
         record["value"] = mean(values)
         record["seed_std"] = stdev(values) if len(values) > 1 else None
-        for field in ("fit_seconds", "predict_seconds"):
+        for field in ("fit_seconds", "predict_seconds", "generation_seconds"):
             record[field] = mean(record[field]) if record[field] else None
     return list(groups.values())
 
@@ -74,10 +78,22 @@ def main():
     if not runs:
         raise ValueError("No measured primary metrics; nothing to publish")
     payload = {"status": "measured_local_metrics", "runs": runs,
+               "paired_comparisons": [{"dataset": summary["dataset"],
+                    "comparisons": summary.get("paired_comparisons", {})} for summary in summaries],
                "organizer_scorer_verified": False,
                "note": "Compare methods within each dataset only. Auxiliary tasks are not SemEval benchmark scores."}
     write_json("results/measurements.json", payload)
     write_json("website/dist/results.json", payload)
+    # Whitelist aggregate diagnostics: never export per-example scores or text.
+    diagnostics = []
+    fields = ("count", "exact_match", "micro_f1", "macro_f1", "per_label", "by_relation",
+              "bertscore_f1", "bertscore_hash", "length_compliance", "fallback_rate")
+    for summary in summaries:
+        diagnostics.append({"dataset": summary["dataset"], "commit": summary["commit"],
+            "input_sha256": summary["input_sha256"], "source_sha256": summary.get("source_sha256", {}),
+            "runs": [{"name": run["name"], "metrics": {key: run["metrics"][key]
+                for key in fields if key in run["metrics"]}} for run in summary["runs"]]})
+    write_json("results/diagnostics.json", diagnostics)
     for dataset in sorted({run["dataset"] for run in runs}):
         plot([run for run in runs if run["dataset"] == dataset], dataset)
     print("Exported reviewed aggregate metrics, retaining native dataset identities.")
@@ -89,7 +105,9 @@ def plot(runs, dataset):
              '<rect width="100%" height="100%" fill="#f5f4ed"/>',
              '<g font-family="Arial,sans-serif" fill="#172e32">',
              f'<text x="25" y="30" font-size="18">{html.escape(dataset)} · {html.escape(runs[0]["metric"])}</text>',
-             '<text x="25" y="52" font-size="11">Native dataset evaluation. Not a SemEval-2025 Task 10 benchmark score.</text>']
+             '<text x="25" y="52" font-size="11">' +
+             ('Local Task 10 metrics; organizer scorer not verified.' if dataset == "SemEval-2025 Task 10" else
+              'Native dataset evaluation. Not a SemEval-2025 Task 10 benchmark score.') + '</text>']
     for index, run in enumerate(runs):
         y = 85 + 40 * index
         parts += [f'<text x="25" y="{y + 14}" font-size="11">{html.escape(run["name"])}</text>',

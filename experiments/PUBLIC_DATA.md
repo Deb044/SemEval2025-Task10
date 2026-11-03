@@ -83,3 +83,30 @@ BERTScore 0.3.13 uses the pinned multilingual BERT revision in the script, layer
 (the library's recommended setting), no IDF, no baseline rescaling, and all available
 human references. This is a documented auxiliary configuration, not a claim of
 organizer-scorer parity. BERTScore does not establish factuality or narrative quality.
+
+## Measured implementation and model pins
+
+The committed [measurement record](../results/README.md) includes outcomes,
+uncertainty intervals and limits. The frozen encoder is
+`sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`, revision
+`e8f8c211226b894fcb81acc59f3b34ba3efd5f42`.
+
+Generation used [Unsloth's Qwen3-1.7B GGUF release](https://huggingface.co/unsloth/Qwen3-1.7B-GGUF),
+revision `d7f544eead698dbd1f15126ef60b45a1e1933222`, file
+`Qwen3-1.7B-Q4_K_M.gguf`, SHA256
+`b139949c5bd74937ad8ed8c8cf3d9ffb1e99c866c823204dc42c0d91fa181897`.
+The tokenizer is `Qwen/Qwen3-1.7B` revision
+`70d244cc86ccca08cf5af4e1e306ecf908b1ad5e`.
+Use the official [llama.cpp b11960 runtime](https://github.com/ggml-org/llama.cpp/releases/tag/b11960)
+for matching local generation, for example:
+
+```powershell
+llama-server -m work/models/Qwen3-1.7B-Q4_K_M.gguf --host 127.0.0.1 --port 8080 -c 4096 -t 4 -ngl 0
+```
+
+The pinned evaluator snapshot is downloaded into `.cache/evaluation-mbert` by
+`public_explanations`; incomplete snapshots are completed before scoring. Keep
+all model/runtime downloads local and out of Git. Checkpoint validation refuses
+changed implementation/model/input signatures, duplicate IDs and mixed methods.
+Generation is resumable for the exact same implementation and model. A revised
+script requires a fresh `--out` directory, even if the dataset is unchanged.

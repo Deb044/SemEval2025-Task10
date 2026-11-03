@@ -3,7 +3,9 @@
 CPU-first implementation of **SemEval-2025 Task 10**: entity framing, narrative
 classification, and evidence-grounded explanations. Focus: subtasks 2 and 3.
 
-**Status:** implementation and model verification in progress. No benchmark scores have been measured.
+**Status:** all three task pipelines are implemented. Real CPU experiments on public
+CARDS/4C, YASO and e-SNLI are complete; [results and protocol](results/README.md)
+retain their native task identities. Official Task 10 performance remains unmeasured.
 Restricted news data is not included. Synthetic checks are not research results.
 
 ## Setup
@@ -21,6 +23,33 @@ For a CPU-only PyTorch installation, install `torch==2.9.1` from the official
 Transformer/GNN/BERTScore experiments additionally require
 `python -m pip install -r requirements-models.txt`. The generator uses a local
 GGUF model and `llama-server`, installed separately; no paid API is required.
+
+## Reproduce the public experiments
+
+After installing the core and model requirements:
+
+```powershell
+python -m experiments.public_data
+python -m experiments.run data/public/cards/experiment.json
+python -m experiments.run data/public/yaso/experiment.json
+```
+
+Start the local generator using the instructions below, then run:
+
+```powershell
+python -m experiments.public_explanations --gguf work/models/Qwen3-1.7B-Q4_K_M.gguf
+```
+
+The pinned evaluator is downloaded automatically if its complete snapshot is
+missing. Model downloads require Internet access; subsequent runs can use the
+local cache. Use `--resume` for interrupted classification runs. A changed source,
+input, or configuration requires a fresh output directory; existing results are
+preserved. See [the public-data protocol](experiments/PUBLIC_DATA.md) for native
+labels, split rules, sample sizes, fixed seeds, checksums, and licensing boundaries.
+
+The [website source](website/) is buildless HTML/CSS/JavaScript. Serve it with
+`python -m http.server 8000 --directory website/dist`. It shows reviewed aggregate
+results, dataset filters, and the limits of these auxiliary experiments.
 
 ## Data
 
@@ -133,8 +162,8 @@ python -m http.server 8000 --directory website/dist
 ```
 
 The checks use invented text, not SemEval data. The buildless website contains no
-model endpoint and no private corpus content. Its aggregate results file starts
-empty; measured findings must be reviewed before publication.
+model endpoint and no private corpus content. Its aggregate results contain reviewed
+public auxiliary measurements; official SemEval scores remain unavailable.
 
 [Open the private project website](https://semeval-narrative-lab-deb044.solidflask.chatgpt.site)
 (ChatGPT sign-in required). Built and published using the Sites workflow.
@@ -144,7 +173,7 @@ The frozen encoder is pinned to revision
 CPU inference was checked with invented English/Hindi and long-text inputs.
 This check establishes functionality, not multilingual benchmark quality.
 
-The local generation probe used llama.cpp `b11960` (Windows CPU) and
+The local generation probe and public explanation runs used llama.cpp `b11960` (Windows CPU) and
 `unsloth/Qwen3-1.7B-GGUF`, revision `d7f544eead698dbd1f15126ef60b45a1e1933222`,
 file `Qwen3-1.7B-Q4_K_M.gguf`, SHA256
 `b139949c5bd74937ad8ed8c8cf3d9ffb1e99c866c823204dc42c0d91fa181897`.

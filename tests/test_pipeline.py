@@ -127,6 +127,14 @@ class PipelineChecks(unittest.TestCase):
         self.assertEqual(aggregate([summary])[0]["dataset"], "YASO clear-text subset")
         with self.assertRaises(ValueError):
             aggregate([dict(summary, dataset="SemEval-2025 Task 10")])
+        with self.assertRaises(ValueError):
+            aggregate([summary, summary])
+        changed_split = dict(summary, input_sha256={"test": "different"})
+        with self.assertRaises(ValueError):
+            aggregate([summary, changed_split])
+        invalid_run = dict(summary["runs"][0], metrics={"macro_f1": float("nan"), "count": 2})
+        with self.assertRaises(ValueError):
+            aggregate([dict(summary, runs=[invalid_run])])
 
     def test_experiment_resume_checks_inputs_and_reuses_completed_work(self):
         from experiments.run import run

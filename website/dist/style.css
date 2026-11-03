@@ -869,3 +869,12 @@ footer>div:last-child {
   html {
     scroll-behavior:auto}
 }
+
+.measured-findings { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin:0 0 28px; }
+.measured-findings article { border-top:2px solid var(--teal); padding:18px 0; }
+.measured-findings span { font-size:10px; letter-spacing:1px; color:var(--teal); }
+.measured-findings h3 { font-size:19px; margin:10px 0; }
+.measured-findings p,.results-caption { font-size:13px; color:var(--muted); }
+.results-caption a { text-decoration:underline; }
+.result-controls { flex-wrap:wrap; }
+@media(max-width:700px) { .measured-findings { grid-template-columns:1fr; gap:6px; } }
