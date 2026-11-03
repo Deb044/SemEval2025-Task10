@@ -48,6 +48,13 @@ python -m semeval import --task 2 --articles data/raw/train-articles-subtask-2 -
 python -m semeval audit data/st2/train.jsonl data/st2/dev.jsonl data/st2/test.jsonl --out artifacts/audit.json
 ```
 
+For the final cross-task leakage check, edit `experiments/audit-example.json` and
+run `python -m semeval audit --manifest experiments/audit-example.json --out artifacts/all-tasks-audit.json`.
+Files within one partition may share articles across tasks. Files in different
+partitions must not. Supply `--duplicate-groups data/duplicate-groups.json` for
+known translations/near-duplicates, mapping article IDs to a shared group name.
+These groups require verification; content hashing alone cannot discover them.
+
 ST1 imports require the correct `--offset-end inclusive` or `exclusive` for your
 release. A mismatched mention stops the import. Gold imports require all documented
 gold columns. For unlabeled ST2, omit `--annotations` and add `--unlabeled`.
@@ -57,8 +64,21 @@ ID/dominant narrative/dominant subnarrative. Add `--unlabeled` in both cases.
 Create `data/taxonomy.json`: a dictionary keyed by **exact fine label**, each with
 `parent` (exact broad label) and `definition` (annotation-guideline meaning).
 Include global `Other` with parent `Other` and all narrative-specific Other labels.
-This mapping must be checked against your authorized release. We do not infer
-parents from colon-delimited strings or derive a taxonomy from held-out labels.
+This mapping must be checked against your authorized release. Parents are verified
+against the coarse inventory rather than guessed by splitting fine-label strings.
+The taxonomy is never derived from held-out annotations.
+
+If the release includes coarse/fine class inventories, build the mapping with:
+
+```powershell
+python -m semeval taxonomy --coarse data/scorer/subtask2_narratives.txt --fine data/scorer/subtask2_subnarratives.txt --definitions data/definitions.json --out data/taxonomy.json
+```
+
+`definitions.json` maps every fine label to a verified paraphrase of its guideline
+definition. Omitting `--definitions` produces an explicitly marked name-only
+mapping, useful for setup but distinct from the planned name-plus-definition
+experiment. The command stops if a parent cannot be established from the full
+coarse inventory; it never invents a relationship.
 
 ```powershell
 python -m semeval train --train data/st2/train.jsonl --dev data/st2/dev.jsonl --method tfidf --taxonomy data/taxonomy.json --out artifacts/tfidf.joblib

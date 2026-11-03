@@ -1,0 +1,5 @@
+{
+  "train": ["data/st1/train.jsonl", "data/st2/train.jsonl", "data/st3/train.jsonl"],
+  "dev": ["data/st1/dev.jsonl", "data/st2/dev.jsonl", "data/st3/dev.jsonl"],
+  "test": ["data/st1/test.jsonl", "data/st2/test.jsonl", "data/st3/test.jsonl"]
+}

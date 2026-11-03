@@ -6,7 +6,7 @@ import subprocess
 import time
 from pathlib import Path
 
-from .data import audit, check_splits, import_official, load_taxonomy, read_jsonl, write_json, write_jsonl
+from .data import audit, build_taxonomy, check_splits, import_official, load_taxonomy, read_jsonl, write_json, write_jsonl
 
 
 def main():
@@ -19,8 +19,15 @@ def main():
     command.add_argument("--unlabeled", action="store_true", help="Import ST1 mentions, ST2 articles, or ST3 dominant labels without targets")
     command.add_argument("--offset-end", choices=("inclusive", "exclusive"), default="exclusive")
     command.add_argument("--out", required=True)
+    command = commands.add_parser("taxonomy", help="Build a parent mapping from exact release label inventories")
+    command.add_argument("--coarse", required=True)
+    command.add_argument("--fine", required=True)
+    command.add_argument("--definitions", help="JSON of guideline paraphrases keyed by every fine label")
+    command.add_argument("--out", required=True)
     command = commands.add_parser("audit")
-    command.add_argument("paths", nargs="+")
+    command.add_argument("paths", nargs="*")
+    command.add_argument("--manifest", help="JSON mapping partition names to lists of task JSONL paths")
+    command.add_argument("--duplicate-groups", help="JSON mapping article IDs to known duplicate/translation group IDs")
     command.add_argument("--out", required=True)
     command = commands.add_parser("train")
     command.add_argument("--train", required=True)
@@ -55,16 +62,25 @@ def main():
     args = parser.parse_args()
     if args.command == "import":
         write_jsonl(args.out, import_official(args.articles, args.annotations, args.task, args.offset_end, args.unlabeled))
+    elif args.command == "taxonomy":
+        write_json(args.out, build_taxonomy(args.coarse, args.fine, args.definitions))
     elif args.command == "audit":
-        datasets = [read_jsonl(path) for path in args.paths]
-        check_splits(*datasets)
-        write_json(args.out, {path: audit(rows) for path, rows in zip(args.paths, datasets)})
+        if bool(args.paths) == bool(args.manifest):
+            raise ValueError("Supply either partition paths or --manifest, not both")
+        partitions = json.loads(Path(args.manifest).read_text(encoding="utf-8")) if args.manifest else {path: [path] for path in args.paths}
+        if not isinstance(partitions, dict) or not partitions or any(not isinstance(paths, list) or not paths for paths in partitions.values()):
+            raise ValueError("Audit manifest must map partition names to nonempty lists of paths")
+        datasets = {name: [row for path in paths for row in read_jsonl(path)] for name, paths in partitions.items()}
+        groups = json.loads(Path(args.duplicate_groups).read_text(encoding="utf-8")) if args.duplicate_groups else None
+        check_splits(*datasets.values(), duplicate_groups=groups)
+        write_json(args.out, {name: audit(rows) for name, rows in datasets.items()})
     elif args.command == "train":
         import joblib
         from .classify import train
         model = train(read_jsonl(args.train), read_jsonl(args.dev), args.method, args.taxonomy, args.seed, args.ablation)
         model["training_articles"] = sorted({r["article_id"] for r in read_jsonl(args.train)})
-        model["data_sha256"] = {path: hashlib.sha256(Path(path).read_bytes()).hexdigest() for path in (args.train, args.dev)}
+        model["data_sha256"] = {path: hashlib.sha256(Path(path).read_bytes()).hexdigest()
+                                for path in (args.train, args.dev, args.taxonomy) if path}
         Path(args.out).parent.mkdir(parents=True, exist_ok=True)
         joblib.dump(model, args.out)
         write_json(args.out + ".json", {key: model[key] for key in ("task", "method", "seed", "ablation", "threshold", "regularization", "development_metric", "development_score", "fit_seconds", "data_sha256")})

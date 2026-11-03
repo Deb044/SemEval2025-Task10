@@ -53,6 +53,7 @@ def validate(rows):
     if not rows:
         raise ValueError("Dataset contains no examples")
     seen = set()
+    articles = {}
     for row in rows:
         key = (row["task"], *identity(row))
         if key in seen:
@@ -60,6 +61,10 @@ def validate(rows):
         seen.add(key)
         if row["language"] not in LANGUAGES.values() or not row["text"].strip():
             raise ValueError(f"Invalid language or empty article: {key}")
+        article = (row["language"], row["text"])
+        if row["article_id"] in articles and articles[row["article_id"]] != article:
+            raise ValueError(f"Conflicting text or language for article: {row['article_id']}")
+        articles[row["article_id"]] = article
         if row["task"] == 1:
             if not 0 <= row["start"] < row["end_exclusive"] <= len(row["text"]):
                 raise ValueError(f"Entity offsets out of range: {key}")
@@ -70,13 +75,21 @@ def validate(rows):
                     raise ValueError(f"Unknown or incompatible entity role: {role}")
 
 
-def check_splits(*splits):
-    """Reject article-ID/content overlap, even across different subtasks."""
+def check_splits(*splits, duplicate_groups=None):
+    """Reject ID, content and researcher-identified translation-group overlap.
+
+    Each argument is a partition, which may contain records from multiple tasks.
+    Duplicate groups map article IDs to shared, manually verified group IDs.
+    """
+    duplicate_groups = duplicate_groups or {}
     owners = {}
     for index, rows in enumerate(splits):
         validate(rows)
         for row in rows:
-            for key in ("id:" + row["article_id"], "text:" + fingerprint(row["text"])):
+            keys = ["id:" + row["article_id"], "text:" + fingerprint(row["text"])]
+            if row["article_id"] in duplicate_groups:
+                keys.append("group:" + str(duplicate_groups[row["article_id"]]))
+            for key in keys:
                 if key in owners and owners[key] != index:
                     raise ValueError(f"Article leakage between splits: {row['article_id']}")
                 owners[key] = index
@@ -142,6 +155,37 @@ def load_taxonomy(path):
     return taxonomy
 
 
+def build_taxonomy(coarse_path, fine_path, definitions_path=None):
+    """Build a checked mapping from the release's explicit class inventories.
+
+    Match full coarse-label prefixes rather than blindly splitting on colons.
+    Definitions are researcher-provided paraphrases of the public guidelines.
+    Without them the output is explicitly a label-name-only representation.
+    """
+    def labels(path):
+        values = [line.strip() for line in Path(path).read_text(encoding="utf-8-sig").splitlines() if line.strip()]
+        if not values or len(set(values)) != len(values):
+            raise ValueError(f"Empty or duplicate class inventory: {path}")
+        return values
+    coarse, fine = labels(coarse_path), labels(fine_path)
+    definitions = json.loads(Path(definitions_path).read_text(encoding="utf-8")) if definitions_path else {}
+    if definitions_path and set(definitions) != set(fine):
+        raise ValueError("Definition keys must exactly match the fine-label inventory")
+    taxonomy = {}
+    for label in fine:
+        parents = [parent for parent in coarse if label == "Other" == parent or label.startswith(parent + ": ")]
+        if len(parents) != 1:
+            raise ValueError(f"Cannot establish one explicit parent for {label!r}; create a manually verified mapping")
+        definition = definitions.get(label, label)
+        if not isinstance(definition, str) or not definition.strip():
+            raise ValueError(f"Missing or empty definition for {label}")
+        taxonomy[label] = {"parent": parents[0], "definition": definition,
+                           "definition_source": "guideline_paraphrase" if definitions_path else "label_text_only"}
+    if taxonomy.get("Other", {}).get("parent") != "Other":
+        raise ValueError("Release inventories must include the global Other class")
+    return taxonomy
+
+
 def audit(rows):
     from collections import Counter
     validate(rows)
@@ -151,6 +195,7 @@ def audit(rows):
         domains = sorted({label.split(":", 1)[0] for label in labels if label.startswith(("CC:", "URW:"))})
         return "+".join(domains) or "not supplied"
     return {"examples": len(rows), "articles": len(articles),
+            "examples_by_task": dict(Counter(r["task"] for r in rows)),
             "languages": dict(Counter(r["language"] for r in articles.values())),
             "domains_from_annotations_only": dict(Counter(domain(r) for r in articles.values())),
             "labels": dict(Counter(label for r in rows for label in r.get("labels", []))),

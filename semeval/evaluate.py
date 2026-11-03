@@ -7,8 +7,11 @@ from .metrics import classification_scores
 
 
 def align(gold, predicted):
+    gold_ids = [identity(row) for row in gold]
+    if len(set(gold_ids)) != len(gold_ids):
+        raise ValueError("Gold examples must have unique IDs")
     lookup = {identity(row): row for row in predicted}
-    if len(lookup) != len(predicted) or set(lookup) != {identity(row) for row in gold}:
+    if len(lookup) != len(predicted) or set(lookup) != set(gold_ids):
         raise ValueError("Predictions must match gold IDs exactly, with no duplicates")
     return [lookup[identity(row)] for row in gold]
 

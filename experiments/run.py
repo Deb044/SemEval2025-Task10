@@ -69,7 +69,8 @@ def run(config_path):
     except (OSError, subprocess.CalledProcessError):
         commit = None
     summary = {"config": config, "commit": commit, "python": platform.python_version(),
-               "input_sha256": {name: hashlib.sha256(Path(config[name]).read_bytes()).hexdigest() for name in datasets},
+               "input_sha256": {name: hashlib.sha256(Path(config[name]).read_bytes()).hexdigest()
+                                for name in (*datasets, "taxonomy") if config.get(name)},
                "runs": reports, "aggregates": aggregates, "paired_comparisons": comparisons,
                "memory_note": "process_peak_rss_mb is cumulative high-water RSS across sequential runs, not isolated per-model peak",
                "status": "local_metrics_only", "organizer_scorer_verified": False}

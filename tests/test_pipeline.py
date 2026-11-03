@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from semeval.data import check_splits, import_official
+from semeval.data import build_taxonomy, check_splits, import_official
 from semeval.evaluate import align, export_tsv
 from semeval.explain import extract, rank_evidence, select_context
 from semeval.metrics import set_f1
@@ -30,12 +30,20 @@ class PipelineChecks(unittest.TestCase):
         second = dict(first, task=3, article_id="EN_2.txt", text="Invented  article.")
         with self.assertRaises(ValueError):
             check_splits([first], [second])
+        check_splits([first, dict(first, task=3)], [dict(first, article_id="EN_3.txt", text="Different article.")])
+        translated = dict(first, article_id="HI_4.txt", language="hi", text="अलग भाषा में लेख।")
+        with self.assertRaises(ValueError):
+            check_splits([first], [translated], duplicate_groups={"EN_1.txt": "translation-a", "HI_4.txt": "translation-a"})
+        with self.assertRaises(ValueError):
+            check_splits([first, dict(first, task=3, text="Conflicting article body.")])
 
     def test_alignment_and_document_f1(self):
         rows = [{"task": 2, "article_id": name} for name in ("a", "b")]
         self.assertEqual(align(rows, rows[::-1]), rows)
         with self.assertRaises(ValueError):
             align(rows, rows[:1])
+        with self.assertRaises(ValueError):
+            align([rows[0], rows[0]], [rows[0]])
         self.assertAlmostEqual(set_f1(["x", "y"], ["y", "z"]), .5)
 
     def test_extractive_evidence_and_tsv(self):
@@ -70,6 +78,19 @@ class PipelineChecks(unittest.TestCase):
                 report = evaluate(rows("test", 4), output)
                 self.assertEqual(report["metrics"]["count"], 4)
                 self.assertFalse(report["benchmark_claim"])
+
+    def test_release_taxonomy_mapping(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            coarse, fine = root / "coarse.txt", root / "fine.txt"
+            coarse.write_text("Other\nCC: Policy\n", encoding="utf-8")
+            fine.write_text("Other\nCC: Policy: Cost\n", encoding="utf-8")
+            taxonomy = build_taxonomy(coarse, fine)
+            self.assertEqual(taxonomy["CC: Policy: Cost"]["parent"], "CC: Policy")
+            self.assertEqual(taxonomy["CC: Policy: Cost"]["definition_source"], "label_text_only")
+            fine.write_text("Other\nCC: Unknown: Cost\n", encoding="utf-8")
+            with self.assertRaises(ValueError):
+                build_taxonomy(coarse, fine)
 
     @unittest.skipUnless(importlib.util.find_spec("torch"), "Optional model dependencies are not installed")
     def test_graph_shape_and_gradient(self):
