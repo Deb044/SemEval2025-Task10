@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" role="img">
+<rect width="100%" height="100%" fill="#f5f4ed"/>
+<g font-family="Arial,sans-serif" fill="#172e32">
+<text x="25" y="30" font-size="18">ProBel news grouped pilot · macro_f1</text>
+<text x="25" y="52" font-size="11">Native dataset evaluation. Not a SemEval-2025 Task 10 benchmark score.</text>
+<text x="25" y="99" font-size="11">tfidf</text>
+<rect x="290" y="85" width="500" height="21" fill="#e1e7dc"/>
+<rect x="290" y="85" width="27.91" height="21" fill="#275b53"/>
+<text x="810" y="100" font-size="12">0.056</text>
+<text x="25" y="139" font-size="11">lsa</text>
+<rect x="290" y="125" width="500" height="21" fill="#e1e7dc"/>
+<rect x="290" y="125" width="45.57" height="21" fill="#275b53"/>
+<text x="810" y="140" font-size="12">0.091</text>
+<text x="25" y="179" font-size="11">transformer</text>
+<rect x="290" y="165" width="500" height="21" fill="#e1e7dc"/>
+<rect x="290" y="165" width="43.79" height="21" fill="#275b53"/>
+<text x="810" y="180" font-size="12">0.088</text>
+<text x="25" y="219" font-size="11">graph</text>
+<rect x="290" y="205" width="500" height="21" fill="#e1e7dc"/>
+<rect x="290" y="205" width="43.08" height="21" fill="#275b53"/>
+<text x="810" y="220" font-size="12">0.086</text>
+<text x="25" y="259" font-size="11">graph / self-loops</text>
+<rect x="290" y="245" width="500" height="21" fill="#e1e7dc"/>
+<rect x="290" y="245" width="49.77" height="21" fill="#275b53"/>
+<text x="810" y="260" font-size="12">0.100</text>
+<text x="25" y="299" font-size="11">graph / random-labels</text>
+<rect x="290" y="285" width="500" height="21" fill="#e1e7dc"/>
+<rect x="290" y="285" width="44.60" height="21" fill="#275b53"/>
+<text x="810" y="300" font-size="12">0.089</text>
+</g></svg>

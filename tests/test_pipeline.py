@@ -126,6 +126,9 @@ class PipelineChecks(unittest.TestCase):
                    "input_sha256": {"test": "test-only"}, "runs": [{"task": 1, "name": "test-only",
                    "primary_metric": "macro_f1", "metrics": {"macro_f1": .5, "count": 2}, "scoring_provenance": "test-only"}]}
         self.assertEqual(aggregate([summary])[0]["dataset"], "YASO clear-text subset")
+        language_run = dict(summary["runs"][0], metrics={"macro_f1": .5, "count": 2,
+                            "by_language": {"ar": {"count": 2, "macro_f1": .5}}})
+        self.assertEqual(aggregate([dict(summary, runs=[language_run])])[0]["by_language"]["ar"]["value"], .5)
         with self.assertRaises(ValueError):
             aggregate([dict(summary, dataset="SemEval-2025 Task 10")])
         with self.assertRaises(ValueError):
@@ -194,7 +197,7 @@ class PipelineChecks(unittest.TestCase):
         for split, partition in partitions.items():
             for row in partition:
                 for key in (row["source_group"], fingerprint(row["text"])):
-                    self.assertIn(owners.setdefault(key, split), [split])
+                    self.assertEqual(owners.setdefault(key, split), split)
 
     @unittest.skipUnless(importlib.util.find_spec("torch"), "Optional model dependencies are not installed")
     def test_graph_shape_and_gradient(self):

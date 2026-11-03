@@ -525,12 +525,13 @@
    <section class="section" id="public-data">
     <div class="section-heading">
      <div><p class="eyebrow">PUBLIC DATA / CLEAR BOUNDARIES</p><h2>Related data.<br/>Native labels.</h2></div>
-     <p>The restricted Task 10 corpus is unavailable. We evaluate useful components on author-released English datasets and report each task under its own identity.</p>
+     <p>The restricted Task 10 corpus is unavailable. We use public related datasets, preserving their native labels. ProBel adds English/Arabic news-unit propaganda classification and explanation experiments alongside CARDS climate claims.</p>
     </div>
     <div class="method-table-wrap"><table>
      <caption>Auxiliary evidence does not establish SemEval-2025 Task 10 performance</caption>
      <thead><tr><th>Public release</th><th>What we evaluate</th><th>What it does not measure</th></tr></thead>
      <tbody>
+      <tr><td><a href="https://huggingface.co/datasets/QCRI/ProBel">ProBel news pilot ↗</a></td><td>English/Arabic multi-label persuasion techniques in a six-category hierarchy; local explanation generation</td><td>Dominant narrative labels, entity roles, or human-authored gold explanations. Source articles are regrouped for this custom pilot.</td></tr>
       <tr><td><a href="https://github.com/jpiskorski/CC-denial-resources">Cleaned CARDS/4C ↗</a></td><td>Hierarchical climate-claim classification</td><td>Task 10's taxonomy or multilingual news classification</td></tr>
       <tr><td><a href="https://github.com/IBM/yaso-tsa">YASO clear-text subset ↗</a></td><td>Targeted sentiment with supplied target spans</td><td>Protagonist, antagonist, innocent, or fine-grained roles</td></tr>
       <tr><td><a href="https://github.com/OanaMariaCamburu/e-SNLI">e-SNLI ↗</a></td><td>Inference explanations against human references</td><td>Dominant news-narrative explanations or factuality</td></tr>
@@ -556,11 +557,11 @@
      </div>
     </div>
     <div class="measured-findings">
-     <article><span>01 / CLASSIFICATION</span><h3>A compact baseline leads.</h3><p>LSA achieved macro F1 of 0.551 on 2,897 CARDS examples and 0.439 on 305 YASO targets, ahead of the other two baseline methods in each fixed experiment.</p></article>
-     <article><span>02 / GRAPH ABLATION</span><h3>Connections need evidence.</h3><p>The full CARDS graph averaged 0.468 macro F1 across three seeds. Its accuracy difference from self-loops was +0.004; the paired 95% interval includes zero (−0.002 to +0.010).</p></article>
-     <article><span>03 / EXPLANATION METRIC</span><h3>Similarity has limits.</h3><p>On 60 e-SNLI pairs, copied input scored 0.806 BERTScore versus 0.733 for full-context generation. These scores measure reference similarity, not factuality or narrative quality.</p></article>
+     <article><span>01 / BILINGUAL NEWS</span><h3>A harder propaganda pilot.</h3><p>On 400 grouped English/Arabic ProBel news units, full-graph macro F1 was 0.086, versus 0.088 for MiniLM + logistic regression and 0.091 for LSA. The small, long-tailed pilot does not establish a graph benefit.</p></article>
+     <article><span>02 / CROSS-LINGUAL TRANSFER</span><h3>Transfer is measured.</h3><p>Train and select settings in one language, then test in the other. Full-GCN macro F1 was 0.019 for English → Arabic and 0.061 for Arabic → English. These one-seed pilot scores are low; source and label distributions differ.</p></article>
+     <article><span>03 / EXPLANATION PROVENANCE</span><h3>References have limits.</h3><p>The bilingual news explanation pilot uses publisher model-authored references, with human evaluation by its authors. Similarity to those references does not establish factual grounding or dominant-narrative explanation quality.</p></article>
     </div>
-    <p class="results-caption">Compare methods within one dataset. Graph rows show the mean across three seeds; other rows are single runs. <a href="https://github.com/Deb044/SemEval2025-Task10/tree/main/results">Protocol, diagnostics and paired intervals ↗</a></p>
+    <p class="results-caption">Compare methods within one dataset. Mixed-language and CARDS graph rows average three seeds; transfer models use one seed. Older CARDS, YASO and e-SNLI findings remain available below. <a href="https://github.com/Deb044/SemEval2025-Task10/tree/main/results">Protocol, diagnostics and paired intervals ↗</a></p>
     <div class="result-controls">
      <label for="task-filter">
       Component
@@ -607,7 +608,7 @@
        VERIFIED SO FAR
       </span>
       <p>
-       Real CPU runs completed: 12 CARDS classification runs, three YASO runs, and four e-SNLI explanation variants. Correctness checks cover imports, split audits, graph gradients, scorer handling and checkpoint reuse.
+       Real CPU classification runs cover CARDS and bilingual ProBel news, including graph ablations and source-language-only transfer. Twelve correctness checks cover imports, grouped splits, native multi-label decoding, graph gradients, scoring and checkpoints.
       </p>
      </div>
      <div>
@@ -615,7 +616,7 @@
        STILL TO VERIFY
       </span>
       <p>
-       Official Task 10 performance, multilingual explanation quality, and scorer parity remain unverified. English auxiliary results cannot establish those claims.
+       Official Task 10 performance, dominant-narrative explanation quality, entity-framing quality, and scorer parity remain unverified. Auxiliary propaganda results cannot establish those claims.
       </p>
      </div>
      <div>
@@ -623,7 +624,7 @@
        HOW TO READ THE RESULTS
       </span>
       <p>
-       CARDS and YASO use native single-label macro F1. Graph intervals use accuracy, while seed SD describes training variation. e-SNLI uses human references and supplied gold relation labels; no human grounding audit is claimed.
+       Classification rows use fixed-inventory native macro F1. CARDS graph intervals use accuracy; ProBel intervals use samples F1. Seed SD describes training variation. ProBel explanation references are model-authored; e-SNLI references are human-authored. Our generated outputs have not received human grounding review.
       </p>
      </div>
     </div>
@@ -639,7 +640,7 @@
       Traceable experiments.
      </h2>
      <p>
-      Start with the repository README. Obtain authorized data, validate splits, run comparisons, and retain the configuration behind every result.
+      Start with the public-data setup in the repository README. Download the pinned releases, audit article-grouped splits, run comparisons, and retain each result’s configuration.
      </p>
      <a class="button" href="https://github.com/Deb044/SemEval2025-Task10#readme">
       Read the setup guide
@@ -663,11 +664,11 @@
      <pre><code><span># 1. Set up the CPU environment</span>
 python -m pip install -r requirements.txt
 
-<span># 2. Validate authorized data</span>
-python -m semeval audit … --out artifacts/audit.json
+<span># 2. Prepare public news data</span>
+python -m experiments.public_probel
 
 <span># 3. Run controlled comparisons</span>
-python -m experiments.run experiments/example.json</code></pre>
+python -m experiments.run data/public/probel/experiment.json --resume</code></pre>
      <p>
       Workflow illustration; follow the README for complete commands.
      </p>

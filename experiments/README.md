@@ -1,5 +1,7 @@
 # Experiment protocol
 
+For the current public-only news experiments, use [PUBLIC_ALTERNATIVES.md](PUBLIC_ALTERNATIVES.md).
+
 1. Obtain authorized data and scoring scripts. Import each language/split, then
    concatenate languages within the same task/split. Never combine different
    official partitions merely because they have different task numbers.

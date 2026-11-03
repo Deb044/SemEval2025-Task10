@@ -4,7 +4,7 @@ CPU-first implementation of **SemEval-2025 Task 10**: entity framing, narrative
 classification, and evidence-grounded explanations. Focus: subtasks 2 and 3.
 
 **Status:** all three task pipelines are implemented. Real CPU experiments on public
-CARDS/4C, YASO and e-SNLI are complete; [results and protocol](results/README.md)
+CARDS/4C, ProBel news, YASO and e-SNLI are complete; [results and protocol](results/README.md)
 retain their native task identities. Official Task 10 performance remains unmeasured.
 Restricted news data is not included. Synthetic checks are not research results.
 
@@ -24,11 +24,26 @@ Transformer/GNN/BERTScore experiments additionally require
 `python -m pip install -r requirements-models.txt`. The generator uses a local
 GGUF model and `llama-server`, installed separately; no paid API is required.
 
+## Public data closest to the assignment
+
+We use public alternatives because official Task 10 data cannot be obtained.
+CARDS/4C supports hierarchical climate-claim classification; **ProBel news** adds
+English/Arabic multi-label propaganda techniques with an explicit label hierarchy,
+cross-lingual transfer experiments, and local explanation comparisons. Native
+techniques are not narrative labels, and ProBel references are model-authored.
+See [the public-alternative protocol](experiments/PUBLIC_ALTERNATIVES.md).
+YASO and e-SNLI remain supporting component experiments.
+
 ## Reproduce the public experiments
 
 After installing the core and model requirements:
 
 ```powershell
+python -m experiments.public_probel
+python -m experiments.run data/public/probel/experiment.json --resume
+python -m experiments.probel_transfer
+
+# Earlier auxiliary comparisons
 python -m experiments.public_data
 python -m experiments.run data/public/cards/experiment.json
 python -m experiments.run data/public/yaso/experiment.json
@@ -37,6 +52,8 @@ python -m experiments.run data/public/yaso/experiment.json
 Start the local generator using the instructions below, then run:
 
 ```powershell
+python -m experiments.probel_explanations --gguf work/models/Qwen3-1.7B-Q4_K_M.gguf
+# Earlier English NLI component experiment
 python -m experiments.public_explanations --gguf work/models/Qwen3-1.7B-Q4_K_M.gguf
 ```
 
@@ -51,10 +68,12 @@ The [website source](website/) is buildless HTML/CSS/JavaScript. Serve it with
 `python -m http.server 8000 --directory website/dist`. It shows reviewed aggregate
 results, dataset filters, and the limits of these auxiliary experiments.
 
-## Data
+## Optional official-format data
 
-Request authorized data and scorer access from the
-[official task website](https://propaganda.math.unipd.it/semeval2025task10/).
+The public workflows above require no Task 10 access. The importer below also
+supports authorized data from the
+[official task website](https://propaganda.math.unipd.it/semeval2025task10/) if it
+becomes available; this is not a prerequisite for the public experiments.
 Keep downloads under ignored `data/`. Do not publish the corpus, model APIs,
 or private article excerpts. Free cloud use depends on the dataset conditions.
 

@@ -30,6 +30,8 @@ const methodNames = {
   'graph / self-loops': 'Self-loop GCN (ablation)',
   'graph / random-labels': 'Random label vectors (ablation)',
   'copy-input': 'Copy input (control)', 'label-template': 'Label template (control)',
+  'textrank': 'TextRank extraction', 'semantic': 'Semantic extraction',
+  'generate-semantic': 'Qwen: semantic evidence', 'generate-lead': 'Qwen: leading evidence',
   'generate-full': 'Qwen: full context', 'generate-no-premise': 'Qwen: premise withheld'
 };
 const emptyState = document.getElementById('results').cloneNode(true);
@@ -57,13 +59,16 @@ function renderResults() {
     const metadata = document.createElement('p');
     metadata.textContent = `${run.dataset} · ${run.label_schema === 'native' ? 'Auxiliary, native labels' : 'Task 10'} · ${run.metric} · n=${run.count}${Number.isFinite(run.seed_std) ? ' · ' + run.seeds.length + ' seeds · SD ' + run.seed_std.toFixed(3) : ''}`;
     const provenance = document.createElement('p');
-    provenance.textContent = run.scoring_provenance;
+    provenance.textContent = run.scoring_provenance.replace('native-multilabel', 'multi-label');
+    const languages = document.createElement('p');
+    languages.textContent = Object.entries(run.by_language || {}).map(([language, score]) =>
+      `${({ar:'Arabic',en:'English'})[language] || language}: ${score.value.toFixed(3)} (n=${score.count})`).join(' · ');
     const progress = document.createElement('progress');
     progress.max = 1; progress.value = run.value;
     progress.setAttribute('aria-label', `${run.metric}: ${run.value}`);
     const value = document.createElement('span');
     value.className = 'result-value'; value.textContent = run.value.toFixed(3);
-    details.append(title, metadata, provenance, progress);
+    details.append(title, metadata, provenance, languages, progress);
     row.append(details, value); root.append(row);
   });
 }
@@ -85,6 +90,7 @@ fetch('results.json', { cache: 'no-store' }).then(response => {
     [...new Set(runs.map(run => run.dataset))].sort().filter(name => name !== 'SemEval-2025 Task 10').forEach(name => {
       const option = document.createElement('option'); option.value = name; option.textContent = name; filter.append(option);
     });
+    if (runs.some(run => run.dataset === 'ProBel news grouped pilot')) filter.value = 'ProBel news grouped pilot';
   }
   renderResults();
 }).catch(() => {

@@ -41,7 +41,7 @@ def aggregate(summaries):
                     "commit": summary["commit"], "scoring_provenance": run["scoring_provenance"],
                     "source_sha256": summary.get("source_sha256", {}),
                     "input_sha256": summary["input_sha256"], "fit_seconds": [], "predict_seconds": [],
-                    "generation_seconds": [], "run_names": []}
+                    "generation_seconds": [], "run_names": [], "language_values": {}}
             record = groups[key]
             if record["count"] != run["metrics"]["count"]:
                 raise ValueError("Cannot aggregate variants with different evaluation counts")
@@ -49,6 +49,16 @@ def aggregate(summaries):
                 raise ValueError("Cannot pool different splits or count the same run twice")
             record["run_names"].append(run["name"])
             record["values"].append(value)
+            for language, scores in run["metrics"].get("by_language", {}).items():
+                if metric not in scores:
+                    continue
+                language_value = scores[metric]
+                if not isinstance(language_value, (int, float)) or not math.isfinite(language_value) or not 0 <= language_value <= 1:
+                    raise ValueError("Invalid per-language score")
+                group = record["language_values"].setdefault(language, {"count": scores["count"], "values": []})
+                if group["count"] != scores["count"]:
+                    raise ValueError("Per-language evaluation counts differ between seeds")
+                group["values"].append(language_value)
             if run.get("seed") is not None:
                 record["seeds"].append(run["seed"])
             if run.get("fit_seconds") is not None:
@@ -61,6 +71,9 @@ def aggregate(summaries):
         values = record.pop("values")
         record["value"] = mean(values)
         record["seed_std"] = stdev(values) if len(values) > 1 else None
+        record["by_language"] = {language: {"count": group["count"], "value": mean(group["values"]),
+            "seed_std": stdev(group["values"]) if len(group["values"]) > 1 else None}
+            for language, group in record.pop("language_values").items()}
         for field in ("fit_seconds", "predict_seconds", "generation_seconds"):
             record[field] = mean(record[field]) if record[field] else None
     return list(groups.values())
@@ -86,7 +99,7 @@ def main():
     write_json("website/dist/results.json", payload)
     # Whitelist aggregate diagnostics: never export per-example scores or text.
     diagnostics = []
-    fields = ("count", "exact_match", "micro_f1", "macro_f1", "per_label", "by_relation",
+    fields = ("count", "exact_match", "samples_f1", "micro_f1", "macro_f1", "per_label", "by_relation", "by_language",
               "bertscore_f1", "bertscore_hash", "length_compliance", "fallback_rate")
     for summary in summaries:
         diagnostics.append({"dataset": summary["dataset"], "commit": summary["commit"],

@@ -37,7 +37,8 @@
         "tfidf-none-42"
       ],
       "value": 0.43304132632859743,
-      "seed_std": null
+      "seed_std": null,
+      "by_language": {}
     },
     {
       "dataset": "Cleaned CARDS/4C",
@@ -75,7 +76,8 @@
         "lsa-none-42"
       ],
       "value": 0.5510297463977462,
-      "seed_std": null
+      "seed_std": null,
+      "by_language": {}
     },
     {
       "dataset": "Cleaned CARDS/4C",
@@ -113,7 +115,8 @@
         "transformer-none-42"
       ],
       "value": 0.5273612595258679,
-      "seed_std": null
+      "seed_std": null,
+      "by_language": {}
     },
     {
       "dataset": "Cleaned CARDS/4C",
@@ -155,7 +158,8 @@
         "graph-none-87"
       ],
       "value": 0.46821168956610004,
-      "seed_std": 0.013172143884621594
+      "seed_std": 0.013172143884621594,
+      "by_language": {}
     },
     {
       "dataset": "Cleaned CARDS/4C",
@@ -197,7 +201,8 @@
         "graph-self-loops-87"
       ],
       "value": 0.4582083734431344,
-      "seed_std": 0.0210750082041985
+      "seed_std": 0.0210750082041985,
+      "by_language": {}
     },
     {
       "dataset": "Cleaned CARDS/4C",
@@ -239,7 +244,8 @@
         "graph-random-labels-87"
       ],
       "value": 0.4430940195870179,
-      "seed_std": 0.019826332417547644
+      "seed_std": 0.019826332417547644,
+      "by_language": {}
     },
     {
       "dataset": "YASO clear-text subset",
@@ -277,7 +283,8 @@
         "tfidf-none-42"
       ],
       "value": 0.2944904942006151,
-      "seed_std": null
+      "seed_std": null,
+      "by_language": {}
     },
     {
       "dataset": "YASO clear-text subset",
@@ -315,7 +322,8 @@
         "lsa-none-42"
       ],
       "value": 0.4390346379572947,
-      "seed_std": null
+      "seed_std": null,
+      "by_language": {}
     },
     {
       "dataset": "YASO clear-text subset",
@@ -353,7 +361,8 @@
         "transformer-none-42"
       ],
       "value": 0.4081914641213833,
-      "seed_std": null
+      "seed_std": null,
+      "by_language": {}
     },
     {
       "dataset": "e-SNLI",
@@ -383,7 +392,8 @@
         "copy-input"
       ],
       "value": 0.805802583694458,
-      "seed_std": null
+      "seed_std": null,
+      "by_language": {}
     },
     {
       "dataset": "e-SNLI",
@@ -413,7 +423,8 @@
         "label-template"
       ],
       "value": 0.6935016512870789,
-      "seed_std": null
+      "seed_std": null,
+      "by_language": {}
     },
     {
       "dataset": "e-SNLI",
@@ -443,7 +454,8 @@
         "generate-full"
       ],
       "value": 0.7330672144889832,
-      "seed_std": null
+      "seed_std": null,
+      "by_language": {}
     },
     {
       "dataset": "e-SNLI",
@@ -473,7 +485,856 @@
         "generate-no-premise"
       ],
       "value": 0.7120526432991028,
-      "seed_std": null
+      "seed_std": null,
+      "by_language": {}
+    },
+    {
+      "dataset": "ProBel news grouped pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "tfidf",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 400,
+      "split": "held-out evaluation; see protocol",
+      "commit": "b86859b5aaf573b4b2e75215c90917894e671090",
+      "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "0d00269916981c1751faf2edfccfde5a9b0ac4e4cd42232b7b80048eb912b0da",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 13.003255299998273,
+      "predict_seconds": 0.3309138999975403,
+      "generation_seconds": null,
+      "run_names": [
+        "tfidf-none-42"
+      ],
+      "value": 0.05581489844241065,
+      "seed_std": null,
+      "by_language": {
+        "ar": {
+          "count": 200,
+          "value": 0.063763373815217,
+          "seed_std": null
+        },
+        "en": {
+          "count": 200,
+          "value": 0.0156568615961561,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news grouped pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "lsa",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 400,
+      "split": "held-out evaluation; see protocol",
+      "commit": "b86859b5aaf573b4b2e75215c90917894e671090",
+      "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "0d00269916981c1751faf2edfccfde5a9b0ac4e4cd42232b7b80048eb912b0da",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 17.36665979999816,
+      "predict_seconds": 0.41200779999780934,
+      "generation_seconds": null,
+      "run_names": [
+        "lsa-none-42"
+      ],
+      "value": 0.09114985910113414,
+      "seed_std": null,
+      "by_language": {
+        "ar": {
+          "count": 200,
+          "value": 0.11623804072453357,
+          "seed_std": null
+        },
+        "en": {
+          "count": 200,
+          "value": 0.021810173344700198,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news grouped pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "transformer",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 400,
+      "split": "held-out evaluation; see protocol",
+      "commit": "b86859b5aaf573b4b2e75215c90917894e671090",
+      "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "0d00269916981c1751faf2edfccfde5a9b0ac4e4cd42232b7b80048eb912b0da",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 199.2057230999999,
+      "predict_seconds": 26.477158400004555,
+      "generation_seconds": null,
+      "run_names": [
+        "transformer-none-42"
+      ],
+      "value": 0.08757125238737334,
+      "seed_std": null,
+      "by_language": {
+        "ar": {
+          "count": 200,
+          "value": 0.10648958437599874,
+          "seed_std": null
+        },
+        "en": {
+          "count": 200,
+          "value": 0.0422465837664603,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news grouped pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "graph",
+      "metric": "macro_f1",
+      "seeds": [
+        13,
+        42,
+        87
+      ],
+      "count": 400,
+      "split": "held-out evaluation; see protocol",
+      "commit": "b86859b5aaf573b4b2e75215c90917894e671090",
+      "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "0d00269916981c1751faf2edfccfde5a9b0ac4e4cd42232b7b80048eb912b0da",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 34.327868066667484,
+      "predict_seconds": 2.4650470333338794,
+      "generation_seconds": null,
+      "run_names": [
+        "graph-none-13",
+        "graph-none-42",
+        "graph-none-87"
+      ],
+      "value": 0.0861689465917061,
+      "seed_std": 0.009240432588120077,
+      "by_language": {
+        "ar": {
+          "count": 200,
+          "value": 0.08530251606253338,
+          "seed_std": 0.007269922008821897
+        },
+        "en": {
+          "count": 200,
+          "value": 0.0462491246463059,
+          "seed_std": 0.0066933458580553514
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news grouped pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "graph / self-loops",
+      "metric": "macro_f1",
+      "seeds": [
+        13,
+        42,
+        87
+      ],
+      "count": 400,
+      "split": "held-out evaluation; see protocol",
+      "commit": "b86859b5aaf573b4b2e75215c90917894e671090",
+      "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "0d00269916981c1751faf2edfccfde5a9b0ac4e4cd42232b7b80048eb912b0da",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 24.778423866664525,
+      "predict_seconds": 0.5118369000022843,
+      "generation_seconds": null,
+      "run_names": [
+        "graph-self-loops-13",
+        "graph-self-loops-42",
+        "graph-self-loops-87"
+      ],
+      "value": 0.09954644513643653,
+      "seed_std": 0.020107190064371127,
+      "by_language": {
+        "ar": {
+          "count": 200,
+          "value": 0.0964373853562151,
+          "seed_std": 0.018123265745897746
+        },
+        "en": {
+          "count": 200,
+          "value": 0.0602065566062608,
+          "seed_std": 0.011093125666122661
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news grouped pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "graph / random-labels",
+      "metric": "macro_f1",
+      "seeds": [
+        13,
+        42,
+        87
+      ],
+      "count": 400,
+      "split": "held-out evaluation; see protocol",
+      "commit": "b86859b5aaf573b4b2e75215c90917894e671090",
+      "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+      "source_sha256": {
+        "experiments/run.py": "0d00269916981c1751faf2edfccfde5a9b0ac4e4cd42232b7b80048eb912b0da",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 27.579610033334273,
+      "predict_seconds": 0.3228252333331814,
+      "generation_seconds": null,
+      "run_names": [
+        "graph-random-labels-13",
+        "graph-random-labels-42",
+        "graph-random-labels-87"
+      ],
+      "value": 0.08920474214941454,
+      "seed_std": 0.010333327788852164,
+      "by_language": {
+        "ar": {
+          "count": 200,
+          "value": 0.0877642192729256,
+          "seed_std": 0.012020546933491104
+        },
+        "en": {
+          "count": 200,
+          "value": 0.0509967507074576,
+          "seed_std": 0.006431424694689418
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news transfer pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "en-to-en: transformer",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 200,
+      "split": "held-out evaluation; see protocol",
+      "commit": "adafc35bf35c38b3bd86bd28468879155796c95b",
+      "scoring_provenance": "Native 23-technique macro F1; source-language training/dev only; researcher article-grouped news pilot. NOT SemEval.",
+      "source_sha256": {
+        "experiments/probel_transfer.py": "8d0e6e4a9b6e020a6ee3304ee1c1e87adc644883c729dae5e55c43a282877e44",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 2.5950373000014224,
+      "predict_seconds": null,
+      "generation_seconds": null,
+      "run_names": [
+        "en-to-en: transformer"
+      ],
+      "value": 0.0336783988957902,
+      "seed_std": null,
+      "by_language": {
+        "en": {
+          "count": 200,
+          "value": 0.0336783988957902,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news transfer pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "en-to-ar: transformer",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 200,
+      "split": "held-out evaluation; see protocol",
+      "commit": "adafc35bf35c38b3bd86bd28468879155796c95b",
+      "scoring_provenance": "Native 23-technique macro F1; source-language training/dev only; researcher article-grouped news pilot. NOT SemEval.",
+      "source_sha256": {
+        "experiments/probel_transfer.py": "8d0e6e4a9b6e020a6ee3304ee1c1e87adc644883c729dae5e55c43a282877e44",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 2.5950373000014224,
+      "predict_seconds": null,
+      "generation_seconds": null,
+      "run_names": [
+        "en-to-ar: transformer"
+      ],
+      "value": 0.04012111685318755,
+      "seed_std": null,
+      "by_language": {
+        "ar": {
+          "count": 200,
+          "value": 0.04012111685318755,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news transfer pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "en-to-en: graph",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 200,
+      "split": "held-out evaluation; see protocol",
+      "commit": "adafc35bf35c38b3bd86bd28468879155796c95b",
+      "scoring_provenance": "Native 23-technique macro F1; source-language training/dev only; researcher article-grouped news pilot. NOT SemEval.",
+      "source_sha256": {
+        "experiments/probel_transfer.py": "8d0e6e4a9b6e020a6ee3304ee1c1e87adc644883c729dae5e55c43a282877e44",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 18.957759799995983,
+      "predict_seconds": null,
+      "generation_seconds": null,
+      "run_names": [
+        "en-to-en: graph"
+      ],
+      "value": 0.03705154257844014,
+      "seed_std": null,
+      "by_language": {
+        "en": {
+          "count": 200,
+          "value": 0.03705154257844014,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news transfer pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "en-to-ar: graph",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 200,
+      "split": "held-out evaluation; see protocol",
+      "commit": "adafc35bf35c38b3bd86bd28468879155796c95b",
+      "scoring_provenance": "Native 23-technique macro F1; source-language training/dev only; researcher article-grouped news pilot. NOT SemEval.",
+      "source_sha256": {
+        "experiments/probel_transfer.py": "8d0e6e4a9b6e020a6ee3304ee1c1e87adc644883c729dae5e55c43a282877e44",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 18.957759799995983,
+      "predict_seconds": null,
+      "generation_seconds": null,
+      "run_names": [
+        "en-to-ar: graph"
+      ],
+      "value": 0.018654860212914137,
+      "seed_std": null,
+      "by_language": {
+        "ar": {
+          "count": 200,
+          "value": 0.018654860212914137,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news transfer pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "ar-to-en: transformer",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 200,
+      "split": "held-out evaluation; see protocol",
+      "commit": "adafc35bf35c38b3bd86bd28468879155796c95b",
+      "scoring_provenance": "Native 23-technique macro F1; source-language training/dev only; researcher article-grouped news pilot. NOT SemEval.",
+      "source_sha256": {
+        "experiments/probel_transfer.py": "8d0e6e4a9b6e020a6ee3304ee1c1e87adc644883c729dae5e55c43a282877e44",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 3.3635694999975385,
+      "predict_seconds": null,
+      "generation_seconds": null,
+      "run_names": [
+        "ar-to-en: transformer"
+      ],
+      "value": 0.034266414464902174,
+      "seed_std": null,
+      "by_language": {
+        "en": {
+          "count": 200,
+          "value": 0.034266414464902174,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news transfer pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "ar-to-ar: transformer",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 200,
+      "split": "held-out evaluation; see protocol",
+      "commit": "adafc35bf35c38b3bd86bd28468879155796c95b",
+      "scoring_provenance": "Native 23-technique macro F1; source-language training/dev only; researcher article-grouped news pilot. NOT SemEval.",
+      "source_sha256": {
+        "experiments/probel_transfer.py": "8d0e6e4a9b6e020a6ee3304ee1c1e87adc644883c729dae5e55c43a282877e44",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 3.3635694999975385,
+      "predict_seconds": null,
+      "generation_seconds": null,
+      "run_names": [
+        "ar-to-ar: transformer"
+      ],
+      "value": 0.08076890266442972,
+      "seed_std": null,
+      "by_language": {
+        "ar": {
+          "count": 200,
+          "value": 0.08076890266442972,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news transfer pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "ar-to-en: graph",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 200,
+      "split": "held-out evaluation; see protocol",
+      "commit": "adafc35bf35c38b3bd86bd28468879155796c95b",
+      "scoring_provenance": "Native 23-technique macro F1; source-language training/dev only; researcher article-grouped news pilot. NOT SemEval.",
+      "source_sha256": {
+        "experiments/probel_transfer.py": "8d0e6e4a9b6e020a6ee3304ee1c1e87adc644883c729dae5e55c43a282877e44",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 15.112812999999733,
+      "predict_seconds": null,
+      "generation_seconds": null,
+      "run_names": [
+        "ar-to-en: graph"
+      ],
+      "value": 0.060638823651683424,
+      "seed_std": null,
+      "by_language": {
+        "en": {
+          "count": 200,
+          "value": 0.060638823651683424,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news transfer pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 2,
+      "name": "ar-to-ar: graph",
+      "metric": "macro_f1",
+      "seeds": [
+        42
+      ],
+      "count": 200,
+      "split": "held-out evaluation; see protocol",
+      "commit": "adafc35bf35c38b3bd86bd28468879155796c95b",
+      "scoring_provenance": "Native 23-technique macro F1; source-language training/dev only; researcher article-grouped news pilot. NOT SemEval.",
+      "source_sha256": {
+        "experiments/probel_transfer.py": "8d0e6e4a9b6e020a6ee3304ee1c1e87adc644883c729dae5e55c43a282877e44",
+        "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "input_sha256": {
+        "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+        "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+        "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": 15.112812999999733,
+      "predict_seconds": null,
+      "generation_seconds": null,
+      "run_names": [
+        "ar-to-ar: graph"
+      ],
+      "value": 0.067035779194878,
+      "seed_std": null,
+      "by_language": {
+        "ar": {
+          "count": 200,
+          "value": 0.067035779194878,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news explanations pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 3,
+      "name": "textrank",
+      "metric": "bertscore_f1",
+      "seeds": [],
+      "count": 40,
+      "split": "held-out evaluation; see protocol",
+      "commit": "21cf381afc00fa2d6b8f80af8e3ab958eca72e4b",
+      "scoring_provenance": "Bilingual native propaganda explanations; references authored by OpenAI o1 and publisher human-evaluated. NOT human gold or SemEval narrative scores.",
+      "source_sha256": {
+        "experiments/probel_explanations.py": "4c2976d596afc37183e89e723bad4830c62cad2e8409f723bc4fcf938f8a2aa4",
+        "semeval/explain.py": "8267cc752280cebd4167d545407d4605aaa930882f597d194a772ba16021c558",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf"
+      },
+      "input_sha256": {
+        "evaluation": "4d435bcf571207ca7050682c1043eb91d594c3f5989832a87a9960ef3acad999",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": null,
+      "predict_seconds": null,
+      "generation_seconds": 0.251864799996838,
+      "run_names": [
+        "textrank"
+      ],
+      "value": 0.6836109161376953,
+      "seed_std": null,
+      "by_language": {
+        "ar": {
+          "count": 20,
+          "value": 0.7024189829826355,
+          "seed_std": null
+        },
+        "en": {
+          "count": 20,
+          "value": 0.6648029685020447,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news explanations pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 3,
+      "name": "semantic",
+      "metric": "bertscore_f1",
+      "seeds": [],
+      "count": 40,
+      "split": "held-out evaluation; see protocol",
+      "commit": "21cf381afc00fa2d6b8f80af8e3ab958eca72e4b",
+      "scoring_provenance": "Bilingual native propaganda explanations; references authored by OpenAI o1 and publisher human-evaluated. NOT human gold or SemEval narrative scores.",
+      "source_sha256": {
+        "experiments/probel_explanations.py": "4c2976d596afc37183e89e723bad4830c62cad2e8409f723bc4fcf938f8a2aa4",
+        "semeval/explain.py": "8267cc752280cebd4167d545407d4605aaa930882f597d194a772ba16021c558",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf"
+      },
+      "input_sha256": {
+        "evaluation": "4d435bcf571207ca7050682c1043eb91d594c3f5989832a87a9960ef3acad999",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": null,
+      "predict_seconds": null,
+      "generation_seconds": 0.14726569999038475,
+      "run_names": [
+        "semantic"
+      ],
+      "value": 0.6836109161376953,
+      "seed_std": null,
+      "by_language": {
+        "ar": {
+          "count": 20,
+          "value": 0.7024189829826355,
+          "seed_std": null
+        },
+        "en": {
+          "count": 20,
+          "value": 0.6648029685020447,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news explanations pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 3,
+      "name": "generate-semantic",
+      "metric": "bertscore_f1",
+      "seeds": [],
+      "count": 40,
+      "split": "held-out evaluation; see protocol",
+      "commit": "21cf381afc00fa2d6b8f80af8e3ab958eca72e4b",
+      "scoring_provenance": "Bilingual native propaganda explanations; references authored by OpenAI o1 and publisher human-evaluated. NOT human gold or SemEval narrative scores.",
+      "source_sha256": {
+        "experiments/probel_explanations.py": "4c2976d596afc37183e89e723bad4830c62cad2e8409f723bc4fcf938f8a2aa4",
+        "semeval/explain.py": "8267cc752280cebd4167d545407d4605aaa930882f597d194a772ba16021c558",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf"
+      },
+      "input_sha256": {
+        "evaluation": "4d435bcf571207ca7050682c1043eb91d594c3f5989832a87a9960ef3acad999",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": null,
+      "predict_seconds": null,
+      "generation_seconds": 216.63667149998946,
+      "run_names": [
+        "generate-semantic"
+      ],
+      "value": 0.7098422050476074,
+      "seed_std": null,
+      "by_language": {
+        "ar": {
+          "count": 20,
+          "value": 0.7200867533683777,
+          "seed_std": null
+        },
+        "en": {
+          "count": 20,
+          "value": 0.6995975971221924,
+          "seed_std": null
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news explanations pilot",
+      "label_schema": "native",
+      "measured": true,
+      "task": 3,
+      "name": "generate-lead",
+      "metric": "bertscore_f1",
+      "seeds": [],
+      "count": 40,
+      "split": "held-out evaluation; see protocol",
+      "commit": "21cf381afc00fa2d6b8f80af8e3ab958eca72e4b",
+      "scoring_provenance": "Bilingual native propaganda explanations; references authored by OpenAI o1 and publisher human-evaluated. NOT human gold or SemEval narrative scores.",
+      "source_sha256": {
+        "experiments/probel_explanations.py": "4c2976d596afc37183e89e723bad4830c62cad2e8409f723bc4fcf938f8a2aa4",
+        "semeval/explain.py": "8267cc752280cebd4167d545407d4605aaa930882f597d194a772ba16021c558",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400",
+        "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf"
+      },
+      "input_sha256": {
+        "evaluation": "4d435bcf571207ca7050682c1043eb91d594c3f5989832a87a9960ef3acad999",
+        "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+      },
+      "fit_seconds": null,
+      "predict_seconds": null,
+      "generation_seconds": 0.04161280000698753,
+      "run_names": [
+        "generate-lead"
+      ],
+      "value": 0.7098422050476074,
+      "seed_std": null,
+      "by_language": {
+        "ar": {
+          "count": 20,
+          "value": 0.7200867533683777,
+          "seed_std": null
+        },
+        "en": {
+          "count": 20,
+          "value": 0.6995975971221924,
+          "seed_std": null
+        }
+      }
     }
   ],
   "paired_comparisons": [
@@ -551,6 +1412,49 @@
           "second": "generate-full",
           "seed": 42,
           "repeats": 2000
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news grouped pilot",
+      "comparisons": {
+        "transformer_vs_graph_mean_of_three_seeds": {
+          "mean_difference": -0.01160817944525375,
+          "ci95": [
+            -0.030751231309754917,
+            0.006590622666735276
+          ],
+          "metric": "samples_f1"
+        },
+        "self_loops_vs_taxonomy_graph": {
+          "mean_difference": -0.0010571203678788812,
+          "ci95": [
+            -0.010028278453143002,
+            0.008034567406993877
+          ],
+          "metric": "samples_f1"
+        },
+        "random_labels_vs_definition_labels": {
+          "mean_difference": -0.0049853598628753415,
+          "ci95": [
+            -0.011755799904358342,
+            0.001662046228696758
+          ],
+          "metric": "samples_f1"
+        }
+      }
+    },
+    {
+      "dataset": "ProBel news transfer pilot",
+      "comparisons": {}
+    },
+    {
+      "dataset": "ProBel news explanations pilot",
+      "comparisons": {
+        "lead_vs_semantic_evidence": {
+          "identical_selected_evidence_rate": 1.0,
+          "equivalent_prompt_reuse_rate": 1.0,
+          "note": "Short news units may supply identical context to both variants; do not assume a retrieval effect."
         }
       }
     }

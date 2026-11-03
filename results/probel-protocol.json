@@ -1,0 +1,160 @@
+{
+  "train": {
+    "examples": 1600,
+    "articles": 1600,
+    "examples_by_task": {
+      "2": 1600
+    },
+    "languages": {
+      "ar": 800,
+      "en": 800
+    },
+    "domains_from_annotations_only": {
+      "not supplied": 1600
+    },
+    "labels": {
+      "Loaded_Language": 536,
+      "Name_Calling-Labeling": 198,
+      "Exaggeration-Minimisation": 121,
+      "Obfuscation-Vagueness-Confusion": 31,
+      "Appeal_to_Hypocrisy": 11,
+      "Consequential_Oversimplification": 6,
+      "Questioning_the_Reputation": 63,
+      "Causal_Oversimplification": 29,
+      "Straw_Man": 6,
+      "Doubt": 55,
+      "Flag_Waving": 20,
+      "Appeal_to_Fear-Prejudice": 28,
+      "False_Dilemma-No_Choice": 16,
+      "Appeal_to_Authority": 21,
+      "Appeal_to_Time": 5,
+      "Repetition": 13,
+      "Conversation_Killer": 9,
+      "Guilt_by_Association": 4,
+      "Appeal_to_Values": 6,
+      "Red_Herring": 8,
+      "Slogans": 15,
+      "Appeal_to_Popularity": 5,
+      "Whataboutism": 2
+    },
+    "article_characters": {
+      "min": 30,
+      "max": 687
+    },
+    "duplicate_content_articles": 0,
+    "near_duplicates": "Not automatically verified; inspect before final evaluation."
+  },
+  "dev": {
+    "examples": 400,
+    "articles": 400,
+    "examples_by_task": {
+      "2": 400
+    },
+    "languages": {
+      "ar": 200,
+      "en": 200
+    },
+    "domains_from_annotations_only": {
+      "not supplied": 400
+    },
+    "labels": {
+      "Causal_Oversimplification": 7,
+      "Loaded_Language": 129,
+      "Obfuscation-Vagueness-Confusion": 11,
+      "Exaggeration-Minimisation": 28,
+      "Name_Calling-Labeling": 58,
+      "Questioning_the_Reputation": 17,
+      "Appeal_to_Hypocrisy": 2,
+      "Slogans": 5,
+      "Whataboutism": 1,
+      "Consequential_Oversimplification": 1,
+      "Conversation_Killer": 3,
+      "Guilt_by_Association": 1,
+      "Doubt": 8,
+      "Repetition": 1,
+      "Appeal_to_Authority": 3,
+      "False_Dilemma-No_Choice": 9,
+      "Appeal_to_Values": 1,
+      "Flag_Waving": 5,
+      "Appeal_to_Fear-Prejudice": 4,
+      "Straw_Man": 1,
+      "Appeal_to_Popularity": 1
+    },
+    "article_characters": {
+      "min": 30,
+      "max": 521
+    },
+    "duplicate_content_articles": 0,
+    "near_duplicates": "Not automatically verified; inspect before final evaluation."
+  },
+  "test": {
+    "examples": 400,
+    "articles": 400,
+    "examples_by_task": {
+      "2": 400
+    },
+    "languages": {
+      "ar": 200,
+      "en": 200
+    },
+    "domains_from_annotations_only": {
+      "not supplied": 400
+    },
+    "labels": {
+      "Loaded_Language": 129,
+      "Doubt": 16,
+      "Name_Calling-Labeling": 49,
+      "Questioning_the_Reputation": 15,
+      "Exaggeration-Minimisation": 27,
+      "Flag_Waving": 10,
+      "Obfuscation-Vagueness-Confusion": 16,
+      "Causal_Oversimplification": 9,
+      "Conversation_Killer": 3,
+      "Appeal_to_Authority": 6,
+      "Appeal_to_Fear-Prejudice": 13,
+      "Slogans": 2,
+      "Consequential_Oversimplification": 1,
+      "False_Dilemma-No_Choice": 5,
+      "Appeal_to_Hypocrisy": 1,
+      "Red_Herring": 1,
+      "Appeal_to_Values": 1,
+      "Repetition": 1
+    },
+    "article_characters": {
+      "min": 32,
+      "max": 572
+    },
+    "duplicate_content_articles": 0,
+    "near_duplicates": "Not automatically verified; inspect before final evaluation."
+  },
+  "source_revision": "076ac4ebcf5c1d87e6679d3e21205159f00ae7db",
+  "source_sha256": {
+    "README.md": "0d9366dd0721a16fbf8a9401317e63abcf9004cd5e06ccba6cc2979e8ffaf5ad",
+    "LICENSE": "e6053d704272991fef4a69ac537793dfe81f8c8f15a25acc72e8e94b07567a24",
+    "label_taxonomy.json": "0c4d5a8c6843bf7b8cb6ed0cfe54e7ce1847e3eb624c4ac4a44ac36ba4f6d9aa",
+    "arabic/train.jsonl": "e59c8fdc94244a7530ce4ce26a2c0ef5e0d62d96f7675f0ca3601040b9f68212",
+    "arabic/dev.jsonl": "fafefd7650fd1fab0b25d005589b977738ad98e191ad5c1559773b08d8986cd2",
+    "arabic/test.jsonl": "d7f6ff8cd1f7c4b0ec3b62e9d7040df0a277409fbdb5a714dfc143dbc2360a7d",
+    "english/train.jsonl": "1de727e23e2c47188dbe918a30841e0533c2c11fa123fc27f9b08ea289232224",
+    "english/dev.jsonl": "2d0464f5db8c49607facf9002873886ccae30f31d6e01cb1a087fceddeca9e66",
+    "english/test.jsonl": "cccbb741ddbda206784183897fce32c19df42a0b928414673f24895bb7573797"
+  },
+  "rejected": {
+    "conflicting_duplicate_text": 2
+  },
+  "original_source_article_overlap": {
+    "english": {
+      "train_dev": 727,
+      "train_test": 775,
+      "dev_test": 685
+    },
+    "arabic": {
+      "train_dev": 355,
+      "train_test": 486,
+      "dev_test": 182
+    }
+  },
+  "explanation_examples": 40,
+  "protocol": "News only. Original splits pooled and regrouped by article plus duplicate text; 70/15/15 seed42, then bilingual caps preserving binary proportions. Not publisher benchmark.",
+  "references": "Model-authored OpenAI o1 explanations, publisher human-evaluated; not human gold."
+}

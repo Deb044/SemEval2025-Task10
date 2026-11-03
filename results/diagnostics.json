@@ -23,6 +23,7 @@
         "metrics": {
           "count": 2897,
           "exact_match": 0.7311011391094235,
+          "samples_f1": 0.7311011391094235,
           "micro_f1": 0.7311011391094235,
           "macro_f1": 0.43304132632859743,
           "per_label": {
@@ -98,6 +99,13 @@
               "f1": 0.2530612244897959,
               "support": 195
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 2897,
+              "samples_f1": 0.7311011391094235,
+              "exact_match": 0.7311011391094235
+            }
           }
         }
       },
@@ -106,6 +114,7 @@
         "metrics": {
           "count": 2897,
           "exact_match": 0.762858129099068,
+          "samples_f1": 0.762858129099068,
           "micro_f1": 0.762858129099068,
           "macro_f1": 0.5510297463977462,
           "per_label": {
@@ -181,6 +190,13 @@
               "f1": 0.36298932384341637,
               "support": 195
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 2897,
+              "samples_f1": 0.762858129099068,
+              "exact_match": 0.762858129099068
+            }
           }
         }
       },
@@ -189,6 +205,7 @@
         "metrics": {
           "count": 2897,
           "exact_match": 0.754228512254056,
+          "samples_f1": 0.754228512254056,
           "micro_f1": 0.754228512254056,
           "macro_f1": 0.5273612595258679,
           "per_label": {
@@ -264,6 +281,13 @@
               "f1": 0.30952380952380953,
               "support": 195
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 2897,
+              "samples_f1": 0.754228512254056,
+              "exact_match": 0.754228512254056
+            }
           }
         }
       },
@@ -272,6 +296,7 @@
         "metrics": {
           "count": 2897,
           "exact_match": 0.752847773558854,
+          "samples_f1": 0.752847773558854,
           "micro_f1": 0.752847773558854,
           "macro_f1": 0.476310202388104,
           "per_label": {
@@ -347,6 +372,13 @@
               "f1": 0.375,
               "support": 195
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 2897,
+              "samples_f1": 0.752847773558854,
+              "exact_match": 0.752847773558854
+            }
           }
         }
       },
@@ -355,6 +387,7 @@
         "metrics": {
           "count": 2897,
           "exact_match": 0.7518122195374526,
+          "samples_f1": 0.7518122195374526,
           "micro_f1": 0.7518122195374526,
           "macro_f1": 0.4753121390736885,
           "per_label": {
@@ -430,6 +463,13 @@
               "f1": 0.36496350364963503,
               "support": 195
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 2897,
+              "samples_f1": 0.7518122195374526,
+              "exact_match": 0.7518122195374526
+            }
           }
         }
       },
@@ -438,6 +478,7 @@
         "metrics": {
           "count": 2897,
           "exact_match": 0.7462892647566448,
+          "samples_f1": 0.7462892647566448,
           "micro_f1": 0.7462892647566448,
           "macro_f1": 0.45301272723650754,
           "per_label": {
@@ -513,6 +554,13 @@
               "f1": 0.35074626865671643,
               "support": 195
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 2897,
+              "samples_f1": 0.7462892647566448,
+              "exact_match": 0.7462892647566448
+            }
           }
         }
       },
@@ -521,6 +569,7 @@
         "metrics": {
           "count": 2897,
           "exact_match": 0.7411114946496375,
+          "samples_f1": 0.7411114946496375,
           "micro_f1": 0.7411114946496375,
           "macro_f1": 0.43388862239872805,
           "per_label": {
@@ -596,6 +645,13 @@
               "f1": 0.35424354243542433,
               "support": 195
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 2897,
+              "samples_f1": 0.7411114946496375,
+              "exact_match": 0.7411114946496375
+            }
           }
         }
       },
@@ -604,6 +660,7 @@
         "metrics": {
           "count": 2897,
           "exact_match": 0.7480151881256473,
+          "samples_f1": 0.7480151881256473,
           "micro_f1": 0.7480151881256473,
           "macro_f1": 0.47112207431686515,
           "per_label": {
@@ -679,6 +736,13 @@
               "f1": 0.3166023166023166,
               "support": 195
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 2897,
+              "samples_f1": 0.7480151881256473,
+              "exact_match": 0.7480151881256473
+            }
           }
         }
       },
@@ -687,6 +751,7 @@
         "metrics": {
           "count": 2897,
           "exact_match": 0.7497411114946496,
+          "samples_f1": 0.7497411114946496,
           "micro_f1": 0.7497411114946496,
           "macro_f1": 0.46961442361381006,
           "per_label": {
@@ -762,6 +827,13 @@
               "f1": 0.328125,
               "support": 195
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 2897,
+              "samples_f1": 0.7497411114946496,
+              "exact_match": 0.7497411114946496
+            }
           }
         }
       },
@@ -770,6 +842,7 @@
         "metrics": {
           "count": 2897,
           "exact_match": 0.7359337245426303,
+          "samples_f1": 0.7359337245426303,
           "micro_f1": 0.7359337245426303,
           "macro_f1": 0.4209708303756392,
           "per_label": {
@@ -845,6 +918,13 @@
               "f1": 0.26778242677824265,
               "support": 195
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 2897,
+              "samples_f1": 0.7359337245426303,
+              "exact_match": 0.7359337245426303
+            }
           }
         }
       },
@@ -853,6 +933,7 @@
         "metrics": {
           "count": 2897,
           "exact_match": 0.7504314808422506,
+          "samples_f1": 0.7504314808422506,
           "micro_f1": 0.7504314808422506,
           "macro_f1": 0.45925530354297694,
           "per_label": {
@@ -928,6 +1009,13 @@
               "f1": 0.3484848484848485,
               "support": 195
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 2897,
+              "samples_f1": 0.7504314808422506,
+              "exact_match": 0.7504314808422506
+            }
           }
         }
       },
@@ -936,6 +1024,7 @@
         "metrics": {
           "count": 2897,
           "exact_match": 0.7445633413876424,
+          "samples_f1": 0.7445633413876424,
           "micro_f1": 0.7445633413876424,
           "macro_f1": 0.44905592484243745,
           "per_label": {
@@ -1011,6 +1100,13 @@
               "f1": 0.3418181818181818,
               "support": 195
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 2897,
+              "samples_f1": 0.7445633413876424,
+              "exact_match": 0.7445633413876424
+            }
           }
         }
       }
@@ -1040,6 +1136,7 @@
         "metrics": {
           "count": 305,
           "exact_match": 0.5672131147540984,
+          "samples_f1": 0.5672131147540984,
           "micro_f1": 0.5672131147540984,
           "macro_f1": 0.2944904942006151,
           "per_label": {
@@ -1059,6 +1156,13 @@
               "f1": 0.6786632390745502,
               "support": 164
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 305,
+              "samples_f1": 0.5672131147540984,
+              "exact_match": 0.5672131147540984
+            }
           }
         }
       },
@@ -1067,6 +1171,7 @@
         "metrics": {
           "count": 305,
           "exact_match": 0.5573770491803278,
+          "samples_f1": 0.5573770491803278,
           "micro_f1": 0.5573770491803278,
           "macro_f1": 0.4390346379572947,
           "per_label": {
@@ -1086,6 +1191,13 @@
               "f1": 0.6525679758308157,
               "support": 164
             }
+          },
+          "by_language": {
+            "en": {
+              "count": 305,
+              "samples_f1": 0.5573770491803278,
+              "exact_match": 0.5573770491803278
+            }
           }
         }
       },
@@ -1094,6 +1206,7 @@
         "metrics": {
           "count": 305,
           "exact_match": 0.6163934426229508,
+          "samples_f1": 0.6163934426229508,
           "micro_f1": 0.6163934426229508,
           "macro_f1": 0.4081914641213833,
           "per_label": {
@@ -1112,6 +1225,13 @@
             "positive": {
               "f1": 0.7373737373737373,
               "support": 164
+            }
+          },
+          "by_language": {
+            "en": {
+              "count": 305,
+              "samples_f1": 0.6163934426229508,
+              "exact_match": 0.6163934426229508
             }
           }
         }
@@ -1222,6 +1342,2457 @@
             }
           },
           "bertscore_f1": 0.7120526432991028,
+          "bertscore_hash": ".cache/evaluation-mbert_L9_no-idf_version=0.3.12(hug_trans=4.57.6)",
+          "length_compliance": 1.0,
+          "fallback_rate": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "dataset": "ProBel news grouped pilot",
+    "commit": "b86859b5aaf573b4b2e75215c90917894e671090",
+    "input_sha256": {
+      "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+      "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+      "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+      "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+    },
+    "source_sha256": {
+      "experiments/run.py": "0d00269916981c1751faf2edfccfde5a9b0ac4e4cd42232b7b80048eb912b0da",
+      "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+      "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+      "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+      "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+      "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+      "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+    },
+    "runs": [
+      {
+        "name": "tfidf-none-42",
+        "metrics": {
+          "count": 400,
+          "exact_match": 0.2725,
+          "samples_f1": 0.21224404761904764,
+          "micro_f1": 0.40324763193504737,
+          "macro_f1": 0.05581489844241065,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.0,
+              "support": 13
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Doubt": {
+              "f1": 0.0,
+              "support": 16
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.3380281690140845,
+              "support": 27
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 5
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 10
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.5601965601965602,
+              "support": 129
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.2802547770700637,
+              "support": 49
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.10526315789473684,
+              "support": 15
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.063763373815217,
+              "samples_f1": 0.37715476190476194,
+              "exact_match": 0.125
+            },
+            "en": {
+              "count": 200,
+              "macro_f1": 0.0156568615961561,
+              "samples_f1": 0.04733333333333333,
+              "exact_match": 0.42
+            }
+          }
+        }
+      },
+      {
+        "name": "lsa-none-42",
+        "metrics": {
+          "count": 400,
+          "exact_match": 0.185,
+          "samples_f1": 0.2113253968253968,
+          "micro_f1": 0.3570731707317073,
+          "macro_f1": 0.09114985910113414,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.0,
+              "support": 13
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Doubt": {
+              "f1": 0.18181818181818182,
+              "support": 16
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.21768707482993196,
+              "support": 27
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 5
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 10
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.5603644646924829,
+              "support": 129
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.2727272727272727,
+              "support": 49
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.19718309859154928,
+              "support": 15
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.6666666666666666,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.11623804072453357,
+              "samples_f1": 0.32748412698412693,
+              "exact_match": 0.045
+            },
+            "en": {
+              "count": 200,
+              "macro_f1": 0.021810173344700198,
+              "samples_f1": 0.09516666666666666,
+              "exact_match": 0.325
+            }
+          }
+        }
+      },
+      {
+        "name": "transformer-none-42",
+        "metrics": {
+          "count": 400,
+          "exact_match": 0.18,
+          "samples_f1": 0.23039484126984128,
+          "micro_f1": 0.36639676113360325,
+          "macro_f1": 0.08757125238737334,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.2222222222222222,
+              "support": 6
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.19047619047619047,
+              "support": 13
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.08333333333333333,
+              "support": 9
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Doubt": {
+              "f1": 0.25806451612903225,
+              "support": 16
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.23622047244094488,
+              "support": 27
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 5
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 10
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.5342163355408388,
+              "support": 129
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.3118279569892473,
+              "support": 49
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.17777777777777778,
+              "support": 15
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.10648958437599874,
+              "samples_f1": 0.3571111111111111,
+              "exact_match": 0.15
+            },
+            "en": {
+              "count": 200,
+              "macro_f1": 0.0422465837664603,
+              "samples_f1": 0.10367857142857144,
+              "exact_match": 0.21
+            }
+          }
+        }
+      },
+      {
+        "name": "graph-none-13",
+        "metrics": {
+          "count": 400,
+          "exact_match": 0.225,
+          "samples_f1": 0.2242877302436126,
+          "micro_f1": 0.35735439289239884,
+          "macro_f1": 0.08036405752783184,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.125,
+              "support": 13
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Doubt": {
+              "f1": 0.05714285714285714,
+              "support": 16
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.24193548387096775,
+              "support": 27
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.2857142857142857,
+              "support": 5
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 10
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.5318681318681319,
+              "support": 129
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.2971887550200803,
+              "support": 49
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.14285714285714285,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.16666666666666666,
+              "support": 15
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.07942145153064432,
+              "samples_f1": 0.34705375180375175,
+              "exact_match": 0.195
+            },
+            "en": {
+              "count": 200,
+              "macro_f1": 0.043076032833785534,
+              "samples_f1": 0.10152170868347339,
+              "exact_match": 0.255
+            }
+          }
+        }
+      },
+      {
+        "name": "graph-none-42",
+        "metrics": {
+          "count": 400,
+          "exact_match": 0.1875,
+          "samples_f1": 0.21596753246753245,
+          "micro_f1": 0.3434343434343434,
+          "macro_f1": 0.08131813105882686,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.125,
+              "support": 13
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Doubt": {
+              "f1": 0.04878048780487805,
+              "support": 16
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.24113475177304963,
+              "support": 27
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.25,
+              "support": 5
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 10
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.5194805194805194,
+              "support": 129
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.2943396226415094,
+              "support": 49
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.1875,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.20408163265306123,
+              "support": 15
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.08305541148756754,
+              "samples_f1": 0.33546681096681097,
+              "exact_match": 0.16
+            },
+            "en": {
+              "count": 200,
+              "macro_f1": 0.041732434112976516,
+              "samples_f1": 0.09646825396825395,
+              "exact_match": 0.215
+            }
+          }
+        }
+      },
+      {
+        "name": "graph-none-87",
+        "metrics": {
+          "count": 400,
+          "exact_match": 0.2025,
+          "samples_f1": 0.2161047227626175,
+          "micro_f1": 0.34321653189577717,
+          "macro_f1": 0.09682465118845959,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.1,
+              "support": 13
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.21052631578947367,
+              "support": 9
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Doubt": {
+              "f1": 0.045454545454545456,
+              "support": 16
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.2553191489361702,
+              "support": 27
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.4444444444444444,
+              "support": 5
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 10
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.5260869565217391,
+              "support": 129
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.2878787878787879,
+              "support": 49
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.18181818181818182,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.17543859649122806,
+              "support": 15
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.09343068516938827,
+              "samples_f1": 0.3350496710891448,
+              "exact_match": 0.165
+            },
+            "en": {
+              "count": 200,
+              "macro_f1": 0.053938906992155644,
+              "samples_f1": 0.09715977443609022,
+              "exact_match": 0.24
+            }
+          }
+        }
+      },
+      {
+        "name": "graph-self-loops-13",
+        "metrics": {
+          "count": 400,
+          "exact_match": 0.2225,
+          "samples_f1": 0.22190284897850684,
+          "micro_f1": 0.3570750237416904,
+          "macro_f1": 0.09616040602617264,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.1111111111111111,
+              "support": 13
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.09523809523809523,
+              "support": 9
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Doubt": {
+              "f1": 0.16216216216216217,
+              "support": 16
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.24427480916030533,
+              "support": 27
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.2857142857142857,
+              "support": 5
+            },
+            "Flag_Waving": {
+              "f1": 0.14285714285714285,
+              "support": 10
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.534521158129176,
+              "support": 129
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.296875,
+              "support": 49
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.14285714285714285,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.19607843137254902,
+              "support": 15
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.09379232706463349,
+              "samples_f1": 0.3423840187590187,
+              "exact_match": 0.18
+            },
+            "en": {
+              "count": 200,
+              "macro_f1": 0.05920915314735957,
+              "samples_f1": 0.10142167919799498,
+              "exact_match": 0.265
+            }
+          }
+        }
+      },
+      {
+        "name": "graph-self-loops-42",
+        "metrics": {
+          "count": 400,
+          "exact_match": 0.22,
+          "samples_f1": 0.21335094875884353,
+          "micro_f1": 0.34876847290640395,
+          "macro_f1": 0.08134725147527282,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.11764705882352941,
+              "support": 13
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Doubt": {
+              "f1": 0.11764705882352941,
+              "support": 16
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.24427480916030533,
+              "support": 27
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.25,
+              "support": 5
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 10
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.5288888888888889,
+              "support": 129
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.2794759825327511,
+              "support": 49
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.13793103448275862,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.1951219512195122,
+              "support": 15
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.07978199717902235,
+              "samples_f1": 0.3350540278435015,
+              "exact_match": 0.185
+            },
+            "en": {
+              "count": 200,
+              "macro_f1": 0.049645813195944306,
+              "samples_f1": 0.09164786967418546,
+              "exact_match": 0.255
+            }
+          }
+        }
+      },
+      {
+        "name": "graph-self-loops-87",
+        "metrics": {
+          "count": 400,
+          "exact_match": 0.2375,
+          "samples_f1": 0.22427754884004883,
+          "micro_f1": 0.374031007751938,
+          "macro_f1": 0.12113167790786412,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.1,
+              "support": 13
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.10526315789473684,
+              "support": 9
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Doubt": {
+              "f1": 0.1951219512195122,
+              "support": 16
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.26865671641791045,
+              "support": 27
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.4444444444444444,
+              "support": 5
+            },
+            "Flag_Waving": {
+              "f1": 0.375,
+              "support": 10
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.5382830626450116,
+              "support": 129
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.3611111111111111,
+              "support": 49
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.14814814814814814,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.25,
+              "support": 15
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.11573783182498945,
+              "samples_f1": 0.35220985958485956,
+              "exact_match": 0.17
+            },
+            "en": {
+              "count": 200,
+              "macro_f1": 0.07176470347547852,
+              "samples_f1": 0.0963452380952381,
+              "exact_match": 0.305
+            }
+          }
+        }
+      },
+      {
+        "name": "graph-random-labels-13",
+        "metrics": {
+          "count": 400,
+          "exact_match": 0.2225,
+          "samples_f1": 0.22608351370851373,
+          "micro_f1": 0.36127744510978044,
+          "macro_f1": 0.08118988167298971,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.0,
+              "support": 13
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Doubt": {
+              "f1": 0.09302325581395349,
+              "support": 16
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.27350427350427353,
+              "support": 27
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.3333333333333333,
+              "support": 5
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 10
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.5309734513274337,
+              "support": 129
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.2987551867219917,
+              "support": 49
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.16,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.17777777777777778,
+              "support": 15
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.08197077926660405,
+              "samples_f1": 0.3524603174603175,
+              "exact_match": 0.195
+            },
+            "en": {
+              "count": 200,
+              "macro_f1": 0.04382332643202208,
+              "samples_f1": 0.09970670995670997,
+              "exact_match": 0.25
+            }
+          }
+        }
+      },
+      {
+        "name": "graph-random-labels-42",
+        "metrics": {
+          "count": 400,
+          "exact_match": 0.2275,
+          "samples_f1": 0.22263641138273493,
+          "micro_f1": 0.3586337760910816,
+          "macro_f1": 0.10086718197935489,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.1111111111111111,
+              "support": 13
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.19047619047619047,
+              "support": 9
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Doubt": {
+              "f1": 0.0784313725490196,
+              "support": 16
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.2831858407079646,
+              "support": 27
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.2857142857142857,
+              "support": 5
+            },
+            "Flag_Waving": {
+              "f1": 0.13333333333333333,
+              "support": 10
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.5291479820627802,
+              "support": 129
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.325,
+              "support": 49
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.13793103448275862,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.24561403508771928,
+              "support": 15
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.10158433564581164,
+              "samples_f1": 0.34009425133689836,
+              "exact_match": 0.195
+            },
+            "en": {
+              "count": 200,
+              "macro_f1": 0.056247707937373374,
+              "samples_f1": 0.10517857142857143,
+              "exact_match": 0.26
+            }
+          }
+        }
+      },
+      {
+        "name": "graph-random-labels-87",
+        "metrics": {
+          "count": 400,
+          "exact_match": 0.225,
+          "samples_f1": 0.22259613997113997,
+          "micro_f1": 0.3551219512195122,
+          "macro_f1": 0.085557162795899,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.125,
+              "support": 13
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Doubt": {
+              "f1": 0.1,
+              "support": 16
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.26153846153846155,
+              "support": 27
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.3333333333333333,
+              "support": 5
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 10
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.5309734513274337,
+              "support": 129
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.2880658436213992,
+              "support": 49
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.14285714285714285,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.18604651162790697,
+              "support": 15
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.0797375429063611,
+              "samples_f1": 0.3474145021645022,
+              "exact_match": 0.195
+            },
+            "en": {
+              "count": 200,
+              "macro_f1": 0.05291921775297734,
+              "samples_f1": 0.09777777777777777,
+              "exact_match": 0.255
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "dataset": "ProBel news transfer pilot",
+    "commit": "adafc35bf35c38b3bd86bd28468879155796c95b",
+    "input_sha256": {
+      "train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+      "dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+      "test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a",
+      "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+    },
+    "source_sha256": {
+      "experiments/probel_transfer.py": "8d0e6e4a9b6e020a6ee3304ee1c1e87adc644883c729dae5e55c43a282877e44",
+      "semeval/classify.py": "51530d7cc8160a53a9d715b7899b7b3fd3f6031a5d1fbf08e5ef6410aa644c11",
+      "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+      "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+      "semeval/graph.py": "9213445763207714a4fe9fd0e70b09b334f433fd65cbd06ce734647666e6cfe3",
+      "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+      "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+    },
+    "runs": [
+      {
+        "name": "en-to-en: transformer",
+        "metrics": {
+          "count": 200,
+          "exact_match": 0.435,
+          "samples_f1": 0.071,
+          "micro_f1": 0.18604651162790697,
+          "macro_f1": 0.0336783988957902,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.2857142857142857,
+              "support": 10
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Doubt": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.26666666666666666,
+              "support": 25
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.2222222222222222,
+              "support": 17
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "en": {
+              "count": 200,
+              "macro_f1": 0.0336783988957902,
+              "samples_f1": 0.071,
+              "exact_match": 0.435
+            }
+          }
+        }
+      },
+      {
+        "name": "en-to-ar: transformer",
+        "metrics": {
+          "count": 200,
+          "exact_match": 0.3,
+          "samples_f1": 0.09766666666666665,
+          "micro_f1": 0.19078947368421054,
+          "macro_f1": 0.04012111685318755,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 8
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Doubt": {
+              "f1": 0.42857142857142855,
+              "support": 7
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.0,
+              "support": 24
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.28368794326241137,
+              "support": 104
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.21052631578947367,
+              "support": 32
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.0,
+              "support": 14
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.04012111685318755,
+              "samples_f1": 0.09766666666666665,
+              "exact_match": 0.3
+            }
+          }
+        }
+      },
+      {
+        "name": "en-to-en: graph",
+        "metrics": {
+          "count": 200,
+          "exact_match": 0.475,
+          "samples_f1": 0.06030555555555556,
+          "micro_f1": 0.17692307692307693,
+          "macro_f1": 0.03705154257844014,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.15384615384615385,
+              "support": 10
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Doubt": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.2222222222222222,
+              "support": 4
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.2727272727272727,
+              "support": 25
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.2033898305084746,
+              "support": 17
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "en": {
+              "count": 200,
+              "macro_f1": 0.03705154257844014,
+              "samples_f1": 0.06030555555555556,
+              "exact_match": 0.475
+            }
+          }
+        }
+      },
+      {
+        "name": "en-to-ar: graph",
+        "metrics": {
+          "count": 200,
+          "exact_match": 0.335,
+          "samples_f1": 0.09183333333333334,
+          "micro_f1": 0.19310344827586207,
+          "macro_f1": 0.018654860212914137,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 8
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Doubt": {
+              "f1": 0.0,
+              "support": 7
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.0,
+              "support": 24
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.34210526315789475,
+              "support": 104
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.08695652173913043,
+              "support": 32
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.0,
+              "support": 14
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.018654860212914137,
+              "samples_f1": 0.09183333333333334,
+              "exact_match": 0.335
+            }
+          }
+        }
+      },
+      {
+        "name": "ar-to-en: transformer",
+        "metrics": {
+          "count": 200,
+          "exact_match": 0.16,
+          "samples_f1": 0.10109523809523807,
+          "micro_f1": 0.171875,
+          "macro_f1": 0.034266414464902174,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.15384615384615385,
+              "support": 10
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Doubt": {
+              "f1": 0.125,
+              "support": 9
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.10256410256410256,
+              "support": 3
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.2328042328042328,
+              "support": 25
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.17391304347826086,
+              "support": 17
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "en": {
+              "count": 200,
+              "macro_f1": 0.034266414464902174,
+              "samples_f1": 0.10109523809523807,
+              "exact_match": 0.16
+            }
+          }
+        }
+      },
+      {
+        "name": "ar-to-ar: transformer",
+        "metrics": {
+          "count": 200,
+          "exact_match": 0.205,
+          "samples_f1": 0.3580357142857143,
+          "micro_f1": 0.48863636363636365,
+          "macro_f1": 0.08076890266442972,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 8
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Doubt": {
+              "f1": 0.25,
+              "support": 7
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.30303030303030304,
+              "support": 24
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.7122302158273381,
+              "support": 104
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.35,
+              "support": 32
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.24242424242424243,
+              "support": 14
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.08076890266442972,
+              "samples_f1": 0.3580357142857143,
+              "exact_match": 0.205
+            }
+          }
+        }
+      },
+      {
+        "name": "ar-to-en: graph",
+        "metrics": {
+          "count": 200,
+          "exact_match": 0.115,
+          "samples_f1": 0.11615079365079364,
+          "micro_f1": 0.16730038022813687,
+          "macro_f1": 0.060638823651683424,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.2857142857142857,
+              "support": 10
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Doubt": {
+              "f1": 0.2857142857142857,
+              "support": 9
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.031746031746031744,
+              "support": 3
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.25,
+              "support": 4
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.2347417840375587,
+              "support": 25
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.21153846153846154,
+              "support": 17
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.09523809523809523,
+              "support": 1
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "en": {
+              "count": 200,
+              "macro_f1": 0.060638823651683424,
+              "samples_f1": 0.11615079365079364,
+              "exact_match": 0.115
+            }
+          }
+        }
+      },
+      {
+        "name": "ar-to-ar: graph",
+        "metrics": {
+          "count": 200,
+          "exact_match": 0.235,
+          "samples_f1": 0.3611886724386724,
+          "micro_f1": 0.47058823529411764,
+          "macro_f1": 0.067035779194878,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 8
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Doubt": {
+              "f1": 0.0,
+              "support": 7
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.2647058823529412,
+              "support": 24
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.7137809187279152,
+              "support": 104
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.3125,
+              "support": 32
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.17391304347826086,
+              "support": 16
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.07692307692307693,
+              "support": 14
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "ar": {
+              "count": 200,
+              "macro_f1": 0.067035779194878,
+              "samples_f1": 0.3611886724386724,
+              "exact_match": 0.235
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "dataset": "ProBel news explanations pilot",
+    "commit": "21cf381afc00fa2d6b8f80af8e3ab958eca72e4b",
+    "input_sha256": {
+      "evaluation": "4d435bcf571207ca7050682c1043eb91d594c3f5989832a87a9960ef3acad999",
+      "taxonomy": "2f8cd1a9717a005b63841a389b26d70eb9139878e3b835e554ef089e295dc7d7"
+    },
+    "source_sha256": {
+      "experiments/probel_explanations.py": "4c2976d596afc37183e89e723bad4830c62cad2e8409f723bc4fcf938f8a2aa4",
+      "semeval/explain.py": "8267cc752280cebd4167d545407d4605aaa930882f597d194a772ba16021c558",
+      "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400",
+      "semeval/features.py": "0371a2e8397e942c567c31d3faff741bb653c14b110c8f44f9b6036a4de81d09",
+      "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf"
+    },
+    "runs": [
+      {
+        "name": "textrank",
+        "metrics": {
+          "count": 40,
+          "by_language": {
+            "ar": {
+              "count": 20,
+              "bertscore_f1": 0.7024189829826355
+            },
+            "en": {
+              "count": 20,
+              "bertscore_f1": 0.6648029685020447
+            }
+          },
+          "bertscore_f1": 0.6836109161376953,
+          "bertscore_hash": ".cache/evaluation-mbert_L9_no-idf_version=0.3.12(hug_trans=4.57.6)",
+          "length_compliance": 1.0,
+          "fallback_rate": 0.0
+        }
+      },
+      {
+        "name": "semantic",
+        "metrics": {
+          "count": 40,
+          "by_language": {
+            "ar": {
+              "count": 20,
+              "bertscore_f1": 0.7024189829826355
+            },
+            "en": {
+              "count": 20,
+              "bertscore_f1": 0.6648029685020447
+            }
+          },
+          "bertscore_f1": 0.6836109161376953,
+          "bertscore_hash": ".cache/evaluation-mbert_L9_no-idf_version=0.3.12(hug_trans=4.57.6)",
+          "length_compliance": 1.0,
+          "fallback_rate": 0.0
+        }
+      },
+      {
+        "name": "generate-semantic",
+        "metrics": {
+          "count": 40,
+          "by_language": {
+            "ar": {
+              "count": 20,
+              "bertscore_f1": 0.7200867533683777
+            },
+            "en": {
+              "count": 20,
+              "bertscore_f1": 0.6995975971221924
+            }
+          },
+          "bertscore_f1": 0.7098422050476074,
+          "bertscore_hash": ".cache/evaluation-mbert_L9_no-idf_version=0.3.12(hug_trans=4.57.6)",
+          "length_compliance": 1.0,
+          "fallback_rate": 0.0
+        }
+      },
+      {
+        "name": "generate-lead",
+        "metrics": {
+          "count": 40,
+          "by_language": {
+            "ar": {
+              "count": 20,
+              "bertscore_f1": 0.7200867533683777
+            },
+            "en": {
+              "count": 20,
+              "bertscore_f1": 0.6995975971221924
+            }
+          },
+          "bertscore_f1": 0.7098422050476074,
           "bertscore_hash": ".cache/evaluation-mbert_L9_no-idf_version=0.3.12(hug_trans=4.57.6)",
           "length_compliance": 1.0,
           "fallback_rate": 0.0
