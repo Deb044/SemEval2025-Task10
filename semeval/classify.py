@@ -34,6 +34,9 @@ def decode(probabilities, labels, threshold, task, decision="multilabel"):
             decoded.append([labels[int(scores.argmax())]])
             continue
         chosen = [label for label, score in zip(labels, scores) if score >= threshold]
+        if decision == "native-multilabel":
+            decoded.append(chosen)  # Empty set is the native no-technique annotation.
+            continue
         if task == 1:
             # A mention has exactly one broad role; maximize its best fine-role score.
             best = labels[int(scores.argmax())]
@@ -52,7 +55,8 @@ def targets(rows, labels):
     return np.asarray([[label in row["labels"] for label in labels] for row in rows], dtype=np.float32)
 
 
-def train(train_rows, dev_rows, method, taxonomy_path=None, seed=42, ablation="none", native=False):
+def train(train_rows, dev_rows, method, taxonomy_path=None, seed=42, ablation="none", native=False,
+          native_decision="single"):
     check_splits(train_rows, dev_rows)
     task = train_rows[0]["task"]
     if task not in (1, 2) or any(r["task"] != task for r in train_rows + dev_rows):
@@ -63,6 +67,8 @@ def train(train_rows, dev_rows, method, taxonomy_path=None, seed=42, ablation="n
         raise ValueError("Native experiments require explicitly identified native-schema records")
     if not native and any(row.get("label_schema") == "native" for row in train_rows + dev_rows):
         raise ValueError("Use native=True for auxiliary labels; never treat them as SemEval roles")
+    if native_decision not in ("single", "multilabel") or (not native and native_decision != "single"):
+        raise ValueError("Native decision must be single or multilabel and requires native=True")
     taxonomy = load_taxonomy(taxonomy_path, require_other=not native) if task == 2 or native else None
     labels = sorted(taxonomy if taxonomy else ROLE_PARENT)
     y, yd = targets(train_rows, labels), targets(dev_rows, labels)
@@ -71,7 +77,7 @@ def train(train_rows, dev_rows, method, taxonomy_path=None, seed=42, ablation="n
     x = features.fit_transform([example_text(r) for r in train_rows])
     xd = features.transform([example_text(r) for r in dev_rows])
     metric = "macro_f1" if native else ("exact_match" if task == 1 else "samples_f1")
-    decision = "single" if native else "multilabel"
+    decision = ("single" if native_decision == "single" else "native-multilabel") if native else "multilabel"
     best = None
     if method == "graph":
         if task != 2:
@@ -85,7 +91,7 @@ def train(train_rows, dev_rows, method, taxonomy_path=None, seed=42, ablation="n
             head = BinaryHeads().fit(x, y, regularization)
             candidates.append((head, head.probabilities(xd), regularization))
     for head, probabilities, regularization in candidates:
-        for threshold in ([.5] if native else np.arange(.1, 1., .1)):
+        for threshold in ([.5] if decision == "single" else np.arange(.1, 1., .1)):
             predictions = decode(probabilities, labels, threshold, task, decision)
             score = classification_scores(dev_rows, predictions, classes=labels)[metric]
             if best is None or score > best[0]:
@@ -115,6 +121,7 @@ def predict(model, rows):
             record["dataset"] = row["dataset"]
         if model.get("native"):
             record["label_schema"] = "native"
+            record["decision"] = model.get("decision", "single")
         if model["task"] == 1:
             record.update({key: row[key] for key in ("mention", "start", "end")})
             if not model.get("native"):

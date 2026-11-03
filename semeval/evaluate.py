@@ -29,7 +29,8 @@ def evaluate(gold, predicted, bert_model=None, bert_layers=None):
             coarse = classification_scores([dict(r, labels=r["narratives"]) for r in gold], [r["narratives"] for r in predicted])
             scores["coarse_samples_f1"] = coarse["samples_f1"]
         primary = "macro_f1" if native else ("exact_match" if task == 1 else "samples_f1")
-        provenance = "native single-label auxiliary task; fixed-inventory macro F1, NOT a SemEval score" if native else "local implementation of published metric; organizer scorer parity NOT verified"
+        decision = predicted[0].get("decision", "single")
+        provenance = f"native {decision} auxiliary task; fixed-inventory macro F1, NOT a SemEval score" if native else "local implementation of published metric; organizer scorer parity NOT verified"
     else:
         scores = {"count": len(gold), "length_compliance": sum(0 < len(r["explanation"].split()) <= 80 for r in predicted) / len(gold),
                   "fallback_rate": sum(r.get("fallback", False) for r in predicted) / len(gold)}

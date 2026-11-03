@@ -166,6 +166,35 @@ class PipelineChecks(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     run(path, resume=True)
 
+    def test_native_multilabel_preserves_empty_sets_and_language_boundary(self):
+        import numpy as np
+        from semeval.classify import decode
+        from semeval.data import validate
+        from semeval.metrics import classification_scores
+        output = decode(np.array([[.8, .7], [.1, .2]]), ["A", "B"], .5, 2, "native-multilabel")
+        self.assertEqual(output, [["A", "B"], []])
+        row = {"task": 2, "article_id": "AR_native.txt", "language": "ar", "text": "Invented text.",
+               "labels": [], "narratives": [], "label_schema": "native"}
+        validate([row])
+        with self.assertRaises(ValueError):
+            validate([dict(row, label_schema="semeval")])
+        score = classification_scores([dict(row, labels=["A"]), dict(row, article_id="AR_two.txt")], [["A"], []], classes=["A", "B"])
+        self.assertEqual(score["macro_f1"], .5)
+        self.assertEqual(score["by_language"]["ar"]["macro_f1"], .5)
+
+    def test_probel_grouping_keeps_source_articles_and_duplicates_together(self):
+        from experiments.public_probel import group_split
+        from semeval.data import fingerprint
+        rows = [{"article_id": str(i), "source_group": str(i // 2),
+                 "text": "Invented article " + str(i // 2) + " sentence " + str(i % 2)} for i in range(80)]
+        rows.append(dict(rows[0], article_id="duplicate", source_group="duplicate-source"))
+        partitions = group_split(rows)
+        owners = {}
+        for split, partition in partitions.items():
+            for row in partition:
+                for key in (row["source_group"], fingerprint(row["text"])):
+                    self.assertIn(owners.setdefault(key, split), [split])
+
     @unittest.skipUnless(importlib.util.find_spec("torch"), "Optional model dependencies are not installed")
     def test_graph_shape_and_gradient(self):
         import torch

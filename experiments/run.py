@@ -68,7 +68,8 @@ def run(config_path, resume=False):
             if model is None:
                 print("Training", name, flush=True)
                 model = train(datasets["train"], datasets["dev"], method, config.get("taxonomy"), seed, ablation,
-                              native=config.get("label_schema") == "native")
+                              native=config.get("label_schema") == "native",
+                              native_decision=config.get("native_decision", "single"))
                 model["run_signature"] = signature
                 model["data_sha256"] = input_hashes
                 temporary = model_path.with_suffix(".joblib.tmp")
@@ -118,7 +119,7 @@ def run(config_path, resume=False):
         comparisons["self_loops_vs_taxonomy_graph"] = paired_bootstrap(averaged["self-loops"], graph_mean)
         comparisons["random_labels_vs_definition_labels"] = paired_bootstrap(averaged["random-labels"], graph_mean)
         for comparison in comparisons.values():
-            comparison["metric"] = "accuracy" if config.get("label_schema") == "native" else "samples_f1"
+            comparison["metric"] = "accuracy" if config.get("label_schema") == "native" and config.get("native_decision", "single") == "single" else "samples_f1"
     aggregates = []
     for method, ablation in variants:
         matching = [r for r in reports if r["method"] == method and r["ablation"] == ablation]

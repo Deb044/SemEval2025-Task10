@@ -21,12 +21,22 @@ def classification_scores(rows, predictions, classes=None):
         tp = sum(label in g and label in p for g, p in zip(gold_sets, predicted_sets))
         total = sum(label in g for g in gold_sets) + sum(label in p for p in predicted_sets)
         label_scores[label] = {"f1": 2 * tp / total if total else 0., "support": sum(label in g for g in gold_sets)}
+    language_macros = {}
+    for language in languages:
+        pairs = [(g, p) for row, g, p in zip(rows, gold_sets, predicted_sets) if row["language"] == language]
+        scores = []
+        for label in all_labels:
+            tp = sum(label in g and label in p for g, p in pairs)
+            denominator_language = sum((label in g) + (label in p) for g, p in pairs)
+            scores.append(2 * tp / denominator_language if denominator_language else 0.)
+        language_macros[language] = float(np.mean(scores)) if scores else 0.
     return {"count": len(rows), "exact_match": float(np.mean(exact)), "samples_f1": float(np.mean(f1)),
             "micro_f1": 2 * true_positive / denominator if denominator else 0.,
             "macro_f1": float(np.mean([v["f1"] for v in label_scores.values()])) if label_scores else 0.,
             "macro_f1_observed_labels": float(np.mean([v["f1"] for k, v in label_scores.items() if k in observed])) if observed else 0.,
             "per_label": label_scores,
             "by_language": {lang: {"count": sum(r["language"] == lang for r in rows),
+                                  "macro_f1": language_macros[lang],
                                   "samples_f1": float(np.mean([s for r, s in zip(rows, f1) if r["language"] == lang])),
                                   "exact_match": float(np.mean([s for r, s in zip(rows, exact) if r["language"] == lang]))}
                             for lang in languages}}

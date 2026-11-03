@@ -76,7 +76,8 @@ def validate(rows):
         if key in seen:
             raise ValueError(f"Duplicate example: {key}")
         seen.add(key)
-        if row["language"] not in LANGUAGES.values() or not row["text"].strip():
+        allowed_languages = set(LANGUAGES.values()) | ({"ar"} if row.get("label_schema") == "native" else set())
+        if row["language"] not in allowed_languages or not row["text"].strip():
             raise ValueError(f"Invalid language or empty article: {key}")
         article = (row["language"], row["text"])
         if row["article_id"] in articles and articles[row["article_id"]] != article:

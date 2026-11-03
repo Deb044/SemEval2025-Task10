@@ -35,6 +35,8 @@ def main():
     command.add_argument("--method", choices=("tfidf", "lsa", "transformer", "graph"), required=True)
     command.add_argument("--taxonomy")
     command.add_argument("--seed", type=int, default=42)
+    command.add_argument("--native", action="store_true", help="Preserve auxiliary dataset labels")
+    command.add_argument("--native-decision", choices=("single", "multilabel"), default="single")
     command.add_argument("--ablation", choices=("none", "self-loops", "random-labels"), default="none")
     command.add_argument("--out", required=True)
     command = commands.add_parser("predict")
@@ -77,7 +79,8 @@ def main():
     elif args.command == "train":
         import joblib
         from .classify import train
-        model = train(read_jsonl(args.train), read_jsonl(args.dev), args.method, args.taxonomy, args.seed, args.ablation)
+        model = train(read_jsonl(args.train), read_jsonl(args.dev), args.method, args.taxonomy, args.seed, args.ablation,
+                      native=args.native, native_decision=args.native_decision)
         model["training_articles"] = sorted({r["article_id"] for r in read_jsonl(args.train)})
         model["data_sha256"] = {path: hashlib.sha256(Path(path).read_bytes()).hexdigest()
                                 for path in (args.train, args.dev, args.taxonomy) if path}
