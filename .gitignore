@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+data/
+artifacts/
+work/
+.cache/
+.env
+*.gguf
+*.npz
+*.joblib
+.openai/
+!results/
+
