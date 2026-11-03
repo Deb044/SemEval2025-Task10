@@ -26,23 +26,38 @@ class LabelGCN(nn.Module):
         return self.article(x) @ labels[self.output_indices].T / np.sqrt(128) + self.bias
 
 
-def fit_graph(x, y, xd, yd, labels, taxonomy, seed, ablation):
+def label_adjacency(labels, taxonomy, seed=42, ablation="none"):
+    """Keep node meanings fixed while controlling taxonomy edges and degrees."""
+    if ablation not in ("none", "self-loops", "random-labels", "shuffled-edges"):
+        raise ValueError(f"Unknown graph ablation: {ablation}")
+    parents = sorted({value["parent"] for value in taxonomy.values()})
+    nodes = [("fine", label) for label in labels] + [("parent", parent) for parent in parents]
+    lookup = {node: index for index, node in enumerate(nodes)}
+    targets = [lookup[("parent", taxonomy[label]["parent"])] for label in labels]
+    if ablation == "shuffled-edges":
+        if len(set(targets)) < 2:
+            raise ValueError("Shuffling requires at least two parent categories")
+        shuffled = np.random.default_rng(seed).permutation(targets).tolist()
+        if shuffled == targets:
+            shuffled = targets[1:] + targets[:1]
+        targets = shuffled
+    adjacency = np.eye(len(nodes), dtype=np.float32)
+    if ablation != "self-loops":
+        for index, target in enumerate(targets):
+            adjacency[index, target] = adjacency[target, index] = 1
+    degree = adjacency.sum(axis=1) ** -.5
+    return nodes, degree[:, None] * adjacency * degree[None, :]
+
+
+def fit_graph(x, y, xd, yd, labels, taxonomy, seed, ablation, encoder=None):
     torch.set_num_threads(min(4, torch.get_num_threads()))
     torch.manual_seed(seed)
-    nodes = [("fine", label) for label in labels] + [("parent", p) for p in sorted({v["parent"] for v in taxonomy.values()})]
-    lookup = {node: i for i, node in enumerate(nodes)}
-    initial = get_encoder().encode([taxonomy[label]["definition"] + " " + label if kind == "fine" else label
+    nodes, adjacency = label_adjacency(labels, taxonomy, seed, ablation)
+    initial = (encoder or get_encoder()).encode([taxonomy[label]["definition"] + " " + label if kind == "fine" else label
                                      for kind, label in nodes])
     if ablation == "random-labels":
         initial = np.random.default_rng(seed).normal(size=initial.shape).astype("float32")
         initial /= np.linalg.norm(initial, axis=1, keepdims=True)
-    adjacency = np.eye(len(nodes), dtype=np.float32)
-    if ablation != "self-loops":
-        for label in labels:
-            a, b = lookup[("fine", label)], lookup[("parent", taxonomy[label]["parent"])]
-            adjacency[a, b] = adjacency[b, a] = 1
-    degree = adjacency.sum(axis=1) ** -.5
-    adjacency = degree[:, None] * adjacency * degree[None, :]
     model = LabelGCN(x.shape[1], torch.tensor(initial), torch.tensor(adjacency), torch.arange(len(labels)))
     optimizer = torch.optim.Adam(model.parameters(), lr=.001)
     x, y, xd, yd = [torch.tensor(a, dtype=torch.float32) for a in (x, y, xd, yd)]

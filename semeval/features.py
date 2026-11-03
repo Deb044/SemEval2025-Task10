@@ -10,6 +10,8 @@ from sklearn.preprocessing import Normalizer
 
 ENCODER = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 ENCODER_REVISION = "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+XLMR = "FacebookAI/xlm-roberta-base"
+XLMR_REVISION = "e73636d4f797dec63c3081bb6ed5c7b0bb3f2089"
 
 
 def example_text(row):
@@ -32,7 +34,16 @@ class FrozenEncoder:
     def model(self):
         if self._model is None:
             from sentence_transformers import SentenceTransformer
-            self._model = SentenceTransformer(self.model_name, revision=self.revision, device="cpu")
+            if self.model_name == XLMR:
+                from huggingface_hub import snapshot_download
+                from sentence_transformers import models
+                path = snapshot_download(XLMR, revision=self.revision, local_dir=".cache/xlmr-base",
+                    allow_patterns=["config.json", "model.safetensors", "tokenizer.json", "tokenizer_config.json", "sentencepiece.bpe.model"], max_workers=1)
+                transformer = models.Transformer(path, max_seq_length=512)
+                pooling = models.Pooling(transformer.get_word_embedding_dimension(), pooling_mode="mean")
+                self._model = SentenceTransformer(modules=[transformer, pooling], device="cpu")
+            else:
+                self._model = SentenceTransformer(self.model_name, revision=self.revision, device="cpu")
         return self._model
 
     def encode_one(self, text):
@@ -74,15 +85,20 @@ class FrozenEncoder:
 
 
 class Features:
-    def __init__(self, method, seed=42):
+    def __init__(self, method, seed=42, encoder="minilm"):
         self.method = method
         self.seed = seed
         self.vectorizer = None
         self.svd = None
+        self.encoder_name = encoder
+
+    @property
+    def encoder(self):
+        return get_encoder(getattr(self, "encoder_name", "minilm"))
 
     def fit_transform(self, texts):
         if self.method == "transformer":
-            return get_encoder().encode(texts)
+            return self.encoder.encode(texts)
         self.vectorizer = TfidfVectorizer(analyzer="char", ngram_range=(3, 5),
                                         max_features=50000, sublinear_tf=True, dtype=np.float32)
         matrix = self.vectorizer.fit_transform(texts)
@@ -96,13 +112,17 @@ class Features:
 
     def transform(self, texts):
         if self.method == "transformer":
-            return get_encoder().encode(texts)
+            return self.encoder.encode(texts)
         matrix = self.vectorizer.transform(texts)
         return Normalizer().fit_transform(self.svd.transform(matrix)) if self.svd else matrix
 
 
-@lru_cache(maxsize=1)
-def get_encoder():
+@lru_cache(maxsize=2)
+def get_encoder(name="minilm"):
     """Reuse model weights across articles and experiments, not inside pickles."""
+    if name == "xlmr":
+        return FrozenEncoder(model=XLMR, revision=XLMR_REVISION)
+    if name != "minilm":
+        raise ValueError(f"Unknown encoder: {name}")
     return FrozenEncoder()
 

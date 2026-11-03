@@ -56,7 +56,7 @@ def targets(rows, labels):
 
 
 def train(train_rows, dev_rows, method, taxonomy_path=None, seed=42, ablation="none", native=False,
-          native_decision="single"):
+          native_decision="single", encoder="minilm"):
     check_splits(train_rows, dev_rows)
     task = train_rows[0]["task"]
     if task not in (1, 2) or any(r["task"] != task for r in train_rows + dev_rows):
@@ -73,7 +73,7 @@ def train(train_rows, dev_rows, method, taxonomy_path=None, seed=42, ablation="n
     labels = sorted(taxonomy if taxonomy else ROLE_PARENT)
     y, yd = targets(train_rows, labels), targets(dev_rows, labels)
     started = time.perf_counter()
-    features = Features("transformer" if method == "graph" else method, seed)
+    features = Features("transformer" if method == "graph" else method, seed, encoder)
     x = features.fit_transform([example_text(r) for r in train_rows])
     xd = features.transform([example_text(r) for r in dev_rows])
     metric = "macro_f1" if native else ("exact_match" if task == 1 else "samples_f1")
@@ -83,7 +83,7 @@ def train(train_rows, dev_rows, method, taxonomy_path=None, seed=42, ablation="n
         if task != 2:
             raise ValueError("Label graph is implemented for ST2")
         from .graph import fit_graph
-        head, probabilities = fit_graph(x, y, xd, yd, labels, taxonomy, seed, ablation)
+        head, probabilities = fit_graph(x, y, xd, yd, labels, taxonomy, seed, ablation, features.encoder)
         candidates = [(head, probabilities, None)]
     else:
         candidates = []
@@ -96,7 +96,7 @@ def train(train_rows, dev_rows, method, taxonomy_path=None, seed=42, ablation="n
             score = classification_scores(dev_rows, predictions, classes=labels)[metric]
             if best is None or score > best[0]:
                 best = (score, head, float(threshold), regularization)
-    return {"task": task, "method": method, "features": features, "head": best[1], "labels": labels,
+    return {"task": task, "method": method, "encoder": encoder, "features": features, "head": best[1], "labels": labels,
             "threshold": best[2], "regularization": best[3], "taxonomy": taxonomy, "seed": seed,
             "ablation": ablation, "development_metric": metric, "development_score": best[0],
             "native": native, "decision": decision,

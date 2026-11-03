@@ -49,13 +49,18 @@ def run(config_path, resume=False):
     write_json(manifest_path, {"signature": signature, "config": config,
                               "input_sha256": input_hashes, "source_sha256": source_hashes})
     reports, article_scores = [], {}
-    variants = [(name, "none") for name in ("tfidf", "lsa", "transformer")]
-    if task == 2:
-        variants += [("graph", ablation) for ablation in ("none", "self-loops", "random-labels")]
-    for method, ablation in variants:
-        seeds = [13, 42, 87] if method == "graph" else [42]
+    variants = config.get("variants")
+    if variants is None:
+        variants = [{"method": name} for name in ("tfidf", "lsa", "transformer")]
+        if task == 2:
+            variants += [{"method": "graph", "ablation": ablation} for ablation in ("none", "self-loops", "random-labels")]
+    for variant in variants:
+        method, ablation = variant["method"], variant.get("ablation", "none")
+        encoder = variant.get("encoder", "minilm")
+        prefix = "" if encoder == "minilm" else encoder + "-"
+        seeds = variant.get("seeds", [13, 42, 87] if method == "graph" else [42])
         for seed in seeds:
-            name = f"{method}-{ablation}-{seed}"
+            name = f"{prefix}{method}-{ablation}-{seed}"
             model_path = output / (name + ".joblib")
             model = None
             if resume and model_path.exists():
@@ -69,7 +74,7 @@ def run(config_path, resume=False):
                 print("Training", name, flush=True)
                 model = train(datasets["train"], datasets["dev"], method, config.get("taxonomy"), seed, ablation,
                               native=config.get("label_schema") == "native",
-                              native_decision=config.get("native_decision", "single"))
+                              native_decision=config.get("native_decision", "single"), encoder=encoder)
                 model["run_signature"] = signature
                 model["data_sha256"] = input_hashes
                 temporary = model_path.with_suffix(".joblib.tmp")
@@ -98,7 +103,7 @@ def run(config_path, resume=False):
             write_jsonl(predictions_path, predictions)
             export_tsv(predictions, output / (name + ".tsv"))
             report = evaluate(datasets["test"], predictions)
-            report.update(name=name, method=method, ablation=ablation, seed=seed,
+            report.update(name=name, method=prefix + method, encoder=encoder, ablation=ablation, seed=seed,
                           fit_seconds=model["fit_seconds"], predict_seconds=predict_seconds,
                           process_peak_rss_mb=peak_rss_mb(),
                           threshold=model["threshold"], regularization=model["regularization"])
@@ -110,23 +115,29 @@ def run(config_path, resume=False):
                                    else set_f1(g["labels"], p["labels"])
                                    for g, p in zip(datasets["test"], predictions, strict=True)]
     comparisons = {}
-    if task == 2:
+    if task == 2 and all(f"graph-none-{seed}" in article_scores for seed in (13, 42, 87)):
         averaged = {ablation: [mean(values) for values in zip(
             *(article_scores[f"graph-{ablation}-{seed}"] for seed in (13, 42, 87)), strict=True)]
-            for ablation in ("none", "self-loops", "random-labels")}
+            for ablation in ("none", "self-loops", "random-labels", "shuffled-edges")
+            if all(f"graph-{ablation}-{seed}" in article_scores for seed in (13, 42, 87))}
         graph_mean = averaged["none"]
-        comparisons["transformer_vs_graph_mean_of_three_seeds"] = paired_bootstrap(article_scores["transformer-none-42"], graph_mean)
-        comparisons["self_loops_vs_taxonomy_graph"] = paired_bootstrap(averaged["self-loops"], graph_mean)
-        comparisons["random_labels_vs_definition_labels"] = paired_bootstrap(averaged["random-labels"], graph_mean)
+        if "transformer-none-42" in article_scores:
+            comparisons["transformer_vs_graph_mean_of_three_seeds"] = paired_bootstrap(article_scores["transformer-none-42"], graph_mean)
+        for ablation in averaged.keys() - {"none"}:
+            comparisons[ablation + "_vs_taxonomy_graph"] = paired_bootstrap(averaged[ablation], graph_mean)
         for comparison in comparisons.values():
             comparison["metric"] = "accuracy" if config.get("label_schema") == "native" and config.get("native_decision", "single") == "single" else "samples_f1"
     aggregates = []
-    for method, ablation in variants:
+    for variant in variants:
+        encoder = variant.get("encoder", "minilm")
+        method = ("" if encoder == "minilm" else encoder + "-") + variant["method"]
+        ablation = variant.get("ablation", "none")
         matching = [r for r in reports if r["method"] == method and r["ablation"] == ablation]
         values = [r["metrics"][r["primary_metric"]] for r in matching]
         aggregates.append({"method": method, "ablation": ablation, "seeds": [r["seed"] for r in matching],
                            "mean": mean(values), "sample_std": stdev(values) if len(values) > 1 else None})
     summary = {"config": config, "commit": commit, "python": platform.python_version(),
+               "experiment_id": config.get("experiment_id", "legacy"),
                "dataset": config.get("dataset", "unspecified"), "label_schema": config.get("label_schema", "semeval"),
                "synthetic": bool(config.get("synthetic", False)),
                "input_sha256": input_hashes, "source_sha256": source_hashes,

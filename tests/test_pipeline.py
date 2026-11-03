@@ -209,6 +209,20 @@ class PipelineChecks(unittest.TestCase):
         logits.sum().backward()
         self.assertIsNotNone(model.layer1.weight.grad)
 
+    @unittest.skipUnless(importlib.util.find_spec("torch"), "Optional model dependencies are not installed")
+    def test_shuffled_hierarchy_changes_edges_but_preserves_degrees(self):
+        import numpy as np
+        from semeval.graph import label_adjacency
+        labels = ["a", "b", "c", "d"]
+        taxonomy = {label: {"parent": "one" if label in "ab" else "two"} for label in labels}
+        nodes, original = label_adjacency(labels, taxonomy)
+        other_nodes, shuffled = label_adjacency(labels, taxonomy, 42, "shuffled-edges")
+        self.assertEqual(nodes, other_nodes)
+        self.assertFalse(np.array_equal(original, shuffled))
+        np.testing.assert_array_equal(np.count_nonzero(original, axis=1), np.count_nonzero(shuffled, axis=1))
+        np.testing.assert_array_equal(shuffled, shuffled.T)
+        np.testing.assert_array_equal(shuffled, label_adjacency(labels, taxonomy, 42, "shuffled-edges")[1])
+
 
 if __name__ == "__main__":
     unittest.main()

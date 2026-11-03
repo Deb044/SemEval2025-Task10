@@ -1,0 +1,37 @@
+{
+  "dataset": "Cleaned CARDS/4C",
+  "label_schema": "native",
+  "train": "data/public/cards/train.jsonl",
+  "dev": "data/public/cards/dev.jsonl",
+  "test": "data/public/cards/test.jsonl",
+  "taxonomy": "data/public/cards/taxonomy.json",
+  "output": "artifacts/extensions-cards",
+  "variants": [
+    {
+      "method": "tfidf"
+    },
+    {
+      "method": "lsa"
+    },
+    {
+      "method": "transformer"
+    },
+    {
+      "method": "graph",
+      "ablation": "none"
+    },
+    {
+      "method": "graph",
+      "ablation": "self-loops"
+    },
+    {
+      "method": "graph",
+      "ablation": "random-labels"
+    },
+    {
+      "method": "graph",
+      "ablation": "shuffled-edges"
+    }
+  ],
+  "experiment_id": "extended-cards"
+}

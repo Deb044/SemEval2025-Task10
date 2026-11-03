@@ -1,0 +1,46 @@
+{
+  "dataset": "ProBel news grouped pilot",
+  "label_schema": "native",
+  "native_decision": "multilabel",
+  "train": "data/public/probel/train.jsonl",
+  "dev": "data/public/probel/dev.jsonl",
+  "test": "data/public/probel/test.jsonl",
+  "taxonomy": "data/public/probel/taxonomy.json",
+  "output": "artifacts/extensions-probel",
+  "variants": [
+    {
+      "method": "tfidf"
+    },
+    {
+      "method": "lsa"
+    },
+    {
+      "method": "transformer"
+    },
+    {
+      "method": "graph",
+      "ablation": "none"
+    },
+    {
+      "method": "graph",
+      "ablation": "self-loops"
+    },
+    {
+      "method": "graph",
+      "ablation": "random-labels"
+    },
+    {
+      "method": "graph",
+      "ablation": "shuffled-edges"
+    },
+    {
+      "method": "transformer",
+      "encoder": "xlmr"
+    },
+    {
+      "method": "graph",
+      "encoder": "xlmr"
+    }
+  ],
+  "experiment_id": "extended-probel"
+}
