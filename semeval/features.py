@@ -39,7 +39,12 @@ class FrozenEncoder:
         key = hashlib.sha256((self.model_name + "|" + self.revision + "|token-chunks-v2|" + text).encode()).hexdigest()
         path = self.cache / (key + ".npy")
         if path.exists():
-            return np.load(path)
+            try:
+                cached = np.load(path)
+                if cached.ndim == 1 and np.isfinite(cached).all():
+                    return cached
+            except (OSError, ValueError, EOFError):
+                pass  # Interrupted cache write: regenerate this embedding only.
         tokenizer = self.model.tokenizer
         # Fast-tokenizer overflow retains every token and correctly applies the
         # backend special-token processor (generic prepare_for_model does not).
@@ -58,7 +63,10 @@ class FrozenEncoder:
                 vectors.extend(self.model(features)["sentence_embedding"].cpu().numpy())
         vector = np.average(vectors, axis=0, weights=weights).astype("float32")
         vector /= max(np.linalg.norm(vector), 1e-12)
-        np.save(path, vector)
+        temporary = path.with_suffix(".npy.tmp")
+        with open(temporary, "wb") as stream:
+            np.save(stream, vector)
+        temporary.replace(path)
         return vector
 
     def encode(self, texts):

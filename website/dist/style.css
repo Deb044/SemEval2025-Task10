@@ -563,6 +563,7 @@
                                                                                                                                                                                                                                   .dot.amber {
                                                                                                                                                                                                                                     background:#ad863d}
                                                                                                                                                                                                                                     .result-controls {
+  flex-wrap: wrap;
                                                                                                                                                                                                                                       display:flex;
                                                                                                                                                                                                                                       align-items:center;
                                                                                                                                                                                                                                       gap:14px;

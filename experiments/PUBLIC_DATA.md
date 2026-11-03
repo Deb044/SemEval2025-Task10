@@ -65,3 +65,21 @@ Publish only aggregate scores and figures derived from saved predictions and
 split hashes. Preserve dataset names and task limits in the website and report.
 Report negative results. Do not treat author leaderboard scores, synthetic checks,
 template explanations, or model-generated rationales as human gold annotations.
+
+## Native explanation comparison
+
+```powershell
+python -m experiments.public_explanations --gguf path/to/Qwen3-1.7B-Q4_K_M.gguf
+```
+
+Start the loopback-only llama.cpp server as described in the README. Preparation
+selects 60 e-SNLI test pairs, stratified by their native relation labels, using seed
+42 before model evaluation. No human reference is included in a generation prompt.
+Compare copied input, a label-only template, full-context generation, and generation
+with the premise withheld. The latter is an information-removal ablation, not a
+Task 10 evidence-retrieval evaluation.
+
+BERTScore 0.3.13 uses the pinned multilingual BERT revision in the script, layer 9
+(the library's recommended setting), no IDF, no baseline rescaling, and all available
+human references. This is a documented auxiliary configuration, not a claim of
+organizer-scorer parity. BERTScore does not establish factuality or narrative quality.

@@ -27,12 +27,17 @@ let runs = [];
 const emptyState = document.getElementById('results').cloneNode(true);
 function renderResults() {
   const task = document.getElementById('task-filter').value;
-  const visible = runs.filter(run => task === 'all' || String(run.task) === task);
+  const dataset = document.getElementById('dataset-filter').value;
+  const visible = runs.filter(run => (task === 'all' || String(run.task) === task) && (dataset === 'all' || run.dataset === dataset));
   const root = document.getElementById('results');
   document.getElementById('result-count').textContent = visible.length ? `${visible.length} measured runs` : 'No measured runs';
   root.replaceChildren();
   if (!visible.length) {
     root.append(...Array.from(emptyState.childNodes).map(node => node.cloneNode(true)));
+    if (runs.length) {
+      root.querySelector('h3').textContent = dataset === 'SemEval-2025 Task 10' ? 'No official SemEval scores.' : 'No runs match these filters.';
+      root.querySelector('p').textContent = 'Public auxiliary experiments retain their native datasets and labels. They do not establish SemEval benchmark performance.';
+    }
     return;
   }
   visible.forEach(run => {
@@ -42,29 +47,36 @@ function renderResults() {
     const title = document.createElement('strong');
     title.textContent = run.name;
     const metadata = document.createElement('p');
-    metadata.textContent = `ST${run.task} · ${run.metric} · n=${run.count} · ${run.split} · ${run.scoring_provenance}`;
+    metadata.textContent = `${run.dataset} · ${run.label_schema === 'native' ? 'Auxiliary, native labels' : 'Task 10'} · ${run.metric} · n=${run.count}${Number.isFinite(run.seed_std) ? ' · seed SD ' + run.seed_std.toFixed(3) : ''}`;
+    const provenance = document.createElement('p');
+    provenance.textContent = run.scoring_provenance;
     const progress = document.createElement('progress');
     progress.max = 1; progress.value = run.value;
     progress.setAttribute('aria-label', `${run.metric}: ${run.value}`);
     const value = document.createElement('span');
     value.className = 'result-value'; value.textContent = run.value.toFixed(3);
-    details.append(title, metadata, progress);
+    details.append(title, metadata, provenance, progress);
     row.append(details, value); root.append(row);
   });
 }
 document.getElementById('task-filter').addEventListener('change', renderResults);
+document.getElementById('dataset-filter').addEventListener('change', renderResults);
 fetch('results.json').then(response => {
   if (!response.ok) throw new Error('Results could not be loaded');
   return response.json();
 }).then(data => {
   if (!Array.isArray(data.runs)) throw new Error('Invalid results file');
-  runs = data.runs.filter(run => run.dataset === 'SemEval-2025 Task 10' && run.measured === true &&
+  runs = data.runs.filter(run => typeof run.dataset === 'string' && run.dataset !== 'unspecified' && run.measured === true &&
     Number.isFinite(run.value) && run.value >= 0 && run.value <= 1 &&
     Number.isInteger(run.count) && run.count > 0 && run.name && run.metric &&
     run.split && run.commit && run.scoring_provenance && [1,2,3].includes(run.task));
   if (runs.length) {
     const status = document.querySelector('.status-pill');
-    status.replaceChildren(document.createTextNode(data.organizer_scorer_verified ? 'MEASURED RUNS · ORGANIZER SCORER VERIFIED' : 'MEASURED RUNS · LOCAL SCORING'));
+    status.replaceChildren(document.createTextNode(runs.every(run => run.label_schema === 'native') ? 'MEASURED AUXILIARY EXPERIMENTS' : 'MEASURED RUNS · SEE SCORING PROVENANCE'));
+    const filter = document.getElementById('dataset-filter');
+    [...new Set(runs.map(run => run.dataset))].sort().filter(name => name !== 'SemEval-2025 Task 10').forEach(name => {
+      const option = document.createElement('option'); option.value = name; option.textContent = name; filter.append(option);
+    });
   }
   renderResults();
 }).catch(() => {

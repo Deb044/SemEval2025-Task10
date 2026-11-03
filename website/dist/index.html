@@ -58,7 +58,7 @@
       </em>
      </h1>
      <p class="intro">
-      Who is cast as the hero? Which story is being told? What evidence supports it? Exploring how news shapes narratives—across five languages.
+      Who is cast as the hero? Which story is being told? What supports it? A multilingual news-analysis framework, with transparent experiments on public related datasets.
      </p>
      <div class="hero-actions">
       <a class="button" href="#approach">
@@ -161,7 +161,7 @@
    </section>
    <div class="language-strip">
     <span>
-     ONE FRAMEWORK. FIVE LANGUAGES.
+     TARGET BENCHMARK LANGUAGES
     </span>
     <div>
      English
@@ -522,6 +522,21 @@
      </details>
     </div>
    </section>
+   <section class="section" id="public-data">
+    <div class="section-heading">
+     <div><p class="eyebrow">PUBLIC DATA / CLEAR BOUNDARIES</p><h2>Related data.<br/>Native labels.</h2></div>
+     <p>The restricted Task 10 corpus is unavailable. We evaluate useful components on author-released English datasets and report each task under its own identity.</p>
+    </div>
+    <div class="method-table-wrap"><table>
+     <caption>Auxiliary evidence does not establish SemEval-2025 Task 10 performance</caption>
+     <thead><tr><th>Public release</th><th>What we evaluate</th><th>What it does not measure</th></tr></thead>
+     <tbody>
+      <tr><td><a href="https://github.com/jpiskorski/CC-denial-resources">Cleaned CARDS/4C ↗</a></td><td>Hierarchical climate-claim classification</td><td>Task 10's taxonomy or multilingual news classification</td></tr>
+      <tr><td><a href="https://github.com/IBM/yaso-tsa">YASO clear-text subset ↗</a></td><td>Targeted sentiment with supplied target spans</td><td>Protagonist, antagonist, innocent, or fine-grained roles</td></tr>
+      <tr><td><a href="https://github.com/OanaMariaCamburu/e-SNLI">e-SNLI ↗</a></td><td>Inference explanations against human references</td><td>Dominant news-narrative explanations or factuality</td></tr>
+     </tbody>
+    </table></div>
+   </section>
    <section class="findings section" id="findings">
     <div class="section-heading">
      <div>
@@ -537,27 +552,29 @@
      <div class="status-pill">
       <span class="dot amber">
       </span>
-      BENCHMARK EXPERIMENTS PENDING
+      PUBLIC-DATA EXPERIMENTS IN PROGRESS
      </div>
     </div>
     <div class="result-controls">
      <label for="task-filter">
-      Subtask
+      Component
      </label>
      <select id="task-filter">
       <option value="all">
-       All subtasks
+       All components
       </option>
       <option value="1">
-       Entity framing
+       ST1-related: target analysis
       </option>
       <option value="2">
-       Narrative classification
+       ST2-related: classification
       </option>
       <option value="3">
-       Narrative explanation
+       ST3-related: explanations
       </option>
      </select>
+     <label for="dataset-filter">Dataset</label>
+     <select id="dataset-filter"><option value="all">All datasets</option><option value="SemEval-2025 Task 10">SemEval-2025 Task 10 (pending)</option></select>
      <span id="result-count">
       No measured runs
      </span>
@@ -568,10 +585,10 @@
        ∅
       </div>
       <h3>
-       No benchmark scores yet.
+       Measured results will appear here.
       </h3>
       <p>
-       The authorized corpus and organizer scoring scripts are not available in this checkout. We will publish measured results, sample counts, runtime, and scoring provenance here after evaluation.
+       Public auxiliary experiments are running. We will publish verified aggregate results after each evaluation completes. Official Task 10 scores remain unavailable.
       </p>
       <strong>
        Missing results are not zero scores.
@@ -592,7 +609,7 @@
        STILL TO VERIFY
       </span>
       <p>
-       Real-data performance, multilingual explanation quality, official scorer parity, and full-corpus runtime and memory. Model probes establish execution, not scientific findings.
+       Official Task 10 performance, multilingual explanation quality, and scorer parity remain unverified. English auxiliary results cannot establish those claims.
       </p>
      </div>
      <div>

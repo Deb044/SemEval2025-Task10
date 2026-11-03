@@ -3,6 +3,7 @@ import json
 import importlib.util
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 from semeval.data import build_taxonomy, check_splits, import_official
@@ -103,6 +104,43 @@ class PipelineChecks(unittest.TestCase):
         validate([row])
         with self.assertRaises(ValueError):
             validate([dict(row, label_schema="semeval")])
+        from experiments.publish import aggregate
+        summary = {"dataset": "YASO clear-text subset", "label_schema": "native", "commit": "test-only",
+                   "input_sha256": {"test": "test-only"}, "runs": [{"task": 1, "name": "test-only",
+                   "primary_metric": "macro_f1", "metrics": {"macro_f1": .5, "count": 2}, "scoring_provenance": "test-only"}]}
+        self.assertEqual(aggregate([summary])[0]["dataset"], "YASO clear-text subset")
+        with self.assertRaises(ValueError):
+            aggregate([dict(summary, dataset="SemEval-2025 Task 10")])
+
+    def test_experiment_resume_checks_inputs_and_reuses_completed_work(self):
+        from experiments.run import run
+        from semeval.data import write_json, write_jsonl
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            config = {"dataset": "unit-test-only", "synthetic": True, "label_schema": "native", "output": str(root / "run")}
+            rows = {}
+            for split in ("train", "dev", "test"):
+                text = split + " food example."
+                start = text.index("food")
+                rows[split] = [{"task": 1, "article_id": f"EN_{split}.txt", "language": "en", "text": text,
+                    "mention": "food", "start": start, "end": start + 4, "end_exclusive": start + 4,
+                    "labels": ["positive"], "label_schema": "native"}]
+                config[split] = str(root / (split + ".jsonl"))
+                write_jsonl(config[split], rows[split])
+            path = root / "config.json"
+            write_json(path, config)
+            def fake_train(*args, **kwargs):
+                return {"fit_seconds": 1., "threshold": .5, "regularization": 1.}
+            def fake_predict(model, records):
+                return [dict(row, scores={"positive": 1.}) for row in records]
+            with patch("experiments.run.train", side_effect=fake_train) as training, patch("experiments.run.predict", side_effect=fake_predict) as prediction:
+                run(path)
+                run(path, resume=True)
+                self.assertEqual(training.call_count, 3)
+                self.assertEqual(prediction.call_count, 3)
+                write_jsonl(config["dev"], [dict(rows["dev"][0], provenance="changed")])
+                with self.assertRaises(ValueError):
+                    run(path, resume=True)
 
     @unittest.skipUnless(importlib.util.find_spec("torch"), "Optional model dependencies are not installed")
     def test_graph_shape_and_gradient(self):

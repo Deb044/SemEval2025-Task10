@@ -27,6 +27,16 @@
    sample counts, runtime, measured peak RAM, and limitations. Keep raw predictions
    private. The website must not label smoke tests or leaderboard numbers as ours.
 
+Resume an interrupted classification run with
+`python -m experiments.run experiments/example.json --resume`. A saved `run.json`
+must match configuration, dataset/taxonomy hashes, and relevant source hashes.
+Completed predictions and trained models are reused; an interrupted prediction
+file is regenerated from its model. Original prediction timing is retained when
+available. JSON, model checkpoints, and embedding-cache writes use replacement
+files so an interruption does not overwrite the previous complete checkpoint.
+Older runs without a manifest stay intact; start a new directory and reuse their
+embedding cache rather than guessing their provenance.
+
 After reviewing real-data identity, split integrity, and release permission, use
 `python -m experiments.publish artifacts/st2-comparison/summary.json --reviewed`
 to export aggregate metrics and an SVG comparison plot. Do not use this on toy

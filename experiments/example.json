@@ -1,4 +1,6 @@
 {
+  "dataset": "SemEval-2025 Task 10",
+  "label_schema": "semeval",
   "train": "data/st2/train.jsonl",
   "dev": "data/st2/dev.jsonl",
   "test": "data/st2/test.jsonl",
