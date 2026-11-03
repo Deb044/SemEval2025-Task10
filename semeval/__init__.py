@@ -1,4 +1,4 @@
-"""CPU-first experiments for SemEval-2025 Task 10."""
+"""experiments for SemEval-2025 Task 10."""
 import os
 from pathlib import Path
 

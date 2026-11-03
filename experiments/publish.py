@@ -33,15 +33,16 @@ def aggregate(summaries):
             if not isinstance(value, (float, int)) or not math.isfinite(value) or not 0 <= value <= 1:
                 raise ValueError("Invalid measured score; do not publish placeholders or non-finite values")
             name = run["method"] + (" / " + run["ablation"] if run.get("ablation") not in (None, "none") else "") if run.get("method") else run["name"]
-            key = (dataset, run["task"], name, metric)
+            experiment_id = summary.get("experiment_id", "legacy")
+            key = (dataset, experiment_id, run["task"], name, metric)
             if key not in groups:
-                groups[key] = {"dataset": dataset, "label_schema": schema, "measured": True,
+                groups[key] = {"dataset": dataset, "experiment_id": experiment_id, "label_schema": schema, "measured": True,
                     "task": run["task"], "name": name, "metric": metric, "values": [], "seeds": [],
                     "count": run["metrics"]["count"], "split": "held-out evaluation; see protocol",
                     "commit": summary["commit"], "scoring_provenance": run["scoring_provenance"],
                     "source_sha256": summary.get("source_sha256", {}),
                     "input_sha256": summary["input_sha256"], "fit_seconds": [], "predict_seconds": [],
-                    "generation_seconds": [], "run_names": [], "language_values": {}}
+                    "generation_seconds": [], "run_names": [], "language_values": {}, "seed_values": []}
             record = groups[key]
             if record["count"] != run["metrics"]["count"]:
                 raise ValueError("Cannot aggregate variants with different evaluation counts")
@@ -49,6 +50,7 @@ def aggregate(summaries):
                 raise ValueError("Cannot pool different splits or count the same run twice")
             record["run_names"].append(run["name"])
             record["values"].append(value)
+            record["seed_values"].append({"name": run["name"], "seed": run.get("seed"), "value": value})
             for language, scores in run["metrics"].get("by_language", {}).items():
                 if metric not in scores:
                     continue
