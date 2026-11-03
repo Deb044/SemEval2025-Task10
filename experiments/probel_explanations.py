@@ -13,7 +13,6 @@ from pathlib import Path
 from semeval.data import read_jsonl, write_json, write_jsonl
 from semeval.evaluate import evaluate
 from semeval.explain import extract, generator_tokenizer, local_generate, rank_evidence, select_context
-from semeval.metrics import paired_bootstrap
 
 
 def explain(row, method, taxonomy, endpoint):
@@ -49,7 +48,7 @@ def main():
     parser.add_argument("--taxonomy", default="data/public/probel/taxonomy.json")
     parser.add_argument("--gguf", required=True)
     parser.add_argument("--endpoint", default="http://127.0.0.1:8080/v1")
-    parser.add_argument("--out", default="artifacts/public-probel-explanations")
+    parser.add_argument("--out", default="artifacts/public-probel-explanations-v2")
     args = parser.parse_args()
     source_paths = ("experiments/probel_explanations.py", "semeval/explain.py", "semeval/evaluate.py", "semeval/features.py", "semeval/data.py")
     sources = {name: hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in source_paths}
@@ -72,7 +71,16 @@ def main():
             if row["article_id"] in done:
                 continue
             started = time.perf_counter()
-            prediction = explain(row, method, taxonomy, args.endpoint)
+            prediction = None
+            if method == "generate-lead":
+                previous = next(value for value in outputs["generate-semantic"] if value["article_id"] == row["article_id"])
+                lead = select_context(rank_evidence(row["text"], "", "lead"), generator_tokenizer())
+                if not previous["fallback"] and previous["evidence_ids"] == [unit["id"] for unit in lead]:
+                    # Same text, labels, language, evidence order and generator
+                    # settings give an exactly equivalent prompt. Reuse visibly.
+                    prediction = dict(previous, method=method, reused_equivalent_prompt_from="generate-semantic")
+            if prediction is None:
+                prediction = explain(row, method, taxonomy, args.endpoint)
             prediction.update(signature=signature, seconds=time.perf_counter() - started)
             predictions.append(prediction)
             write_jsonl(path, predictions)
@@ -88,6 +96,7 @@ def main():
     a, b = outputs["generate-lead"], outputs["generate-semantic"]
     comparisons = {"lead_vs_semantic_evidence": {
         "identical_selected_evidence_rate": sum(x["evidence_ids"] == y["evidence_ids"] for x, y in zip(a, b)) / len(rows),
+        "equivalent_prompt_reuse_rate": sum("reused_equivalent_prompt_from" in row for row in a) / len(rows),
         "note": "Short news units may supply identical context to both variants; do not assume a retrieval effect."}}
     write_json(output / "summary.json", {"dataset": "ProBel news explanations pilot", "label_schema": "native",
         "commit": commit, "source_sha256": sources, "input_sha256": inputs, "generator_sha256": model_hash,

@@ -66,7 +66,9 @@ def select_context(ranked, tokenizer, max_tokens=1200, max_sentences=6):
         if budget + size <= max_tokens and len(selected) + len(block) <= max_sentences:
             selected.update({unit["id"]: unit for unit in block})
             budget += size
-    return [selected[key] for key in sorted(selected)]
+    # Ranking scores are internal retrieval metadata. Passing them to generation
+    # would change the prompt even when two selectors choose identical evidence.
+    return [{"id": key, "text": selected[key]["text"]} for key in sorted(selected)]
 
 
 def local_generate(endpoint, messages):

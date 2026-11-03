@@ -67,9 +67,10 @@ class PipelineChecks(unittest.TestCase):
         class WordTokenizer:
             def encode(self, text, **kwargs):
                 return text.split()
-        units = [{"id": index, "text": "unit"} for index in (2, 0, 1, 3, 4)]
+        units = [{"id": index, "text": "unit", "relevance": 1. / (index + 1)} for index in (2, 0, 1, 3, 4)]
         contextual = select_context(units, WordTokenizer(), max_tokens=3, max_sentences=3)
         self.assertEqual([unit["id"] for unit in contextual], [1, 2, 3])
+        self.assertTrue(all(set(unit) == {"id", "text"} for unit in contextual))
         ranked = rank_evidence("Invented title\n\nMira claims taxes hurt businesses. Others dispute that claim.", "", "textrank")
         text, ids = extract(ranked, 10)
         self.assertLessEqual(len(text.split()), 10)
