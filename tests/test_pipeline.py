@@ -7,7 +7,7 @@ from pathlib import Path
 
 from semeval.data import check_splits, import_official
 from semeval.evaluate import align, export_tsv
-from semeval.explain import extract, rank_evidence
+from semeval.explain import extract, rank_evidence, select_context
 from semeval.metrics import set_f1
 
 
@@ -39,6 +39,12 @@ class PipelineChecks(unittest.TestCase):
         self.assertAlmostEqual(set_f1(["x", "y"], ["y", "z"]), .5)
 
     def test_extractive_evidence_and_tsv(self):
+        class WordTokenizer:
+            def encode(self, text, **kwargs):
+                return text.split()
+        units = [{"id": index, "text": "unit"} for index in (2, 0, 1, 3, 4)]
+        contextual = select_context(units, WordTokenizer(), max_tokens=3, max_sentences=3)
+        self.assertEqual([unit["id"] for unit in contextual], [1, 2, 3])
         ranked = rank_evidence("Invented title\n\nMira claims taxes hurt businesses. Others dispute that claim.", "", "textrank")
         text, ids = extract(ranked, 10)
         self.assertLessEqual(len(text.split()), 10)
