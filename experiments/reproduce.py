@@ -98,7 +98,11 @@ def main():
         # runs retain their explicitly recorded classifier in their summary.
         if not Path(inputs["classifier"]).exists():
             inputs["classifier"] = "artifacts/extensions-cards/graph-none-42.joblib"
-        if not verified(Path("artifacts/extensions-long-explanations/summary.json"), inputs):
+        explanation_summary = Path("artifacts/extensions-long-explanations/summary.json")
+        complete = verified(explanation_summary, inputs)
+        if complete and json.loads(explanation_summary.read_text())["statistics"]["source_passages"] != 24:
+            raise ValueError("Existing explanation run uses a different subset limit; preserve it and choose fresh output")
+        if not complete:
             with generator(args):
                 run("experiments.long_explanations", "--gguf", args.gguf, "--model", str(inputs["classifier"]))
     if selected("scalability"):

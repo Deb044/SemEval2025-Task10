@@ -29,6 +29,37 @@ class ExtensionChecks(unittest.TestCase):
             self.assertEqual(summary["runs"][0]["metrics"]["human_grounding_rate"], 0.)
             self.assertNotIn("test-only", json.dumps(summary))
             self.assertEqual(summarize_reviews(queue, [])["runs"], [])
+            with self.assertRaises(ValueError):
+                summarize_reviews([dict(queue[0], explanation="changed output")], ratings)
+
+    def test_model_audit_is_not_human_validation_and_exports_only_aggregates(self):
+        from experiments.grounding import llm_summary
+        queue = [{"review_id": "fixture", "variant": "fixture-method", "text": "PRIVATE_TEST_SENTINEL. Second sentence."}]
+        rating = {"review_id": "fixture", "supported": 2, "attribution": 2, "relevance": 1,
+                  "readability": 1, "evidence_ids": [0], "reviewer_type": "llm", "judge_model": "test-only",
+                  "rationale": "PRIVATE_RATIONALE_SENTINEL"}
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "ratings.jsonl"
+            write_jsonl(path, [rating])
+            summary = llm_summary(queue, path)
+            self.assertEqual(summary["runs"][0]["metrics"]["count"], 1)
+            self.assertNotIn("PRIVATE_", json.dumps(summary))
+            write_jsonl(path, [dict(rating, reviewer_type="human")])
+            with self.assertRaises(ValueError):
+                llm_summary(queue, path)
+
+    def test_error_diagnostics_count_sibling_false_labels_without_text(self):
+        from experiments.errors import diagnose
+        gold = [{"task": 2, "article_id": "private-id-one", "labels": ["a"]},
+                {"task": 2, "article_id": "private-id-two", "labels": ["c"]}]
+        predicted = [dict(gold[0], labels=["b"]), dict(gold[1])]
+        taxonomy = {"a": {"parent": "one"}, "b": {"parent": "one"}, "c": {"parent": "two"}}
+        result = diagnose(gold, predicted, gold, taxonomy)
+        self.assertEqual(result["per_class"]["a"]["fn"], 1)
+        self.assertEqual(result["per_class"]["b"]["fp"], 1)
+        self.assertEqual(result["per_class"]["c"]["f1"], 1.)
+        self.assertEqual(result["sibling_false_positive_fraction"], 1.)
+        self.assertNotIn("private-id", json.dumps(result))
 
     def test_local_api_rejects_remote_origins_and_hosts(self):
         from types import SimpleNamespace

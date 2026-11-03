@@ -3,10 +3,10 @@ import json
 from .explain import extract, generator_tokenizer, local_generate, rank_evidence, select_context
 
 
-def explain_propaganda(row, method, taxonomy, endpoint):
+def explain_propaganda(row, method, taxonomy, endpoint, encoder=None):
     query = "; ".join(taxonomy[label]["definition"] for label in row["labels"]) or "No annotated propaganda technique"
     selection = "textrank" if method == "textrank" else ("lead" if method == "generate-lead" else "semantic")
-    ranked = rank_evidence(row["text"], query, selection)
+    ranked = rank_evidence(row["text"], query, selection, encoder)
     fallback = False
     if not method.startswith("generate"):
         text, ids = extract(ranked)

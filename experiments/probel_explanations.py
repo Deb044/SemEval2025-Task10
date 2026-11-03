@@ -26,7 +26,7 @@ def main():
     parser.add_argument("--endpoint", default="http://127.0.0.1:8080/v1")
     parser.add_argument("--out", default="artifacts/public-probel-explanations-v2")
     args = parser.parse_args()
-    source_paths = ("experiments/probel_explanations.py", "semeval/explain.py", "semeval/evaluate.py", "semeval/features.py", "semeval/data.py")
+    source_paths = ("experiments/probel_explanations.py", "semeval/propaganda.py", "semeval/explain.py", "semeval/evaluate.py", "semeval/features.py", "semeval/data.py")
     sources = {name: hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in source_paths}
     inputs = {name: hashlib.sha256(Path(path).read_bytes()).hexdigest() for name, path in (("evaluation", args.data), ("taxonomy", args.taxonomy))}
     with open(args.gguf, "rb") as stream:

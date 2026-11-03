@@ -52,12 +52,14 @@ def build():
         comparisons = next((value.get("comparisons", {}) for value in historical.get("paired_comparisons", []) if value["dataset"] == row["dataset"]), {})
         entry["details"]["paired_comparisons"] = comparisons
         entries.append(entry)
+    has_current_llm_audit = False
     for path, study, kind in STUDIES:
         if not Path(path).exists():
             entries.append({"id": path, "study": study, "dataset": study.split(" · ")[0], "kind": kind,
                 "name": "Study results not exported yet", "status": "not_measured", "value": None, "metric": "", "notes": "Run the fixed reproduction workflow."})
             continue
         summary = json.loads(Path(path).read_text(encoding="utf-8"))
+        has_current_llm_audit |= bool(summary.get("llm_audit"))
         scored = aggregate([summary])
         for index, row in enumerate(scored):
             entry = model_entry(row, study, index)
@@ -108,6 +110,17 @@ def build():
                 "notes": summary["limitations"], "provenance": {key: summary.get(key) for key in ("commit", "input_sha256", "source_sha256")}})
     else:
         entries.append({"id": "throughput-pending", "study": "Core model inference throughput", "dataset": "ProBel", "kind": "scalability", "name": "Timings not exported yet", "value": None, "status": "not_measured"})
+    audit_path = Path("results/llm-audit.json")
+    if not has_current_llm_audit and audit_path.exists():
+        audit = json.loads(audit_path.read_text(encoding="utf-8"))
+        for index, row in enumerate(aggregate([audit])):
+            entry = model_entry(row, "CARDS · frozen ancillary LLM audit", index)
+            entry.update(kind="review", role="Archived model audit")
+            entry["notes"] = audit["limitations"] + " This is a frozen prior audit, not a new assessment of regenerated outputs."
+            entries.append(entry)
+    study_order = {study: index for index, (_, study, _) in enumerate(STUDIES)}
+    entries.sort(key=lambda row: ("initial study" in row["study"], study_order.get(row["study"], 20),
+                                 row.get("role") != "Core", row["study"], row.get("name", ""), row.get("n", 0)))
     payload = {"experiments": entries,
                "review_method": "Independent blinded LLM audit plus pinned NLI diagnostics; not human validation.",
                "note": "Typed results have different units and tasks; compare within studies. Public alternatives are not SemEval benchmark scores."}

@@ -140,7 +140,8 @@ byId('analysis-form').addEventListener('submit', async event => {
     const panel = element('article', undefined, 'panel');
     panel.append(element('h3', 'Predicted labels'), element('p', data.model), element('p', data.note, 'small'));
     const labels = element('ul', undefined, 'metric-list');
-    (data.labels.length ? data.labels : ['No technique selected']).forEach(label => labels.append(element('li', label)));
+    const descriptions = data.label_details?.map(label => `${label.code} — ${label.description}`) || data.labels;
+    (descriptions.length ? descriptions : ['No technique selected']).forEach(label => labels.append(element('li', label)));
     panel.append(labels, element('p', data.parents.join(' · '), 'small'));
     if (data.explanation) {
       panel.append(element('h3', data.explanation.fallback ? 'Extracted fallback' : 'Generated explanation'), element('p', data.explanation.text));

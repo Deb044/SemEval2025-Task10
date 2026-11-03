@@ -1,0 +1,100 @@
+{
+  "runs": [
+    {
+      "name": "predicted-semantic \u00b7 blinded LLM audit",
+      "task": 3,
+      "primary_metric": "llm_fully_supported_rate",
+      "metrics": {
+        "count": 6,
+        "llm_fully_supported_rate": 0.16666666666666666,
+        "mean_ratings": {
+          "supported": 1.1666666666666667,
+          "attribution": 0.8333333333333334,
+          "relevance": 1.6666666666666667,
+          "readability": 1.1666666666666667
+        }
+      },
+      "scoring_provenance": "Single blinded Codex LLM judge; 0/1/2 source-support rubric; not human ratings, calibrated factuality or truth validation."
+    },
+    {
+      "name": "semantic-extract \u00b7 blinded LLM audit",
+      "task": 3,
+      "primary_metric": "llm_fully_supported_rate",
+      "metrics": {
+        "count": 6,
+        "llm_fully_supported_rate": 1.0,
+        "mean_ratings": {
+          "supported": 2.0,
+          "attribution": 2.0,
+          "relevance": 1.3333333333333333,
+          "readability": 1.3333333333333333
+        }
+      },
+      "scoring_provenance": "Single blinded Codex LLM judge; 0/1/2 source-support rubric; not human ratings, calibrated factuality or truth validation."
+    },
+    {
+      "name": "supplied-lead \u00b7 blinded LLM audit",
+      "task": 3,
+      "primary_metric": "llm_fully_supported_rate",
+      "metrics": {
+        "count": 6,
+        "llm_fully_supported_rate": 0.16666666666666666,
+        "mean_ratings": {
+          "supported": 1.1666666666666667,
+          "attribution": 1.1666666666666667,
+          "relevance": 2.0,
+          "readability": 1.3333333333333333
+        }
+      },
+      "scoring_provenance": "Single blinded Codex LLM judge; 0/1/2 source-support rubric; not human ratings, calibrated factuality or truth validation."
+    },
+    {
+      "name": "supplied-semantic \u00b7 blinded LLM audit",
+      "task": 3,
+      "primary_metric": "llm_fully_supported_rate",
+      "metrics": {
+        "count": 6,
+        "llm_fully_supported_rate": 0.16666666666666666,
+        "mean_ratings": {
+          "supported": 1.1666666666666667,
+          "attribution": 1.0,
+          "relevance": 1.8333333333333333,
+          "readability": 1.5
+        }
+      },
+      "scoring_provenance": "Single blinded Codex LLM judge; 0/1/2 source-support rubric; not human ratings, calibrated factuality or truth validation."
+    },
+    {
+      "name": "textrank \u00b7 blinded LLM audit",
+      "task": 3,
+      "primary_metric": "llm_fully_supported_rate",
+      "metrics": {
+        "count": 6,
+        "llm_fully_supported_rate": 1.0,
+        "mean_ratings": {
+          "supported": 2.0,
+          "attribution": 2.0,
+          "relevance": 1.1666666666666667,
+          "readability": 1.3333333333333333
+        }
+      },
+      "scoring_provenance": "Single blinded Codex LLM judge; 0/1/2 source-support rubric; not human ratings, calibrated factuality or truth validation."
+    }
+  ],
+  "judge_models": [
+    "Inherited Codex model; exact runtime model identifier unavailable"
+  ],
+  "input_sha256": {
+    "review_queue": "52d1afc15fb5ff20b00ab0e2093c2d377bc4ce7b0b22f0b8e0dac275e91fcb2a",
+    "llm_ratings": "887c616bc35373165f08fa73f8c2630b3c0cc3de2d3a2c264e64fa9ff2cb2666"
+  },
+  "limitations": "Exact judge runtime model identifier is unavailable. Qualitative model judgments are frozen ancillary evidence, not bitwise reproducible gold. Six source passages, five outputs each; no inter-judge agreement study.",
+  "dataset": "CARDS blinded grounding sample",
+  "label_schema": "native",
+  "experiment_id": "frozen-blinded-llm-audit",
+  "commit": "cb9d4d14a24662f7905e468d617d0002263bb730",
+  "source_sha256": {
+    "experiments/grounding.py": "bafa4eb5b4304ae4f4b0531a4a5e2bdb7c6e59a361840044dc5285bb92b3a71a",
+    "semeval/explain.py": "8267cc752280cebd4167d545407d4605aaa930882f597d194a772ba16021c558"
+  }
+}

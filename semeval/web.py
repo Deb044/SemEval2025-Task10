@@ -56,15 +56,16 @@ def analyze(payload):
     row = {"task": 2, "article_id": "local-input", "language": language, "text": text, "label_schema": "native"}
     prediction = predict(model, [row])[0]
     result = {"labels": prediction["labels"], "parents": prediction["narratives"],
+        "label_details": [{"code": label, "description": model["taxonomy"][label]["definition"]} for label in prediction["labels"]],
         "scores": [{"label": label, "value": score} for label, score in sorted(prediction["scores"].items(), key=lambda pair: -pair[1])],
         "model": MODELS[key]["label"], "language": language, "explanation": None,
         "note": "Native dataset labels. Scores are model outputs, not calibrated truth probabilities."}
     if payload.get("generate"):
         try:
             if key == "cards-gcn":
-                explanation = explain_row(row, "generate", model["taxonomy"], "http://127.0.0.1:8080/v1", predicted=prediction)
+                explanation = explain_row(row, "generate", model["taxonomy"], "http://127.0.0.1:8080/v1", predicted=prediction, encoder=model["features"].encoder)
             else:
-                explanation = explain_propaganda(dict(row, labels=prediction["labels"]), "generate-semantic", model["taxonomy"], "http://127.0.0.1:8080/v1")
+                explanation = explain_propaganda(dict(row, labels=prediction["labels"]), "generate-semantic", model["taxonomy"], "http://127.0.0.1:8080/v1", encoder=model["features"].encoder)
             from .explain import sentences
             lookup = {unit["id"]: unit["text"] for unit in sentences(text)}
             result["explanation"] = {"text": explanation["explanation"], "fallback": explanation["fallback"],

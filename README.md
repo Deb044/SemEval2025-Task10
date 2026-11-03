@@ -10,7 +10,8 @@ Public CARDS/4C and ProBel data support the main studies; native dataset labels
 remain distinct from official SemEval labels. MiniLM is the primary encoder,
 with frozen XLM-R as an encoder comparison. Graph controls cover self-loops,
 shuffled hierarchy edges, and random label vectors. TF-IDF and LSA are baselines.
-[All experiments](results/experiments.json) retain their provenance and limits.
+[Project website](https://semeval-narrative-lab-deb044.solidflask.chatgpt.site) ·
+[All experiments](results/experiments.json). Results retain their provenance and limits.
 
 ## Setup
 
@@ -38,7 +39,7 @@ This prepares public data, runs fixed classification matrices and EMM transfer,
 compares longer-text explanations, measures data/embedding scalability, and exports
 the experiment catalog. It starts and stops its own local generator. Use
 `--stage prepare`, `classification`, `source-transfer`, `explanations`,
-`scalability`, or `export` to run a single stage. Compatible classification
+`scalability`, `grounding`, or `export` to run a single stage. Compatible classification
 checkpoints resume; completed other stages are reused only after source and input
 hash validation. Changed experiments need fresh output directories.
 
