@@ -6,6 +6,7 @@ documented by their corpus release, rather than silently repairing mismatches.
 """
 import hashlib
 import json
+import time
 from pathlib import Path
 
 LANGUAGES = {"EN": "en", "HI": "hi", "BG": "bg", "PT": "pt", "RU": "ru"}
@@ -16,6 +17,18 @@ ROLE_GROUPS = {
     "Innocent": ["Forgotten", "Exploited", "Victim", "Scapegoat"],
 }
 ROLE_PARENT = {role: parent for parent, roles in ROLE_GROUPS.items() for role in roles}
+
+
+def replace_file(temporary, path):
+    """Allow short-lived Windows/OneDrive locks without losing the old file."""
+    for attempt in range(7):
+        try:
+            temporary.replace(path)
+            return
+        except PermissionError:
+            if attempt == 6:
+                raise
+            time.sleep(.05 * 2 ** attempt)
 
 
 def read_jsonl(path):
@@ -31,7 +44,7 @@ def write_json(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
     temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    temporary.replace(path)
+    replace_file(temporary, path)
 
 
 def write_jsonl(path, rows):
@@ -39,7 +52,7 @@ def write_jsonl(path, rows):
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
     temporary.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8")
-    temporary.replace(path)
+    replace_file(temporary, path)
 
 
 def fingerprint(text):

@@ -47,6 +47,22 @@ class PipelineChecks(unittest.TestCase):
             align([rows[0], rows[0]], [rows[0]])
         self.assertAlmostEqual(set_f1(["x", "y"], ["y", "z"]), .5)
 
+    def test_bertscore_hash_return_contract(self):
+        import numpy as np
+        from types import SimpleNamespace
+        from semeval.evaluate import evaluate
+        values = np.array([.7, .8, .9])
+        scorer = SimpleNamespace(score=lambda *args, **kwargs: ((values, values, values), "unit-test-hash"))
+        gold = [{"task": 3, "article_id": str(i), "language": "en", "explanation": "reference"} for i in range(3)]
+        predictions = [dict(row, explanation="generated") for row in gold]
+        with patch.dict("sys.modules", {"bert_score": scorer}):
+            report = evaluate(gold, predictions, "unit-test-model", 9)
+            self.assertAlmostEqual(report["metrics"]["bertscore_f1"], .8)
+            from experiments.public_explanations import evaluate as evaluate_native
+            native_gold = [{"label": label, "references": ["reference"]} for label in ("entailment", "neutral", "contradiction")]
+            native = evaluate_native(native_gold, [dict(row, fallback=False) for row in predictions], "unit-test-model", 9)
+            self.assertAlmostEqual(native["bertscore_f1"], .8)
+
     def test_extractive_evidence_and_tsv(self):
         class WordTokenizer:
             def encode(self, text, **kwargs):

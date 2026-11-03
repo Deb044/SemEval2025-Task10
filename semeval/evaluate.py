@@ -39,7 +39,7 @@ def evaluate(gold, predicted, bert_model=None, bert_layers=None):
             if bert_layers is None:
                 raise ValueError("Specify BERTScore layers from the official scorer; do not guess defaults")
             from bert_score import score
-            _, _, values, hashcode = score([r["explanation"] for r in predicted], [r["explanation"] for r in gold],
+            (_, _, values), hashcode = score([r["explanation"] for r in predicted], [r["explanation"] for r in gold],
                 model_type=bert_model, num_layers=bert_layers, device="cpu", batch_size=4,
                 rescale_with_baseline=False, return_hash=True, verbose=False)
             scores[primary] = float(values.mean())

@@ -41,7 +41,7 @@ def evaluate(rows, predictions, model_path, layers):
     from bert_score import score
     candidates = [r["explanation"] for r in predictions]
     # The library takes the best matching reference for each example.
-    _, _, scores, signature = score(candidates, [r["references"] for r in rows],
+    (_, _, scores), signature = score(candidates, [r["references"] for r in rows],
         model_type=model_path, num_layers=layers, device="cpu", batch_size=4,
         idf=False, rescale_with_baseline=False, return_hash=True)
     return {"count": len(rows), "bertscore_f1": float(scores.mean()), "bertscore_hash": signature,
