@@ -1,0 +1,7 @@
+{
+  "train": "data/st2/train.jsonl",
+  "dev": "data/st2/dev.jsonl",
+  "test": "data/st2/test.jsonl",
+  "taxonomy": "data/taxonomy.json",
+  "output": "artifacts/st2-comparison"
+}

@@ -1,0 +1,71 @@
+"""Run controlled classification comparisons from a small JSON manifest.
+
+Usage: python -m experiments.run experiments/example.json
+All outputs remain private under artifacts/. No automatic benchmark claims.
+"""
+import hashlib
+import json
+import platform
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+import joblib
+import numpy as np
+
+from semeval.classify import predict, train
+from semeval.data import check_splits, read_jsonl, write_json, write_jsonl
+from semeval.evaluate import evaluate, export_tsv
+from semeval.metrics import paired_bootstrap, set_f1
+
+
+def run(config_path):
+    config = json.loads(Path(config_path).read_text(encoding="utf-8"))
+    datasets = {name: read_jsonl(config[name]) for name in ("train", "dev", "test")}
+    check_splits(*datasets.values())
+    task = datasets["train"][0]["task"]
+    output = Path(config["output"])
+    if output.exists() and any(output.iterdir()):
+        raise ValueError("Choose a new output directory; never overwrite an existing experiment")
+    output.mkdir(parents=True, exist_ok=True)
+    reports, article_scores = [], {}
+    variants = [(name, "none") for name in ("tfidf", "lsa", "transformer")]
+    if task == 2:
+        variants += [("graph", ablation) for ablation in ("none", "self-loops", "random-labels")]
+    for method, ablation in variants:
+        seeds = [13, 42, 87] if method == "graph" else [42]
+        for seed in seeds:
+            name = f"{method}-{ablation}-{seed}"
+            model = train(datasets["train"], datasets["dev"], method, config.get("taxonomy"), seed, ablation)
+            joblib.dump(model, output / (name + ".joblib"))
+            started = time.perf_counter()
+            predictions = predict(model, datasets["test"])
+            predict_seconds = time.perf_counter() - started
+            write_jsonl(output / (name + ".jsonl"), predictions)
+            export_tsv(predictions, output / (name + ".tsv"))
+            report = evaluate(datasets["test"], predictions)
+            report.update(name=name, method=method, ablation=ablation, seed=seed,
+                          fit_seconds=model["fit_seconds"], predict_seconds=predict_seconds,
+                          threshold=model["threshold"], regularization=model["regularization"])
+            write_json(output / (name + ".metrics.json"), report)
+            reports.append(report)
+            article_scores[name] = [float(set(g["labels"]) == set(p["labels"])) if task == 1
+                                   else set_f1(g["labels"], p["labels"])
+                                   for g, p in zip(datasets["test"], predictions, strict=True)]
+    comparisons = {}
+    if task == 2:
+        comparisons["transformer_vs_graph_seed42"] = paired_bootstrap(article_scores["transformer-none-42"], article_scores["graph-none-42"])
+    try:
+        commit = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    except (OSError, subprocess.CalledProcessError):
+        commit = None
+    summary = {"config": config, "commit": commit, "python": platform.python_version(),
+               "input_sha256": {name: hashlib.sha256(Path(config[name]).read_bytes()).hexdigest() for name in datasets},
+               "runs": reports, "paired_comparisons": comparisons,
+               "status": "local_metrics_only", "organizer_scorer_verified": False}
+    write_json(output / "summary.json", summary)
+
+
+if __name__ == "__main__":
+    run(sys.argv[1])
