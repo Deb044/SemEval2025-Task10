@@ -56,8 +56,13 @@ def run(config_path):
                                    for g, p in zip(datasets["test"], predictions, strict=True)]
     comparisons = {}
     if task == 2:
-        graph_mean = [mean(values) for values in zip(*(article_scores[f"graph-none-{seed}"] for seed in (13, 42, 87)), strict=True)]
+        averaged = {ablation: [mean(values) for values in zip(
+            *(article_scores[f"graph-{ablation}-{seed}"] for seed in (13, 42, 87)), strict=True)]
+            for ablation in ("none", "self-loops", "random-labels")}
+        graph_mean = averaged["none"]
         comparisons["transformer_vs_graph_mean_of_three_seeds"] = paired_bootstrap(article_scores["transformer-none-42"], graph_mean)
+        comparisons["self_loops_vs_taxonomy_graph"] = paired_bootstrap(averaged["self-loops"], graph_mean)
+        comparisons["random_labels_vs_definition_labels"] = paired_bootstrap(averaged["random-labels"], graph_mean)
     aggregates = []
     for method, ablation in variants:
         matching = [r for r in reports if r["method"] == method and r["ablation"] == ablation]

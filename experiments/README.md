@@ -36,6 +36,13 @@ Required ablations: graph with only self-loops; random label initialization;
 semantic versus leading evidence under the same generator input budget. Preserve
 architecture, examples, seeds, and training settings within each ablation.
 
+The transformer/logistic-regression versus GCN comparison changes the prediction
+head as well as the graph. It cannot isolate the graph's contribution. Use the
+matched GCN versus self-loop-only ablation for that question. The runner records
+paired bootstrap intervals for both graph ablations using per-article scores
+averaged across the same three seeds; these intervals describe article-sampling
+uncertainty, while the separate seed standard deviation describes training variation.
+
 Optional free cloud compute can accelerate the exact same runs only if allowed by
 the data agreement. CPU inference is the reproducibility target. No neural model
 fine-tuning or paid service is necessary.
