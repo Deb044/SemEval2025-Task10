@@ -3,7 +3,14 @@
 ## Current extension protocol
 
 Run `python -m experiments.reproduce --stage all --server path/to/llama-server`
-for the current fixed studies. The matrices in `configs/cards.json` and
+for the current fixed studies. Preparation and classification run an Apache
+Spark SQL gate (`local[2]`) over all six prepared CARDS/ProBel splits. It rejects
+invalid records, duplicate groups and cross-split overlap, computes language and
+label counts, and preserves every input byte. Install `requirements-spark.txt`
+and Java 17, 21 or 25. Re-run the gate with `python -m experiments.reproduce --stage spark`.
+Only aggregates are published; local mode does not establish cluster scalability.
+
+The matrices in `configs/cards.json` and
 `configs/probel.json` keep MiniLM plus a hierarchical label GCN central, compare
 TF-IDF, LSA and transformer-only heads, and control graph edges and label
 initialization across seeds 13/42/87. ProBel also compares frozen XLM-R.

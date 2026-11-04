@@ -75,7 +75,7 @@ def generator(args):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--stage", choices=("all", "prepare", "classification", "source-transfer", "explanations", "grounding", "scalability", "export"), default="all")
+    parser.add_argument("--stage", choices=("all", "prepare", "spark", "classification", "source-transfer", "explanations", "grounding", "scalability", "export"), default="all")
     parser.add_argument("--gguf", default="work/models/Qwen3-1.7B-Q4_K_M.gguf")
     parser.add_argument("--server")
     parser.add_argument("--use-running-server", action="store_true")
@@ -84,6 +84,8 @@ def main():
     if selected("prepare"):
         run("experiments.public_data")
         run("experiments.public_probel")
+    if args.stage in ("all", "prepare", "spark", "classification"):
+        run("experiments.spark_audit")
     if selected("classification"):
         for name in ("cards", "probel"):
             run("experiments.run", "experiments/configs/" + name + ".json", "--resume")

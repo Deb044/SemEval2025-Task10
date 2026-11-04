@@ -15,12 +15,12 @@ shuffled hierarchy edges, and random label vectors. TF-IDF and LSA are baselines
 
 ## Setup
 
-Use Python 3.11–3.13 from the repository root:
+Use Python 3.11–3.13 and Java 17, 21 or 25 from the repository root:
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1
-python -m pip install -r requirements-models.txt -r requirements-analytics.txt
+python -m pip install -r requirements-models.txt -r requirements-spark.txt
 python -m experiments.download_models
 ```
 
@@ -28,6 +28,10 @@ The model command downloads pinned resources into ignored local folders. Install
 [llama.cpp b11960](https://github.com/ggml-org/llama.cpp/releases/tag/b11960) for
 generation; pass its `llama-server` executable with `--server` when it is not on
 PATH. Model weights, texts, individual predictions and review submissions stay local.
+Spark uses `local[2]` to check invalid records, duplicate groups and split overlap,
+and compute language/label counts before training. It preserves the model inputs.
+DuckDB remains responsible for the separate Parquet scalability experiments.
+See [Spark setup and checks](docs/spark.md) for the SQL stage and Windows notes.
 
 ## Reproduce
 
@@ -35,10 +39,11 @@ PATH. Model weights, texts, individual predictions and review submissions stay l
 python -m experiments.reproduce --stage all --server path/to/llama-server
 ```
 
-This prepares public data, runs fixed classification matrices and EMM transfer,
+This prepares public data, runs an Apache Spark SQL input audit, then runs fixed
+classification matrices and EMM transfer,
 compares longer-text explanations, measures data/embedding scalability, and exports
 the experiment catalog. It starts and stops its own local generator. Use
-`--stage prepare`, `classification`, `source-transfer`, `explanations`,
+`--stage prepare`, `spark`, `classification`, `source-transfer`, `explanations`,
 `scalability`, `grounding`, or `export` to run a single stage. Compatible classification
 checkpoints resume; completed other stages are reused only after source and input
 hash validation. Changed experiments need fresh output directories.

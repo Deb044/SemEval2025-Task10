@@ -28,7 +28,7 @@
     <div class="section-intro"><div><p class="eyebrow">THE CORE COMPONENT</p><h2>Cross-lingual transformer + hierarchical GNN</h2></div>
       <p>The transformer represents text across languages. A trainable graph network represents relationships between broad and fine labels. Their representations are compared to produce label scores.</p></div>
     <div class="pipeline" aria-label="Project pipeline">
-      <article><span class="step">01</span><h3>Prepare & audit</h3><p>Pin public releases, preserve native labels, group source articles, and keep training, development and test data separate.</p></article>
+      <article><span class="step">01</span><h3>Prepare & audit</h3><p>Pin public releases and preserve native labels. Apache Spark SQL audits records, duplicate groups and split overlap, then summarizes languages and labels before model training.</p></article>
       <article class="core"><span class="step">02 · CORE</span><h3>Encode across languages</h3><p>Frozen multilingual MiniLM embeds text and label descriptions. Long text is encoded in token chunks and pooled. XLM-R with mean pooling is an encoder comparison.</p></article>
       <article class="core"><span class="step">03 · CORE</span><h3>Learn the label hierarchy</h3><p>A two-layer GCN passes information between parent and child label nodes. A learned projection compares article vectors with fine-label vectors.</p></article>
       <article><span class="step">04</span><h3>Predict labels</h3><p>Select settings on development data. Decode one CARDS climate claim or multiple ProBel persuasion techniques, deriving their parent categories.</p></article>

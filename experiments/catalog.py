@@ -118,6 +118,24 @@ def build():
             entry.update(kind="review", role="Archived model audit")
             entry["notes"] = audit["limitations"] + " This is a frozen prior audit, not a new assessment of regenerated outputs."
             entries.append(entry)
+    spark_path = Path("artifacts/spark-audit/summary.json")
+    if spark_path.exists():
+        audit = json.loads(spark_path.read_text(encoding="utf-8"))
+        if not audit.get("passed"):
+            raise ValueError("Cannot publish a failed Spark audit as a successful measurement")
+        write_json("results/spark-audit.json", audit)
+    elif Path("results/spark-audit.json").exists():
+        audit = json.loads(Path("results/spark-audit.json").read_text(encoding="utf-8"))
+    else:
+        audit = None
+    if audit:
+        entries.append({"id": "spark-input-audit", "study": "Apache Spark SQL input audit",
+            "dataset": "CARDS + ProBel prepared classification inputs", "kind": "scalability",
+            "name": "Spark SQL · pre-training data-quality gate", "role": "Data pipeline",
+            "metric": "audit time (JVM startup excluded)", "value": audit["audit_seconds"], "unit": "seconds",
+            "n": audit["records"], "status": "measured", "notes": audit["limitations"],
+            "details": {key: audit[key] for key in ("tool", "spark_version", "master", "startup_seconds", "passed", "counts", "label_counts", "invalid_records", "cross_split_overlap_groups", "within_split_duplicate_groups")},
+            "provenance": {key: audit.get(key) for key in ("commit", "source_sha256", "input_sha256")}})
     study_order = {study: index for index, (_, study, _) in enumerate(STUDIES)}
     entries.sort(key=lambda row: ("initial study" in row["study"], study_order.get(row["study"], 20),
                                  row.get("role") != "Core", row["study"], row.get("name", ""), row.get("n", 0)))
