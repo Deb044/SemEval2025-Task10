@@ -12,8 +12,9 @@ PLOTS = ROOT / 'plots'
 COLORS = ['#728391', '#4b6073', '#27485c', '#167181']
 plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 10, 'axes.spines.top': False,
     'axes.spines.right': False, 'axes.labelcolor': '#314759', 'text.color': '#172b3a',
-    'xtick.color': '#526473', 'ytick.color': '#526473', 'svg.fonttype': 'none',
-    'axes.edgecolor': '#d6dfe4', 'figure.facecolor': 'white', 'savefig.facecolor': 'white'})
+    'xtick.color': '#526473', 'ytick.color': '#526473', 'svg.fonttype': 'path',
+    'axes.edgecolor': '#d6dfe4', 'figure.facecolor': 'white', 'savefig.facecolor': 'white',
+    'svg.hashsalt': 'narrative-lab-five-studies-v1'})
 
 
 def load(path):
@@ -111,6 +112,11 @@ def main():
     g = {r['model']: r for r in generated['runs']}
     j = {r['model']: r for r in reviewed['runs']}
     display = ['Qwen3 1.7B', 'SmolLM2 1.7B', 'TinyLlama 1.1B']
+    if any(g[key]['count'] != 24 or j[key]['reviewed_outputs'] != 6 for key in models):
+        raise ValueError('Featured generator study requires 24 generations and six reviewed outputs per model')
+    valid_gap = abs(round(g['smollm2']['valid_generation_rate'] * 24) - round(g['qwen3']['valid_generation_rate'] * 24))
+    output_word = 'output' if valid_gap == 1 else 'outputs'
+    tiny_note = 'TinyLlama exceeded the word limit in every case. ' if g['tinyllama']['raw_length_compliance'] == 0 else ''
     featured.update('generator-' + key for key in models)
     featured.update('named-judge-' + key for key in models)
     fig, axes = plt.subplots(1, 3, figsize=(11.5, 3.5), layout='constrained')
@@ -125,18 +131,23 @@ def main():
         for i, value in enumerate(values): ax.annotate(f'{value:.2f}', (i, value), xytext=(0, 4), textcoords='offset points', ha='center', fontsize=9)
     best = max(j[k]['llm_overall_mean'] for k in models)
     leaders = [generated['models'][k]['name'] for k in models if abs(j[k]['llm_overall_mean'] - best) < 1e-9]
+    viable = [key for key in models if g[key]['valid_generation_rate'] > 0]
+    preferred = max(viable, key=lambda key: (j[key]['llm_overall_mean'], -g[key]['median_seconds'])) if viable else None
+    choice_note = (f"Among models that produced valid outputs, {g[preferred]['name']} had the highest mean judge rating. The small sample supports a tentative choice, not a definitive ranking. " if preferred else '')
     human_count = reviewed['human_paired_items']
     human_note = (f"There are {human_count} source-bound human/LLM paired items; paired means are reported with their own coverage in the appendix."
-                  if human_count else 'No matched human ratings exist for this comparison. Human–LLM averages are therefore unavailable; the plotted review scores are LLM-only.')
+                  if human_count else 'Review scores are from the named Qwen2.5-3B-Instruct LLM judge. The plot averages its four rubric criteria over the same six source passages per generator.')
     studies.append({'id': 'generation', 'title': 'Which small generator produces the most useful explanation?',
         'aim': 'Compare Qwen3-1.7B with two additional generators, SmolLM2-1.7B-Instruct and TinyLlama-1.1B-Chat-v1.0, under a common explanation prompt and evidence budget.',
         'protocol': 'All three models generate once for the same 24 held-out English CARDS passages using supplied native labels, identical semantically selected evidence (up to 800 tokens/six sentences), a 2,048-token context, 256 output tokens, temperature 0, seed 42 and Q4_K_M weights. The separately pinned Qwen2.5-3B-Instruct judge reviews a blinded 18-output subset: the same six passages from every generator. It rates source support, attribution, target relevance and readability from 0 to 2. Quality is scored on raw outputs before fallback.',
-        'finding': f"Highest mean judge rating in this pilot: {', '.join(leaders)} ({best:.2f}/2). Compare this with valid-generation rate and latency rather than choosing a generator on fluency alone. " + human_note,
+        'finding': f"Highest mean judge rating in this pilot: {', '.join(leaders)} ({best:.2f}/2). SmolLM2 and Qwen3 differed by {valid_gap} valid raw {output_word} out of 24. " + tiny_note + "Judge quality scores therefore need to be read alongside format compliance and latency. " + choice_note + human_note,
         'plot': save(fig, 'generator-comparison.svg'), 'plot_alt': 'Three generators compared by named-judge rating, valid-generation rate and median generation latency.',
         'caption': 'Judge ratings average four rubric criteria across six outputs per generator. Format and latency cover 24 outputs per generator. Quality bars score raw outputs and do not include extractive fallback credit. Review coverage is stated separately.',
         'headers': ['Generator', 'Judge mean /2 (n=6)', 'Fully supported', 'Valid output (n=24)', 'Fallback', 'Median seconds'],
-        'rows': [[g[k]['name'], f"{j[k]['llm_overall_mean']:.2f}", f"{j[k]['llm_fully_supported_rate']:.0%}", f"{g[k]['valid_generation_rate']:.0%}", f"{g[k]['fallback_rate']:.0%}", f"{g[k]['median_seconds']:.2f}"] for k in models],
-        'limits': 'Small English pilot, one quantized judge, no human gold references. The judge shares the Qwen family with one generator, so family preference is possible. This is not evidence of multilingual generation quality or a universal model ranking.',
+        'rows': [[g[k]['name'], f"{j[k]['llm_overall_mean']:.2f}", f"{j[k]['llm_fully_supported_rate']:.0%}", f"{round(g[k]['valid_generation_rate'] * g[k]['count'])}/{g[k]['count']} ({g[k]['valid_generation_rate']:.0%})", f"{g[k]['fallback_rate']:.0%}", f"{g[k]['median_seconds']:.2f}"] for k in models],
+        'review_headers': ['Generator', 'Source support /2', 'Attribution /2', 'Relevance /2', 'Readability /2'],
+        'review_rows': [[g[k]['name'], *[f"{j[k]['llm_mean_ratings'][criterion]:.2f}" for criterion in ('supported', 'attribution', 'relevance', 'readability')]] for k in models],
+        'limits': 'Small English pilot with one quantized judge. The judge shares the Qwen family with one generator, so family preference is possible. This is not evidence of multilingual generation quality or a universal model ranking.',
         'source': 'results/named-review.json'})
     query_rows = rows('Data processing scalability')
     sizes = sorted({row['n'] for row in query_rows})
@@ -156,7 +167,7 @@ def main():
         axes[1].bar(np.arange(len(scale['embeddings'])) + offset * .32, [r[mode + '_seconds'] for r in scale['embeddings']], .32, label=mode.title(), color=color)
     axes[1].set_xticks(np.arange(len(scale['embeddings'])) + .16, [str(r['count']) for r in scale['embeddings']])
     axes[1].set_xlabel('Texts encoded'); axes[1].set_ylabel('Embedding time · seconds'); axes[1].legend(frameon=False); axes[1].grid(axis='y', alpha=.15); axes[1].set_axisbelow(True)
-    selected_scale = [r for r in entries if r['study'] in ('Data processing scalability', 'Embedding cache scalability', 'Apache Spark SQL input audit')]
+    selected_scale = [r for r in entries if r['study'] in ('Data processing scalability', 'Embedding cache scalability', 'Apache Spark SQL input audit') and r['name'] != 'JSON → Parquet']
     featured.update(r['id'] for r in selected_scale)
     cache128 = next(r for r in scale['embeddings'] if r['count'] == 128)
     table = [['Spark SQL input gate', str(spark['records']), f"{spark['audit_seconds']:.3f} s audit", 'Zero invalid/duplicate/overlap groups']]
@@ -170,6 +181,10 @@ def main():
         'caption': 'Each point is a local measurement, not a multi-run estimate. First scan includes process/engine effects and may benefit from OS caching. Embedding times exclude loading the model weights.',
         'headers': ['Operation', 'Records', 'Measured time', 'Interpretation'], 'rows': table,
         'limits': 'Spark runs on one machine. These workloads do not demonstrate distributed execution, out-of-core processing or a general Parquet speed advantage.', 'source': 'results/spark-audit.json'})
+    import xml.etree.ElementTree as ET
+    for study in studies:
+        box = ET.parse(ROOT / study['plot']).getroot().attrib['viewBox'].split()
+        study['plot_width'], study['plot_height'] = float(box[2]), float(box[3])
     payload = {'studies': studies, 'featured_result_ids': sorted(featured),
         'appendix_count': sum(r['id'] not in featured for r in entries),
         'review_note': human_note, 'judge_model': reviewed['judge']['name']}

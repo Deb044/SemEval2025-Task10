@@ -83,6 +83,13 @@ function renderExperiments() {
 }
 ['study-filter', 'kind-filter'].forEach(id => byId(id).addEventListener('change', renderExperiments));
 byId('experiment-search').addEventListener('input', renderExperiments);
+function studyTable(headers, rows, caption) {
+  const wrap = element('div', undefined, 'table-wrap'); const table = element('table', undefined, 'study-table');
+  const head = element('thead'); const header = element('tr');
+  headers.forEach(text => { const cell = element('th', text); cell.scope = 'col'; header.append(cell); }); head.append(header);
+  const body = element('tbody'); rows.forEach(values => { const row = element('tr'); values.forEach(value => row.append(element('td', String(value)))); body.append(row); });
+  table.append(element('caption', caption, 'sr-only'), head, body); wrap.append(table); return wrap;
+}
 function renderStudies(data) {
   featuredResultIds = new Set(data.featured_result_ids || []);
   const root = byId('featured-studies'); root.replaceChildren();
@@ -101,11 +108,15 @@ function renderStudies(data) {
     const figure = element('figure'); const img = element('img');
     if (!/^plots\/[a-z-]+\.svg$/.test(study.plot)) throw new Error('Invalid study plot path');
     img.src = study.plot; img.alt = study.plot_alt; img.loading = 'lazy'; img.decoding = 'async';
+    img.width = Math.round(study.plot_width); img.height = Math.round(study.plot_height);
+    img.style.aspectRatio = `${study.plot_width} / ${study.plot_height}`;
     figure.append(img, element('figcaption', study.caption)); article.append(figure);
-    const wrap = element('div', undefined, 'table-wrap'); const table = element('table', undefined, 'study-table');
-    const head = element('thead'); const header = element('tr'); study.headers.forEach(text => { const cell = element('th', text); cell.scope = 'col'; header.append(cell); }); head.append(header);
-    const body = element('tbody'); study.rows.forEach(values => { const row = element('tr'); values.forEach(value => row.append(element('td', String(value)))); body.append(row); });
-    table.append(element('caption', 'Measured results', 'sr-only'), head, body); wrap.append(table); article.append(wrap);
+    article.append(studyTable(study.headers, study.rows, 'Measured results'));
+    if (study.review_rows) {
+      const breakdown = element('div', undefined, 'rubric-breakdown');
+      breakdown.append(element('h4', 'LLM rubric breakdown'), studyTable(study.review_headers, study.review_rows, 'Mean rubric ratings across six outputs per generator'));
+      article.append(breakdown);
+    }
     article.append(element('p', study.limits, 'study-limit'));
     const source = element('a', 'Aggregate evidence ↗', 'small'); source.href = 'https://github.com/Deb044/SemEval2025-Task10/blob/main/' + study.source; article.append(source);
     root.append(article);

@@ -106,3 +106,5 @@ footer { display:flex; justify-content:space-between; gap:20px; border-top:1px s
 @media(max-width:700px) { .study-context { grid-template-columns:1fr; gap:20px; } .study-card h3 { font-size:22px; } .study-finding { padding:18px; } .study-navigation { gap:6px; } .study-navigation button { font-size:11px; } }
 
 @media(max-width:700px) { .study-card figure { overflow-x:auto; } .study-card figure img { min-width:650px; } }
+
+.rubric-breakdown { margin-top:25px; }

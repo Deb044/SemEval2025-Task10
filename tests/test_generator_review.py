@@ -1,5 +1,6 @@
 """Review aggregation must never manufacture human coverage or average unmatched items."""
 import unittest
+import json
 from experiments.generator_comparison import valid_generation
 from experiments.named_review import aggregate
 from semeval.review import item_hash
@@ -21,6 +22,8 @@ class GeneratorReviewChecks(unittest.TestCase):
         self.assertFalse(result['combined_score_available'])
         self.assertIsNone(result['runs'][0]['combined_overall_mean'])
         self.assertEqual(result['runs'][0]['llm_overall_mean'], 2)
+        self.assertNotIn('A speaker made a claim', json.dumps(result))
+        self.assertNotIn('Fixture only', json.dumps(result))
 
     def test_only_bound_genuine_human_scores_can_be_averaged(self):
         item, rating = self.fixture()
@@ -29,6 +32,7 @@ class GeneratorReviewChecks(unittest.TestCase):
         result = aggregate([item], [rating], [human])
         self.assertEqual(result['runs'][0]['combined_overall_mean'], 1)
         self.assertEqual(result['human_paired_items'], 1)
+        self.assertNotIn('fixture-person', json.dumps(result))
         with self.assertRaises(ValueError):
             aggregate([item], [rating], [dict(human, item_sha256='wrong')])
         with self.assertRaises(ValueError):

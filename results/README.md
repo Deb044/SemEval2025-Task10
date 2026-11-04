@@ -105,3 +105,25 @@ duplicate groups or cross-split article-ID/normalized-text overlap groups.
 Language and label counts, separate JVM startup/SQL timings, source hashes and
 input checksums are in [spark-audit.json](spark-audit.json). This is a local
 data-quality stage; no cluster speedup is claimed. Earlier model scores remain unchanged.
+
+## Three generators and named LLM review
+
+The website features five detailed studies; other results remain in its appendix.
+The common 24-passage generator pilot uses pinned Q4_K_M models, identical
+prompts/evidence, supplied labels and no repair retry. Qwen2.5-3B-Instruct reviews
+the raw outputs on the same six passages per generator, blind to model identity.
+
+| Generator | Valid raw outputs | Mean LLM rating /2 (n=6) | Median request seconds |
+|---|---:|---:|---:|
+| Qwen3-1.7B | 17/24 | 1.17 | 7.49 |
+| SmolLM2-1.7B-Instruct | 18/24 | 1.08 | 8.33 |
+| TinyLlama-1.1B-Chat-v1.0 | 0/24 | 1.29 | 9.72 |
+
+TinyLlama received the highest mean rubric rating but exceeded the word limit
+in every case. Qwen3 had the higher judged mean among models producing valid
+outputs. These small English-pilot results require separate interpretation of
+format, source faithfulness and latency. The judge is a single quantized model
+sharing the Qwen family with one generator.
+
+See [generator aggregates](generator-comparison.json), [named review](named-review.json),
+[featured studies](featured-studies.json), and the [protocol](../docs/generator-comparison.md).

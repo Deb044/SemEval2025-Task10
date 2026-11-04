@@ -63,5 +63,5 @@ reproduction is defined by [fixed configurations](experiments/configs),
 [public-data protocols](experiments/PUBLIC_ALTERNATIVES.md), and
 [optional official-format commands](docs/task-formats.md). The generator comparison tests Qwen3, SmolLM2 and TinyLlama on identical inputs.
 A pinned Qwen2.5-3B-Instruct judge reviews blinded raw outputs; NLI remains a
-separate diagnostic. Human–LLM scores are averaged only for actual, source-bound
-human submissions. See [the generation/review protocol](docs/generator-comparison.md).
+separate diagnostic. The reported comparison uses LLM review.
+See [the generation/review protocol](docs/generator-comparison.md).

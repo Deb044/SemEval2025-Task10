@@ -1,0 +1,332 @@
+{
+  "studies": [
+    {
+      "id": "cards",
+      "title": "Can the core model classify hierarchical climate claims?",
+      "aim": "Compare the requested multilingual-transformer + hierarchical label GNN against lexical, latent-semantic and transformer-only classifiers.",
+      "protocol": "CARDS/4C: 6,000 training, 1,000 development and 2,897 held-out English records; 18 native claim labels. The frozen MiniLM encoder feeds a trainable two-layer label GCN. GCN results average seeds 13, 42 and 87; comparison heads use seed 42. Hyperparameters are selected on development data.",
+      "finding": "The core GCN scored 0.4682 macro F1, while LSA + logistic regression scored 0.5510. The graph model did not beat the strongest baseline on this split. This establishes a measured comparison rather than an assumed benefit from greater model complexity.",
+      "plot": "plots/cards-classification.svg",
+      "plot_alt": "Macro F1 for four CARDS classifiers, with GCN seed standard deviation.",
+      "caption": "Bars start at zero. Error bars show training-seed standard deviation for the three-seed GCN; other heads were run once.",
+      "headers": [
+        "Model",
+        "Macro F1",
+        "Seed SD"
+      ],
+      "rows": [
+        [
+          "TF-IDF + LR",
+          "0.4330",
+          "One seed"
+        ],
+        [
+          "LSA + LR",
+          "0.5510",
+          "One seed"
+        ],
+        [
+          "MiniLM + LR",
+          "0.5274",
+          "One seed"
+        ],
+        [
+          "MiniLM + GCN",
+          "0.4682",
+          "0.0132"
+        ]
+      ],
+      "limits": "Native climate-claim classification on English passages. These are not official SemEval narrative scores or a multilingual evaluation.",
+      "source": "results/experiments.json",
+      "plot_width": 728.39952,
+      "plot_height": 238.79952
+    },
+    {
+      "id": "bilingual",
+      "title": "Does the encoder change bilingual propaganda classification?",
+      "aim": "Compare frozen multilingual MiniLM and XLM-R under linear and hierarchical graph heads, and inspect English/Arabic differences.",
+      "protocol": "ProBel news pilot: article-grouped splits with 1,600 training, 400 development and 400 held-out records. The test set has 200 English and 200 Arabic records. Predict 23 native persuasion techniques, grouped into six parent categories. Graph heads use the same three seeds.",
+      "finding": "XLM-R + GCN reached 0.0983 pooled macro F1, compared with 0.0862 for MiniLM + GCN. XLM-R + linear heads scored 0.0422. The encoder comparison therefore depends on the prediction head; the result does not show that XLM-R is always better.",
+      "plot": "plots/bilingual-encoders.svg",
+      "plot_alt": "Overall, English and Arabic macro F1 for MiniLM and XLM-R with linear and GCN heads.",
+      "caption": "The pooled score is computed across the 400 test records; it is not the average of the two language scores. Bars show means where three graph seeds were run.",
+      "headers": [
+        "Encoder + head",
+        "Pooled F1",
+        "English F1",
+        "Arabic F1"
+      ],
+      "rows": [
+        [
+          "MiniLM + logistic regression",
+          "0.0876",
+          "0.0422",
+          "0.1065"
+        ],
+        [
+          "MiniLM + hierarchical GCN",
+          "0.0862",
+          "0.0462",
+          "0.0853"
+        ],
+        [
+          "XLM-R + logistic regression",
+          "0.0422",
+          "0.0220",
+          "0.0502"
+        ],
+        [
+          "XLM-R + hierarchical GCN",
+          "0.0983",
+          "0.0562",
+          "0.1033"
+        ]
+      ],
+      "limits": "This is a small researcher-defined grouped pilot. Scores are low, rare labels are challenging, and persuasion techniques describe rhetoric rather than narrative topics.",
+      "source": "results/probel-protocol.json",
+      "plot_width": 728.39952,
+      "plot_height": 281.99952
+    },
+    {
+      "id": "graph",
+      "title": "Does the label hierarchy itself help?",
+      "aim": "Isolate graph structure and label semantics while keeping the encoder, examples, graph-head architecture, training settings and seeds fixed.",
+      "protocol": "Compare the full MiniLM–GCN with self-loops only, random initial label vectors, and shuffled parent–child edges that preserve node degrees. Each control uses seeds 13, 42 and 87 on both CARDS and ProBel. Self-loops remove message passing between labels; shuffled edges test the correctness of the taxonomy.",
+      "finding": "CARDS favors the full hierarchy over these graph controls. ProBel favors self-loops over the full hierarchy. The evidence therefore does not support a consistent hierarchy benefit across datasets. The linear-head comparison in the other studies changes more than graph structure and cannot isolate this effect.",
+      "plot": "plots/graph-ablations.svg",
+      "plot_alt": "Full graph, self-loop, random-label and shuffled-edge macro F1 with seed variation on CARDS and ProBel.",
+      "caption": "Error bars are standard deviations over three training seeds. Panels use different, explicitly labeled axis ranges. Paired bootstrap diagnostics remain in the aggregate catalog.",
+      "headers": [
+        "Dataset",
+        "Graph condition",
+        "Macro F1 ± SD"
+      ],
+      "rows": [
+        [
+          "CARDS",
+          "Full hierarchy",
+          "0.4682 ± 0.0132"
+        ],
+        [
+          "CARDS",
+          "Self-loops only",
+          "0.4582 ± 0.0211"
+        ],
+        [
+          "CARDS",
+          "Random label vectors",
+          "0.4431 ± 0.0198"
+        ],
+        [
+          "CARDS",
+          "Shuffled parent edges",
+          "0.4313 ± 0.0232"
+        ],
+        [
+          "ProBel",
+          "Full hierarchy",
+          "0.0862 ± 0.0092"
+        ],
+        [
+          "ProBel",
+          "Self-loops only",
+          "0.0995 ± 0.0201"
+        ],
+        [
+          "ProBel",
+          "Random label vectors",
+          "0.0892 ± 0.0103"
+        ],
+        [
+          "ProBel",
+          "Shuffled parent edges",
+          "0.0817 ± 0.0029"
+        ]
+      ],
+      "limits": "These controls test this architecture and split protocol. A higher mean on one dataset does not establish a general causal improvement.",
+      "source": "results/experiments.json",
+      "plot_width": 836.39952,
+      "plot_height": 274.79952
+    },
+    {
+      "id": "generation",
+      "title": "Which small generator produces the most useful explanation?",
+      "aim": "Compare Qwen3-1.7B with two additional generators, SmolLM2-1.7B-Instruct and TinyLlama-1.1B-Chat-v1.0, under a common explanation prompt and evidence budget.",
+      "protocol": "All three models generate once for the same 24 held-out English CARDS passages using supplied native labels, identical semantically selected evidence (up to 800 tokens/six sentences), a 2,048-token context, 256 output tokens, temperature 0, seed 42 and Q4_K_M weights. The separately pinned Qwen2.5-3B-Instruct judge reviews a blinded 18-output subset: the same six passages from every generator. It rates source support, attribution, target relevance and readability from 0 to 2. Quality is scored on raw outputs before fallback.",
+      "finding": "Highest mean judge rating in this pilot: TinyLlama-1.1B-Chat-v1.0 (1.29/2). SmolLM2 and Qwen3 differed by 1 valid raw output out of 24. TinyLlama exceeded the word limit in every case. Judge quality scores therefore need to be read alongside format compliance and latency. Among models that produced valid outputs, Qwen3-1.7B had the highest mean judge rating. The small sample supports a tentative choice, not a definitive ranking. Review scores are from the named Qwen2.5-3B-Instruct LLM judge. The plot averages its four rubric criteria over the same six source passages per generator.",
+      "plot": "plots/generator-comparison.svg",
+      "plot_alt": "Three generators compared by named-judge rating, valid-generation rate and median generation latency.",
+      "caption": "Judge ratings average four rubric criteria across six outputs per generator. Format and latency cover 24 outputs per generator. Quality bars score raw outputs and do not include extractive fallback credit. Review coverage is stated separately.",
+      "headers": [
+        "Generator",
+        "Judge mean /2 (n=6)",
+        "Fully supported",
+        "Valid output (n=24)",
+        "Fallback",
+        "Median seconds"
+      ],
+      "rows": [
+        [
+          "Qwen3-1.7B",
+          "1.17",
+          "17%",
+          "17/24 (71%)",
+          "29%",
+          "7.49"
+        ],
+        [
+          "SmolLM2-1.7B-Instruct",
+          "1.08",
+          "17%",
+          "18/24 (75%)",
+          "25%",
+          "8.33"
+        ],
+        [
+          "TinyLlama-1.1B-Chat-v1.0",
+          "1.29",
+          "17%",
+          "0/24 (0%)",
+          "100%",
+          "9.72"
+        ]
+      ],
+      "review_headers": [
+        "Generator",
+        "Source support /2",
+        "Attribution /2",
+        "Relevance /2",
+        "Readability /2"
+      ],
+      "review_rows": [
+        [
+          "Qwen3-1.7B",
+          "1.00",
+          "0.33",
+          "2.00",
+          "1.33"
+        ],
+        [
+          "SmolLM2-1.7B-Instruct",
+          "1.00",
+          "0.33",
+          "1.67",
+          "1.33"
+        ],
+        [
+          "TinyLlama-1.1B-Chat-v1.0",
+          "1.17",
+          "0.67",
+          "2.00",
+          "1.33"
+        ]
+      ],
+      "limits": "Small English pilot with one quantized judge. The judge shares the Qwen family with one generator, so family preference is possible. This is not evidence of multilingual generation quality or a universal model ranking.",
+      "source": "results/named-review.json",
+      "plot_width": 836.39952,
+      "plot_height": 260.39952
+    },
+    {
+      "id": "systems",
+      "title": "What does the data pipeline contribute?",
+      "aim": "Measure the practical data-engineering components: Spark SQL validation, columnar querying and reuse of expensive transformer embeddings.",
+      "protocol": "Spark SQL local[2] checks all six prepared classification splits before training. Separate isolated DuckDB workers compare JSON and Parquet aggregation on 1,000, 5,000, 10,000 and 25,000 real unique news texts from a 40,749-text pool. Embedding trials compare fresh cache and disk-cache reuse for 32 and 128 texts, with model loading timed separately.",
+      "finding": "Spark validated 12,297 records with zero invalid records, duplicate groups or checked split overlaps. Parquet was not consistently faster for these small first-scan queries. Reusing embeddings reduced the 128-text encoding stage from 6.36 to 2.14 seconds while retaining identical vectors.",
+      "plot": "plots/data-pipeline.svg",
+      "plot_alt": "JSON versus Parquet first-query timings at four data sizes, and cached versus uncached embedding timings.",
+      "caption": "Each point is a local measurement, not a multi-run estimate. First scan includes process/engine effects and may benefit from OS caching. Embedding times exclude loading the model weights.",
+      "headers": [
+        "Operation",
+        "Records",
+        "Measured time",
+        "Interpretation"
+      ],
+      "rows": [
+        [
+          "Spark SQL input gate",
+          "12297",
+          "21.846 s audit",
+          "Zero invalid/duplicate/overlap groups"
+        ],
+        [
+          "1000 texts: JSON / Parquet",
+          "1000",
+          "1.319 / 1.199 s",
+          "Same aggregate query"
+        ],
+        [
+          "5000 texts: JSON / Parquet",
+          "5000",
+          "1.148 / 1.195 s",
+          "Same aggregate query"
+        ],
+        [
+          "10000 texts: JSON / Parquet",
+          "10000",
+          "1.186 / 1.266 s",
+          "Same aggregate query"
+        ],
+        [
+          "25000 texts: JSON / Parquet",
+          "25000",
+          "1.215 / 1.480 s",
+          "Same aggregate query"
+        ],
+        [
+          "Embedding cache (32 texts)",
+          "32",
+          "2.143 / 0.624 s",
+          "Uncached / cached; vectors identical"
+        ],
+        [
+          "Embedding cache (128 texts)",
+          "128",
+          "6.361 / 2.145 s",
+          "Uncached / cached; vectors identical"
+        ]
+      ],
+      "limits": "Spark runs on one machine. These workloads do not demonstrate distributed execution, out-of-core processing or a general Parquet speed advantage.",
+      "source": "results/spark-audit.json",
+      "plot_width": 836.39952,
+      "plot_height": 274.79952
+    }
+  ],
+  "featured_result_ids": [
+    "CARDS · extended hierarchy study-0",
+    "CARDS · extended hierarchy study-1",
+    "CARDS · extended hierarchy study-2",
+    "CARDS · extended hierarchy study-3",
+    "CARDS · extended hierarchy study-4",
+    "CARDS · extended hierarchy study-5",
+    "CARDS · extended hierarchy study-6",
+    "ProBel · extended bilingual study-2",
+    "ProBel · extended bilingual study-3",
+    "ProBel · extended bilingual study-4",
+    "ProBel · extended bilingual study-5",
+    "ProBel · extended bilingual study-6",
+    "ProBel · extended bilingual study-7",
+    "ProBel · extended bilingual study-8",
+    "embeddings-128-cached",
+    "embeddings-128-uncached",
+    "embeddings-32-cached",
+    "embeddings-32-uncached",
+    "generator-qwen3",
+    "generator-smollm2",
+    "generator-tinyllama",
+    "named-judge-qwen3",
+    "named-judge-smollm2",
+    "named-judge-tinyllama",
+    "scale-1000-json",
+    "scale-1000-parquet",
+    "scale-10000-json",
+    "scale-10000-parquet",
+    "scale-25000-json",
+    "scale-25000-parquet",
+    "scale-5000-json",
+    "scale-5000-parquet",
+    "spark-input-audit"
+  ],
+  "appendix_count": 65,
+  "review_note": "Review scores are from the named Qwen2.5-3B-Instruct LLM judge. The plot averages its four rubric criteria over the same six source passages per generator.",
+  "judge_model": "Qwen2.5-3B-Instruct"
+}

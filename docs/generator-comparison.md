@@ -43,7 +43,7 @@ ranking or multilingual generation claim follows from this small English pilot.
 
 ## Actual human review and pairing
 
-Human reviews remain optional. To review this exact raw-output queue locally:
+The reported comparison uses LLM review. The following optional workflow is available for separately collected human ratings. To review this exact raw-output queue locally:
 
 ```powershell
 python -m semeval.web --review-folder artifacts/generator-comparison
