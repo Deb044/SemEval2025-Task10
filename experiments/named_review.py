@@ -87,7 +87,7 @@ def main():
         raise ValueError('Complete all three generators before judging')
     cases = read_jsonl(out / 'evaluation.jsonl')
     queue = []
-    inputs = {'evaluation': out / 'evaluation.jsonl', 'generator_summary': out / 'summary.json', 'server_binary': args.server}
+    inputs = {'evaluation': out / 'evaluation.jsonl', 'server_binary': args.server}
     for key in MODELS:
         path = out / (key + '.jsonl')
         inputs[key] = path

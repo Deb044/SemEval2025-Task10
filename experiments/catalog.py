@@ -136,6 +136,41 @@ def build():
             "n": audit["records"], "status": "measured", "notes": audit["limitations"],
             "details": {key: audit[key] for key in ("tool", "spark_version", "master", "startup_seconds", "passed", "counts", "label_counts", "invalid_records", "cross_split_overlap_groups", "within_split_duplicate_groups")},
             "provenance": {key: audit.get(key) for key in ("commit", "source_sha256", "input_sha256")}})
+    generator_path = Path("artifacts/generator-comparison/summary.json")
+    if generator_path.exists():
+        generated = json.loads(generator_path.read_text(encoding="utf-8"))
+        if generated.get("complete"):
+            write_json("results/generator-comparison.json", generated)
+    elif Path("results/generator-comparison.json").exists():
+        generated = json.loads(Path("results/generator-comparison.json").read_text(encoding="utf-8"))
+    else:
+        generated = None
+    if generated and generated.get("complete"):
+        for run in generated["runs"]:
+            entries.append({"id": "generator-" + run["model"], "study": "Three-generator explanation comparison",
+                "dataset": generated["dataset"], "kind": "explanation", "name": run["name"], "role": "Generator comparison",
+                "metric": "valid raw generation rate", "value": run["valid_generation_rate"], "unit": "fraction",
+                "n": run["count"], "status": "measured", "notes": " ".join(generated["limitations"]),
+                "details": {**run, "protocol": generated["protocol"], "model": generated["models"][run["model"]]},
+                "provenance": {key: generated.get(key) for key in ("commit", "input_sha256", "source_sha256")}})
+    review_path = Path("artifacts/generator-comparison/review-summary.json")
+    if review_path.exists():
+        reviewed = json.loads(review_path.read_text(encoding="utf-8"))
+        write_json("results/named-review.json", reviewed)
+    elif Path("results/named-review.json").exists():
+        reviewed = json.loads(Path("results/named-review.json").read_text(encoding="utf-8"))
+    else:
+        reviewed = None
+    if reviewed:
+        names = {key: value["name"] for key, value in json.loads(Path("experiments/configs/generators.json").read_text()).items()}
+        for run in reviewed["runs"]:
+            entries.append({"id": "named-judge-" + run["model"], "study": "Named blinded explanation review",
+                "dataset": "CARDS six-passage raw-output review", "kind": "review", "name": names[run["model"]],
+                "role": "Named LLM judge", "metric": "mean rubric rating (0–2)", "value": run["llm_overall_mean"],
+                "unit": "rating", "n": run["reviewed_outputs"], "status": "measured", "notes": " ".join(reviewed["limitations"]),
+                "details": {**run, "judge": reviewed["judge"], "protocol": reviewed["protocol"],
+                    "human_paired_items_total": reviewed["human_paired_items"]},
+                "provenance": {key: reviewed.get(key) for key in ("commit", "input_sha256", "source_sha256")}})
     study_order = {study: index for index, (_, study, _) in enumerate(STUDIES)}
     entries.sort(key=lambda row: ("initial study" in row["study"], study_order.get(row["study"], 20),
                                  row.get("role") != "Core", row["study"], row.get("name", ""), row.get("n", 0)))

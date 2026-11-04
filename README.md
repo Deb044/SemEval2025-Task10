@@ -44,7 +44,7 @@ classification matrices and EMM transfer,
 compares longer-text explanations, measures data/embedding scalability, and exports
 the experiment catalog. It starts and stops its own local generator. Use
 `--stage prepare`, `spark`, `classification`, `source-transfer`, `explanations`,
-`scalability`, `grounding`, or `export` to run a single stage. Compatible classification
+`generators`, `scalability`, `grounding`, or `export` to run a single stage. Compatible classification
 checkpoints resume; completed other stages are reused only after source and input
 hash validation. Changed experiments need fresh output directories.
 
@@ -61,6 +61,7 @@ text analysis and review run locally.
 Historical studies are retained with their original source commits. Current
 reproduction is defined by [fixed configurations](experiments/configs),
 [public-data protocols](experiments/PUBLIC_ALTERNATIVES.md), and
-[optional official-format commands](docs/task-formats.md). Grounding evaluation uses an independent blinded LLM audit and a pinned NLI
-diagnostic, rather than requiring human ratings. These are model-based proxies,
-not human validation or world-truth judgments.
+[optional official-format commands](docs/task-formats.md). The generator comparison tests Qwen3, SmolLM2 and TinyLlama on identical inputs.
+A pinned Qwen2.5-3B-Instruct judge reviews blinded raw outputs; NLI remains a
+separate diagnostic. Human–LLM scores are averaged only for actual, source-bound
+human submissions. See [the generation/review protocol](docs/generator-comparison.md).

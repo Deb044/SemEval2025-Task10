@@ -35,6 +35,7 @@ window.addEventListener('hashchange', () => activateTab(location.hash.slice(1)))
 activateTab(location.hash.slice(1));
 
 let experiments = [];
+let featuredResultIds = new Set();
 function resultText(row) {
   if (Number.isFinite(row.value)) return row.value.toFixed(row.unit === 'seconds' ? 3 : 4);
   return row.status === 'awaiting_human_review' ? 'Review pending' : 'Not measured';
@@ -43,7 +44,7 @@ function renderExperiments() {
   const study = byId('study-filter').value;
   const kind = byId('kind-filter').value;
   const query = byId('experiment-search').value.toLowerCase().trim();
-  const rows = experiments.filter(row => (study === 'all' || row.study === study) &&
+  const rows = experiments.filter(row => !featuredResultIds.has(row.id) && (study === 'all' || row.study === study) &&
     (kind === 'all' || row.kind === kind) && (!query || [row.name, row.dataset, row.study, row.metric].join(' ').toLowerCase().includes(query)));
   byId('experiment-count').textContent = `${rows.length} result entries`;
   const root = byId('experiment-rows');
@@ -67,7 +68,7 @@ function renderExperiments() {
     if (row.format) evaluation.append(element('p', row.format));
     const detailsCell = element('td');
     const details = element('details');
-    details.append(element('summary', 'Inspect'), element('p', row.notes || ''));
+    details.append(element('summary', 'Inspect'), element('p', Array.isArray(row.notes) ? row.notes.join(' ') : (row.notes || '')));
     if (row.provenance?.commit) {
       const link = element('a', 'Source commit ↗');
       link.href = `https://github.com/Deb044/SemEval2025-Task10/commit/${encodeURIComponent(row.provenance.commit)}`;
@@ -82,18 +83,55 @@ function renderExperiments() {
 }
 ['study-filter', 'kind-filter'].forEach(id => byId(id).addEventListener('change', renderExperiments));
 byId('experiment-search').addEventListener('input', renderExperiments);
-fetch('experiments.json', { cache: 'no-store' }).then(response => {
-  if (!response.ok) throw new Error('Experiment catalog unavailable');
-  return response.json();
-}).then(data => {
-  experiments = data.experiments || [];
-  [...new Set(experiments.map(row => row.study))].forEach(study => {
+function renderStudies(data) {
+  featuredResultIds = new Set(data.featured_result_ids || []);
+  const root = byId('featured-studies'); root.replaceChildren();
+  const navigation = byId('study-navigation'); navigation.replaceChildren();
+  data.studies.forEach((study, index) => {
+    const article = element('article', undefined, 'study-card'); article.id = 'study-' + study.id;
+    const jump = element('button', `${String(index + 1).padStart(2, '0')} ${['Classification', 'Bilingual encoders', 'Graph controls', 'Generators & judge', 'Data pipeline'][index]}`);
+    jump.type = 'button'; jump.addEventListener('click', () => article.scrollIntoView({behavior: 'smooth', block: 'start'})); navigation.append(jump);
+    article.append(element('p', `STUDY ${String(index + 1).padStart(2, '0')}`, 'eyebrow'), element('h3', study.title));
+    const context = element('div', undefined, 'study-context');
+    [['Aim', study.aim], ['How we tested it', study.protocol]].forEach(([title, text]) => {
+      const block = element('div'); block.append(element('h4', title), element('p', text)); context.append(block);
+    });
+    article.append(context);
+    const finding = element('div', undefined, 'study-finding'); finding.append(element('h4', 'Results'), element('p', study.finding)); article.append(finding);
+    const figure = element('figure'); const img = element('img');
+    if (!/^plots\/[a-z-]+\.svg$/.test(study.plot)) throw new Error('Invalid study plot path');
+    img.src = study.plot; img.alt = study.plot_alt; img.loading = 'lazy'; img.decoding = 'async';
+    figure.append(img, element('figcaption', study.caption)); article.append(figure);
+    const wrap = element('div', undefined, 'table-wrap'); const table = element('table', undefined, 'study-table');
+    const head = element('thead'); const header = element('tr'); study.headers.forEach(text => { const cell = element('th', text); cell.scope = 'col'; header.append(cell); }); head.append(header);
+    const body = element('tbody'); study.rows.forEach(values => { const row = element('tr'); values.forEach(value => row.append(element('td', String(value)))); body.append(row); });
+    table.append(element('caption', 'Measured results', 'sr-only'), head, body); wrap.append(table); article.append(wrap);
+    article.append(element('p', study.limits, 'study-limit'));
+    const source = element('a', 'Aggregate evidence ↗', 'small'); source.href = 'https://github.com/Deb044/SemEval2025-Task10/blob/main/' + study.source; article.append(source);
+    root.append(article);
+  });
+  const remaining = experiments.filter(row => !featuredResultIds.has(row.id));
+  byId('appendix-summary').textContent = `Browse ${remaining.length} additional result entries`;
+  const groups = new Map(); remaining.forEach(row => groups.set(row.study, (groups.get(row.study) || 0) + 1));
+  const overview = byId('appendix-overview'); overview.replaceChildren();
+  groups.forEach((count, study) => {
+    const button = element('button', `${study} · ${count}`); button.type = 'button';
+    button.addEventListener('click', () => { byId('appendix-catalog').open = true; byId('study-filter').value = study; byId('kind-filter').value = 'all'; byId('experiment-search').value = ''; renderExperiments(); });
+    overview.append(button);
     const option = element('option', study); option.value = study; byId('study-filter').append(option);
   });
-  renderExperiments();
+}
+Promise.all(['experiments.json', 'studies.json'].map(async path => {
+  const response = await fetch(path, {cache: 'no-store'});
+  if (!response.ok) throw new Error('Study evidence unavailable');
+  return response.json();
+})).then(([catalog, studies]) => {
+  experiments = catalog.experiments || [];
+  if (studies.studies?.length !== 5) throw new Error('Expected five complete featured studies');
+  renderStudies(studies); renderExperiments();
 }).catch(error => {
+  byId('featured-studies').replaceChildren(element('p', error.message + '. The repository contains the aggregate evidence.'));
   byId('experiment-count').textContent = 'Results unavailable';
-  byId('experiment-message').textContent = error.message + '. The repository contains the committed aggregate evidence.';
 });
 
 let localModels = [];

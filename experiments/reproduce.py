@@ -75,7 +75,7 @@ def generator(args):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--stage", choices=("all", "prepare", "spark", "classification", "source-transfer", "explanations", "grounding", "scalability", "export"), default="all")
+    parser.add_argument("--stage", choices=("all", "prepare", "spark", "classification", "source-transfer", "explanations", "generators", "grounding", "scalability", "export"), default="all")
     parser.add_argument("--gguf", default="work/models/Qwen3-1.7B-Q4_K_M.gguf")
     parser.add_argument("--server")
     parser.add_argument("--use-running-server", action="store_true")
@@ -107,6 +107,10 @@ def main():
         if not complete:
             with generator(args):
                 run("experiments.long_explanations", "--gguf", args.gguf, "--model", str(inputs["classifier"]))
+    if selected("generators"):
+        binary = args.server or shutil.which("llama-server") or "work/llama-b11960/llama-server.exe"
+        run("experiments.generator_comparison", "--server", binary)
+        run("experiments.named_review", "--server", binary)
     if selected("scalability"):
         from experiments.public_probel import CHECKSUMS, ROOT
         inputs = {name: ROOT / "raw" / name for name in CHECKSUMS if name.endswith(".jsonl")}
@@ -123,6 +127,8 @@ def main():
         if all(Path(path).exists() for path in ("artifacts/extensions-cards/summary.json", "artifacts/extensions-probel/summary.json", "artifacts/extensions-emm/summary.json")):
             run("experiments.errors")
         run("experiments.catalog")
+        if Path("results/generator-comparison.json").exists() and Path("results/named-review.json").exists():
+            run("experiments.website_studies")
 
 
 if __name__ == "__main__":
