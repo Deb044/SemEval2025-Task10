@@ -89,13 +89,17 @@ def analyze(payload):
     language, domain = payload.get('language', 'en'), payload.get('domain', 'CC')
     if not 0 < len(text) <= 20000 or language not in LANGUAGES or domain not in ('CC', 'URW', 'all'):
         raise ValueError('Use 1–20,000 characters, a supported language and a taxonomy domain')
+    max_labels = payload.get('max_labels', 1)
+    if type(max_labels) is not int or max_labels not in (1, 3):
+        raise ValueError('Choose one or up to three candidate labels')
     data, chunks = taxonomy(), units(text)
-    encoder = get_encoder()
+    encoder = get_encoder('minilm')
     label_vectors = encoder.encode([query(row) for row in data['labels']])
     article_vectors = encoder.encode([row['text'] for row in chunks])
     matches, ranking = select_matches(data, label_vectors, article_vectors, domain)
     from .official_nli import rerank
     matches, ranking = rerank(data, chunks, ranking)
+    matches = matches[:max_labels]
     evidence, preview = extract_evidence(chunks, matches)
     allowed = {row['id'] for row in data['labels']}
     if any(row['label'] not in allowed for row in matches):
@@ -103,7 +107,7 @@ def analyze(payload):
     trace = [{'stage': 'Input', 'state': 'complete', 'detail': f'{len(text)} characters; {len(chunks)} text units.'},
         {'stage': 'Multilingual encoder', 'state': 'complete', 'detail': f'{article_vectors.shape[1]}-dimensional normalized embeddings for text and label names.'},
         {'stage': 'Candidate ranking', 'state': 'complete', 'detail': 'Cosine-based retrieval of up to eight official-label candidates.'},
-        {'stage': 'Entailment check', 'state': 'complete', 'detail': 'Pinned multilingual MiniLMv2 NLI checks claims against nearby source context; agreement ≥0.70 and three-way entailment ≥0.25 are exploratory cutoffs.'},
+        {'stage': 'Entailment check', 'state': 'complete', 'detail': 'Pinned multilingual MiniLMv2 NLI checks claims against nearby source context; semantic similarity has 80% weight in the combined rank; agreement ≥0.60 and three-way entailment ≥0.10 are exploratory cutoffs.'},
         {'stage': 'Hierarchy validation', 'state': 'complete', 'detail': 'Every label and parent is checked against the pinned 96-label public organizer taxonomy.'},
         {'stage': 'Label GNN', 'state': 'not_used', 'detail': 'The trained GNN checkpoints use auxiliary labels; they are not an official-taxonomy classifier.'},
         {'stage': 'Evidence', 'state': 'complete', 'detail': f'{len(evidence)} source units selected with neighboring context.'}]
@@ -113,7 +117,7 @@ def analyze(payload):
     if payload.get('generate') and matches[0]['label'] != 'Other':
         from .explain import explain_row
         mapping = {row['id']: {'parent': row['parent'], 'definition': row['definition']} for row in data['labels']}
-        prediction = {'labels': [row['label'] for row in matches], 'scores': {row['label']: row['support_score'] for row in matches}}
+        prediction = {'labels': [row['label'] for row in matches], 'scores': {row['label']: row['selection_score'] for row in matches}}
         try:
             value = explain_row({'article_id': 'local-official-input', 'language': language, 'text': text},
                 'generate', mapping, 'http://127.0.0.1:8080/v1', predicted=prediction, encoder=encoder)

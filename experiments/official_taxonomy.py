@@ -81,7 +81,7 @@ def main():
         'model': 'onnx-community/multilingual-MiniLMv2-L6-mnli-xnli-ONNX',
         'revision': 'ca5daf3d11b6c4b3143b1f4602a2edfb64c3ad7e',
         'weights_sha256': '55614f3c7da74184742eaa0006b978744437aa91de9ba4913db42f94d7844a8f',
-        'entailment_index': 0, 'agreement_threshold': 0.7, 'minimum_entailment': 0.25, 'relative_agreement_margin': 0.05}
+        'entailment_index': 0, 'agreement_threshold': 0.6, 'minimum_entailment': 0.1, 'relative_selection_margin': 0.05, 'semantic_weight': 0.8, 'agreement_weight': 0.2}
     encoded = json.dumps(payload, ensure_ascii=False, indent=2) + '\n'
     for destination in ['semeval/taxonomies/official.json', 'website/dist/official-taxonomy.json']:
         target = Path(destination); target.parent.mkdir(parents=True, exist_ok=True)

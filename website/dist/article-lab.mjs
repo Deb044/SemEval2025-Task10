@@ -39,15 +39,15 @@ function sourceView(text,evidence){
 async function result(data,text){
  validateMatches(await taxonomy,data.matches);
  const root=byId('official-output');root.replaceChildren();
- const panel=el('article',undefined,'panel');panel.append(el('p',data.engine,'eyebrow'),el('h3','Candidate official narratives'),el('p',data.note,'small'));
+ const panel=el('article',undefined,'panel');panel.append(el('p',data.engine,'eyebrow'),el('h3',data.matches.length===1?'Candidate official narrative':'Candidate official narratives'),el('p',data.note,'small'));
  const list=el('div',undefined,'narrative-matches');data.matches.forEach(match=> {
   const block=el('div');block.append(el('strong',match.label),el('p',`Parent: ${match.parent}`,'small'));
-  block.append(el('p',Number.isFinite(match.score)?`Semantic similarity: ${match.score.toFixed(3)} · not a probability`:'No candidate exceeded the prototype cutoff.','small'));if(Number.isFinite(match.support_score))block.append(el('p',`Claim-agreement check: ${match.support_score.toFixed(3)} · model-based score`,'small'));list.append(block);
+  block.append(el('p',Number.isFinite(match.score)?`Semantic similarity: ${match.score.toFixed(3)} · not a probability`:'No candidate passed the prototype selection checks.','small'));if(Number.isFinite(match.support_score))block.append(el('p',`Claim-agreement check: ${match.support_score.toFixed(3)} · model-based score`,'small'));list.append(block);
  });panel.append(list);
  panel.append(el('h4','Supporting source evidence'));const quotes=el('ol',undefined,'evidence');
  if(data.evidence.length)data.evidence.forEach(unit=>quotes.append(el('li',`[${unit.id}] ${unit.text}`)));else quotes.append(el('li','No supporting unit selected for Other.'));
  panel.append(quotes);
- if(data.generated_explanation){panel.append(el('h4',data.generated_explanation.fallback?'Extractive fallback':'Local Qwen explanation'),el('p',data.generated_explanation.text),el('p',`Target: ${data.generated_explanation.target}`,'small'));}
+ if(data.generated_explanation){panel.append(el('h4',data.generated_explanation.fallback?'Extractive fallback':'Local Qwen draft · inspect against the source'),el('p',data.generated_explanation.text),el('p',`Target: ${data.generated_explanation.target}`,'small'));}
  else if(data.preview){panel.append(el('h4','Evidence extract · up to 80 words'),el('p',data.preview),el('p','This is source wording, not an LLM-written explanation.','small'));}
  if(data.explanation_error)panel.append(el('p',data.explanation_error,'small'));
  const source=el('details');source.append(el('summary','Inspect the article with selected evidence'),sourceView(text,data.evidence));panel.append(source);
@@ -65,7 +65,7 @@ byId('official-form').addEventListener('submit',async event=> {
   await taxonomy;
   if(byId('official-mode').value==='local'){
    controller=new AbortController();progress('Local pipeline','Running the encoder and official-label matching. A detailed trace will appear when the calculation completes.');
-   const response=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},signal:controller.signal,body:JSON.stringify({model:'semeval-official',text,domain,language:byId('official-language').value,generate:byId('official-generate').checked})});
+   const response=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},signal:controller.signal,body:JSON.stringify({model:'semeval-official',text,domain,language:byId('official-language').value,max_labels:byId('official-more').checked?3:1,generate:byId('official-generate').checked})});
    const data=await response.json();if(!response.ok)throw new Error(data.error||'Local analysis failed');await result(data,text);state(false);
   }else{
    worker ||= new Worker(new URL('./narrative-worker.mjs',import.meta.url),{type:'module'});
@@ -75,7 +75,7 @@ byId('official-form').addEventListener('submit',async event=> {
     try {if(data.type==='error')throw new Error(data.message);await result(data.result,text);}catch(error){progress('Analysis stopped',error.message);}finally{state(false);}
    };
    worker.onerror=error=> {progress('Browser model unavailable',error.message||'Check the model download connection or use the local workspace.');worker.terminate();worker=null;state(false);};
-   progress('Starting','Preparing the browser encoder. The first run includes model downloads.');worker.postMessage({text,domain});
+   progress('Starting','Preparing the browser encoder. The first run includes model downloads.');worker.postMessage({text,domain,maxLabels:byId('official-more').checked?3:1});
   }
  }catch(error){if(error.name!=='AbortError')progress('Analysis stopped',error.message);state(false);}
 });

@@ -40,12 +40,14 @@ def filter_supported(data, ranking, supports):
     checked = [dict(row, entailment_score=score['entailment'] if score else None,
         support_score=score['entailment'] / max(score['entailment'] + score['contradiction'], 1e-12) if score else None)
         for row, score in zip(ranking, supports, strict=True)]
-    eligible = [row for row in checked if row['support_score'] is not None and row['support_score'] >= .7 and row['entailment_score'] >= .25 and row['score'] >= .3]
+    for row in checked:
+        row['selection_score'] = .8 * row['score'] + .2 * (row['support_score'] or 0)
+    eligible = [row for row in checked if row['support_score'] is not None and row['support_score'] >= .6 and row['entailment_score'] >= .1 and row['score'] >= .3]
     concrete = {row['parent'] for row in eligible if not labels[row['label']]['is_other']}
     selected = sorted([row for row in eligible if not labels[row['label']]['is_other'] or row['parent'] not in concrete],
-                      key=lambda row: (-row['support_score'], -row['score']))
-    selected = [row for row in selected if row['support_score'] >= selected[0]['support_score'] - .05][:3]
-    return selected or [{'label': 'Other', 'parent': 'Other', 'score': None, 'support_score': None, 'evidence_id': None}], sorted(checked, key=lambda row: -(row['support_score'] if row['support_score'] is not None else -1))
+                      key=lambda row: -row['selection_score'])
+    selected = [row for row in selected if row['selection_score'] >= selected[0]['selection_score'] - .05][:3]
+    return selected or [{'label': 'Other', 'parent': 'Other', 'score': None, 'support_score': None, 'evidence_id': None}], sorted(checked, key=lambda row: -row['selection_score'])
 
 
 def rerank(data, chunks, ranking):

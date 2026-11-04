@@ -51,7 +51,8 @@ async function checkSupport(taxonomy, units, ranking) {
 }
 self.onmessage=async event=> {
   try {
-    const {text,domain}=event.data;
+    const {text,domain,maxLabels=1}=event.data;
+    if(![1,3].includes(maxLabels))throw new Error('Choose one or up to three candidate labels.');
     if(typeof text!=='string'||!text.trim()||text.length>20000||!['CC','URW','all'].includes(domain)) throw new Error('Use 1–20,000 characters and select a taxonomy domain.');
     const started=performance.now(), units=splitUnits(text);
     update('Input',`${text.length} characters split into ${units.length} text units.`);
@@ -66,13 +67,14 @@ self.onmessage=async event=> {
     const retrieved=matchLabels(taxonomy,labelVectors,vectors,domain);
     const supports=await checkSupport(taxonomy,units,retrieved.ranking);
     const selected=supportedMatches(taxonomy,retrieved.ranking,supports);
+    selected.matches=selected.matches.slice(0,maxLabels);
     validateMatches(taxonomy,selected.matches);
     const extracts=evidenceFor(units,selected.matches);
     const trace=[
       {stage:'Input',state:'complete',detail:`${text.length} characters; ${units.length} text units of at most 32 words.`},
       {stage:'Multilingual encoder',state:'complete',detail:`Quantized multilingual MiniLM; ${vectors[0].length}-dimensional normalized vectors. Text is processed in this browser.`},
       {stage:'Candidate ranking',state:'complete',detail:'Cosine-based retrieval of up to eight official-label candidates.'},
-      {stage:'Entailment check',state:'complete',detail:'Multilingual MiniLMv2 NLI checks candidate claims against nearby source context; Entailment-vs-contradiction agreement ≥0.70 and three-way entailment ≥0.25 are exploratory cutoffs, not official-task calibration.'},
+      {stage:'Entailment check',state:'complete',detail:'Multilingual MiniLMv2 NLI checks candidate claims against nearby source context; Entailment-vs-contradiction agreement ≥0.60 and three-way entailment ≥0.10 are exploratory cutoffs, not official-task calibration.'},
       {stage:'Hierarchy validation',state:'complete',detail:'Returned names and parent links are restricted to the 96-label organizer taxonomy profile.'},
       {stage:'Label GNN',state:'not_used',detail:'Auxiliary GNN checkpoints are not an official-taxonomy classifier and are not used in this browser mode.'},
       {stage:'Evidence',state:'complete',detail:`${extracts.evidence.length} source units retained with neighboring context.`},

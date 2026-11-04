@@ -56,7 +56,8 @@ python -m semeval.web
 Open **http://127.0.0.1:8765** for the pipeline, every experiment, local GNN analysis,
 and the blinded explanation review queue. Start the documented local generator
 when requesting interactive explanations. The hosted website presents aggregates;
-text analysis and review run locally.
+the official-taxonomy article prototype runs in the browser. The trained GNN
+models and optional Qwen generation run locally. See [architecture and article testing](docs/article-lab.md).
 
 Historical studies are retained with their original source commits. Current
 reproduction is defined by [fixed configurations](experiments/configs),

@@ -27,3 +27,10 @@ retain their original limitations in the appendix.
 The site manifest in `.openai/hosting.json` selects the existing Sites project.
 Source publication and access settings are managed through Sites. Raw data,
 generations, review rationales, weights and reviewer identities stay ignored.
+
+The Overview includes a source-controlled SVG architecture diagram. Analyze runs
+a browser-local official-taxonomy prototype, with exact label/hierarchy checks,
+multilingual retrieval and claim-agreement filtering. The optional localhost
+workspace retains trained native GNN analysis and Qwen generation. See
+[the article-lab protocol](../docs/article-lab.md) for model pins, privacy,
+thresholds and the distinction between official vocabulary and official accuracy.

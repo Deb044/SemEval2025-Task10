@@ -55,9 +55,10 @@ export function validateMatches(taxonomy, matches) {
 export function supportedMatches(taxonomy, ranking, supports) {
   const lookup=new Map(taxonomy.labels.map(row=>[row.id,row]));
   const checked=ranking.map((row,index)=>{const value=supports[index];return {...row,entailment_score:value?.entailment??null,support_score:value?value.entailment/(value.entailment+value.contradiction||1):null};});
-  const eligible=checked.filter(row=>Number.isFinite(row.support_score)&&row.support_score>=.7&&row.entailment_score>=.25&&row.score>=.3);
+  checked.forEach(row=>row.selection_score=.8*row.score+.2*(row.support_score??0));
+  const eligible=checked.filter(row=>Number.isFinite(row.support_score)&&row.support_score>=.6&&row.entailment_score>=.1&&row.score>=.3);
   const concrete=new Set(eligible.filter(row=>!lookup.get(row.label).is_other).map(row=>row.parent));
-  const ordered=eligible.filter(row=>!lookup.get(row.label).is_other||!concrete.has(row.parent)).sort((a,b)=>b.support_score-a.support_score||b.score-a.score);
-  const matches=ordered.filter(row=>row.support_score>=ordered[0].support_score-.05).slice(0,3);
-  return {matches:matches.length?matches:[{label:'Other',parent:'Other',score:null,support_score:null,evidence_id:null}],ranking:checked.sort((a,b)=>b.support_score-a.support_score)};
+  const ordered=eligible.filter(row=>!lookup.get(row.label).is_other||!concrete.has(row.parent)).sort((a,b)=>b.selection_score-a.selection_score);
+  const matches=ordered.filter(row=>row.selection_score>=ordered[0].selection_score-.05).slice(0,3);
+  return {matches:matches.length?matches:[{label:'Other',parent:'Other',score:null,support_score:null,evidence_id:null}],ranking:checked.sort((a,b)=>b.selection_score-a.selection_score)};
 }
