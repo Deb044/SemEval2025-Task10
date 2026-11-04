@@ -1,0 +1,1237 @@
+{
+  "records": 12297,
+  "counts": [
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "records": 1000,
+      "characters": 299195,
+      "label_assignments": 1000
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "records": 2897,
+      "characters": 994323,
+      "label_assignments": 2897
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "records": 6000,
+      "characters": 1814025,
+      "label_assignments": 6000
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "records": 200,
+      "characters": 42895,
+      "label_assignments": 209
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "records": 200,
+      "characters": 30051,
+      "label_assignments": 87
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "records": 200,
+      "characters": 40407,
+      "label_assignments": 227
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "records": 200,
+      "characters": 31255,
+      "label_assignments": 78
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "records": 800,
+      "characters": 167412,
+      "label_assignments": 916
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "records": 800,
+      "characters": 117229,
+      "label_assignments": 292
+    }
+  ],
+  "label_counts": [
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "0_0",
+      "records": 695
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "1_1",
+      "records": 14
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "1_2",
+      "records": 6
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "1_3",
+      "records": 10
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "1_4",
+      "records": 21
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "1_6",
+      "records": 8
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "1_7",
+      "records": 18
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "2_1",
+      "records": 34
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "2_3",
+      "records": 15
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "3_1",
+      "records": 9
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "3_2",
+      "records": 14
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "3_3",
+      "records": 14
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "4_1",
+      "records": 14
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "4_2",
+      "records": 8
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "4_4",
+      "records": 10
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "4_5",
+      "records": 8
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "5_1",
+      "records": 59
+    },
+    {
+      "dataset": "cards",
+      "split": "dev",
+      "language": "en",
+      "label": "5_2",
+      "records": 43
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "0_0",
+      "records": 1753
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "1_1",
+      "records": 51
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "1_2",
+      "records": 21
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "1_3",
+      "records": 30
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "1_4",
+      "records": 68
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "1_6",
+      "records": 26
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "1_7",
+      "records": 64
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "2_1",
+      "records": 124
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "2_3",
+      "records": 48
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "3_1",
+      "records": 26
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "3_2",
+      "records": 49
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "3_3",
+      "records": 46
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "4_1",
+      "records": 64
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "4_2",
+      "records": 34
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "4_4",
+      "records": 39
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "4_5",
+      "records": 36
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "5_1",
+      "records": 223
+    },
+    {
+      "dataset": "cards",
+      "split": "test",
+      "language": "en",
+      "label": "5_2",
+      "records": 195
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "0_0",
+      "records": 4174
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "1_1",
+      "records": 85
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "1_2",
+      "records": 38
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "1_3",
+      "records": 59
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "1_4",
+      "records": 124
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "1_6",
+      "records": 48
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "1_7",
+      "records": 109
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "2_1",
+      "records": 201
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "2_3",
+      "records": 87
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "3_1",
+      "records": 53
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "3_2",
+      "records": 86
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "3_3",
+      "records": 82
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "4_1",
+      "records": 84
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "4_2",
+      "records": 49
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "4_4",
+      "records": 63
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "4_5",
+      "records": 47
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "5_1",
+      "records": 351
+    },
+    {
+      "dataset": "cards",
+      "split": "train",
+      "language": "en",
+      "label": "5_2",
+      "records": 260
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Appeal_to_Authority",
+      "records": 3
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Appeal_to_Hypocrisy",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Appeal_to_Values",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Causal_Oversimplification",
+      "records": 7
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Consequential_Oversimplification",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Conversation_Killer",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Doubt",
+      "records": 3
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Exaggeration-Minimisation",
+      "records": 23
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "False_Dilemma-No_Choice",
+      "records": 2
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Flag_Waving",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Guilt_by_Association",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Loaded_Language",
+      "records": 103
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Name_Calling-Labeling",
+      "records": 35
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Obfuscation-Vagueness-Confusion",
+      "records": 10
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Questioning_the_Reputation",
+      "records": 11
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Repetition",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Slogans",
+      "records": 4
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "ar",
+      "label": "Whataboutism",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "Appeal_to_Fear-Prejudice",
+      "records": 4
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "Appeal_to_Hypocrisy",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "Appeal_to_Popularity",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "Conversation_Killer",
+      "records": 2
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "Doubt",
+      "records": 5
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "Exaggeration-Minimisation",
+      "records": 5
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "False_Dilemma-No_Choice",
+      "records": 7
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "Flag_Waving",
+      "records": 4
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "Loaded_Language",
+      "records": 26
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "Name_Calling-Labeling",
+      "records": 23
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "Obfuscation-Vagueness-Confusion",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "Questioning_the_Reputation",
+      "records": 6
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "Slogans",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "dev",
+      "language": "en",
+      "label": "Straw_Man",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Appeal_to_Authority",
+      "records": 3
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Appeal_to_Fear-Prejudice",
+      "records": 3
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Appeal_to_Hypocrisy",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Causal_Oversimplification",
+      "records": 8
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Consequential_Oversimplification",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Conversation_Killer",
+      "records": 2
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Doubt",
+      "records": 7
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Exaggeration-Minimisation",
+      "records": 24
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "False_Dilemma-No_Choice",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Flag_Waving",
+      "records": 9
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Loaded_Language",
+      "records": 104
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Name_Calling-Labeling",
+      "records": 32
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Obfuscation-Vagueness-Confusion",
+      "records": 16
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Questioning_the_Reputation",
+      "records": 14
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Red_Herring",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "ar",
+      "label": "Slogans",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "Appeal_to_Authority",
+      "records": 3
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "Appeal_to_Fear-Prejudice",
+      "records": 10
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "Appeal_to_Values",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "Causal_Oversimplification",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "Conversation_Killer",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "Doubt",
+      "records": 9
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "Exaggeration-Minimisation",
+      "records": 3
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "False_Dilemma-No_Choice",
+      "records": 4
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "Flag_Waving",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "Loaded_Language",
+      "records": 25
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "Name_Calling-Labeling",
+      "records": 17
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "Questioning_the_Reputation",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "Repetition",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "test",
+      "language": "en",
+      "label": "Slogans",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Appeal_to_Authority",
+      "records": 15
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Appeal_to_Fear-Prejudice",
+      "records": 11
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Appeal_to_Hypocrisy",
+      "records": 8
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Appeal_to_Popularity",
+      "records": 4
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Appeal_to_Time",
+      "records": 5
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Appeal_to_Values",
+      "records": 2
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Causal_Oversimplification",
+      "records": 24
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Consequential_Oversimplification",
+      "records": 6
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Conversation_Killer",
+      "records": 6
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Doubt",
+      "records": 32
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Exaggeration-Minimisation",
+      "records": 104
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "False_Dilemma-No_Choice",
+      "records": 5
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Flag_Waving",
+      "records": 9
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Guilt_by_Association",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Loaded_Language",
+      "records": 433
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Name_Calling-Labeling",
+      "records": 138
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Obfuscation-Vagueness-Confusion",
+      "records": 31
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Questioning_the_Reputation",
+      "records": 51
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Red_Herring",
+      "records": 6
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Repetition",
+      "records": 11
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Slogans",
+      "records": 10
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Straw_Man",
+      "records": 3
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "ar",
+      "label": "Whataboutism",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Appeal_to_Authority",
+      "records": 6
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Appeal_to_Fear-Prejudice",
+      "records": 17
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Appeal_to_Hypocrisy",
+      "records": 3
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Appeal_to_Popularity",
+      "records": 1
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Appeal_to_Values",
+      "records": 4
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Causal_Oversimplification",
+      "records": 5
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Conversation_Killer",
+      "records": 3
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Doubt",
+      "records": 23
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Exaggeration-Minimisation",
+      "records": 17
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "False_Dilemma-No_Choice",
+      "records": 11
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Flag_Waving",
+      "records": 11
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Guilt_by_Association",
+      "records": 3
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Loaded_Language",
+      "records": 103
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Name_Calling-Labeling",
+      "records": 60
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Questioning_the_Reputation",
+      "records": 12
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Red_Herring",
+      "records": 2
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Repetition",
+      "records": 2
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Slogans",
+      "records": 5
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Straw_Man",
+      "records": 3
+    },
+    {
+      "dataset": "probel",
+      "split": "train",
+      "language": "en",
+      "label": "Whataboutism",
+      "records": 1
+    }
+  ],
+  "invalid_records": 0,
+  "cross_split_overlap_groups": {
+    "article_id": 0,
+    "text_hash": 0
+  },
+  "within_split_duplicate_groups": {
+    "article_id": 0,
+    "text_hash": 0
+  },
+  "empty_splits": [],
+  "passed": true,
+  "tool": "Apache Spark SQL",
+  "spark_version": "4.2.0",
+  "master": "local[2]",
+  "startup_seconds": 21.86152549999997,
+  "audit_seconds": 21.846057700000074,
+  "limitations": [
+    "Local execution with two task threads; no distributed performance claim.",
+    "Exact normalized-text and article-ID overlap checks within each dataset; translation and semantic near-duplicate detection are not established.",
+    "Inputs and labels are preserved; this stage validates rather than silently removes records.",
+    "Timings are one local execution and are not a speedup comparison."
+  ],
+  "commit": "8bfa031a0814b8d9cd480d8e52fe1d7a03dd53e8",
+  "source_sha256": {
+    "experiments/spark_audit.py": "fa35fa28f7a316f8071084ac81af7d75747b09b06e18a63ba57522f657aa706e"
+  },
+  "input_sha256": {
+    "cards/train": "8d3d91f8c713ba9085cf700970948ab3462efcbf3af4839e86e8527b139d15cf",
+    "cards/dev": "3dc05121b39b34065e007e650b239310e66ca5644a11a8887e6e50840f74fa68",
+    "cards/test": "f0f051eecc84edfb98b31e758c56e817e658ba7c0d47af6a4e46809be5b7429e",
+    "probel/train": "7b2c472f705d5e648760856d5efa41f2e8978b82dd63f5fe0aa02faadc2612fd",
+    "probel/dev": "8498f8104bc93e78963fcb17e8282df30d50c61df9d04f4a88231fad628ba839",
+    "probel/test": "71e22674ed405230162cacdc8a8bfba9aec96fa5e1b314e792b6dc5e0e30126a"
+  },
+  "environment": {
+    "python": "3.13.5",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.1.3",
+      "scikit-learn": "1.6.1",
+      "torch": "2.9.1",
+      "transformers": "4.57.6",
+      "sentence-transformers": "5.7.0"
+    }
+  }
+}
