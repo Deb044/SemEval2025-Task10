@@ -43,6 +43,9 @@ def analyze(payload):
     from .explain import explain_row
     from .propaganda import explain_propaganda
     key = payload.get("model", "cards-gcn")
+    if key == "semeval-official":
+        from .official import analyze as official_analyze
+        return official_analyze(payload)
     path = model_path(key)
     if path is None:
         raise ValueError("Reproduce this model before selecting it")
@@ -60,6 +63,11 @@ def analyze(payload):
         "scores": [{"label": label, "value": score} for label, score in sorted(prediction["scores"].items(), key=lambda pair: -pair[1])],
         "model": MODELS[key]["label"], "language": language, "explanation": None,
         "note": "Native dataset labels. Scores are model outputs, not calibrated truth probabilities."}
+    result["trace"] = [
+        {"stage": "Input", "state": "complete", "detail": f"{len(text)} characters; native {language} model input."},
+        {"stage": "Frozen encoder", "state": "complete", "detail": model.get("encoder", "minilm") + " embeddings from the reproduced model."},
+        {"stage": "Hierarchical label GNN", "state": "complete", "detail": f"{model['head'].initial.shape[0]} label/parent nodes; two graph-convolution layers."},
+        {"stage": "Decoder", "state": "complete", "detail": f"{len(prediction['labels'])} native labels selected; parent categories derived from the model taxonomy."}]
     if payload.get("generate"):
         try:
             if key == "cards-gcn":
@@ -72,6 +80,8 @@ def analyze(payload):
                 "review_required": True, "evidence": [{"id": key, "text": lookup[key]} for key in explanation["evidence_ids"]]}
         except (OSError, TimeoutError):
             result["explanation_error"] = "The local generator is unavailable. Classification results are shown."
+    result["trace"].append({"stage": "Evidence and explanation", "state": "complete" if result["explanation"] else "not_used",
+        "detail": "Source evidence and the local generator were used; inspect whether a fallback was required." if result["explanation"] else "Generation was not requested or was unavailable."})
     return result
 
 
@@ -109,7 +119,7 @@ class Handler(SimpleHTTPRequestHandler):
                 generator = False
             self.respond(200, {"local": True, "generator": generator,
                 "models": [{"id": key, "label": value["label"], "languages": value["language"], "available": model_path(key) is not None} for key, value in MODELS.items()],
-                "review_available": self.server.queue.is_file()})
+                "official_taxonomy": True, "review_available": self.server.queue.is_file()})
         elif parsed.path == "/api/reviews":
             if not self.server.queue.is_file():
                 self.respond(200, {"items": [], "message": "Generate the fixed review queue first"})

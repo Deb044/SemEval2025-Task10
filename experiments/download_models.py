@@ -32,7 +32,9 @@ def main():
     download_evaluator()
     from experiments.grounding import download as download_nli
     download_nli()
-    print("Generator, tokenizer and evaluator ready", flush=True)
+    from semeval.official_nli import download as download_official_nli
+    download_official_nli()
+    print("Generator, tokenizer, evaluators and official-mode NLI ready", flush=True)
 
 
 if __name__ == "__main__":

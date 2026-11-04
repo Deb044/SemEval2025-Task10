@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {splitUnits,matchLabels,evidenceFor,validateMatches,supportedMatches} from '../website/dist/narrative-core.mjs';
+const taxonomy=JSON.parse(fs.readFileSync(new URL('../website/dist/official-taxonomy.json',import.meta.url),'utf8'));
+assert.equal(taxonomy.labels.length,96);assert.equal(taxonomy.parents.length,22);
+const text='🙂 A quoted claim.\n'+Array.from({length:120},(_,i)=>'word'+i).join(' ')+'.';
+const units=splitUnits(text);units.forEach(unit=>assert.equal(text.slice(unit.start,unit.end),unit.text));
+const vectors=taxonomy.labels.map(()=>[0,0]);
+const index=taxonomy.labels.findIndex(row=>row.id==='URW: Hidden plots by secret schemes of powerful groups: Other');vectors[index]=[1,0];
+let result=matchLabels(taxonomy,vectors,[[1,0]],'URW');assert.equal(result.matches[0].label,taxonomy.labels[index].id);validateMatches(taxonomy,result.matches);
+result=matchLabels(taxonomy,vectors,[[1,0]],'CC');assert.equal(result.matches[0].label,'Other');
+assert.throws(()=>validateMatches(taxonomy,[{label:'invented',parent:'Other'}]));
+assert.ok(evidenceFor(units,[{evidence_id:2}]).preview.split(/\s+/u).length<=80);
+console.log('Browser taxonomy, domain filtering, source offsets and evidence budget verified.');
+
+const parent='URW: Blaming the war on others rather than the invader';
+const supported=supportedMatches(taxonomy,[{label:parent+': The West are the aggressors',parent,score:.6,evidence_id:0},{label:parent+': Other',parent,score:.7,evidence_id:0}],[{entailment:.9,contradiction:.05},{entailment:.95,contradiction:.03}]);
+assert.deepEqual(supported.matches.map(row=>row.label),[parent+': The West are the aggressors']);
+assert.equal(supportedMatches(taxonomy,supported.ranking,[null,{entailment:.1,contradiction:.5}]).matches[0].label,'Other');
+console.log('Entailment filtering keeps supported official labels and suppresses redundant parent Other.');

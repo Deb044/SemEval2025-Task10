@@ -202,7 +202,13 @@ byId('analysis-form').addEventListener('submit', async event => {
     if (data.explanation_error) panel.append(element('p', data.explanation_error));
     const scores = element('details'); scores.append(element('summary', 'Inspect label scores'));
     scores.append(element('pre', data.scores.map(score => `${score.label}: ${score.value.toFixed(4)}`).join('\n')));
-    panel.append(scores); root.replaceChildren(panel);
+    panel.append(scores);
+    if (data.trace) {
+      const flow = element('details'); flow.append(element('summary', 'Inspect the trained pipeline trace'));
+      data.trace.forEach(stage => flow.append(element('p', `${stage.stage} (${stage.state}): ${stage.detail}`, 'small')));
+      panel.append(flow);
+    }
+    root.replaceChildren(panel);
   } catch (error) { root.replaceChildren(element('p', error.message)); }
   finally { button.disabled = false; }
 });

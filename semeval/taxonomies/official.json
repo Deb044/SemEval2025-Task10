@@ -1,0 +1,1012 @@
+{
+  "profile": "SemEval-2025 Task 10 public organizer taxonomy",
+  "version": "pdf-e9b26b6e4a58",
+  "source": "https://propaganda.math.unipd.it/semeval2025task10/NARRATIVE-TAXONOMIES.pdf",
+  "source_sha256": "e9b26b6e4a58bb28900572ea140adf2da9e7c4858aa8a26f9039774812d8a26e",
+  "source_pages": [
+    1,
+    2
+  ],
+  "other_convention_source": "https://propaganda.math.unipd.it/semeval2025task10/",
+  "definition_source": "Public label names; no private annotations or copied guideline examples.",
+  "submission_scorer_parity": false,
+  "parents": [
+    {
+      "id": "URW: Blaming the war on others rather than the invader",
+      "name": "Blaming the war on others rather than the invader",
+      "domain": "URW"
+    },
+    {
+      "id": "URW: Discrediting Ukraine",
+      "name": "Discrediting Ukraine",
+      "domain": "URW"
+    },
+    {
+      "id": "URW: Russia is the Victim",
+      "name": "Russia is the Victim",
+      "domain": "URW"
+    },
+    {
+      "id": "URW: Praise of Russia",
+      "name": "Praise of Russia",
+      "domain": "URW"
+    },
+    {
+      "id": "URW: Overpraising the West",
+      "name": "Overpraising the West",
+      "domain": "URW"
+    },
+    {
+      "id": "URW: Speculating war outcomes",
+      "name": "Speculating war outcomes",
+      "domain": "URW"
+    },
+    {
+      "id": "URW: Discrediting the West, Diplomacy",
+      "name": "Discrediting the West, Diplomacy",
+      "domain": "URW"
+    },
+    {
+      "id": "URW: Negative Consequences for the West",
+      "name": "Negative Consequences for the West",
+      "domain": "URW"
+    },
+    {
+      "id": "URW: Distrust towards Media",
+      "name": "Distrust towards Media",
+      "domain": "URW"
+    },
+    {
+      "id": "URW: Amplifying war-related fears",
+      "name": "Amplifying war-related fears",
+      "domain": "URW"
+    },
+    {
+      "id": "URW: Hidden plots by secret schemes of powerful groups",
+      "name": "Hidden plots by secret schemes of powerful groups",
+      "domain": "URW"
+    },
+    {
+      "id": "CC: Criticism of climate policies",
+      "name": "Criticism of climate policies",
+      "domain": "CC"
+    },
+    {
+      "id": "CC: Criticism of institutions and authorities",
+      "name": "Criticism of institutions and authorities",
+      "domain": "CC"
+    },
+    {
+      "id": "CC: Climate change is beneficial",
+      "name": "Climate change is beneficial",
+      "domain": "CC"
+    },
+    {
+      "id": "CC: Downplaying climate change",
+      "name": "Downplaying climate change",
+      "domain": "CC"
+    },
+    {
+      "id": "CC: Questioning the measurements and science",
+      "name": "Questioning the measurements and science",
+      "domain": "CC"
+    },
+    {
+      "id": "CC: Criticism of climate movement",
+      "name": "Criticism of climate movement",
+      "domain": "CC"
+    },
+    {
+      "id": "CC: Controversy about green technologies",
+      "name": "Controversy about green technologies",
+      "domain": "CC"
+    },
+    {
+      "id": "CC: Hidden plots by secret schemes of powerful groups",
+      "name": "Hidden plots by secret schemes of powerful groups",
+      "domain": "CC"
+    },
+    {
+      "id": "CC: Amplifying Climate Fears",
+      "name": "Amplifying Climate Fears",
+      "domain": "CC"
+    },
+    {
+      "id": "CC: Green policies are geopolitical instruments",
+      "name": "Green policies are geopolitical instruments",
+      "domain": "CC"
+    },
+    {
+      "id": "Other",
+      "name": "Other",
+      "domain": "ALL"
+    }
+  ],
+  "labels": [
+    {
+      "id": "URW: Blaming the war on others rather than the invader: Other",
+      "parent": "URW: Blaming the war on others rather than the invader",
+      "name": "Other",
+      "domain": "URW",
+      "definition": "Blaming the war on others rather than the invader: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Blaming the war on others rather than the invader."
+    },
+    {
+      "id": "URW: Blaming the war on others rather than the invader: Ukraine is the aggressor",
+      "parent": "URW: Blaming the war on others rather than the invader",
+      "name": "Ukraine is the aggressor",
+      "domain": "URW",
+      "definition": "Ukraine is the aggressor",
+      "is_other": false,
+      "hypothesis": "Someone blames Ukraine for starting the conflict."
+    },
+    {
+      "id": "URW: Blaming the war on others rather than the invader: The West are the aggressors",
+      "parent": "URW: Blaming the war on others rather than the invader",
+      "name": "The West are the aggressors",
+      "domain": "URW",
+      "definition": "The West are the aggressors",
+      "is_other": false,
+      "hypothesis": "Someone blames Western governments for starting the conflict."
+    },
+    {
+      "id": "URW: Discrediting Ukraine: Other",
+      "parent": "URW: Discrediting Ukraine",
+      "name": "Other",
+      "domain": "URW",
+      "definition": "Discrediting Ukraine: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone discredits Ukraine."
+    },
+    {
+      "id": "URW: Discrediting Ukraine: Rewriting Ukraine’s history",
+      "parent": "URW: Discrediting Ukraine",
+      "name": "Rewriting Ukraine’s history",
+      "domain": "URW",
+      "definition": "Rewriting Ukraine’s history",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Rewriting Ukraine’s history."
+    },
+    {
+      "id": "URW: Discrediting Ukraine: Discrediting Ukrainian nation and society",
+      "parent": "URW: Discrediting Ukraine",
+      "name": "Discrediting Ukrainian nation and society",
+      "domain": "URW",
+      "definition": "Discrediting Ukrainian nation and society",
+      "is_other": false,
+      "hypothesis": "Someone discredits Ukrainian nation and society."
+    },
+    {
+      "id": "URW: Discrediting Ukraine: Discrediting Ukrainian military",
+      "parent": "URW: Discrediting Ukraine",
+      "name": "Discrediting Ukrainian military",
+      "domain": "URW",
+      "definition": "Discrediting Ukrainian military",
+      "is_other": false,
+      "hypothesis": "Someone discredits Ukrainian military."
+    },
+    {
+      "id": "URW: Discrediting Ukraine: Discrediting Ukrainian government and officials and policies",
+      "parent": "URW: Discrediting Ukraine",
+      "name": "Discrediting Ukrainian government and officials and policies",
+      "domain": "URW",
+      "definition": "Discrediting Ukrainian government and officials and policies",
+      "is_other": false,
+      "hypothesis": "Someone discredits Ukrainian government and officials and policies."
+    },
+    {
+      "id": "URW: Discrediting Ukraine: Ukraine is a puppet of the West",
+      "parent": "URW: Discrediting Ukraine",
+      "name": "Ukraine is a puppet of the West",
+      "domain": "URW",
+      "definition": "Ukraine is a puppet of the West",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Ukraine is a puppet of the West."
+    },
+    {
+      "id": "URW: Discrediting Ukraine: Ukraine is a hub for criminal activities",
+      "parent": "URW: Discrediting Ukraine",
+      "name": "Ukraine is a hub for criminal activities",
+      "domain": "URW",
+      "definition": "Ukraine is a hub for criminal activities",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Ukraine is a hub for criminal activities."
+    },
+    {
+      "id": "URW: Discrediting Ukraine: Ukraine is associated with nazism",
+      "parent": "URW: Discrediting Ukraine",
+      "name": "Ukraine is associated with nazism",
+      "domain": "URW",
+      "definition": "Ukraine is associated with nazism",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Ukraine is associated with nazism."
+    },
+    {
+      "id": "URW: Discrediting Ukraine: Situation in Ukraine is hopeless",
+      "parent": "URW: Discrediting Ukraine",
+      "name": "Situation in Ukraine is hopeless",
+      "domain": "URW",
+      "definition": "Situation in Ukraine is hopeless",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Situation in Ukraine is hopeless."
+    },
+    {
+      "id": "URW: Russia is the Victim: Other",
+      "parent": "URW: Russia is the Victim",
+      "name": "Other",
+      "domain": "URW",
+      "definition": "Russia is the Victim: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Russia is the Victim."
+    },
+    {
+      "id": "URW: Russia is the Victim: The West is russophobic",
+      "parent": "URW: Russia is the Victim",
+      "name": "The West is russophobic",
+      "domain": "URW",
+      "definition": "The West is russophobic",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: The West is russophobic."
+    },
+    {
+      "id": "URW: Russia is the Victim: Russia actions in Ukraine are only self-defence",
+      "parent": "URW: Russia is the Victim",
+      "name": "Russia actions in Ukraine are only self-defence",
+      "domain": "URW",
+      "definition": "Russia actions in Ukraine are only self-defence",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Russia actions in Ukraine are only self-defence."
+    },
+    {
+      "id": "URW: Russia is the Victim: UA is anti-RU extremists",
+      "parent": "URW: Russia is the Victim",
+      "name": "UA is anti-RU extremists",
+      "domain": "URW",
+      "definition": "UA is anti-RU extremists",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: UA is anti-RU extremists."
+    },
+    {
+      "id": "URW: Praise of Russia: Other",
+      "parent": "URW: Praise of Russia",
+      "name": "Other",
+      "domain": "URW",
+      "definition": "Praise of Russia: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone praises Russia."
+    },
+    {
+      "id": "URW: Praise of Russia: Praise of Russian military might",
+      "parent": "URW: Praise of Russia",
+      "name": "Praise of Russian military might",
+      "domain": "URW",
+      "definition": "Praise of Russian military might",
+      "is_other": false,
+      "hypothesis": "Someone praises Russian military might."
+    },
+    {
+      "id": "URW: Praise of Russia: Praise of Russian President Vladimir Putin",
+      "parent": "URW: Praise of Russia",
+      "name": "Praise of Russian President Vladimir Putin",
+      "domain": "URW",
+      "definition": "Praise of Russian President Vladimir Putin",
+      "is_other": false,
+      "hypothesis": "Someone praises Russian President Vladimir Putin."
+    },
+    {
+      "id": "URW: Praise of Russia: Russia is a guarantor of peace and prosperity",
+      "parent": "URW: Praise of Russia",
+      "name": "Russia is a guarantor of peace and prosperity",
+      "domain": "URW",
+      "definition": "Russia is a guarantor of peace and prosperity",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Russia is a guarantor of peace and prosperity."
+    },
+    {
+      "id": "URW: Praise of Russia: Russia has international support from a number of countries and people",
+      "parent": "URW: Praise of Russia",
+      "name": "Russia has international support from a number of countries and people",
+      "domain": "URW",
+      "definition": "Russia has international support from a number of countries and people",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Russia has international support from a number of countries and people."
+    },
+    {
+      "id": "URW: Praise of Russia: Russian invasion has strong national support",
+      "parent": "URW: Praise of Russia",
+      "name": "Russian invasion has strong national support",
+      "domain": "URW",
+      "definition": "Russian invasion has strong national support",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Russian invasion has strong national support."
+    },
+    {
+      "id": "URW: Overpraising the West: Other",
+      "parent": "URW: Overpraising the West",
+      "name": "Other",
+      "domain": "URW",
+      "definition": "Overpraising the West: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Overpraising the West."
+    },
+    {
+      "id": "URW: Overpraising the West: NATO will destroy Russia",
+      "parent": "URW: Overpraising the West",
+      "name": "NATO will destroy Russia",
+      "domain": "URW",
+      "definition": "NATO will destroy Russia",
+      "is_other": false,
+      "hypothesis": "Someone predicts that NATO will destroy Russia."
+    },
+    {
+      "id": "URW: Overpraising the West: The West belongs in the right side of history",
+      "parent": "URW: Overpraising the West",
+      "name": "The West belongs in the right side of history",
+      "domain": "URW",
+      "definition": "The West belongs in the right side of history",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: The West belongs in the right side of history."
+    },
+    {
+      "id": "URW: Overpraising the West: The West has the strongest international support",
+      "parent": "URW: Overpraising the West",
+      "name": "The West has the strongest international support",
+      "domain": "URW",
+      "definition": "The West has the strongest international support",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: The West has the strongest international support."
+    },
+    {
+      "id": "URW: Speculating war outcomes: Other",
+      "parent": "URW: Speculating war outcomes",
+      "name": "Other",
+      "domain": "URW",
+      "definition": "Speculating war outcomes: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Speculating war outcomes."
+    },
+    {
+      "id": "URW: Speculating war outcomes: Russian army is collapsing",
+      "parent": "URW: Speculating war outcomes",
+      "name": "Russian army is collapsing",
+      "domain": "URW",
+      "definition": "Russian army is collapsing",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Russian army is collapsing."
+    },
+    {
+      "id": "URW: Speculating war outcomes: Russian army will lose all the occupied territories",
+      "parent": "URW: Speculating war outcomes",
+      "name": "Russian army will lose all the occupied territories",
+      "domain": "URW",
+      "definition": "Russian army will lose all the occupied territories",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Russian army will lose all the occupied territories."
+    },
+    {
+      "id": "URW: Speculating war outcomes: Ukrainian army is collapsing",
+      "parent": "URW: Speculating war outcomes",
+      "name": "Ukrainian army is collapsing",
+      "domain": "URW",
+      "definition": "Ukrainian army is collapsing",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Ukrainian army is collapsing."
+    },
+    {
+      "id": "URW: Discrediting the West, Diplomacy: Other",
+      "parent": "URW: Discrediting the West, Diplomacy",
+      "name": "Other",
+      "domain": "URW",
+      "definition": "Discrediting the West, Diplomacy: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone discredits the West, Diplomacy."
+    },
+    {
+      "id": "URW: Discrediting the West, Diplomacy: The EU is divided",
+      "parent": "URW: Discrediting the West, Diplomacy",
+      "name": "The EU is divided",
+      "domain": "URW",
+      "definition": "The EU is divided",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: The EU is divided."
+    },
+    {
+      "id": "URW: Discrediting the West, Diplomacy: The West is weak",
+      "parent": "URW: Discrediting the West, Diplomacy",
+      "name": "The West is weak",
+      "domain": "URW",
+      "definition": "The West is weak",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: The West is weak."
+    },
+    {
+      "id": "URW: Discrediting the West, Diplomacy: The West is overreacting",
+      "parent": "URW: Discrediting the West, Diplomacy",
+      "name": "The West is overreacting",
+      "domain": "URW",
+      "definition": "The West is overreacting",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: The West is overreacting."
+    },
+    {
+      "id": "URW: Discrediting the West, Diplomacy: The West does not care about Ukraine, only about its interests",
+      "parent": "URW: Discrediting the West, Diplomacy",
+      "name": "The West does not care about Ukraine, only about its interests",
+      "domain": "URW",
+      "definition": "The West does not care about Ukraine, only about its interests",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: The West does not care about Ukraine, only about its interests."
+    },
+    {
+      "id": "URW: Discrediting the West, Diplomacy: Diplomacy does/will not work",
+      "parent": "URW: Discrediting the West, Diplomacy",
+      "name": "Diplomacy does/will not work",
+      "domain": "URW",
+      "definition": "Diplomacy does/will not work",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Diplomacy does/will not work."
+    },
+    {
+      "id": "URW: Discrediting the West, Diplomacy: West is tired of Ukraine",
+      "parent": "URW: Discrediting the West, Diplomacy",
+      "name": "West is tired of Ukraine",
+      "domain": "URW",
+      "definition": "West is tired of Ukraine",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: West is tired of Ukraine."
+    },
+    {
+      "id": "URW: Negative Consequences for the West: Other",
+      "parent": "URW: Negative Consequences for the West",
+      "name": "Other",
+      "domain": "URW",
+      "definition": "Negative Consequences for the West: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Negative Consequences for the West."
+    },
+    {
+      "id": "URW: Negative Consequences for the West: Sanctions imposed by Western countries will backfire",
+      "parent": "URW: Negative Consequences for the West",
+      "name": "Sanctions imposed by Western countries will backfire",
+      "domain": "URW",
+      "definition": "Sanctions imposed by Western countries will backfire",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Sanctions imposed by Western countries will backfire."
+    },
+    {
+      "id": "URW: Negative Consequences for the West: The conflict will increase the Ukrainian refugee flows to Europe",
+      "parent": "URW: Negative Consequences for the West",
+      "name": "The conflict will increase the Ukrainian refugee flows to Europe",
+      "domain": "URW",
+      "definition": "The conflict will increase the Ukrainian refugee flows to Europe",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: The conflict will increase the Ukrainian refugee flows to Europe."
+    },
+    {
+      "id": "URW: Distrust towards Media: Other",
+      "parent": "URW: Distrust towards Media",
+      "name": "Other",
+      "domain": "URW",
+      "definition": "Distrust towards Media: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Distrust towards Media."
+    },
+    {
+      "id": "URW: Distrust towards Media: Western media is an instrument of propaganda",
+      "parent": "URW: Distrust towards Media",
+      "name": "Western media is an instrument of propaganda",
+      "domain": "URW",
+      "definition": "Western media is an instrument of propaganda",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Western media is an instrument of propaganda."
+    },
+    {
+      "id": "URW: Distrust towards Media: Ukrainian media cannot be trusted",
+      "parent": "URW: Distrust towards Media",
+      "name": "Ukrainian media cannot be trusted",
+      "domain": "URW",
+      "definition": "Ukrainian media cannot be trusted",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Ukrainian media cannot be trusted."
+    },
+    {
+      "id": "URW: Amplifying war-related fears: Other",
+      "parent": "URW: Amplifying war-related fears",
+      "name": "Other",
+      "domain": "URW",
+      "definition": "Amplifying war-related fears: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Amplifying war-related fears."
+    },
+    {
+      "id": "URW: Amplifying war-related fears: By continuing the war we risk WWIII",
+      "parent": "URW: Amplifying war-related fears",
+      "name": "By continuing the war we risk WWIII",
+      "domain": "URW",
+      "definition": "By continuing the war we risk WWIII",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: By continuing the war we risk WWIII."
+    },
+    {
+      "id": "URW: Amplifying war-related fears: Russia will also attack other countries",
+      "parent": "URW: Amplifying war-related fears",
+      "name": "Russia will also attack other countries",
+      "domain": "URW",
+      "definition": "Russia will also attack other countries",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Russia will also attack other countries."
+    },
+    {
+      "id": "URW: Amplifying war-related fears: There is a real possibility that nuclear weapons will be employed",
+      "parent": "URW: Amplifying war-related fears",
+      "name": "There is a real possibility that nuclear weapons will be employed",
+      "domain": "URW",
+      "definition": "There is a real possibility that nuclear weapons will be employed",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: There is a real possibility that nuclear weapons will be employed."
+    },
+    {
+      "id": "URW: Amplifying war-related fears: NATO should/will directly intervene",
+      "parent": "URW: Amplifying war-related fears",
+      "name": "NATO should/will directly intervene",
+      "domain": "URW",
+      "definition": "NATO should/will directly intervene",
+      "is_other": false,
+      "hypothesis": "Someone argues that NATO should or will send its forces directly into the Ukraine-Russia war."
+    },
+    {
+      "id": "URW: Hidden plots by secret schemes of powerful groups: Other",
+      "parent": "URW: Hidden plots by secret schemes of powerful groups",
+      "name": "Other",
+      "domain": "URW",
+      "definition": "Hidden plots by secret schemes of powerful groups: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Hidden plots by secret schemes of powerful groups."
+    },
+    {
+      "id": "CC: Criticism of climate policies: Other",
+      "parent": "CC: Criticism of climate policies",
+      "name": "Other",
+      "domain": "CC",
+      "definition": "Criticism of climate policies: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone criticizes climate policies in relation to climate change."
+    },
+    {
+      "id": "CC: Criticism of climate policies: Climate policies are ineffective",
+      "parent": "CC: Criticism of climate policies",
+      "name": "Climate policies are ineffective",
+      "domain": "CC",
+      "definition": "Climate policies are ineffective",
+      "is_other": false,
+      "hypothesis": "Someone claims that climate policies do not work."
+    },
+    {
+      "id": "CC: Criticism of climate policies: Climate policies have negative impact on the economy",
+      "parent": "CC: Criticism of climate policies",
+      "name": "Climate policies have negative impact on the economy",
+      "domain": "CC",
+      "definition": "Climate policies have negative impact on the economy",
+      "is_other": false,
+      "hypothesis": "Someone claims that climate policies harm the economy."
+    },
+    {
+      "id": "CC: Criticism of climate policies: Climate policies are only for profit",
+      "parent": "CC: Criticism of climate policies",
+      "name": "Climate policies are only for profit",
+      "domain": "CC",
+      "definition": "Climate policies are only for profit",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Climate policies are only for profit."
+    },
+    {
+      "id": "CC: Criticism of institutions and authorities: Other",
+      "parent": "CC: Criticism of institutions and authorities",
+      "name": "Other",
+      "domain": "CC",
+      "definition": "Criticism of institutions and authorities: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone criticizes institutions and authorities in relation to climate change."
+    },
+    {
+      "id": "CC: Criticism of institutions and authorities: Criticism of the EU",
+      "parent": "CC: Criticism of institutions and authorities",
+      "name": "Criticism of the EU",
+      "domain": "CC",
+      "definition": "Criticism of the EU",
+      "is_other": false,
+      "hypothesis": "Someone criticizes the EU in relation to climate change."
+    },
+    {
+      "id": "CC: Criticism of institutions and authorities: Criticism of international entities",
+      "parent": "CC: Criticism of institutions and authorities",
+      "name": "Criticism of international entities",
+      "domain": "CC",
+      "definition": "Criticism of international entities",
+      "is_other": false,
+      "hypothesis": "Someone criticizes international entities in relation to climate change."
+    },
+    {
+      "id": "CC: Criticism of institutions and authorities: Criticism of national governments",
+      "parent": "CC: Criticism of institutions and authorities",
+      "name": "Criticism of national governments",
+      "domain": "CC",
+      "definition": "Criticism of national governments",
+      "is_other": false,
+      "hypothesis": "Someone criticizes national governments in relation to climate change."
+    },
+    {
+      "id": "CC: Criticism of institutions and authorities: Criticism of political organizations and figures",
+      "parent": "CC: Criticism of institutions and authorities",
+      "name": "Criticism of political organizations and figures",
+      "domain": "CC",
+      "definition": "Criticism of political organizations and figures",
+      "is_other": false,
+      "hypothesis": "Someone criticizes political organizations and figures in relation to climate change."
+    },
+    {
+      "id": "CC: Climate change is beneficial: Other",
+      "parent": "CC: Climate change is beneficial",
+      "name": "Other",
+      "domain": "CC",
+      "definition": "Climate change is beneficial: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Climate change is beneficial."
+    },
+    {
+      "id": "CC: Climate change is beneficial: CO2 is beneficial",
+      "parent": "CC: Climate change is beneficial",
+      "name": "CO2 is beneficial",
+      "domain": "CC",
+      "definition": "CO2 is beneficial",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: CO2 is beneficial."
+    },
+    {
+      "id": "CC: Climate change is beneficial: Temperature increase is beneficial",
+      "parent": "CC: Climate change is beneficial",
+      "name": "Temperature increase is beneficial",
+      "domain": "CC",
+      "definition": "Temperature increase is beneficial",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Temperature increase is beneficial."
+    },
+    {
+      "id": "CC: Downplaying climate change: Other",
+      "parent": "CC: Downplaying climate change",
+      "name": "Other",
+      "domain": "CC",
+      "definition": "Downplaying climate change: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Downplaying climate change."
+    },
+    {
+      "id": "CC: Downplaying climate change: Climate cycles are natural",
+      "parent": "CC: Downplaying climate change",
+      "name": "Climate cycles are natural",
+      "domain": "CC",
+      "definition": "Climate cycles are natural",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Climate cycles are natural."
+    },
+    {
+      "id": "CC: Downplaying climate change: Weather suggests the trend is global cooling",
+      "parent": "CC: Downplaying climate change",
+      "name": "Weather suggests the trend is global cooling",
+      "domain": "CC",
+      "definition": "Weather suggests the trend is global cooling",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Weather suggests the trend is global cooling."
+    },
+    {
+      "id": "CC: Downplaying climate change: Temperature increase does not have significant impact",
+      "parent": "CC: Downplaying climate change",
+      "name": "Temperature increase does not have significant impact",
+      "domain": "CC",
+      "definition": "Temperature increase does not have significant impact",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Temperature increase does not have significant impact."
+    },
+    {
+      "id": "CC: Downplaying climate change: CO2 concentrations are too small to have an impact",
+      "parent": "CC: Downplaying climate change",
+      "name": "CO2 concentrations are too small to have an impact",
+      "domain": "CC",
+      "definition": "CO2 concentrations are too small to have an impact",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: CO2 concentrations are too small to have an impact."
+    },
+    {
+      "id": "CC: Downplaying climate change: Human activities do not impact climate change",
+      "parent": "CC: Downplaying climate change",
+      "name": "Human activities do not impact climate change",
+      "domain": "CC",
+      "definition": "Human activities do not impact climate change",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Human activities do not impact climate change."
+    },
+    {
+      "id": "CC: Downplaying climate change: Ice is not melting",
+      "parent": "CC: Downplaying climate change",
+      "name": "Ice is not melting",
+      "domain": "CC",
+      "definition": "Ice is not melting",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Ice is not melting."
+    },
+    {
+      "id": "CC: Downplaying climate change: Sea levels are not rising",
+      "parent": "CC: Downplaying climate change",
+      "name": "Sea levels are not rising",
+      "domain": "CC",
+      "definition": "Sea levels are not rising",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Sea levels are not rising."
+    },
+    {
+      "id": "CC: Downplaying climate change: Humans and nature will adapt to the changes",
+      "parent": "CC: Downplaying climate change",
+      "name": "Humans and nature will adapt to the changes",
+      "domain": "CC",
+      "definition": "Humans and nature will adapt to the changes",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Humans and nature will adapt to the changes."
+    },
+    {
+      "id": "CC: Questioning the measurements and science: Other",
+      "parent": "CC: Questioning the measurements and science",
+      "name": "Other",
+      "domain": "CC",
+      "definition": "Questioning the measurements and science: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Questioning the measurements and science."
+    },
+    {
+      "id": "CC: Questioning the measurements and science: Methodologies/metrics used are unreliable/faulty",
+      "parent": "CC: Questioning the measurements and science",
+      "name": "Methodologies/metrics used are unreliable/faulty",
+      "domain": "CC",
+      "definition": "Methodologies/metrics used are unreliable/faulty",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Methodologies/metrics used are unreliable/faulty."
+    },
+    {
+      "id": "CC: Questioning the measurements and science: Data shows no temperature increase",
+      "parent": "CC: Questioning the measurements and science",
+      "name": "Data shows no temperature increase",
+      "domain": "CC",
+      "definition": "Data shows no temperature increase",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Data shows no temperature increase."
+    },
+    {
+      "id": "CC: Questioning the measurements and science: Greenhouse effect/carbon dioxide do not drive climate change",
+      "parent": "CC: Questioning the measurements and science",
+      "name": "Greenhouse effect/carbon dioxide do not drive climate change",
+      "domain": "CC",
+      "definition": "Greenhouse effect/carbon dioxide do not drive climate change",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Greenhouse effect/carbon dioxide do not drive climate change."
+    },
+    {
+      "id": "CC: Questioning the measurements and science: Scientific community is unreliable",
+      "parent": "CC: Questioning the measurements and science",
+      "name": "Scientific community is unreliable",
+      "domain": "CC",
+      "definition": "Scientific community is unreliable",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Scientific community is unreliable."
+    },
+    {
+      "id": "CC: Criticism of climate movement: Other",
+      "parent": "CC: Criticism of climate movement",
+      "name": "Other",
+      "domain": "CC",
+      "definition": "Criticism of climate movement: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone criticizes climate movement in relation to climate change."
+    },
+    {
+      "id": "CC: Criticism of climate movement: Climate movement is alarmist",
+      "parent": "CC: Criticism of climate movement",
+      "name": "Climate movement is alarmist",
+      "domain": "CC",
+      "definition": "Climate movement is alarmist",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Climate movement is alarmist."
+    },
+    {
+      "id": "CC: Criticism of climate movement: Climate movement is corrupt",
+      "parent": "CC: Criticism of climate movement",
+      "name": "Climate movement is corrupt",
+      "domain": "CC",
+      "definition": "Climate movement is corrupt",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Climate movement is corrupt."
+    },
+    {
+      "id": "CC: Criticism of climate movement: Ad hominem attacks on key activists",
+      "parent": "CC: Criticism of climate movement",
+      "name": "Ad hominem attacks on key activists",
+      "domain": "CC",
+      "definition": "Ad hominem attacks on key activists",
+      "is_other": false,
+      "hypothesis": "Someone attacks climate activists personally."
+    },
+    {
+      "id": "CC: Controversy about green technologies: Other",
+      "parent": "CC: Controversy about green technologies",
+      "name": "Other",
+      "domain": "CC",
+      "definition": "Controversy about green technologies: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Controversy about green technologies."
+    },
+    {
+      "id": "CC: Controversy about green technologies: Renewable energy is dangerous",
+      "parent": "CC: Controversy about green technologies",
+      "name": "Renewable energy is dangerous",
+      "domain": "CC",
+      "definition": "Renewable energy is dangerous",
+      "is_other": false,
+      "hypothesis": "Someone claims that renewable energy is dangerous."
+    },
+    {
+      "id": "CC: Controversy about green technologies: Renewable energy is unreliable",
+      "parent": "CC: Controversy about green technologies",
+      "name": "Renewable energy is unreliable",
+      "domain": "CC",
+      "definition": "Renewable energy is unreliable",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Renewable energy is unreliable."
+    },
+    {
+      "id": "CC: Controversy about green technologies: Renewable energy is costly",
+      "parent": "CC: Controversy about green technologies",
+      "name": "Renewable energy is costly",
+      "domain": "CC",
+      "definition": "Renewable energy is costly",
+      "is_other": false,
+      "hypothesis": "Someone claims that renewable energy costs too much."
+    },
+    {
+      "id": "CC: Controversy about green technologies: Nuclear energy is not climate friendly",
+      "parent": "CC: Controversy about green technologies",
+      "name": "Nuclear energy is not climate friendly",
+      "domain": "CC",
+      "definition": "Nuclear energy is not climate friendly",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Nuclear energy is not climate friendly."
+    },
+    {
+      "id": "CC: Hidden plots by secret schemes of powerful groups: Other",
+      "parent": "CC: Hidden plots by secret schemes of powerful groups",
+      "name": "Other",
+      "domain": "CC",
+      "definition": "Hidden plots by secret schemes of powerful groups: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Hidden plots by secret schemes of powerful groups."
+    },
+    {
+      "id": "CC: Hidden plots by secret schemes of powerful groups: Blaming global elites",
+      "parent": "CC: Hidden plots by secret schemes of powerful groups",
+      "name": "Blaming global elites",
+      "domain": "CC",
+      "definition": "Blaming global elites",
+      "is_other": false,
+      "hypothesis": "Someone blames global elites for a hidden climate agenda."
+    },
+    {
+      "id": "CC: Hidden plots by secret schemes of powerful groups: Climate agenda has hidden motives",
+      "parent": "CC: Hidden plots by secret schemes of powerful groups",
+      "name": "Climate agenda has hidden motives",
+      "domain": "CC",
+      "definition": "Climate agenda has hidden motives",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Climate agenda has hidden motives."
+    },
+    {
+      "id": "CC: Amplifying Climate Fears: Other",
+      "parent": "CC: Amplifying Climate Fears",
+      "name": "Other",
+      "domain": "CC",
+      "definition": "Amplifying Climate Fears: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Amplifying Climate Fears."
+    },
+    {
+      "id": "CC: Amplifying Climate Fears: Earth will be uninhabitable soon",
+      "parent": "CC: Amplifying Climate Fears",
+      "name": "Earth will be uninhabitable soon",
+      "domain": "CC",
+      "definition": "Earth will be uninhabitable soon",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Earth will be uninhabitable soon."
+    },
+    {
+      "id": "CC: Amplifying Climate Fears: Amplifying existing fears of global warming",
+      "parent": "CC: Amplifying Climate Fears",
+      "name": "Amplifying existing fears of global warming",
+      "domain": "CC",
+      "definition": "Amplifying existing fears of global warming",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Amplifying existing fears of global warming."
+    },
+    {
+      "id": "CC: Amplifying Climate Fears: Doomsday scenarios for humans",
+      "parent": "CC: Amplifying Climate Fears",
+      "name": "Doomsday scenarios for humans",
+      "domain": "CC",
+      "definition": "Doomsday scenarios for humans",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Doomsday scenarios for humans."
+    },
+    {
+      "id": "CC: Amplifying Climate Fears: Whatever we do it is already too late",
+      "parent": "CC: Amplifying Climate Fears",
+      "name": "Whatever we do it is already too late",
+      "domain": "CC",
+      "definition": "Whatever we do it is already too late",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Whatever we do it is already too late."
+    },
+    {
+      "id": "CC: Green policies are geopolitical instruments: Other",
+      "parent": "CC: Green policies are geopolitical instruments",
+      "name": "Other",
+      "domain": "CC",
+      "definition": "Green policies are geopolitical instruments: no more specific subnarrative.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Green policies are geopolitical instruments."
+    },
+    {
+      "id": "CC: Green policies are geopolitical instruments: Climate-related international relations are abusive/exploitative",
+      "parent": "CC: Green policies are geopolitical instruments",
+      "name": "Climate-related international relations are abusive/exploitative",
+      "domain": "CC",
+      "definition": "Climate-related international relations are abusive/exploitative",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Climate-related international relations are abusive/exploitative."
+    },
+    {
+      "id": "CC: Green policies are geopolitical instruments: Green activities are a form of neo-colonialism",
+      "parent": "CC: Green policies are geopolitical instruments",
+      "name": "Green activities are a form of neo-colonialism",
+      "domain": "CC",
+      "definition": "Green activities are a form of neo-colonialism",
+      "is_other": false,
+      "hypothesis": "Someone presents this claim: Green activities are a form of neo-colonialism."
+    },
+    {
+      "id": "Other",
+      "parent": "Other",
+      "name": "Other",
+      "domain": "ALL",
+      "definition": "No suitable narrative category identified.",
+      "is_other": true,
+      "hypothesis": "Someone presents this claim: Other."
+    }
+  ],
+  "counts": {
+    "coarse": 22,
+    "fine": 96
+  },
+  "browser_encoder": {
+    "model": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "2c4055b12046f11709e9df2c122e59ffbdc2f900",
+    "weights_sha256": "66fc00f5f29afcaff34092e1bdd20008ca3918265a82fb9695a551e510cc4ebc",
+    "library": "@xenova/transformers@2.17.2",
+    "quantized": true
+  },
+  "hypothesis_source": "Label-derived working NLI hypotheses; not organizer annotations or gold explanations.",
+  "entailment_model": {
+    "model": "onnx-community/multilingual-MiniLMv2-L6-mnli-xnli-ONNX",
+    "revision": "ca5daf3d11b6c4b3143b1f4602a2edfb64c3ad7e",
+    "weights_sha256": "55614f3c7da74184742eaa0006b978744437aa91de9ba4913db42f94d7844a8f",
+    "entailment_index": 0,
+    "agreement_threshold": 0.7,
+    "minimum_entailment": 0.25,
+    "relative_agreement_margin": 0.05
+  }
+}

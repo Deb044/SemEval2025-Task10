@@ -5,3 +5,4 @@ sentence-transformers==5.7.0
 bert-score==0.3.13
 
 matplotlib==3.10.0
+onnxruntime==1.23.2
