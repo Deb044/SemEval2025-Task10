@@ -95,3 +95,13 @@ The official Task 10 corpus is unavailable. Public native claims and propaganda
 techniques are not its narrative or entity-role annotations. Long-text grounding
 is English-only; the shorter ProBel reference comparison covers English/Arabic
 using publisher model-authored references.
+
+## Apache Spark SQL input gate
+
+The standard preparation/classification workflow now runs Spark SQL in `local[2]`
+mode before model training. The measured audit covered **12,297 prepared records**
+across all six CARDS/ProBel splits and found zero invalid records, within-split
+duplicate groups or cross-split article-ID/normalized-text overlap groups.
+Language and label counts, separate JVM startup/SQL timings, source hashes and
+input checksums are in [spark-audit.json](spark-audit.json). This is a local
+data-quality stage; no cluster speedup is claimed. Earlier model scores remain unchanged.
