@@ -1,0 +1,34 @@
+{
+  "qwen3": {
+    "name": "Qwen3-1.7B",
+    "repo": "unsloth/Qwen3-1.7B-GGUF",
+    "revision": "d7f544eead698dbd1f15126ef60b45a1e1933222",
+    "file": "Qwen3-1.7B-Q4_K_M.gguf",
+    "sha256": "b139949c5bd74937ad8ed8c8cf3d9ffb1e99c866c823204dc42c0d91fa181897",
+    "role": "generator"
+  },
+  "smollm2": {
+    "name": "SmolLM2-1.7B-Instruct",
+    "repo": "bartowski/SmolLM2-1.7B-Instruct-GGUF",
+    "revision": "1f03464768bfcc0319fc50da8ff5fb20b6417ba2",
+    "file": "SmolLM2-1.7B-Instruct-Q4_K_M.gguf",
+    "sha256": "77665ea4815999596525c636fbeb56ba8b080b46ae85efef4f0d986a139834d7",
+    "role": "generator"
+  },
+  "tinyllama": {
+    "name": "TinyLlama-1.1B-Chat-v1.0",
+    "repo": "TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF",
+    "revision": "52e7645ba7c309695bec7ac98f4f005b139cf465",
+    "file": "tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf",
+    "sha256": "9fecc3b3cd76bba89d504f29b616eedf7da85b96540e490ca5824d3f7d2776a0",
+    "role": "generator"
+  },
+  "judge": {
+    "name": "Qwen2.5-3B-Instruct",
+    "repo": "Qwen/Qwen2.5-3B-Instruct-GGUF",
+    "revision": "7dabda4d13d513e3e842b20f0d435c732f172cbe",
+    "file": "qwen2.5-3b-instruct-q4_k_m.gguf",
+    "sha256": "626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d",
+    "role": "judge"
+  }
+}
