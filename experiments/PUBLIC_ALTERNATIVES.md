@@ -1,5 +1,28 @@
 # Public datasets close to the project statement
 
+## Current extension protocol
+
+Run `python -m experiments.reproduce --stage all --server path/to/llama-server`
+for the current fixed studies. The matrices in `configs/cards.json` and
+`configs/probel.json` keep MiniLM plus a hierarchical label GCN central, compare
+TF-IDF, LSA and transformer-only heads, and control graph edges and label
+initialization across seeds 13/42/87. ProBel also compares frozen XLM-R.
+
+Fixed CARDS models are evaluated on held-out EMM without target-source tuning.
+The longer-text explanation study uses 24 held-out passages and five methods;
+the separate blinded grounding sample contains six passages across all five
+methods. NLI is a repeatable model-based diagnostic. The independent LLM audit
+is archived with its rubric and provenance; its exact judge runtime identifier
+is unavailable, and it is not human validation. See
+[the review protocol](../docs/llm-review-prompt.md).
+
+Separate process measurements cover JSON/Parquet queries on 1,000–25,000 unique
+texts, embedding-cache reuse and cached core-model inference. Timings state
+their cache and process boundaries. The
+[complete catalog](../results/experiments.json) retains current and historical
+studies with seeds, input hashes and source provenance.
+
+
 The project uses public alternatives because official SemEval-2025 Task 10 data
 cannot be obtained. The central architecture remains a frozen cross-lingual
 transformer plus a trainable hierarchical label GCN. Native persuasion techniques,
@@ -94,8 +117,9 @@ selection methods are implemented.
 BERTScore uses cached multilingual BERT layer 9, no IDF or baseline rescaling,
 and is reported per language. It measures similarity to publisher model-authored
 references, not factuality, human grounding judgments or dominant narrative
-explanation quality. Gold technique labels are supplied. Our outputs require
-human review for grounding and language quality. All model revisions and local
+explanation quality. Gold technique labels are supplied. Grounding and language quality need separate assessment; the current study uses
+an independent blinded LLM audit and pinned NLI diagnostics, with their limits
+reported separately from reference similarity. All model revisions and local
 generator settings follow PUBLIC_DATA.md.
 
 ## Supporting experiments and unavailable candidates

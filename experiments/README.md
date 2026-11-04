@@ -59,9 +59,13 @@ Optional free cloud compute can accelerate the exact same runs only if allowed b
 the data agreement. Inference is the reproducibility target. No neural model
 fine-tuning or paid service is necessary.
 
-## Manual explanation review
+## Optional manual explanation review
 
-Review up to 50 fixed examples, balanced by language and domain. For each record
+The current public-data workflow uses the blinded LLM audit and pinned NLI
+diagnostic documented in [PUBLIC_ALTERNATIVES.md](PUBLIC_ALTERNATIVES.md).
+Manual ratings remain optional and are never inferred from model judgments.
+
+For a later human study, review up to 50 fixed examples, balanced by language and domain. For each record
 check: source evidence support, attribution, label relevance, language, readability,
 and <=80 words. Preserve unsupported allegations as attributed claims. Reviewers
 must record which languages they can assess; machine translation is assistance,
