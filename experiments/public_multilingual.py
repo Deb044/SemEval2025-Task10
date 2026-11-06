@@ -149,6 +149,8 @@ def prepare():
     summaries={}
     for name,loaded in [('slavic',slavic()),('hindi',hindi()),('portuguese',portuguese())]:
         rows,taxonomy=loaded[:2]; original=len(rows)
+        for row in rows:
+            row['narratives']=sorted({taxonomy[label]['parent'] for label in row['labels']})
         # Compute on manageable complete examples; do not truncate their text.
         rows=[row for row in rows if 5<=len(row['text'].split()) and len(row['text'])<=6000 and '\ufffd' not in row['text']]
         parts,rejected=grouped_splits(rows)
@@ -171,7 +173,7 @@ def prepare():
         config={'dataset':{'slavic':'Slavic BG/RU sentence persuasion grouped pilot','hindi':'H-Prop-News native Hindi grouped pilot','portuguese':'PartisanLens Portugal-publisher headline pilot'}[name],
             'experiment_id':'multilingual-'+name,'label_schema':'native','native_decision':'multilabel' if name=='slavic' else 'single',
             **{split:str(folder/(split+'.jsonl')) for split in SPLITS},'taxonomy':str(folder/'taxonomy.json'),
-            'output':'artifacts/multilingual-'+name,'variants':variants}
+            'output':'artifacts/native-multilingual-'+name,'variants':variants}
         write_json(folder/'experiment.json',config)
     write_json(ROOT/'protocol.json',{'datasets':summaries,'seed':42,'split':'custom source/duplicate-group 70/15/15; pooled publisher partitions',
         'sources':json.loads(SOURCES.read_text(encoding='utf-8')),'hierarchy_source':'https://aclanthology.org/2026.lrec-1.289.pdf#page=3',
@@ -183,7 +185,7 @@ def prepare():
         'Hindi and Portuguese binary labels have no GNN experiment or shared cross-language label space.',
         'Exact duplicates and known source IDs checked; translations and semantic near duplicates not established.',
         'No raw text or source identifiers are published.']})
-    print(json.dumps(summaries,ensure_ascii=True,indent=2))
+    print('Prepared native language pilots:', {name:{split:{lang:stats['records'] for lang,stats in groups.items()} for split,groups in item['splits'].items()} for name,item in summaries.items()}, flush=True)
 
 
 def main():

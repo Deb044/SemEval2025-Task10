@@ -88,10 +88,10 @@ def export():
     inputs={**INPUTS,'protocol':ROOT/'protocol.json'}
     matrices={}
     for name in DATASETS:
-        summary=json.loads(Path(f'artifacts/multilingual-{name}/summary.json').read_text(encoding='utf-8'))
+        summary=json.loads(Path(f'artifacts/native-multilingual-{name}/summary.json').read_text(encoding='utf-8'))
         config=json.loads((ROOT/name/'experiment.json').read_text(encoding='utf-8'))
         # Validate data and implementation before exposing measured scores.
-        if not verified(Path(f'artifacts/multilingual-{name}/summary.json'),{split:Path(config[split]) for split in (*SPLITS,'taxonomy')}):
+        if not verified(Path(f'artifacts/native-multilingual-{name}/summary.json'),{split:Path(config[split]) for split in (*SPLITS,'taxonomy')}):
             raise ValueError('Missing matrix')
         matrices[name]={key:summary[key] for key in ('dataset','runs','aggregates','input_sha256','source_sha256','commit')}
         if name!='slavic':
