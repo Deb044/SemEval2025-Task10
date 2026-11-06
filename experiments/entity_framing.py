@@ -64,6 +64,10 @@ def main():
     if any(r.get('signature')!=signature for r in saved):raise ValueError('Silver inputs changed; use a new pilot folder')
     done={r['article_id'] for r in saved}
     if args.stage in ('all','annotate') and len(done)<len(cases):
+        weights=Path('work/models')/TEACHER['file']
+        if not weights.exists():
+            from huggingface_hub import hf_hub_download
+            hf_hub_download(TEACHER['repo'],TEACHER['file'],revision=TEACHER['revision'],local_dir='work/models')
         with server('work/llama-b11960/llama-server.exe',TEACHER,ROOT,context=4096,port=8084) as port:
             for i,case in enumerate(cases):
                 if case['article_id'] in done:continue
@@ -78,7 +82,7 @@ def main():
     if len(saved)!=len(cases):raise ValueError('Finish annotation before training')
     parts={split:[r['record'] for r in saved if r['split']==split and r['record']] for split in ('train','dev','test')}
     if any(not rows for rows in parts.values()):raise ValueError('No accepted silver labels in one partition; no fabricated fallback')
-    check_splits(*parts.values())
+    check_splits(*parts.values(),duplicate_groups={r['article_id']:r['source_group'] for rows in parts.values() for r in rows})
     for split,rows in parts.items():write_jsonl(DATA/(split+'.jsonl'),rows)
     meta=provenance(['experiments/entity_framing.py','semeval/entity.py','semeval/entity_cli.py'],paths)
     summary=dict(teacher=TEACHER,candidate_passages=len(cases),accepted={s:len(r) for s,r in parts.items()},
@@ -91,7 +95,9 @@ def main():
         for ablation in ('full','unmarked'):
             print('Training entity GNN',ablation,flush=True)
             model=entity.train(parts['train'],parts['dev'],ablation=ablation)
-            joblib.dump(model,ROOT/(ablation+'.joblib'))
+            from semeval.data import replace_file
+            path=ROOT/(ablation+'.joblib');temporary=path.with_suffix('.joblib.tmp')
+            joblib.dump(model,temporary);replace_file(temporary,path)
             predictions=entity.predict(model,parts['test']);write_jsonl(ROOT/(ablation+'-predictions.jsonl'),predictions)
             score=entity.evaluate(parts['test'],predictions)
             summary.setdefault('silver_agreement',{})[ablation]=score

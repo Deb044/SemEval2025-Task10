@@ -39,114 +39,136 @@
     {
       "id": "Bigot",
       "parent": "Antagonist",
-      "definition": "expressing discriminatory hostility toward a social group"
+      "definition": "expressing discriminatory hostility toward a social group",
+      "hypothesis": "The target discriminates against a social group."
     },
     {
       "id": "Conspirator",
       "parent": "Antagonist",
-      "definition": "participating in secret harmful plots"
+      "definition": "participating in secret harmful plots",
+      "hypothesis": "The target participates in a secret harmful plot."
     },
     {
       "id": "Corrupt",
       "parent": "Antagonist",
-      "definition": "abusing entrusted power for personal gain"
+      "definition": "abusing entrusted power for personal gain",
+      "hypothesis": "The target steals money or accepts bribes."
     },
     {
       "id": "Deceiver",
       "parent": "Antagonist",
-      "definition": "deliberately misleading people or manipulating information"
+      "definition": "deliberately misleading people or manipulating information",
+      "hypothesis": "The target deliberately lies to people."
     },
     {
       "id": "Exploited",
       "parent": "Innocent",
-      "definition": "being used unfairly for someone else’s benefit"
+      "definition": "being used unfairly for someone else’s benefit",
+      "hypothesis": "The target is used unfairly for another person’s benefit."
     },
     {
       "id": "Foreign Adversary",
       "parent": "Antagonist",
-      "definition": "posing an external geopolitical threat"
+      "definition": "posing an external geopolitical threat",
+      "hypothesis": "The target is a hostile foreign power."
     },
     {
       "id": "Forgotten",
       "parent": "Innocent",
-      "definition": "being neglected or overlooked despite needing support"
+      "definition": "being neglected or overlooked despite needing support",
+      "hypothesis": "The target is neglected and denied needed support."
     },
     {
       "id": "Guardian",
       "parent": "Protagonist",
-      "definition": "protecting people, communities or shared values"
+      "definition": "protecting people, communities or shared values",
+      "hypothesis": "The target protects and saves people."
     },
     {
       "id": "Incompetent",
       "parent": "Antagonist",
-      "definition": "causing failures through lack of competence"
+      "definition": "causing failures through lack of competence",
+      "hypothesis": "The target is unable to do their job properly."
     },
     {
       "id": "Instigator",
       "parent": "Antagonist",
-      "definition": "provoking conflict, unrest or violence"
+      "definition": "provoking conflict, unrest or violence",
+      "hypothesis": "The target provokes violence."
     },
     {
       "id": "Martyr",
       "parent": "Protagonist",
-      "definition": "sacrificing personal wellbeing for a greater cause"
+      "definition": "sacrificing personal wellbeing for a greater cause",
+      "hypothesis": "The target sacrifices their own life for others."
     },
     {
       "id": "Peacemaker",
       "parent": "Protagonist",
-      "definition": "resolving conflict through negotiation or reconciliation"
+      "definition": "resolving conflict through negotiation or reconciliation",
+      "hypothesis": "The target negotiates peace."
     },
     {
       "id": "Rebel",
       "parent": "Protagonist",
-      "definition": "challenging oppression or established power for positive change"
+      "definition": "challenging oppression or established power for positive change",
+      "hypothesis": "The target resists oppression."
     },
     {
       "id": "Saboteur",
       "parent": "Antagonist",
-      "definition": "deliberately disrupting or damaging systems"
+      "definition": "deliberately disrupting or damaging systems",
+      "hypothesis": "The target deliberately damages important systems."
     },
     {
       "id": "Scapegoat",
       "parent": "Innocent",
-      "definition": "being blamed unfairly for others’ failures"
+      "definition": "being blamed unfairly for others’ failures",
+      "hypothesis": "The target is blamed unfairly."
     },
     {
       "id": "Spy",
       "parent": "Antagonist",
-      "definition": "secretly obtaining information for a rival"
+      "definition": "secretly obtaining information for a rival",
+      "hypothesis": "The target secretly gathers information for an enemy."
     },
     {
       "id": "Terrorist",
       "parent": "Antagonist",
-      "definition": "using terror or extremist violence"
+      "definition": "using terror or extremist violence",
+      "hypothesis": "The target terrorizes civilians."
     },
     {
       "id": "Traitor",
       "parent": "Antagonist",
-      "definition": "betraying a country, group or shared cause"
+      "definition": "betraying a country, group or shared cause",
+      "hypothesis": "The target betrays their own country."
     },
     {
       "id": "Tyrant",
       "parent": "Antagonist",
-      "definition": "abusing authority to oppress others"
+      "definition": "abusing authority to oppress others",
+      "hypothesis": "The target rules through oppression."
     },
     {
       "id": "Underdog",
       "parent": "Protagonist",
-      "definition": "struggling courageously against more powerful opponents"
+      "definition": "struggling courageously against more powerful opponents",
+      "hypothesis": "The target struggles against a stronger opponent."
     },
     {
       "id": "Victim",
       "parent": "Innocent",
-      "definition": "suffering physical or economic harm beyond personal control"
+      "definition": "suffering physical or economic harm beyond personal control",
+      "hypothesis": "The target is injured or economically harmed."
     },
     {
       "id": "Virtuous",
       "parent": "Protagonist",
-      "definition": "acting honestly, fairly and with moral integrity"
+      "definition": "acting honestly, fairly and with moral integrity",
+      "hypothesis": "The target is honest and fair."
     }
   ],
-  "definition_source": "Concise project paraphrases of public role meanings; no organizer examples.",
+  "definition_source": "Concise project paraphrases and working hypotheses; no organizer examples.",
   "submission_scorer_parity": false
 }

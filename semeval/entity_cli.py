@@ -2,7 +2,7 @@
 import argparse
 import json
 from pathlib import Path
-from .data import read_jsonl,write_json,write_jsonl
+from .data import read_jsonl,write_json,write_jsonl,replace_file
 
 
 def main():
@@ -17,7 +17,8 @@ def main():
     if args.command=='train':
         import joblib
         model=entity.train(read_jsonl(args.train),read_jsonl(args.dev),args.encoder,args.seed,args.ablation)
-        Path(args.out).parent.mkdir(parents=True,exist_ok=True);joblib.dump(model,args.out)
+        path=Path(args.out);path.parent.mkdir(parents=True,exist_ok=True)
+        temporary=path.with_suffix(path.suffix+'.tmp');joblib.dump(model,temporary);replace_file(temporary,path)
         write_json(args.out+'.json',{k:v for k,v in model.items() if k!='head'})
     elif args.command=='predict':
         import joblib

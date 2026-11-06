@@ -85,6 +85,29 @@ def analyze(payload):
     return result
 
 
+def analyze_entity(payload):
+    from .entity import mentions_from_payload,prototype,predict,context,ROLE_SHA256
+    rows=mentions_from_payload(payload)
+    mode=payload.get('mode','nli')
+    if mode not in ('nli','gcn'):raise ValueError('Select the entity NLI or local GNN mode')
+    if mode=='gcn':
+        path=ROOT/'artifacts/entity-silver-v1/full.joblib'
+        if not path.is_file():raise ValueError('Train the entity GNN first using the documented pilot or your own authorized annotations')
+        model=load_model(str(path))
+        outputs=predict(model,rows)
+        for output,row in zip(outputs,rows):output['evidence']=context(row)
+        note='Teacher-labelled pilot checkpoint; not official accuracy. Forced official-format decoding can be wrong on neutral targets.'
+        coverage=sum(value>0 for value in model['training_label_counts'].values())
+        metadata=dict(annotation_sources=model['annotation_sources'],training_label_counts=model['training_label_counts'],covered_fine_roles=coverage)
+    else:
+        outputs=prototype(rows);metadata={};note='Zero-shot multilingual NLI; no GNN used. A weak match can abstain.'
+    return dict(predictions=outputs,mode=mode,note=note,training=metadata,taxonomy_sha256=ROLE_SHA256,
+        trace=[dict(stage='Supplied mentions',detail='Exact strings and explicit offsets validated; no NER substitution.'),
+            dict(stage='Entity context',detail='Target occurrence marked; nearby attribution and negation retained.'),
+            dict(stage='Model',detail='Frozen multilingual encoder with 25-node hierarchical role GNN.' if mode=='gcn' else 'Pinned multilingual MiniLMv2 NLI tests all 22 role descriptions.'),
+            dict(stage='Hierarchy',detail='One broad role and compatible fine roles. Abstentions are not valid official submission rows.')])
+
+
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT / "website/dist"), **kwargs)
@@ -119,7 +142,7 @@ class Handler(SimpleHTTPRequestHandler):
                 generator = False
             self.respond(200, {"local": True, "generator": generator,
                 "models": [{"id": key, "label": value["label"], "languages": value["language"], "available": model_path(key) is not None} for key, value in MODELS.items()],
-                "official_taxonomy": True, "review_available": self.server.queue.is_file()})
+                "official_taxonomy": True, "entity_gnn": (ROOT/"artifacts/entity-silver-v1/full.joblib").is_file(), "review_available": self.server.queue.is_file()})
         elif parsed.path == "/api/reviews":
             if not self.server.queue.is_file():
                 self.respond(200, {"items": [], "message": "Generate the fixed review queue first"})
@@ -153,6 +176,8 @@ class Handler(SimpleHTTPRequestHandler):
             with self.server.lock:
                 if self.path == "/api/analyze":
                     result = analyze(payload)
+                elif self.path == "/api/entity":
+                    result = analyze_entity(payload)
                 elif self.path == "/api/review":
                     result = save_review(payload, self.server.queue, self.server.ratings)
                 else:

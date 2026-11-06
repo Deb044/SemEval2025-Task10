@@ -33,6 +33,14 @@ class EntityChecks(unittest.TestCase):
         self.assertIn('Later  [TARGET] Mira [/TARGET]  defended',marked)
         self.assertEqual(marked.count('[TARGET]'),1)
 
+    def test_entity_views_distinguish_targets_in_the_same_article(self):
+        text='Mira protected Nila while Oleg misled the public.'
+        first=row(text,'Mira','Guardian','one');second=row(text,'Oleg','Deceiver','one')
+        values=entity.representations([first,second],Encoder())
+        self.assertEqual(values.shape,(2,48))
+        np.testing.assert_allclose(values[0,-16:],values[1,-16:])
+        self.assertFalse(np.array_equal(values[0,:32],values[1,:32]))
+
     def test_role_decoder_keeps_one_parent_and_multiple_children(self):
         fine=np.full((1,22),.01);parent=np.array([[.01,.01,.98]])
         for role in ('Guardian','Virtuous'):fine[0,entity.LABELS.index(role)]=.9

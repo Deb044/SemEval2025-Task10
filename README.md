@@ -79,6 +79,21 @@ translations. They extend language coverage without relabelling auxiliary result
 as official narrative scores. See [the multilingual protocol](docs/multilingual.md)
 and [measured aggregates](results/multilingual.json).
 
+### Dedicated Subtask 1 entity framing
+
+Subtask 1 now has its own mention-aware transformer + role GNN. It encodes the
+supplied entity, its marked local context and the article, then scores the
+**22 official fine roles and three parent roles** using a 25-node label graph.
+Joint parent/fine training and constrained decoding preserve the hierarchy.
+Exact offsets, repeated occurrences, Unicode conversion, evaluation and official
+TSV export are supported. YASO remains a separate sentiment experiment.
+
+The public article lab includes a clearly marked browser NLI baseline; the
+trained role GNN runs locally. An optional named-Qwen teacher supplies explicitly
+labelled silver data from public excerpts to exercise training. Agreement with
+that teacher is not verified entity-role accuracy. See
+[the entity-framing implementation and commands](docs/entity-framing.md).
+
 ### 2. Big-data ingestion and quality checks
 
 Apache Spark SQL is a required gate before classification in the standard
@@ -366,6 +381,19 @@ with Spark, runs the classification/graph comparisons and Bulgarian–Russian
 transfer, then exports the measured aggregates. The last two commands update the
 website catalog and Study 02 plots. No generator server is needed for this
 classification extension. See [the full protocol](docs/multilingual.md).
+
+### Run Subtask 1
+
+The browser entity-framing baseline is available under **Analyze → Subtask 1**.
+To reproduce the local silver-labelled GNN pilot after preparing the public data
+and pinned judge model:
+
+```powershell
+python -m experiments.entity_framing --stage all
+```
+
+For training on your own authorized role annotations, use the dedicated
+`python -m semeval.entity_cli` commands in [the Subtask 1 guide](docs/entity-framing.md).
 
 ### 6. Inspect results, test the code and generate local explanations
 

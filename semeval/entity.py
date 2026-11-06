@@ -39,6 +39,7 @@ DEFINITIONS={
  'Victim':'suffering physical or economic harm beyond personal control',
  'Scapegoat':'being blamed unfairly for others’ failures'}
 LABELS=sorted(ROLE_PARENT);PARENTS=sorted(ROLE_GROUPS)
+HYPOTHESES={'Guardian': 'The target protects and saves people.', 'Martyr': 'The target sacrifices their own life for others.', 'Peacemaker': 'The target negotiates peace.', 'Rebel': 'The target resists oppression.', 'Underdog': 'The target struggles against a stronger opponent.', 'Virtuous': 'The target is honest and fair.', 'Instigator': 'The target provokes violence.', 'Conspirator': 'The target participates in a secret harmful plot.', 'Tyrant': 'The target rules through oppression.', 'Foreign Adversary': 'The target is a hostile foreign power.', 'Traitor': 'The target betrays their own country.', 'Spy': 'The target secretly gathers information for an enemy.', 'Saboteur': 'The target deliberately damages important systems.', 'Corrupt': 'The target steals money or accepts bribes.', 'Incompetent': 'The target is unable to do their job properly.', 'Terrorist': 'The target terrorizes civilians.', 'Deceiver': 'The target deliberately lies to people.', 'Bigot': 'The target discriminates against a social group.', 'Forgotten': 'The target is neglected and denied needed support.', 'Exploited': 'The target is used unfairly for another person’s benefit.', 'Victim': 'The target is injured or economically harmed.', 'Scapegoat': 'The target is blamed unfairly.'}
 
 
 def taxonomy():
@@ -64,9 +65,12 @@ def mentions_from_payload(payload):
     if unit not in ('codepoint','utf16') or ending not in ('exclusive','inclusive'):raise ValueError('Select explicit offset units and end convention')
     values=payload.get('mentions')
     if not isinstance(values,list) or not 1<=len(values)<=30:raise ValueError('Supply 1–30 target mentions')
+    article_id=payload.get('article_id','user-input.txt')
+    if not isinstance(article_id,str) or not article_id or len(article_id)>120 or any(c in article_id for c in '\t\r\n'):raise ValueError('Use a short article ID without tabs or newlines')
     rows=[]
     for target in values:
         if not isinstance(target,dict):raise ValueError('Each mention must be an object')
+        if not isinstance(target.get('mention'),str) or not 0<len(target['mention'])<=200:raise ValueError('Supply an exact named-entity string of 1–200 characters')
         start,end=target.get('start'),target.get('end')
         if type(start) is not int or type(end) is not int:raise ValueError('Mention offsets must be integers')
         exclusive=end+(ending=='inclusive')
@@ -89,6 +93,15 @@ def context(row,radius=800):
     if following:b=end+following[min(1,len(following)-1)].end()
     marked=text[a:start]+' [TARGET] '+text[start:end]+' [/TARGET] '+text[end:b]
     return dict(text=text[a:b],marked=marked,start=a,end=b,target_start=start-a,target_end=end-a)
+
+
+def target_sentence(row):
+    text=row['text'];start,end=row['start'],row['end_exclusive']
+    before=list(re.finditer(r'[.!?।\n]',text[:start]));after=re.search(r'[.!?।\n]',text[end:])
+    a=before[-1].end() if before else 0;b=end+after.end() if after else len(text)
+    # Normalize only the supplied occurrence; other entities retain their names.
+    a=max(a,start-250);b=min(b,end+250)
+    return dict(text=text[a:b],premise=text[a:start]+'The target'+text[end:b],start=a,end=b)
 
 
 def representations(rows,encoder,ablation='full'):
@@ -161,6 +174,9 @@ def train(training,development,encoder_name='minilm',seed=42,ablation='full'):
     return dict(kind='entity-role-gcn-v1',head=head,encoder=encoder_name,ablation=ablation,threshold=selected[1],
         seed=seed,development_exact_match=selected[0],annotation_sources=provenance,
         training_label_counts={label:int(y[:,i].sum()) for i,label in enumerate(LABELS)},
+        encoder_model=getattr(encoder,'model_name','test encoder'),encoder_revision=getattr(encoder,'revision','test fixture'),
+        development_signature=hashlib.sha256(json.dumps(development,sort_keys=True,ensure_ascii=False).encode()).hexdigest(),
+        implementation_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         training_signature=hashlib.sha256(json.dumps(training,sort_keys=True,ensure_ascii=False).encode()).hexdigest(),
         taxonomy_source=ROLE_SOURCE,taxonomy_sha256=ROLE_SHA256,epochs=epoch+1)
 
@@ -169,6 +185,8 @@ def predict(model,rows):
     import torch
     from .features import get_encoder
     if model.get('kind')!='entity-role-gcn-v1' or model.get('taxonomy_sha256')!=ROLE_SHA256:raise ValueError('Unexpected entity checkpoint')
+    if any(row.get('task')!=1 for row in rows):raise ValueError('Entity predictions require Subtask 1 mention records')
+    torch.set_num_threads(4)
     validate(rows);encoder=get_encoder(model['encoder']);x=representations(rows,encoder,model['ablation'])
     model['head'].eval()
     with torch.inference_mode():
@@ -182,20 +200,23 @@ def prototype(rows):
     from .official_nli import runtime
     tokenizer,model=runtime();results=[]
     for row in rows:
-        snippet=context(row)
-        premise='Target entity: '+row['mention']+'. Source passage: '+snippet['marked']
+        snippet=target_sentence(row)
+        premise=snippet['premise']
         fine=[]
         for role in LABELS:
-            hypothesis=f"The passage portrays {row['mention']} as {DEFINITIONS[role]}."
+            hypothesis=HYPOTHESES[role]
             encoded=tokenizer(premise,hypothesis,return_tensors='np',truncation='only_first',max_length=384)
             feeds={item.name:np.asarray(encoded[item.name],dtype=np.int64) for item in model.get_inputs()}
             logits=model.run(None,feeds)[0][0];p=np.exp(logits-logits.max());p/=p.sum()
-            fine.append(float(p[0]/max(p[0]+p[2],1e-12))*float(p[0]))
+            fine.append(float(p[0]))
         fine=np.array(fine)
         broad=np.array([max(fine[i] for i,role in enumerate(LABELS) if ROLE_PARENT[role]==p) for p in PARENTS])
-        # Relative parent weighting only: scores remain model proxies, not probabilities.
-        broad=broad/max(broad.sum(),1e-12)
-        output=decode(fine[None,:],broad[None,:],threshold=.12,allow_abstain=True)[0]
+        parent=PARENTS[int(broad.argmax())]
+        eligible=[i for i,role in enumerate(LABELS) if ROLE_PARENT[role]==parent]
+        strongest=max(float(fine[i]) for i in eligible)
+        selected=[LABELS[i] for i in eligible if fine[i]>=max(.25,strongest*.85)]
+        output=dict(main_role=parent if selected else None,labels=selected,abstained=not selected,confidence=strongest,
+            ranking=sorted([dict(label=role,parent=ROLE_PARENT[role],score=float(fine[i])) for i,role in enumerate(LABELS)],key=lambda r:-r['score']))
         results.append(dict(task=1,**{key:row[key] for key in ('article_id','language','mention','start','end')},**output,
             evidence=snippet,engine='Multilingual NLI zero-shot; no GNN used',
             note='Source portrayal, not a factual judgment about the entity. Exploratory cutoff; official accuracy unverified.'))

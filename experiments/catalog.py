@@ -179,6 +179,8 @@ def build():
                "note": "Typed results have different units and tasks; compare within studies. Public alternatives are not SemEval benchmark scores."}
     from experiments.multilingual_website import append_catalog
     append_catalog(payload)
+    from experiments.entity_website import append_catalog as append_entity
+    append_entity(payload)
     write_json("results/experiments.json", payload)
     write_json("website/dist/experiments.json", payload)
     print(f"Published {len(payload['experiments'])} typed experiment entries")
