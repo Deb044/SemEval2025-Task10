@@ -1,0 +1,34 @@
+{
+  "slavic.zip": {
+    "url": "https://raw.githubusercontent.com/SlavicNLP/SlavicPersuasionTechniques/52ccaf1523ecfc5ee2f6405aad27c89313281055/LREC-2026-paper-corpus/lrec2026-SlavicPT-corpus-version-1.0.zip",
+    "sha256": "ee2443dafc7362bb82d404c9ef72180791af7f59489e70d0d4361776ddf33492"
+  },
+  "partisan-train.csv": {
+    "url": "https://raw.githubusercontent.com/MichJoM/PartisanLens/142bc073b51082d513f49c14e36e65a95a24fe3b/data/train.csv",
+    "sha256": "f3ab2f80297f821ef1a40452885f171d9f5ca710813c49745e7f6b69eb9f8c32"
+  },
+  "partisan-test.csv": {
+    "url": "https://raw.githubusercontent.com/MichJoM/PartisanLens/142bc073b51082d513f49c14e36e65a95a24fe3b/data/test.csv",
+    "sha256": "2b54fe8b5964a62461f5265f1def587a7a4242487bb16a4d663e5c1baa7c09c8"
+  },
+  "partisan-LICENSE": {
+    "url": "https://raw.githubusercontent.com/MichJoM/PartisanLens/142bc073b51082d513f49c14e36e65a95a24fe3b/LICENSE",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  "hindi-README.md": {
+    "url": "https://zenodo.org/records/5828240/files/README.md?download=1",
+    "sha256": "d4ec5ce1495917839203061c1a8902b9d21e8ee39548c76999d6991211d36c89"
+  },
+  "hindi-Train.csv": {
+    "url": "https://zenodo.org/records/5828240/files/H-Prop-News_Train_1.0.csv?download=1",
+    "sha256": "1da5b3b92aeed0c434073de8850d92e48f3e86795a7ca9f239db7f5c58744f87"
+  },
+  "hindi-Val.csv": {
+    "url": "https://zenodo.org/records/5828240/files/H-Prop-News_Val_1.0.csv?download=1",
+    "sha256": "b1126e39319820ed1acc91f89c358b3136965715a7bfc00f2f76c5ab66fd686e"
+  },
+  "hindi-Test.csv": {
+    "url": "https://zenodo.org/records/5828240/files/H-Prop-News_Test_1.0.csv?download=1",
+    "sha256": "b09c63977224885003679883af0c8f162a32b0f41d50169a1bd203246e52ea14"
+  }
+}
