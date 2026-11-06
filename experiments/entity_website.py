@@ -14,5 +14,5 @@ def append_catalog(payload):
             value=report['metrics']['exact_match'],unit='fraction',n=report['metrics']['count'],status='measured',
             notes='Agreement with the same named LLM teacher; not independently verified role accuracy. Sparse role coverage and selection bias.',
             details=dict(teacher=data['teacher']['name'],accepted=data['accepted'],language_counts=data['language_counts'],
-                fine_role_counts=data['label_counts'],main_role_agreement=report['metrics']['main_role_accuracy']),
+                fine_role_counts=data['label_counts'],training_fine_role_counts=data['checkpoints'][name]['training_label_counts'],main_role_agreement=report['metrics']['main_role_accuracy']),
             provenance={key:data[key] for key in ('commit','input_sha256','source_sha256')}))

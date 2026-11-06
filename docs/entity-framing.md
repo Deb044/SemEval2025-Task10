@@ -104,6 +104,22 @@ aligns by article/mention offsets, checks exact target identity and rejects
 invalid parent/fine combinations. The official primary metric is fine-role
 exact match. Local scorer parity remains unverified.
 
+## Initial measured diagnostic
+
+The completed pilot accepted 42 of 70 candidate passages: 27 training, eight
+development and seven held-out mentions. All five languages occur among accepted
+annotations, but the held-out set contains only English (2), Hindi (2) and
+Portuguese (3). Only nine of 22 fine roles occur in training. Across accepted
+partitions 13 fine roles occur, so coverage is incomplete even before evaluation.
+
+Both the full model and context-only control achieved 1/7 fine-role exact match
+(14.3% agreement with the same silver teacher), with 2/7 parent agreement.
+The full model's fixed-22-role macro F1 was 0.0114 and micro F1 was 0.1333.
+These weak, tiny-sample diagnostics establish neither an improvement from the
+entity views nor accurate multilingual entity framing. Bulgarian and Russian
+have no held-out role examples in this pilot. Source and checkpoint hashes,
+training label counts and the full aggregates are in `results/entity-framing.json`.
+
 ## Run
 
 Use the root README environment and model setup. Start the website:

@@ -538,7 +538,7 @@
     "scale-5000-parquet",
     "spark-input-audit"
   ],
-  "appendix_count": 86,
+  "appendix_count": 88,
   "review_note": "Review scores are from the named Qwen2.5-3B-Instruct LLM judge. The plot averages its four rubric criteria over the same six source passages per generator.",
   "judge_model": "Qwen2.5-3B-Instruct",
   "multilingual_extension": "Native BG/RU/HI/PT pilot; independent auxiliary tasks, not official SemEval narrative scores."

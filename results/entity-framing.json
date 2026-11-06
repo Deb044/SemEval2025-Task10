@@ -1,0 +1,431 @@
+{
+  "teacher": {
+    "name": "Qwen2.5-3B-Instruct",
+    "repo": "Qwen/Qwen2.5-3B-Instruct-GGUF",
+    "revision": "7dabda4d13d513e3e842b20f0d435c732f172cbe",
+    "file": "qwen2.5-3b-instruct-q4_k_m.gguf",
+    "sha256": "626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d",
+    "role": "judge"
+  },
+  "candidate_passages": 70,
+  "accepted": {
+    "train": 27,
+    "dev": 8,
+    "test": 7
+  },
+  "language_counts": {
+    "train": {
+      "en": 5,
+      "bg": 6,
+      "ru": 3,
+      "hi": 5,
+      "pt": 8
+    },
+    "dev": {
+      "en": 3,
+      "bg": 1,
+      "ru": 1,
+      "pt": 3
+    },
+    "test": {
+      "en": 2,
+      "hi": 2,
+      "pt": 3
+    }
+  },
+  "label_counts": {
+    "Underdog": 10,
+    "Incompetent": 8,
+    "Saboteur": 6,
+    "Rebel": 3,
+    "Victim": 3,
+    "Bigot": 1,
+    "Exploited": 4,
+    "Deceiver": 2,
+    "Guardian": 1,
+    "Instigator": 1,
+    "Peacemaker": 1,
+    "Conspirator": 1,
+    "Tyrant": 1
+  },
+  "rejected": 17,
+  "abstained": 11,
+  "annotation_provenance": "Silver labels from one named quantized LLM; not independently verified gold.",
+  "annotation_signature": "9fbef2f26e246d062ef6f45e194fb6277713275546086430a2483c7280d4b8e1",
+  "annotation_output_sha256": "e12bc2b6c9e5469db7debcd5c859967d0ebc210ff2351e5f74d8498dcfd44c77",
+  "protocol": {
+    "seed": 42,
+    "encoder": "minilm",
+    "frozen_encoder": true,
+    "role_nodes": 25,
+    "supplied_mentions": true,
+    "selection": "Development loss early stopping; dev exact-match threshold selection"
+  },
+  "benchmark_claim": false,
+  "commit": "399ac35e9e4611d9b2d9e20581c7f52abc7dbb23",
+  "source_sha256": {
+    "experiments/entity_framing.py": "598528c1f68b6993d3a383cbd94ecfbface9db17b840ce84b9fab60db4691b87",
+    "semeval/entity.py": "74844da0b53aa9067f5fc933d6aa6d22e7219a5b2d5987cec101e086e055afd7",
+    "semeval/entity_cli.py": "e4c01eb33b5ae75911eeb01556c9b07b558d4f746cc87bb3e203d5bf48e7e60f"
+  },
+  "input_sha256": {
+    "en/train": "8d3d91f8c713ba9085cf700970948ab3462efcbf3af4839e86e8527b139d15cf",
+    "en/dev": "3dc05121b39b34065e007e650b239310e66ca5644a11a8887e6e50840f74fa68",
+    "en/test": "f0f051eecc84edfb98b31e758c56e817e658ba7c0d47af6a4e46809be5b7429e",
+    "bg/train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+    "bg/dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+    "bg/test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+    "ru/train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+    "ru/dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+    "ru/test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+    "hi/train": "32ff001f2f5f0c37e510815bebaa81dd9aa6775a920952f9b613360e6c06d1a4",
+    "hi/dev": "093d3b4e9884152653f77a9c621c69ad5b32b8543c61de13c0748932c8d17d11",
+    "hi/test": "582fd884be57924c912ffa8dce692e8b269a9dbaa162fa98d98840fa1a7894aa",
+    "pt/train": "4b1e1c13bbc75a270b5162c09d38ab03b8835c032ead6027a858a2f93e78bb7c",
+    "pt/dev": "6e3cb9de59a293302b6cdd06965148a604da0949abb1ff316308a36121dcfca0",
+    "pt/test": "35396010387e3691282464c9710bbb91d0ac3380ee7c53216f1e130c2aa03340"
+  },
+  "environment": {
+    "python": "3.13.5",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.1.3",
+      "scikit-learn": "1.6.1",
+      "torch": "2.9.1",
+      "transformers": "4.57.6",
+      "sentence-transformers": "5.7.0"
+    }
+  },
+  "silver_agreement": {
+    "full": {
+      "primary_metric": "exact_match",
+      "metrics": {
+        "count": 7,
+        "exact_match": 0.14285714285714285,
+        "samples_f1": 0.14285714285714285,
+        "micro_f1": 0.13333333333333333,
+        "macro_f1": 0.011363636363636364,
+        "macro_f1_observed_labels": 0.03571428571428571,
+        "per_label": {
+          "Bigot": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Conspirator": {
+            "f1": 0.0,
+            "support": 1
+          },
+          "Corrupt": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Deceiver": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Exploited": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Foreign Adversary": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Forgotten": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Guardian": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Incompetent": {
+            "f1": 0.0,
+            "support": 1
+          },
+          "Instigator": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Martyr": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Peacemaker": {
+            "f1": 0.0,
+            "support": 1
+          },
+          "Rebel": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Saboteur": {
+            "f1": 0.0,
+            "support": 1
+          },
+          "Scapegoat": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Spy": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Terrorist": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Traitor": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Tyrant": {
+            "f1": 0.0,
+            "support": 1
+          },
+          "Underdog": {
+            "f1": 0.25,
+            "support": 1
+          },
+          "Victim": {
+            "f1": 0.0,
+            "support": 1
+          },
+          "Virtuous": {
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "by_language": {
+          "en": {
+            "count": 2,
+            "macro_f1": 0.0,
+            "samples_f1": 0.0,
+            "exact_match": 0.0
+          },
+          "hi": {
+            "count": 2,
+            "macro_f1": 0.0,
+            "samples_f1": 0.0,
+            "exact_match": 0.0
+          },
+          "pt": {
+            "count": 3,
+            "macro_f1": 0.022727272727272728,
+            "samples_f1": 0.3333333333333333,
+            "exact_match": 0.3333333333333333
+          }
+        },
+        "main_role_accuracy": 0.2857142857142857
+      },
+      "annotation_sources": [
+        "LLM silver: Qwen2.5-3B-Instruct Q4_K_M"
+      ],
+      "scoring_provenance": "Local fixed-22-role entity evaluation; organizer scorer parity not verified.",
+      "benchmark_claim": false
+    },
+    "unmarked": {
+      "primary_metric": "exact_match",
+      "metrics": {
+        "count": 7,
+        "exact_match": 0.14285714285714285,
+        "samples_f1": 0.14285714285714285,
+        "micro_f1": 0.14285714285714285,
+        "macro_f1": 0.011363636363636364,
+        "macro_f1_observed_labels": 0.03571428571428571,
+        "per_label": {
+          "Bigot": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Conspirator": {
+            "f1": 0.0,
+            "support": 1
+          },
+          "Corrupt": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Deceiver": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Exploited": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Foreign Adversary": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Forgotten": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Guardian": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Incompetent": {
+            "f1": 0.0,
+            "support": 1
+          },
+          "Instigator": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Martyr": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Peacemaker": {
+            "f1": 0.0,
+            "support": 1
+          },
+          "Rebel": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Saboteur": {
+            "f1": 0.0,
+            "support": 1
+          },
+          "Scapegoat": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Spy": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Terrorist": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Traitor": {
+            "f1": 0.0,
+            "support": 0
+          },
+          "Tyrant": {
+            "f1": 0.0,
+            "support": 1
+          },
+          "Underdog": {
+            "f1": 0.25,
+            "support": 1
+          },
+          "Victim": {
+            "f1": 0.0,
+            "support": 1
+          },
+          "Virtuous": {
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "by_language": {
+          "en": {
+            "count": 2,
+            "macro_f1": 0.0,
+            "samples_f1": 0.0,
+            "exact_match": 0.0
+          },
+          "hi": {
+            "count": 2,
+            "macro_f1": 0.0,
+            "samples_f1": 0.0,
+            "exact_match": 0.0
+          },
+          "pt": {
+            "count": 3,
+            "macro_f1": 0.022727272727272728,
+            "samples_f1": 0.3333333333333333,
+            "exact_match": 0.3333333333333333
+          }
+        },
+        "main_role_accuracy": 0.2857142857142857
+      },
+      "annotation_sources": [
+        "LLM silver: Qwen2.5-3B-Instruct Q4_K_M"
+      ],
+      "scoring_provenance": "Local fixed-22-role entity evaluation; organizer scorer parity not verified.",
+      "benchmark_claim": false
+    }
+  },
+  "checkpoints": {
+    "full": {
+      "sha256": "a3ea46b8804107431faf85a7bfa65681af9382f963c24ddf4ea8fc7784f0930b",
+      "encoder_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "encoder_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "epochs": 29,
+      "threshold": 0.1,
+      "training_label_counts": {
+        "Bigot": 1,
+        "Conspirator": 0,
+        "Corrupt": 0,
+        "Deceiver": 1,
+        "Exploited": 4,
+        "Foreign Adversary": 0,
+        "Forgotten": 0,
+        "Guardian": 1,
+        "Incompetent": 4,
+        "Instigator": 0,
+        "Martyr": 0,
+        "Peacemaker": 0,
+        "Rebel": 3,
+        "Saboteur": 4,
+        "Scapegoat": 0,
+        "Spy": 0,
+        "Terrorist": 0,
+        "Traitor": 0,
+        "Tyrant": 0,
+        "Underdog": 8,
+        "Victim": 1,
+        "Virtuous": 0
+      },
+      "training_signature": "9b956cfe48c6927f63a4715c60b4472e034e88c3cbed787df549295959f369b6",
+      "development_signature": "b14aa0bca6b792be90c9e7a30d20737ddf2c63c3e6b70193664e5da51f0c95c6",
+      "implementation_sha256": "74844da0b53aa9067f5fc933d6aa6d22e7219a5b2d5987cec101e086e055afd7"
+    },
+    "unmarked": {
+      "sha256": "3a16f51b0557f6486fb79c2ff17cc2161d1027244a45471b683dc6b1c01a6014",
+      "encoder_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "encoder_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+      "epochs": 22,
+      "threshold": 0.2,
+      "training_label_counts": {
+        "Bigot": 1,
+        "Conspirator": 0,
+        "Corrupt": 0,
+        "Deceiver": 1,
+        "Exploited": 4,
+        "Foreign Adversary": 0,
+        "Forgotten": 0,
+        "Guardian": 1,
+        "Incompetent": 4,
+        "Instigator": 0,
+        "Martyr": 0,
+        "Peacemaker": 0,
+        "Rebel": 3,
+        "Saboteur": 4,
+        "Scapegoat": 0,
+        "Spy": 0,
+        "Terrorist": 0,
+        "Traitor": 0,
+        "Tyrant": 0,
+        "Underdog": 8,
+        "Victim": 1,
+        "Virtuous": 0
+      },
+      "training_signature": "9b956cfe48c6927f63a4715c60b4472e034e88c3cbed787df549295959f369b6",
+      "development_signature": "b14aa0bca6b792be90c9e7a30d20737ddf2c63c3e6b70193664e5da51f0c95c6",
+      "implementation_sha256": "74844da0b53aa9067f5fc933d6aa6d22e7219a5b2d5987cec101e086e055afd7"
+    }
+  },
+  "limits": [
+    "Test scores measure agreement with the same silver teacher, not true role accuracy.",
+    "Small nonrepresentative excerpts, teacher abstention selection bias and sparse fine-role coverage.",
+    "Unmarked ablation removes target-specific and global views together; not an isolated marker-only effect.",
+    "No official data or organizer scorer; no claim of multilingual role accuracy."
+  ]
+}

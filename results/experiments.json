@@ -14366,6 +14366,220 @@
           "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
         }
       }
+    },
+    {
+      "id": "entity-silver-full",
+      "study": "Subtask 1 silver-label diagnostic",
+      "kind": "classification",
+      "dataset": "Public excerpt teacher-labelled entity pilot",
+      "name": "Entity-role GNN · full",
+      "role": "Silver agreement diagnostic",
+      "metric": "fine-role exact match (silver agreement)",
+      "value": 0.14285714285714285,
+      "unit": "fraction",
+      "n": 7,
+      "status": "measured",
+      "notes": "Agreement with the same named LLM teacher; not independently verified role accuracy. Sparse role coverage and selection bias.",
+      "details": {
+        "teacher": "Qwen2.5-3B-Instruct",
+        "accepted": {
+          "train": 27,
+          "dev": 8,
+          "test": 7
+        },
+        "language_counts": {
+          "train": {
+            "en": 5,
+            "bg": 6,
+            "ru": 3,
+            "hi": 5,
+            "pt": 8
+          },
+          "dev": {
+            "en": 3,
+            "bg": 1,
+            "ru": 1,
+            "pt": 3
+          },
+          "test": {
+            "en": 2,
+            "hi": 2,
+            "pt": 3
+          }
+        },
+        "fine_role_counts": {
+          "Underdog": 10,
+          "Incompetent": 8,
+          "Saboteur": 6,
+          "Rebel": 3,
+          "Victim": 3,
+          "Bigot": 1,
+          "Exploited": 4,
+          "Deceiver": 2,
+          "Guardian": 1,
+          "Instigator": 1,
+          "Peacemaker": 1,
+          "Conspirator": 1,
+          "Tyrant": 1
+        },
+        "training_fine_role_counts": {
+          "Bigot": 1,
+          "Conspirator": 0,
+          "Corrupt": 0,
+          "Deceiver": 1,
+          "Exploited": 4,
+          "Foreign Adversary": 0,
+          "Forgotten": 0,
+          "Guardian": 1,
+          "Incompetent": 4,
+          "Instigator": 0,
+          "Martyr": 0,
+          "Peacemaker": 0,
+          "Rebel": 3,
+          "Saboteur": 4,
+          "Scapegoat": 0,
+          "Spy": 0,
+          "Terrorist": 0,
+          "Traitor": 0,
+          "Tyrant": 0,
+          "Underdog": 8,
+          "Victim": 1,
+          "Virtuous": 0
+        },
+        "main_role_agreement": 0.2857142857142857
+      },
+      "provenance": {
+        "commit": "399ac35e9e4611d9b2d9e20581c7f52abc7dbb23",
+        "input_sha256": {
+          "en/train": "8d3d91f8c713ba9085cf700970948ab3462efcbf3af4839e86e8527b139d15cf",
+          "en/dev": "3dc05121b39b34065e007e650b239310e66ca5644a11a8887e6e50840f74fa68",
+          "en/test": "f0f051eecc84edfb98b31e758c56e817e658ba7c0d47af6a4e46809be5b7429e",
+          "bg/train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "bg/dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "bg/test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "ru/train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "ru/dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "ru/test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "hi/train": "32ff001f2f5f0c37e510815bebaa81dd9aa6775a920952f9b613360e6c06d1a4",
+          "hi/dev": "093d3b4e9884152653f77a9c621c69ad5b32b8543c61de13c0748932c8d17d11",
+          "hi/test": "582fd884be57924c912ffa8dce692e8b269a9dbaa162fa98d98840fa1a7894aa",
+          "pt/train": "4b1e1c13bbc75a270b5162c09d38ab03b8835c032ead6027a858a2f93e78bb7c",
+          "pt/dev": "6e3cb9de59a293302b6cdd06965148a604da0949abb1ff316308a36121dcfca0",
+          "pt/test": "35396010387e3691282464c9710bbb91d0ac3380ee7c53216f1e130c2aa03340"
+        },
+        "source_sha256": {
+          "experiments/entity_framing.py": "598528c1f68b6993d3a383cbd94ecfbface9db17b840ce84b9fab60db4691b87",
+          "semeval/entity.py": "74844da0b53aa9067f5fc933d6aa6d22e7219a5b2d5987cec101e086e055afd7",
+          "semeval/entity_cli.py": "e4c01eb33b5ae75911eeb01556c9b07b558d4f746cc87bb3e203d5bf48e7e60f"
+        }
+      }
+    },
+    {
+      "id": "entity-silver-unmarked",
+      "study": "Subtask 1 silver-label diagnostic",
+      "kind": "classification",
+      "dataset": "Public excerpt teacher-labelled entity pilot",
+      "name": "Entity-role GNN · unmarked",
+      "role": "Silver agreement diagnostic",
+      "metric": "fine-role exact match (silver agreement)",
+      "value": 0.14285714285714285,
+      "unit": "fraction",
+      "n": 7,
+      "status": "measured",
+      "notes": "Agreement with the same named LLM teacher; not independently verified role accuracy. Sparse role coverage and selection bias.",
+      "details": {
+        "teacher": "Qwen2.5-3B-Instruct",
+        "accepted": {
+          "train": 27,
+          "dev": 8,
+          "test": 7
+        },
+        "language_counts": {
+          "train": {
+            "en": 5,
+            "bg": 6,
+            "ru": 3,
+            "hi": 5,
+            "pt": 8
+          },
+          "dev": {
+            "en": 3,
+            "bg": 1,
+            "ru": 1,
+            "pt": 3
+          },
+          "test": {
+            "en": 2,
+            "hi": 2,
+            "pt": 3
+          }
+        },
+        "fine_role_counts": {
+          "Underdog": 10,
+          "Incompetent": 8,
+          "Saboteur": 6,
+          "Rebel": 3,
+          "Victim": 3,
+          "Bigot": 1,
+          "Exploited": 4,
+          "Deceiver": 2,
+          "Guardian": 1,
+          "Instigator": 1,
+          "Peacemaker": 1,
+          "Conspirator": 1,
+          "Tyrant": 1
+        },
+        "training_fine_role_counts": {
+          "Bigot": 1,
+          "Conspirator": 0,
+          "Corrupt": 0,
+          "Deceiver": 1,
+          "Exploited": 4,
+          "Foreign Adversary": 0,
+          "Forgotten": 0,
+          "Guardian": 1,
+          "Incompetent": 4,
+          "Instigator": 0,
+          "Martyr": 0,
+          "Peacemaker": 0,
+          "Rebel": 3,
+          "Saboteur": 4,
+          "Scapegoat": 0,
+          "Spy": 0,
+          "Terrorist": 0,
+          "Traitor": 0,
+          "Tyrant": 0,
+          "Underdog": 8,
+          "Victim": 1,
+          "Virtuous": 0
+        },
+        "main_role_agreement": 0.2857142857142857
+      },
+      "provenance": {
+        "commit": "399ac35e9e4611d9b2d9e20581c7f52abc7dbb23",
+        "input_sha256": {
+          "en/train": "8d3d91f8c713ba9085cf700970948ab3462efcbf3af4839e86e8527b139d15cf",
+          "en/dev": "3dc05121b39b34065e007e650b239310e66ca5644a11a8887e6e50840f74fa68",
+          "en/test": "f0f051eecc84edfb98b31e758c56e817e658ba7c0d47af6a4e46809be5b7429e",
+          "bg/train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "bg/dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "bg/test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "ru/train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "ru/dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "ru/test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "hi/train": "32ff001f2f5f0c37e510815bebaa81dd9aa6775a920952f9b613360e6c06d1a4",
+          "hi/dev": "093d3b4e9884152653f77a9c621c69ad5b32b8543c61de13c0748932c8d17d11",
+          "hi/test": "582fd884be57924c912ffa8dce692e8b269a9dbaa162fa98d98840fa1a7894aa",
+          "pt/train": "4b1e1c13bbc75a270b5162c09d38ab03b8835c032ead6027a858a2f93e78bb7c",
+          "pt/dev": "6e3cb9de59a293302b6cdd06965148a604da0949abb1ff316308a36121dcfca0",
+          "pt/test": "35396010387e3691282464c9710bbb91d0ac3380ee7c53216f1e130c2aa03340"
+        },
+        "source_sha256": {
+          "experiments/entity_framing.py": "598528c1f68b6993d3a383cbd94ecfbface9db17b840ce84b9fab60db4691b87",
+          "semeval/entity.py": "74844da0b53aa9067f5fc933d6aa6d22e7219a5b2d5987cec101e086e055afd7",
+          "semeval/entity_cli.py": "e4c01eb33b5ae75911eeb01556c9b07b558d4f746cc87bb3e203d5bf48e7e60f"
+        }
+      }
     }
   ],
   "review_method": "Independent blinded LLM audit plus pinned NLI diagnostics; not human validation.",
