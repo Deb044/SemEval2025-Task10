@@ -1,0 +1,152 @@
+{
+  "source": "https://propaganda.math.unipd.it/semeval2025task10/ENTITY-ROLE-TAXONOMY.pdf",
+  "source_sha256": "c55d1692f020cbd5f13135d6edfc76bbb90efe8fe6190a396051e4be47e21f59",
+  "counts": {
+    "coarse": 3,
+    "fine": 22
+  },
+  "groups": {
+    "Protagonist": [
+      "Guardian",
+      "Martyr",
+      "Peacemaker",
+      "Rebel",
+      "Underdog",
+      "Virtuous"
+    ],
+    "Antagonist": [
+      "Instigator",
+      "Conspirator",
+      "Tyrant",
+      "Foreign Adversary",
+      "Traitor",
+      "Spy",
+      "Saboteur",
+      "Corrupt",
+      "Incompetent",
+      "Terrorist",
+      "Deceiver",
+      "Bigot"
+    ],
+    "Innocent": [
+      "Forgotten",
+      "Exploited",
+      "Victim",
+      "Scapegoat"
+    ]
+  },
+  "labels": [
+    {
+      "id": "Bigot",
+      "parent": "Antagonist",
+      "definition": "expressing discriminatory hostility toward a social group"
+    },
+    {
+      "id": "Conspirator",
+      "parent": "Antagonist",
+      "definition": "participating in secret harmful plots"
+    },
+    {
+      "id": "Corrupt",
+      "parent": "Antagonist",
+      "definition": "abusing entrusted power for personal gain"
+    },
+    {
+      "id": "Deceiver",
+      "parent": "Antagonist",
+      "definition": "deliberately misleading people or manipulating information"
+    },
+    {
+      "id": "Exploited",
+      "parent": "Innocent",
+      "definition": "being used unfairly for someone else’s benefit"
+    },
+    {
+      "id": "Foreign Adversary",
+      "parent": "Antagonist",
+      "definition": "posing an external geopolitical threat"
+    },
+    {
+      "id": "Forgotten",
+      "parent": "Innocent",
+      "definition": "being neglected or overlooked despite needing support"
+    },
+    {
+      "id": "Guardian",
+      "parent": "Protagonist",
+      "definition": "protecting people, communities or shared values"
+    },
+    {
+      "id": "Incompetent",
+      "parent": "Antagonist",
+      "definition": "causing failures through lack of competence"
+    },
+    {
+      "id": "Instigator",
+      "parent": "Antagonist",
+      "definition": "provoking conflict, unrest or violence"
+    },
+    {
+      "id": "Martyr",
+      "parent": "Protagonist",
+      "definition": "sacrificing personal wellbeing for a greater cause"
+    },
+    {
+      "id": "Peacemaker",
+      "parent": "Protagonist",
+      "definition": "resolving conflict through negotiation or reconciliation"
+    },
+    {
+      "id": "Rebel",
+      "parent": "Protagonist",
+      "definition": "challenging oppression or established power for positive change"
+    },
+    {
+      "id": "Saboteur",
+      "parent": "Antagonist",
+      "definition": "deliberately disrupting or damaging systems"
+    },
+    {
+      "id": "Scapegoat",
+      "parent": "Innocent",
+      "definition": "being blamed unfairly for others’ failures"
+    },
+    {
+      "id": "Spy",
+      "parent": "Antagonist",
+      "definition": "secretly obtaining information for a rival"
+    },
+    {
+      "id": "Terrorist",
+      "parent": "Antagonist",
+      "definition": "using terror or extremist violence"
+    },
+    {
+      "id": "Traitor",
+      "parent": "Antagonist",
+      "definition": "betraying a country, group or shared cause"
+    },
+    {
+      "id": "Tyrant",
+      "parent": "Antagonist",
+      "definition": "abusing authority to oppress others"
+    },
+    {
+      "id": "Underdog",
+      "parent": "Protagonist",
+      "definition": "struggling courageously against more powerful opponents"
+    },
+    {
+      "id": "Victim",
+      "parent": "Innocent",
+      "definition": "suffering physical or economic harm beyond personal control"
+    },
+    {
+      "id": "Virtuous",
+      "parent": "Protagonist",
+      "definition": "acting honestly, fairly and with moral integrity"
+    }
+  ],
+  "definition_source": "Concise project paraphrases of public role meanings; no organizer examples.",
+  "submission_scorer_parity": false
+}
