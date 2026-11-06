@@ -188,6 +188,8 @@ def main():
     payload = {'studies': studies, 'featured_result_ids': sorted(featured),
         'appendix_count': sum(r['id'] not in featured for r in entries),
         'review_note': human_note, 'judge_model': reviewed['judge']['name']}
+    from experiments.multilingual_website import attach
+    attach(payload)
     (ROOT / 'studies.json').write_text(json.dumps(payload, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     Path('results/featured-studies.json').write_text(json.dumps(payload, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     print('Built five studies and five SVG plots')

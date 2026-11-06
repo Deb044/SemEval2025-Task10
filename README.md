@@ -61,6 +61,24 @@ The detailed preparation and licensing boundaries are recorded in
 [public auxiliary experiments](experiments/PUBLIC_DATA.md) and
 [public-data protocols](experiments/PUBLIC_ALTERNATIVES.md).
 
+### Native-language extension
+
+We also evaluate **Bulgarian, Russian, Hindi and a Portugal-publisher Portuguese
+subset** using their native annotations. Bulgarian and Russian share a 25-technique,
+six-parent persuasion hierarchy: their experiments include bilingual classification,
+GNN ablations and source-only transfer in both directions. Hindi H-Prop-News tests
+binary propaganda classification; Portuguese PartisanLens headlines test binary
+hyperpartisanship. Those two binary tasks have no artificial GNN hierarchy and are
+reported separately, with training-majority baselines.
+
+The Portuguese release mixes publishers from multiple countries; our fixed
+Portugal-publisher allowlist excludes Brazilian and unknown outlets. Publisher
+location is a proxy for European Portuguese, not linguistic verification of every
+headline. These custom, source-grouped pilots use native text, not machine
+translations. They extend language coverage without relabelling auxiliary results
+as official narrative scores. See [the multilingual protocol](docs/multilingual.md)
+and [measured aggregates](results/multilingual.json).
+
 ### 2. Big-data ingestion and quality checks
 
 Apache Spark SQL is a required gate before classification in the standard
@@ -331,6 +349,23 @@ historical appendix entry. Supplemental experiment commands are documented in
 If source or input hashes differ from a saved run, preserve the old outputs and
 use a fresh output location through that experiment's configuration/options.
 A signature error means the old and new experiments must not be silently mixed.
+
+### Reproduce the native-language extension
+
+The multilingual extension is a separate workflow, so the earlier main studies
+retain their original inputs and results:
+
+```powershell
+python -m experiments.multilingual --stage all
+python -m experiments.catalog
+python -m experiments.website_studies
+```
+
+This downloads the pinned language datasets, prepares grouped splits, audits them
+with Spark, runs the classification/graph comparisons and Bulgarian–Russian
+transfer, then exports the measured aggregates. The last two commands update the
+website catalog and Study 02 plots. No generator server is needed for this
+classification extension. See [the full protocol](docs/multilingual.md).
 
 ### 6. Inspect results, test the code and generate local explanations
 

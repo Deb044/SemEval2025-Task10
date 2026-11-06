@@ -177,9 +177,11 @@ def build():
     payload = {"experiments": entries,
                "review_method": "Independent blinded LLM audit plus pinned NLI diagnostics; not human validation.",
                "note": "Typed results have different units and tasks; compare within studies. Public alternatives are not SemEval benchmark scores."}
+    from experiments.multilingual_website import append_catalog
+    append_catalog(payload)
     write_json("results/experiments.json", payload)
     write_json("website/dist/experiments.json", payload)
-    print(f"Published {len(entries)} typed experiment entries")
+    print(f"Published {len(payload['experiments'])} typed experiment entries")
 
 
 if __name__ == "__main__":

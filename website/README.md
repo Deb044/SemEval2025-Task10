@@ -34,3 +34,9 @@ multilingual retrieval and claim-agreement filtering. The optional localhost
 workspace retains trained native GNN analysis and Qwen generation. See
 [the article-lab protocol](../docs/article-lab.md) for model pins, privacy,
 thresholds and the distinction between official vocabulary and official accuracy.
+
+Study 02 also contains measured native Bulgarian/Russian classification and
+source-only transfer, plus separate Hindi and Portugal-publisher binary tests.
+`python -m experiments.multilingual --stage all` produces their aggregate input;
+the normal catalog/study builders add the result tables and three plots. See
+[the native-language protocol](../docs/multilingual.md).

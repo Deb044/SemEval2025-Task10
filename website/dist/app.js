@@ -96,7 +96,7 @@ function renderStudies(data) {
   const navigation = byId('study-navigation'); navigation.replaceChildren();
   data.studies.forEach((study, index) => {
     const article = element('article', undefined, 'study-card'); article.id = 'study-' + study.id;
-    const jump = element('button', `${String(index + 1).padStart(2, '0')} ${['Classification', 'Bilingual encoders', 'Graph controls', 'Generators & judge', 'Data pipeline'][index]}`);
+    const jump = element('button', `${String(index + 1).padStart(2, '0')} ${['Classification', 'Multilingual tests', 'Graph controls', 'Generators & judge', 'Data pipeline'][index]}`);
     jump.type = 'button'; jump.addEventListener('click', () => article.scrollIntoView({behavior: 'smooth', block: 'start'})); navigation.append(jump);
     article.append(element('p', `STUDY ${String(index + 1).padStart(2, '0')}`, 'eyebrow'), element('h3', study.title));
     const context = element('div', undefined, 'study-context');
@@ -116,6 +116,21 @@ function renderStudies(data) {
       const breakdown = element('div', undefined, 'rubric-breakdown');
       breakdown.append(element('h4', 'LLM rubric breakdown'), studyTable(study.review_headers, study.review_rows, 'Mean rubric ratings across six outputs per generator'));
       article.append(breakdown);
+    }
+    (study.extensions || []).forEach(extension => {
+      const block = element('section', undefined, 'multilingual-extension');
+      block.append(element('h4', extension.title), element('p', extension.description), element('p', extension.finding));
+      const figure = element('figure'); const img = element('img');
+      if (!/^plots\/[a-z-]+\.svg$/.test(extension.plot)) throw new Error('Invalid extension plot path');
+      img.src = extension.plot; img.alt = extension.plot_alt; img.loading = 'lazy'; img.decoding = 'async';
+      img.width = Math.round(extension.plot_width); img.height = Math.round(extension.plot_height);
+      img.style.aspectRatio = `${extension.plot_width} / ${extension.plot_height}`;
+      figure.append(img); block.append(figure, studyTable(extension.headers, extension.rows, extension.title));
+      block.append(element('p', extension.limits, 'study-limit')); article.append(block);
+    });
+    if (study.extension_source) {
+      const evidence = element('a', 'Native-language results and protocol ↗', 'small');
+      evidence.href = 'https://github.com/Deb044/SemEval2025-Task10/blob/main/' + study.extension_source; article.append(evidence);
     }
     article.append(element('p', study.limits, 'study-limit'));
     const source = element('a', 'Aggregate evidence ↗', 'small'); source.href = 'https://github.com/Deb044/SemEval2025-Task10/blob/main/' + study.source; article.append(source);
