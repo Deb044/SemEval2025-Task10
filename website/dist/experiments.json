@@ -13276,6 +13276,1096 @@
           }
         }
       }
+    },
+    {
+      "id": "native-multilingual-slavic-tfidf-none",
+      "study": "Native multilingual extension",
+      "kind": "classification",
+      "dataset": "Slavic BG/RU sentence persuasion grouped pilot",
+      "name": "TF-IDF + LR",
+      "role": "Native-language comparison",
+      "metric": "macro F1",
+      "value": 0.0323029189995699,
+      "unit": "fraction",
+      "n": 300,
+      "status": "measured",
+      "notes": "Native auxiliary task; compare within dataset only. Custom grouped pilot.",
+      "details": {
+        "seeds": [
+          42
+        ],
+        "sample_std": null,
+        "by_language": [
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.030873015873015875,
+              "samples_f1": 0.08911111111111111,
+              "exact_match": 0.35333333333333333
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.008677248677248678,
+              "samples_f1": 0.013333333333333334,
+              "exact_match": 0.36
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "commit": "6fda4021192bb7cbd1dffb50ce91c971653d4da2",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-slavic-lsa-none",
+      "study": "Native multilingual extension",
+      "kind": "classification",
+      "dataset": "Slavic BG/RU sentence persuasion grouped pilot",
+      "name": "LSA + LR",
+      "role": "Native-language comparison",
+      "metric": "macro F1",
+      "value": 0.07448488288945676,
+      "unit": "fraction",
+      "n": 300,
+      "status": "measured",
+      "notes": "Native auxiliary task; compare within dataset only. Custom grouped pilot.",
+      "details": {
+        "seeds": [
+          42
+        ],
+        "sample_std": null,
+        "by_language": [
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.08979588031931218,
+              "samples_f1": 0.13182539682539685,
+              "exact_match": 0.17333333333333334
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.028759185986934874,
+              "samples_f1": 0.06599999999999999,
+              "exact_match": 0.02666666666666667
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "commit": "6fda4021192bb7cbd1dffb50ce91c971653d4da2",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-slavic-transformer-none",
+      "study": "Native multilingual extension",
+      "kind": "classification",
+      "dataset": "Slavic BG/RU sentence persuasion grouped pilot",
+      "name": "MiniLM + LR",
+      "role": "Native-language comparison",
+      "metric": "macro F1",
+      "value": 0.13287883005557824,
+      "unit": "fraction",
+      "n": 300,
+      "status": "measured",
+      "notes": "Native auxiliary task; compare within dataset only. Custom grouped pilot.",
+      "details": {
+        "seeds": [
+          42
+        ],
+        "sample_std": null,
+        "by_language": [
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.10423718934465204,
+              "samples_f1": 0.1452063492063492,
+              "exact_match": 0.20666666666666667
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.10101586267246318,
+              "samples_f1": 0.08666666666666667,
+              "exact_match": 0.12666666666666668
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "commit": "6fda4021192bb7cbd1dffb50ce91c971653d4da2",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-slavic-graph-none",
+      "study": "Native multilingual extension",
+      "kind": "classification",
+      "dataset": "Slavic BG/RU sentence persuasion grouped pilot",
+      "name": "MiniLM + GCN",
+      "role": "Native-language comparison",
+      "metric": "macro F1",
+      "value": 0.05016719494791939,
+      "unit": "fraction",
+      "n": 300,
+      "status": "measured",
+      "notes": "Native auxiliary task; compare within dataset only. Custom grouped pilot.",
+      "details": {
+        "seeds": [
+          13,
+          42,
+          87
+        ],
+        "sample_std": 0.02354614820806719,
+        "by_language": [
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.06373101884431934,
+              "samples_f1": 0.046798941798941805,
+              "exact_match": 0.4533333333333333
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.022302933949992772,
+              "samples_f1": 0.020126984126984125,
+              "exact_match": 0.37333333333333335
+            }
+          },
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.028758329933360534,
+              "samples_f1": 0.03757142857142857,
+              "exact_match": 0.4866666666666667
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.008,
+              "samples_f1": 0.011999999999999999,
+              "exact_match": 0.4
+            }
+          },
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.07668035154041929,
+              "samples_f1": 0.07772934472934472,
+              "exact_match": 0.3933333333333333
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.039606289727637065,
+              "samples_f1": 0.04933333333333333,
+              "exact_match": 0.34
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "commit": "6fda4021192bb7cbd1dffb50ce91c971653d4da2",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-slavic-graph-self-loops",
+      "study": "Native multilingual extension",
+      "kind": "classification",
+      "dataset": "Slavic BG/RU sentence persuasion grouped pilot",
+      "name": "MiniLM + GCN / self-loops",
+      "role": "Native-language comparison",
+      "metric": "macro F1",
+      "value": 0.03714700874599898,
+      "unit": "fraction",
+      "n": 300,
+      "status": "measured",
+      "notes": "Native auxiliary task; compare within dataset only. Custom grouped pilot.",
+      "details": {
+        "seeds": [
+          13,
+          42,
+          87
+        ],
+        "sample_std": 0.004397147414300608,
+        "by_language": [
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.051736846982088386,
+              "samples_f1": 0.07423376623376624,
+              "exact_match": 0.41333333333333333
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.013474509803921569,
+              "samples_f1": 0.024666666666666667,
+              "exact_match": 0.31333333333333335
+            }
+          },
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.04745551343066871,
+              "samples_f1": 0.04828138528138528,
+              "exact_match": 0.4533333333333333
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.006666666666666666,
+              "samples_f1": 0.009333333333333332,
+              "exact_match": 0.38666666666666666
+            }
+          },
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.059918330425793115,
+              "samples_f1": 0.07292063492063493,
+              "exact_match": 0.4066666666666667
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.016671824629271435,
+              "samples_f1": 0.035015873015873014,
+              "exact_match": 0.30666666666666664
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "commit": "6fda4021192bb7cbd1dffb50ce91c971653d4da2",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-slavic-graph-shuffled-edges",
+      "study": "Native multilingual extension",
+      "kind": "classification",
+      "dataset": "Slavic BG/RU sentence persuasion grouped pilot",
+      "name": "MiniLM + GCN / shuffled-edges",
+      "role": "Native-language comparison",
+      "metric": "macro F1",
+      "value": 0.03784164501115825,
+      "unit": "fraction",
+      "n": 300,
+      "status": "measured",
+      "notes": "Native auxiliary task; compare within dataset only. Custom grouped pilot.",
+      "details": {
+        "seeds": [
+          13,
+          42,
+          87
+        ],
+        "sample_std": 0.019125034521051614,
+        "by_language": [
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.07214067656393862,
+              "samples_f1": 0.06224338624338623,
+              "exact_match": 0.41333333333333333
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.026882225119513256,
+              "samples_f1": 0.02857142857142857,
+              "exact_match": 0.2866666666666667
+            }
+          },
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.027000094471211288,
+              "samples_f1": 0.03636507936507936,
+              "exact_match": 0.47333333333333333
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.007741935483870968,
+              "samples_f1": 0.011999999999999999,
+              "exact_match": 0.4
+            }
+          },
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.044746645933876304,
+              "samples_f1": 0.05638191438191438,
+              "exact_match": 0.42
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.015693779904306218,
+              "samples_f1": 0.020888888888888887,
+              "exact_match": 0.2733333333333333
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "commit": "6fda4021192bb7cbd1dffb50ce91c971653d4da2",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-slavic-graph-random-labels",
+      "study": "Native multilingual extension",
+      "kind": "classification",
+      "dataset": "Slavic BG/RU sentence persuasion grouped pilot",
+      "name": "MiniLM + GCN / random-labels",
+      "role": "Native-language comparison",
+      "metric": "macro F1",
+      "value": 0.050271604235056715,
+      "unit": "fraction",
+      "n": 300,
+      "status": "measured",
+      "notes": "Native auxiliary task; compare within dataset only. Custom grouped pilot.",
+      "details": {
+        "seeds": [
+          13,
+          42,
+          87
+        ],
+        "sample_std": 0.01696131143453445,
+        "by_language": [
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.06443977591036415,
+              "samples_f1": 0.0661067821067821,
+              "exact_match": 0.41333333333333333
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.035493761140819965,
+              "samples_f1": 0.05155555555555555,
+              "exact_match": 0.32666666666666666
+            }
+          },
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.036921889704498397,
+              "samples_f1": 0.03138095238095238,
+              "exact_match": 0.48
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.006666666666666666,
+              "samples_f1": 0.01,
+              "exact_match": 0.38666666666666666
+            }
+          },
+          {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.06539697107745641,
+              "samples_f1": 0.07083694083694082,
+              "exact_match": 0.4066666666666667
+            },
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.035215210932857996,
+              "samples_f1": 0.04822222222222222,
+              "exact_match": 0.34
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "commit": "6fda4021192bb7cbd1dffb50ce91c971653d4da2",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-hindi-tfidf-none",
+      "study": "Native multilingual extension",
+      "kind": "classification",
+      "dataset": "H-Prop-News native Hindi grouped pilot",
+      "name": "TF-IDF + LR",
+      "role": "Native-language comparison",
+      "metric": "macro F1",
+      "value": 0.832072007523174,
+      "unit": "fraction",
+      "n": 150,
+      "status": "measured",
+      "notes": "Native auxiliary task; compare within dataset only. Custom grouped pilot.",
+      "details": {
+        "seeds": [
+          42
+        ],
+        "sample_std": null,
+        "by_language": [
+          {
+            "hi": {
+              "count": 150,
+              "macro_f1": 0.832072007523174,
+              "samples_f1": 0.8333333333333334,
+              "exact_match": 0.8333333333333334
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "commit": "6fda4021192bb7cbd1dffb50ce91c971653d4da2",
+        "input_sha256": {
+          "train": "32ff001f2f5f0c37e510815bebaa81dd9aa6775a920952f9b613360e6c06d1a4",
+          "dev": "093d3b4e9884152653f77a9c621c69ad5b32b8543c61de13c0748932c8d17d11",
+          "test": "582fd884be57924c912ffa8dce692e8b269a9dbaa162fa98d98840fa1a7894aa",
+          "taxonomy": "be22c341f82a26a209a15fa345facf82dd06623ebf2d75ab7728ff178b3fe533"
+        },
+        "source_sha256": {
+          "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-hindi-lsa-none",
+      "study": "Native multilingual extension",
+      "kind": "classification",
+      "dataset": "H-Prop-News native Hindi grouped pilot",
+      "name": "LSA + LR",
+      "role": "Native-language comparison",
+      "metric": "macro F1",
+      "value": 0.818637768125028,
+      "unit": "fraction",
+      "n": 150,
+      "status": "measured",
+      "notes": "Native auxiliary task; compare within dataset only. Custom grouped pilot.",
+      "details": {
+        "seeds": [
+          42
+        ],
+        "sample_std": null,
+        "by_language": [
+          {
+            "hi": {
+              "count": 150,
+              "macro_f1": 0.818637768125028,
+              "samples_f1": 0.82,
+              "exact_match": 0.82
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "commit": "6fda4021192bb7cbd1dffb50ce91c971653d4da2",
+        "input_sha256": {
+          "train": "32ff001f2f5f0c37e510815bebaa81dd9aa6775a920952f9b613360e6c06d1a4",
+          "dev": "093d3b4e9884152653f77a9c621c69ad5b32b8543c61de13c0748932c8d17d11",
+          "test": "582fd884be57924c912ffa8dce692e8b269a9dbaa162fa98d98840fa1a7894aa",
+          "taxonomy": "be22c341f82a26a209a15fa345facf82dd06623ebf2d75ab7728ff178b3fe533"
+        },
+        "source_sha256": {
+          "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-hindi-transformer-none",
+      "study": "Native multilingual extension",
+      "kind": "classification",
+      "dataset": "H-Prop-News native Hindi grouped pilot",
+      "name": "MiniLM + LR",
+      "role": "Native-language comparison",
+      "metric": "macro F1",
+      "value": 0.7994294883223391,
+      "unit": "fraction",
+      "n": 150,
+      "status": "measured",
+      "notes": "Native auxiliary task; compare within dataset only. Custom grouped pilot.",
+      "details": {
+        "seeds": [
+          42
+        ],
+        "sample_std": null,
+        "by_language": [
+          {
+            "hi": {
+              "count": 150,
+              "macro_f1": 0.7994294883223391,
+              "samples_f1": 0.8,
+              "exact_match": 0.8
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "commit": "6fda4021192bb7cbd1dffb50ce91c971653d4da2",
+        "input_sha256": {
+          "train": "32ff001f2f5f0c37e510815bebaa81dd9aa6775a920952f9b613360e6c06d1a4",
+          "dev": "093d3b4e9884152653f77a9c621c69ad5b32b8543c61de13c0748932c8d17d11",
+          "test": "582fd884be57924c912ffa8dce692e8b269a9dbaa162fa98d98840fa1a7894aa",
+          "taxonomy": "be22c341f82a26a209a15fa345facf82dd06623ebf2d75ab7728ff178b3fe533"
+        },
+        "source_sha256": {
+          "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-portuguese-tfidf-none",
+      "study": "Native multilingual extension",
+      "kind": "classification",
+      "dataset": "PartisanLens Portugal-publisher headline pilot",
+      "name": "TF-IDF + LR",
+      "role": "Native-language comparison",
+      "metric": "macro F1",
+      "value": 0.6181818181818182,
+      "unit": "fraction",
+      "n": 33,
+      "status": "measured",
+      "notes": "Native auxiliary task; compare within dataset only. Custom grouped pilot.",
+      "details": {
+        "seeds": [
+          42
+        ],
+        "sample_std": null,
+        "by_language": [
+          {
+            "pt": {
+              "count": 33,
+              "macro_f1": 0.6181818181818182,
+              "samples_f1": 0.7878787878787878,
+              "exact_match": 0.7878787878787878
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+        "input_sha256": {
+          "train": "4b1e1c13bbc75a270b5162c09d38ab03b8835c032ead6027a858a2f93e78bb7c",
+          "dev": "6e3cb9de59a293302b6cdd06965148a604da0949abb1ff316308a36121dcfca0",
+          "test": "35396010387e3691282464c9710bbb91d0ac3380ee7c53216f1e130c2aa03340",
+          "taxonomy": "3c57c09b4a2702b4839a1ec3a3fdfc40da411c7858ed331197bb13f2e1c75774"
+        },
+        "source_sha256": {
+          "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-portuguese-lsa-none",
+      "study": "Native multilingual extension",
+      "kind": "classification",
+      "dataset": "PartisanLens Portugal-publisher headline pilot",
+      "name": "LSA + LR",
+      "role": "Native-language comparison",
+      "metric": "macro F1",
+      "value": 0.6699999999999999,
+      "unit": "fraction",
+      "n": 33,
+      "status": "measured",
+      "notes": "Native auxiliary task; compare within dataset only. Custom grouped pilot.",
+      "details": {
+        "seeds": [
+          42
+        ],
+        "sample_std": null,
+        "by_language": [
+          {
+            "pt": {
+              "count": 33,
+              "macro_f1": 0.6699999999999999,
+              "samples_f1": 0.7575757575757576,
+              "exact_match": 0.7575757575757576
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+        "input_sha256": {
+          "train": "4b1e1c13bbc75a270b5162c09d38ab03b8835c032ead6027a858a2f93e78bb7c",
+          "dev": "6e3cb9de59a293302b6cdd06965148a604da0949abb1ff316308a36121dcfca0",
+          "test": "35396010387e3691282464c9710bbb91d0ac3380ee7c53216f1e130c2aa03340",
+          "taxonomy": "3c57c09b4a2702b4839a1ec3a3fdfc40da411c7858ed331197bb13f2e1c75774"
+        },
+        "source_sha256": {
+          "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-portuguese-transformer-none",
+      "study": "Native multilingual extension",
+      "kind": "classification",
+      "dataset": "PartisanLens Portugal-publisher headline pilot",
+      "name": "MiniLM + LR",
+      "role": "Native-language comparison",
+      "metric": "macro F1",
+      "value": 0.7843137254901961,
+      "unit": "fraction",
+      "n": 33,
+      "status": "measured",
+      "notes": "Native auxiliary task; compare within dataset only. Custom grouped pilot.",
+      "details": {
+        "seeds": [
+          42
+        ],
+        "sample_std": null,
+        "by_language": [
+          {
+            "pt": {
+              "count": 33,
+              "macro_f1": 0.7843137254901961,
+              "samples_f1": 0.8484848484848485,
+              "exact_match": 0.8484848484848485
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+        "input_sha256": {
+          "train": "4b1e1c13bbc75a270b5162c09d38ab03b8835c032ead6027a858a2f93e78bb7c",
+          "dev": "6e3cb9de59a293302b6cdd06965148a604da0949abb1ff316308a36121dcfca0",
+          "test": "35396010387e3691282464c9710bbb91d0ac3380ee7c53216f1e130c2aa03340",
+          "taxonomy": "3c57c09b4a2702b4839a1ec3a3fdfc40da411c7858ed331197bb13f2e1c75774"
+        },
+        "source_sha256": {
+          "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-transfer-bg-bg-transformer",
+      "study": "Slavic source-only transfer",
+      "kind": "classification",
+      "dataset": "Native 25-technique Slavic pilot",
+      "name": "BG → BG · MiniLM + LR",
+      "role": "Cross-lingual transfer",
+      "metric": "macro F1",
+      "value": 0.09793380884402555,
+      "unit": "fraction",
+      "n": 150,
+      "status": "measured",
+      "notes": "Source-language training/dev only. One seed. Language and parliamentary/social-media domain shift are confounded.",
+      "details": {
+        "seed": 42,
+        "source": "bg",
+        "target": "bg"
+      },
+      "provenance": {
+        "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/multilingual.py": "67b93bbdf9ab1a11f0452611929327cca21ca136150de42d2448ede25b3037be",
+          "experiments/public_multilingual.py": "bded5c8c998d130e84e8d3016d589fca974c8757867128736e05235630845eb5",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-transfer-bg-ru-transformer",
+      "study": "Slavic source-only transfer",
+      "kind": "classification",
+      "dataset": "Native 25-technique Slavic pilot",
+      "name": "BG → RU · MiniLM + LR",
+      "role": "Cross-lingual transfer",
+      "metric": "macro F1",
+      "value": 0.04596171929251554,
+      "unit": "fraction",
+      "n": 150,
+      "status": "measured",
+      "notes": "Source-language training/dev only. One seed. Language and parliamentary/social-media domain shift are confounded.",
+      "details": {
+        "seed": 42,
+        "source": "bg",
+        "target": "ru"
+      },
+      "provenance": {
+        "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/multilingual.py": "67b93bbdf9ab1a11f0452611929327cca21ca136150de42d2448ede25b3037be",
+          "experiments/public_multilingual.py": "bded5c8c998d130e84e8d3016d589fca974c8757867128736e05235630845eb5",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-transfer-bg-bg-graph",
+      "study": "Slavic source-only transfer",
+      "kind": "classification",
+      "dataset": "Native 25-technique Slavic pilot",
+      "name": "BG → BG · MiniLM + GCN",
+      "role": "Cross-lingual transfer",
+      "metric": "macro F1",
+      "value": 0.05288597581280508,
+      "unit": "fraction",
+      "n": 150,
+      "status": "measured",
+      "notes": "Source-language training/dev only. One seed. Language and parliamentary/social-media domain shift are confounded.",
+      "details": {
+        "seed": 42,
+        "source": "bg",
+        "target": "bg"
+      },
+      "provenance": {
+        "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/multilingual.py": "67b93bbdf9ab1a11f0452611929327cca21ca136150de42d2448ede25b3037be",
+          "experiments/public_multilingual.py": "bded5c8c998d130e84e8d3016d589fca974c8757867128736e05235630845eb5",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-transfer-bg-ru-graph",
+      "study": "Slavic source-only transfer",
+      "kind": "classification",
+      "dataset": "Native 25-technique Slavic pilot",
+      "name": "BG → RU · MiniLM + GCN",
+      "role": "Cross-lingual transfer",
+      "metric": "macro F1",
+      "value": 0.05138146301938338,
+      "unit": "fraction",
+      "n": 150,
+      "status": "measured",
+      "notes": "Source-language training/dev only. One seed. Language and parliamentary/social-media domain shift are confounded.",
+      "details": {
+        "seed": 42,
+        "source": "bg",
+        "target": "ru"
+      },
+      "provenance": {
+        "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/multilingual.py": "67b93bbdf9ab1a11f0452611929327cca21ca136150de42d2448ede25b3037be",
+          "experiments/public_multilingual.py": "bded5c8c998d130e84e8d3016d589fca974c8757867128736e05235630845eb5",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-transfer-ru-bg-transformer",
+      "study": "Slavic source-only transfer",
+      "kind": "classification",
+      "dataset": "Native 25-technique Slavic pilot",
+      "name": "RU → BG · MiniLM + LR",
+      "role": "Cross-lingual transfer",
+      "metric": "macro F1",
+      "value": 0.02433853541416567,
+      "unit": "fraction",
+      "n": 150,
+      "status": "measured",
+      "notes": "Source-language training/dev only. One seed. Language and parliamentary/social-media domain shift are confounded.",
+      "details": {
+        "seed": 42,
+        "source": "ru",
+        "target": "bg"
+      },
+      "provenance": {
+        "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/multilingual.py": "67b93bbdf9ab1a11f0452611929327cca21ca136150de42d2448ede25b3037be",
+          "experiments/public_multilingual.py": "bded5c8c998d130e84e8d3016d589fca974c8757867128736e05235630845eb5",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-transfer-ru-ru-transformer",
+      "study": "Slavic source-only transfer",
+      "kind": "classification",
+      "dataset": "Native 25-technique Slavic pilot",
+      "name": "RU → RU · MiniLM + LR",
+      "role": "Cross-lingual transfer",
+      "metric": "macro F1",
+      "value": 0.05382119197746941,
+      "unit": "fraction",
+      "n": 150,
+      "status": "measured",
+      "notes": "Source-language training/dev only. One seed. Language and parliamentary/social-media domain shift are confounded.",
+      "details": {
+        "seed": 42,
+        "source": "ru",
+        "target": "ru"
+      },
+      "provenance": {
+        "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/multilingual.py": "67b93bbdf9ab1a11f0452611929327cca21ca136150de42d2448ede25b3037be",
+          "experiments/public_multilingual.py": "bded5c8c998d130e84e8d3016d589fca974c8757867128736e05235630845eb5",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-transfer-ru-bg-graph",
+      "study": "Slavic source-only transfer",
+      "kind": "classification",
+      "dataset": "Native 25-technique Slavic pilot",
+      "name": "RU → BG · MiniLM + GCN",
+      "role": "Cross-lingual transfer",
+      "metric": "macro F1",
+      "value": 0.04698752147972743,
+      "unit": "fraction",
+      "n": 150,
+      "status": "measured",
+      "notes": "Source-language training/dev only. One seed. Language and parliamentary/social-media domain shift are confounded.",
+      "details": {
+        "seed": 42,
+        "source": "ru",
+        "target": "bg"
+      },
+      "provenance": {
+        "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/multilingual.py": "67b93bbdf9ab1a11f0452611929327cca21ca136150de42d2448ede25b3037be",
+          "experiments/public_multilingual.py": "bded5c8c998d130e84e8d3016d589fca974c8757867128736e05235630845eb5",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
+    },
+    {
+      "id": "native-multilingual-transfer-ru-ru-graph",
+      "study": "Slavic source-only transfer",
+      "kind": "classification",
+      "dataset": "Native 25-technique Slavic pilot",
+      "name": "RU → RU · MiniLM + GCN",
+      "role": "Cross-lingual transfer",
+      "metric": "macro F1",
+      "value": 0.01282051282051282,
+      "unit": "fraction",
+      "n": 150,
+      "status": "measured",
+      "notes": "Source-language training/dev only. One seed. Language and parliamentary/social-media domain shift are confounded.",
+      "details": {
+        "seed": 42,
+        "source": "ru",
+        "target": "ru"
+      },
+      "provenance": {
+        "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+        "input_sha256": {
+          "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+          "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+          "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+          "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+        },
+        "source_sha256": {
+          "experiments/multilingual.py": "67b93bbdf9ab1a11f0452611929327cca21ca136150de42d2448ede25b3037be",
+          "experiments/public_multilingual.py": "bded5c8c998d130e84e8d3016d589fca974c8757867128736e05235630845eb5",
+          "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+          "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+          "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+          "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+          "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+          "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+        }
+      }
     }
   ],
   "review_method": "Independent blinded LLM audit plus pinned NLI diagnostics; not human validation.",

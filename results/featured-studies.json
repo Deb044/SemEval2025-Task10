@@ -43,8 +43,8 @@
     },
     {
       "id": "bilingual",
-      "title": "Does the encoder change bilingual propaganda classification?",
-      "aim": "Compare frozen multilingual MiniLM and XLM-R under linear and hierarchical graph heads, and inspect English/Arabic differences.",
+      "title": "How do models handle multiple languages?",
+      "aim": "Compare encoders on English/Arabic news, then test native Bulgarian, Russian, Hindi and Portugal-publisher text, with source-only transfer where labels are shared.",
       "protocol": "ProBel news pilot: article-grouped splits with 1,600 training, 400 development and 400 held-out records. The test set has 200 English and 200 Arabic records. Predict 23 native persuasion techniques, grouped into six parent categories. Graph heads use the same three seeds.",
       "finding": "XLM-R + GCN reached 0.0983 pooled macro F1, compared with 0.0862 for MiniLM + GCN. XLM-R + linear heads scored 0.0422. The encoder comparison therefore depends on the prediction head; the result does not show that XLM-R is always better.",
       "plot": "plots/bilingual-encoders.svg",
@@ -85,7 +85,219 @@
       "limits": "This is a small researcher-defined grouped pilot. Scores are low, rare labels are challenging, and persuasion techniques describe rhetoric rather than narrative topics.",
       "source": "results/probel-protocol.json",
       "plot_width": 728.39952,
-      "plot_height": 281.99952
+      "plot_height": 281.99952,
+      "extensions": [
+        {
+          "title": "Native Bulgarian and Russian: shared hierarchy",
+          "description": "Aim: test a shared multilingual transformer and 25-label/six-parent GNN on native data. Train on 500 BG + 500 RU sentences; select settings on 150 per language; test on 150 per language. Source documents and exact-duplicate components stay in one split. Full, self-loop, shuffled-edge and random-vector graphs each use seeds 13/42/87.",
+          "finding": "Bars compare each language separately; graph error bars show sample standard deviation across three seeds, not confidence intervals. The pooled score uses all 300 test sentences and is not the average of language macro F1.",
+          "headers": [
+            "Method",
+            "Pooled F1",
+            "BG F1",
+            "RU F1",
+            "Seeds"
+          ],
+          "rows": [
+            [
+              "TF-IDF + LR",
+              "0.0323",
+              "0.0309",
+              "0.0087",
+              "1"
+            ],
+            [
+              "LSA + LR",
+              "0.0745",
+              "0.0898",
+              "0.0288",
+              "1"
+            ],
+            [
+              "MiniLM + LR",
+              "0.1329",
+              "0.1042",
+              "0.1010",
+              "1"
+            ],
+            [
+              "MiniLM + GCN",
+              "0.0502",
+              "0.0564",
+              "0.0233",
+              "3"
+            ],
+            [
+              "MiniLM + GCN / self-loops",
+              "0.0371",
+              "0.0530",
+              "0.0123",
+              "3"
+            ],
+            [
+              "MiniLM + GCN / shuffled-edges",
+              "0.0378",
+              "0.0480",
+              "0.0168",
+              "3"
+            ],
+            [
+              "MiniLM + GCN / random-labels",
+              "0.0503",
+              "0.0556",
+              "0.0258",
+              "3"
+            ]
+          ],
+          "limits": "Bulgarian parliamentary debates and Russian social media differ in domain as well as language. These are native persuasion techniques, not official narratives. Rare/absent test classes remain in the 25-label macro inventory.",
+          "plot": "plots/native-slavic.svg",
+          "plot_alt": "Bulgarian and Russian macro F1 by baseline and graph ablation; graph bars include seed standard deviation.",
+          "plot_width": 642.189375,
+          "plot_height": 310.91266
+        },
+        {
+          "title": "Cross-lingual transfer without target-language tuning",
+          "description": "Aim: test whether representations transfer across languages. Each model trains on 500 source-language sentences and selects settings on 150 source-language development sentences only. The same fitted model predicts both source and target test sets. MiniLM + LR and the full GNN use seed 42.",
+          "finding": "Source → source results provide the in-language reference. Source → other-language results measure a combined language/domain shift. Bilingual models above use more training examples, so their difference is not solely a language effect.",
+          "headers": [
+            "Train → test",
+            "Method",
+            "Test sentences",
+            "Macro F1"
+          ],
+          "rows": [
+            [
+              "BG → BG",
+              "MiniLM + LR",
+              "150",
+              "0.0979"
+            ],
+            [
+              "BG → RU",
+              "MiniLM + LR",
+              "150",
+              "0.0460"
+            ],
+            [
+              "BG → BG",
+              "MiniLM + GCN",
+              "150",
+              "0.0529"
+            ],
+            [
+              "BG → RU",
+              "MiniLM + GCN",
+              "150",
+              "0.0514"
+            ],
+            [
+              "RU → BG",
+              "MiniLM + LR",
+              "150",
+              "0.0243"
+            ],
+            [
+              "RU → RU",
+              "MiniLM + LR",
+              "150",
+              "0.0538"
+            ],
+            [
+              "RU → BG",
+              "MiniLM + GCN",
+              "150",
+              "0.0470"
+            ],
+            [
+              "RU → RU",
+              "MiniLM + GCN",
+              "150",
+              "0.0128"
+            ]
+          ],
+          "limits": "One seed per transfer model and small source-grouped test sets. No target-language labels enter tuning. Results do not establish five-language official narrative performance.",
+          "plot": "plots/native-transfer.svg",
+          "plot_alt": "Source-only Bulgarian Russian transfer, contrasting MiniLM linear and graph heads in each direction.",
+          "plot_width": 570.189375,
+          "plot_height": 246.310313
+        },
+        {
+          "title": "Native Hindi and European Portuguese publisher tests",
+          "description": "Aim: check native-language classification beyond English/Arabic. H-Prop-News uses complete Hindi articles (400 train / 100 dev / 150 test). PartisanLens is restricted to named Portugal publishers (151 / 32 / 33 headlines), excluding Brazilian and unknown outlets. All methods use seed 42. No text is machine-translated.",
+          "finding": "Each binary task is evaluated independently, with a baseline that always predicts the training-set majority class. Their labels are not merged: Hindi predicts propaganda, whereas Portuguese predicts hyperpartisanship.",
+          "headers": [
+            "Task",
+            "Method",
+            "Test n",
+            "Macro F1",
+            "Accuracy"
+          ],
+          "rows": [
+            [
+              "Hindi propaganda",
+              "TF-IDF + LR",
+              "150",
+              "0.8321",
+              "0.8333"
+            ],
+            [
+              "Hindi propaganda",
+              "LSA + LR",
+              "150",
+              "0.8186",
+              "0.8200"
+            ],
+            [
+              "Hindi propaganda",
+              "MiniLM + LR",
+              "150",
+              "0.7994",
+              "0.8000"
+            ],
+            [
+              "Hindi propaganda",
+              "Train-majority",
+              "150",
+              "0.3506",
+              "0.5400"
+            ],
+            [
+              "Portugal-publisher hyperpartisanship",
+              "TF-IDF + LR",
+              "33",
+              "0.6182",
+              "0.7879"
+            ],
+            [
+              "Portugal-publisher hyperpartisanship",
+              "LSA + LR",
+              "33",
+              "0.6700",
+              "0.7576"
+            ],
+            [
+              "Portugal-publisher hyperpartisanship",
+              "MiniLM + LR",
+              "33",
+              "0.7843",
+              "0.8485"
+            ],
+            [
+              "Portugal-publisher hyperpartisanship",
+              "Train-majority",
+              "33",
+              "0.4310",
+              "0.7576"
+            ]
+          ],
+          "limits": "Neither binary task has a native hierarchy, so no artificial GNN hierarchy is introduced. Portugal test n=33 gives substantial uncertainty; publisher location is a language-variety proxy, not sentence-level verification. Pilot filters retain complete texts with 5+ words and at most 6000 characters.",
+          "plot": "plots/native-hindi-portuguese.svg",
+          "plot_alt": "Separate native Hindi and Portugal-publisher binary macro F1 charts including training-majority controls.",
+          "plot_width": 642.223125,
+          "plot_height": 245.8953
+        }
+      ],
+      "extension_source": "results/multilingual.json"
     },
     {
       "id": "graph",
@@ -326,7 +538,8 @@
     "scale-5000-parquet",
     "spark-input-audit"
   ],
-  "appendix_count": 65,
+  "appendix_count": 86,
   "review_note": "Review scores are from the named Qwen2.5-3B-Instruct LLM judge. The plot averages its four rubric criteria over the same six source passages per generator.",
-  "judge_model": "Qwen2.5-3B-Instruct"
+  "judge_model": "Qwen2.5-3B-Instruct",
+  "multilingual_extension": "Native BG/RU/HI/PT pilot; independent auxiliary tasks, not official SemEval narrative scores."
 }

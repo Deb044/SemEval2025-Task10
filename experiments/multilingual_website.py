@@ -48,7 +48,7 @@ def attach(payload):
     def plot(fig,name,alt):
         import xml.etree.ElementTree as ET
         path=ROOT/'plots'/name;path.parent.mkdir(parents=True,exist_ok=True)
-        fig.tight_layout();fig.savefig(path,bbox_inches='tight');plt.close(fig)
+        fig.tight_layout();fig.savefig(path,bbox_inches='tight',metadata={'Date':None});plt.close(fig)
         box=ET.parse(path).getroot().attrib['viewBox'].split()
         return dict(plot='plots/'+name,plot_alt=alt,plot_width=float(box[2]),plot_height=float(box[3]))
     slavic=data['matrices']['slavic'];rows=[]

@@ -192,7 +192,7 @@ def main():
     attach(payload)
     (ROOT / 'studies.json').write_text(json.dumps(payload, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     Path('results/featured-studies.json').write_text(json.dumps(payload, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
-    print('Built five studies and five SVG plots')
+    print('Built five studies, including available multilingual extension plots')
 
 
 if __name__ == '__main__':

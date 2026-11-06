@@ -1,0 +1,4344 @@
+{
+  "protocol": {
+    "datasets": {
+      "slavic": {
+        "raw_selected_records": 7058,
+        "after_length_and_encoding_filter": 6282,
+        "duplicate_filter": {
+          "collapsed_duplicates": 186,
+          "conflicting_duplicate_records": 76
+        },
+        "publisher_filter": null,
+        "label_inventory": [
+          "Name_Calling-Labeling",
+          "Questioning_the_Reputation",
+          "Doubt",
+          "Guilt_by_Association",
+          "Appeal_to_Hypocrisy",
+          "Appeal_to_Authority",
+          "Appeal_to_Fear-Prejudice",
+          "Appeal_to_Popularity",
+          "Appeal_to_Values",
+          "Flag_Waving",
+          "Causal_Oversimplification",
+          "Consequential_Oversimplification",
+          "False_Dilemma-No_Choice",
+          "False_Equivalence",
+          "Red_Herring",
+          "Straw_Man",
+          "Whataboutism",
+          "Appeal_to_Pity",
+          "Slogans",
+          "Conversation_Killer",
+          "Appeal_to_Time",
+          "Loaded_Language",
+          "Exaggeration-Minimisation",
+          "Obfuscation-Vagueness-Confusion",
+          "Repetition"
+        ],
+        "splits": {
+          "train": {
+            "bg": {
+              "records": 500,
+              "source_groups": 25,
+              "positive_label_counts": {
+                "Loaded_Language": 48,
+                "Name_Calling-Labeling": 51,
+                "Consequential_Oversimplification": 16,
+                "Appeal_to_Fear-Prejudice": 24,
+                "Appeal_to_Hypocrisy": 20,
+                "Questioning_the_Reputation": 68,
+                "Doubt": 60,
+                "Flag_Waving": 12,
+                "Guilt_by_Association": 5,
+                "Appeal_to_Popularity": 9,
+                "Repetition": 15,
+                "Obfuscation-Vagueness-Confusion": 9,
+                "Causal_Oversimplification": 12,
+                "Exaggeration-Minimisation": 22,
+                "Red_Herring": 9,
+                "False_Equivalence": 4,
+                "Straw_Man": 17,
+                "False_Dilemma-No_Choice": 13,
+                "Slogans": 4,
+                "Appeal_to_Values": 7,
+                "Conversation_Killer": 8,
+                "Whataboutism": 13,
+                "Appeal_to_Time": 2,
+                "Appeal_to_Pity": 6,
+                "Appeal_to_Authority": 5
+              }
+            },
+            "ru": {
+              "records": 500,
+              "source_groups": 63,
+              "positive_label_counts": {
+                "Obfuscation-Vagueness-Confusion": 12,
+                "Exaggeration-Minimisation": 13,
+                "Red_Herring": 16,
+                "Questioning_the_Reputation": 9,
+                "Doubt": 24,
+                "Loaded_Language": 48,
+                "Straw_Man": 15,
+                "Causal_Oversimplification": 43,
+                "Appeal_to_Time": 7,
+                "Name_Calling-Labeling": 22,
+                "Consequential_Oversimplification": 8,
+                "Conversation_Killer": 4,
+                "False_Dilemma-No_Choice": 18,
+                "Guilt_by_Association": 6,
+                "Appeal_to_Fear-Prejudice": 14,
+                "Appeal_to_Pity": 9,
+                "Appeal_to_Authority": 5,
+                "Flag_Waving": 20,
+                "Slogans": 4,
+                "Whataboutism": 3,
+                "Appeal_to_Popularity": 7,
+                "Repetition": 4,
+                "Appeal_to_Values": 14,
+                "Appeal_to_Hypocrisy": 4,
+                "False_Equivalence": 2
+              }
+            }
+          },
+          "dev": {
+            "bg": {
+              "records": 150,
+              "source_groups": 5,
+              "positive_label_counts": {
+                "Red_Herring": 5,
+                "Appeal_to_Hypocrisy": 6,
+                "Doubt": 16,
+                "Appeal_to_Values": 4,
+                "Causal_Oversimplification": 7,
+                "Loaded_Language": 10,
+                "Obfuscation-Vagueness-Confusion": 3,
+                "False_Equivalence": 4,
+                "Name_Calling-Labeling": 4,
+                "Appeal_to_Authority": 4,
+                "False_Dilemma-No_Choice": 6,
+                "Exaggeration-Minimisation": 1,
+                "Appeal_to_Popularity": 1,
+                "Flag_Waving": 2,
+                "Repetition": 2,
+                "Questioning_the_Reputation": 5,
+                "Appeal_to_Fear-Prejudice": 4,
+                "Whataboutism": 1,
+                "Consequential_Oversimplification": 3
+              }
+            },
+            "ru": {
+              "records": 150,
+              "source_groups": 13,
+              "positive_label_counts": {
+                "Red_Herring": 1,
+                "Loaded_Language": 14,
+                "Name_Calling-Labeling": 10,
+                "Straw_Man": 3,
+                "Whataboutism": 4,
+                "False_Dilemma-No_Choice": 7,
+                "Consequential_Oversimplification": 1,
+                "Causal_Oversimplification": 19,
+                "Obfuscation-Vagueness-Confusion": 2,
+                "Appeal_to_Pity": 2,
+                "Appeal_to_Values": 5,
+                "Appeal_to_Popularity": 5,
+                "Flag_Waving": 3,
+                "Appeal_to_Fear-Prejudice": 4,
+                "Doubt": 2,
+                "False_Equivalence": 4,
+                "Repetition": 2,
+                "Appeal_to_Hypocrisy": 2,
+                "Guilt_by_Association": 1,
+                "Questioning_the_Reputation": 1,
+                "Exaggeration-Minimisation": 2
+              }
+            }
+          },
+          "test": {
+            "bg": {
+              "records": 150,
+              "source_groups": 6,
+              "positive_label_counts": {
+                "Name_Calling-Labeling": 6,
+                "Questioning_the_Reputation": 26,
+                "Appeal_to_Fear-Prejudice": 4,
+                "Guilt_by_Association": 3,
+                "False_Dilemma-No_Choice": 6,
+                "Loaded_Language": 7,
+                "Obfuscation-Vagueness-Confusion": 9,
+                "Appeal_to_Hypocrisy": 6,
+                "Doubt": 15,
+                "Appeal_to_Popularity": 3,
+                "Appeal_to_Values": 1,
+                "Appeal_to_Authority": 1,
+                "Consequential_Oversimplification": 4,
+                "Straw_Man": 3,
+                "Exaggeration-Minimisation": 4,
+                "False_Equivalence": 1,
+                "Conversation_Killer": 2,
+                "Repetition": 6,
+                "Causal_Oversimplification": 2,
+                "Red_Herring": 1
+              }
+            },
+            "ru": {
+              "records": 150,
+              "source_groups": 14,
+              "positive_label_counts": {
+                "Consequential_Oversimplification": 1,
+                "Straw_Man": 8,
+                "Appeal_to_Values": 5,
+                "Flag_Waving": 4,
+                "Whataboutism": 4,
+                "Slogans": 2,
+                "Exaggeration-Minimisation": 13,
+                "Loaded_Language": 13,
+                "Appeal_to_Hypocrisy": 2,
+                "Doubt": 9,
+                "Name_Calling-Labeling": 4,
+                "Appeal_to_Fear-Prejudice": 4,
+                "Appeal_to_Authority": 2,
+                "Obfuscation-Vagueness-Confusion": 5,
+                "False_Equivalence": 1,
+                "Causal_Oversimplification": 7,
+                "Appeal_to_Pity": 5,
+                "Questioning_the_Reputation": 1
+              }
+            }
+          }
+        }
+      },
+      "hindi": {
+        "raw_selected_records": 5500,
+        "after_length_and_encoding_filter": 5315,
+        "duplicate_filter": {
+          "collapsed_duplicates": 56,
+          "conflicting_duplicate_records": 4
+        },
+        "publisher_filter": null,
+        "label_inventory": [
+          "-1",
+          "1"
+        ],
+        "splits": {
+          "train": {
+            "hi": {
+              "records": 400,
+              "source_groups": 397,
+              "positive_label_counts": {
+                "1": 191,
+                "-1": 209
+              }
+            }
+          },
+          "dev": {
+            "hi": {
+              "records": 100,
+              "source_groups": 99,
+              "positive_label_counts": {
+                "-1": 51,
+                "1": 49
+              }
+            }
+          },
+          "test": {
+            "hi": {
+              "records": 150,
+              "source_groups": 148,
+              "positive_label_counts": {
+                "1": 69,
+                "-1": 81
+              }
+            }
+          }
+        }
+      },
+      "portuguese": {
+        "raw_selected_records": 218,
+        "after_length_and_encoding_filter": 216,
+        "duplicate_filter": {
+          "collapsed_duplicates": 0
+        },
+        "publisher_filter": {
+          "other_language_or_publisher": 1399
+        },
+        "label_inventory": [
+          "0",
+          "1"
+        ],
+        "splits": {
+          "train": {
+            "pt": {
+              "records": 151,
+              "source_groups": 151,
+              "positive_label_counts": {
+                "1": 101,
+                "0": 50
+              }
+            }
+          },
+          "dev": {
+            "pt": {
+              "records": 32,
+              "source_groups": 32,
+              "positive_label_counts": {
+                "0": 11,
+                "1": 21
+              }
+            }
+          },
+          "test": {
+            "pt": {
+              "records": 33,
+              "source_groups": 33,
+              "positive_label_counts": {
+                "1": 25,
+                "0": 8
+              }
+            }
+          }
+        }
+      }
+    },
+    "seed": 42,
+    "split": "custom source/duplicate-group 70/15/15; pooled publisher partitions",
+    "sources": {
+      "slavic.zip": {
+        "url": "https://raw.githubusercontent.com/SlavicNLP/SlavicPersuasionTechniques/52ccaf1523ecfc5ee2f6405aad27c89313281055/LREC-2026-paper-corpus/lrec2026-SlavicPT-corpus-version-1.0.zip",
+        "sha256": "ee2443dafc7362bb82d404c9ef72180791af7f59489e70d0d4361776ddf33492"
+      },
+      "partisan-train.csv": {
+        "url": "https://raw.githubusercontent.com/MichJoM/PartisanLens/142bc073b51082d513f49c14e36e65a95a24fe3b/data/train.csv",
+        "sha256": "f3ab2f80297f821ef1a40452885f171d9f5ca710813c49745e7f6b69eb9f8c32"
+      },
+      "partisan-test.csv": {
+        "url": "https://raw.githubusercontent.com/MichJoM/PartisanLens/142bc073b51082d513f49c14e36e65a95a24fe3b/data/test.csv",
+        "sha256": "2b54fe8b5964a62461f5265f1def587a7a4242487bb16a4d663e5c1baa7c09c8"
+      },
+      "partisan-LICENSE": {
+        "url": "https://raw.githubusercontent.com/MichJoM/PartisanLens/142bc073b51082d513f49c14e36e65a95a24fe3b/LICENSE",
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      },
+      "hindi-README.md": {
+        "url": "https://zenodo.org/records/5828240/files/README.md?download=1",
+        "sha256": "d4ec5ce1495917839203061c1a8902b9d21e8ee39548c76999d6991211d36c89"
+      },
+      "hindi-Train.csv": {
+        "url": "https://zenodo.org/records/5828240/files/H-Prop-News_Train_1.0.csv?download=1",
+        "sha256": "1da5b3b92aeed0c434073de8850d92e48f3e86795a7ca9f239db7f5c58744f87"
+      },
+      "hindi-Val.csv": {
+        "url": "https://zenodo.org/records/5828240/files/H-Prop-News_Val_1.0.csv?download=1",
+        "sha256": "b1126e39319820ed1acc91f89c358b3136965715a7bfc00f2f76c5ab66fd686e"
+      },
+      "hindi-Test.csv": {
+        "url": "https://zenodo.org/records/5828240/files/H-Prop-News_Test_1.0.csv?download=1",
+        "sha256": "b09c63977224885003679883af0c8f162a32b0f41d50169a1bd203246e52ea14"
+      }
+    },
+    "hierarchy_source": "https://aclanthology.org/2026.lrec-1.289.pdf#page=3",
+    "portugal_publishers": [
+      "acorianooriental.pt",
+      "cmjornal.pt",
+      "destak.pt",
+      "diariodominho.pt",
+      "dn.pt",
+      "dnoticias.pt",
+      "expresso.pt",
+      "iol.pt",
+      "jn.pt",
+      "jornaldenegocios.pt",
+      "jornaleconomico.pt",
+      "noticiasaominuto.com",
+      "observador.pt",
+      "publico.pt",
+      "sapo.pt",
+      "sicnoticias.pt",
+      "tsf.pt",
+      "visao.pt"
+    ],
+    "limits": [
+      "Native auxiliary labels, not official narrative labels.",
+      "Slavic normalized publisher sentences joined to labels by original document/offset key; raw offsets not silently repaired.",
+      "Slavic language is confounded with domain: Bulgarian parliament, Russian social media.",
+      "Small capped pilot, custom grouped splits, minimum five words and maximum 6000 characters.",
+      "Portugal publisher location is a language-variety proxy; syndication and per-headline variety not verified.",
+      "Hindi and Portuguese binary labels have no GNN experiment or shared cross-language label space.",
+      "Exact duplicates and known source IDs checked; translations and semantic near duplicates not established.",
+      "No raw text or source identifiers are published."
+    ]
+  },
+  "matrices": {
+    "slavic": {
+      "dataset": "Slavic BG/RU sentence persuasion grouped pilot",
+      "runs": [
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.3566666666666667,
+            "samples_f1": 0.051222222222222225,
+            "micro_f1": 0.12777777777777777,
+            "macro_f1": 0.0323029189995699,
+            "macro_f1_observed_labels": 0.0336488739578853,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.125,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.22950819672131148,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.0,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.1016949152542373,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.05,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.0,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.3013698630136986,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.0,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.030873015873015875,
+                "samples_f1": 0.08911111111111111,
+                "exact_match": 0.35333333333333333
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.008677248677248678,
+                "samples_f1": 0.013333333333333334,
+                "exact_match": 0.36
+              }
+            },
+            "coarse_samples_f1": 0.10944444444444443
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "tfidf-none-42",
+          "method": "tfidf",
+          "encoder": "minilm",
+          "ablation": "none",
+          "seed": 42,
+          "fit_seconds": 8.54638039999918,
+          "predict_seconds": 0.2148736999988614,
+          "process_peak_rss_mb": 386.41796875,
+          "threshold": 0.1,
+          "regularization": 10.0,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.1,
+            "samples_f1": 0.09891269841269841,
+            "micro_f1": 0.13507625272331156,
+            "macro_f1": 0.07448488288945676,
+            "macro_f1_observed_labels": 0.07758841967651747,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.2,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.1,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.1037037037037037,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.2268041237113402,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.043478260869565216,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.13333333333333333,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.4,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.14388489208633093,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.10989010989010989,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.0,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.3114754098360656,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.08955223880597014,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.08979588031931218,
+                "samples_f1": 0.13182539682539685,
+                "exact_match": 0.17333333333333334
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.028759185986934874,
+                "samples_f1": 0.06599999999999999,
+                "exact_match": 0.02666666666666667
+              }
+            },
+            "coarse_samples_f1": 0.21699999999999997
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "lsa-none-42",
+          "method": "lsa",
+          "encoder": "minilm",
+          "ablation": "none",
+          "seed": 42,
+          "fit_seconds": 12.027415199998359,
+          "predict_seconds": 0.26269590000083554,
+          "process_peak_rss_mb": 529.0390625,
+          "threshold": 0.1,
+          "regularization": 10.0,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.16666666666666666,
+            "samples_f1": 0.11593650793650792,
+            "micro_f1": 0.17765042979942694,
+            "macro_f1": 0.13287883005557824,
+            "macro_f1_observed_labels": 0.13287883005557824,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.4,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.15384615384615385,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.25,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.42857142857142855,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.11538461538461539,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.15384615384615385,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.3047619047619048,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.21052631578947367,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.08,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.3333333333333333,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.09523809523809523,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.16393442622950818,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.0,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.3953488372093023,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.15384615384615385,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.08333333333333333,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.10423718934465204,
+                "samples_f1": 0.1452063492063492,
+                "exact_match": 0.20666666666666667
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.10101586267246318,
+                "samples_f1": 0.08666666666666667,
+                "exact_match": 0.12666666666666668
+              }
+            },
+            "coarse_samples_f1": 0.2251111111111111
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "transformer-none-42",
+          "method": "transformer",
+          "encoder": "minilm",
+          "ablation": "none",
+          "seed": 42,
+          "fit_seconds": 98.11937419999958,
+          "predict_seconds": 17.788371599999664,
+          "process_peak_rss_mb": 844.59765625,
+          "threshold": 0.1,
+          "regularization": 10.0,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.41333333333333333,
+            "samples_f1": 0.033462962962962965,
+            "micro_f1": 0.12448132780082988,
+            "macro_f1": 0.05156773383116305,
+            "macro_f1_observed_labels": 0.05371638940746152,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.16,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.2,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.14736842105263157,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.08,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.1348314606741573,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.0392156862745098,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.25,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.2777777777777778,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.0,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.06373101884431934,
+                "samples_f1": 0.046798941798941805,
+                "exact_match": 0.4533333333333333
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.022302933949992772,
+                "samples_f1": 0.020126984126984125,
+                "exact_match": 0.37333333333333335
+              }
+            },
+            "coarse_samples_f1": 0.09614285714285714
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "graph-none-13",
+          "method": "graph",
+          "encoder": "minilm",
+          "ablation": "none",
+          "seed": 13,
+          "fit_seconds": 37.981641300000774,
+          "predict_seconds": 5.7843802999996115,
+          "process_peak_rss_mb": 847.9296875,
+          "threshold": 0.1,
+          "regularization": null,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.44333333333333336,
+            "samples_f1": 0.024785714285714282,
+            "micro_f1": 0.10119047619047619,
+            "macro_f1": 0.025952037380608806,
+            "macro_f1_observed_labels": 0.02703337227146751,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.0,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.12698412698412698,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.0,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.12121212121212122,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.07407407407407407,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.0,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.32653061224489793,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.0,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.028758329933360534,
+                "samples_f1": 0.03757142857142857,
+                "exact_match": 0.4866666666666667
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.008,
+                "samples_f1": 0.011999999999999999,
+                "exact_match": 0.4
+              }
+            },
+            "coarse_samples_f1": 0.07122222222222221
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "graph-none-42",
+          "method": "graph",
+          "encoder": "minilm",
+          "ablation": "none",
+          "seed": 42,
+          "fit_seconds": 8.260161000001972,
+          "predict_seconds": 0.24200109999947017,
+          "process_peak_rss_mb": 847.9296875,
+          "threshold": 0.1,
+          "regularization": null,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.36666666666666664,
+            "samples_f1": 0.06353133903133902,
+            "micro_f1": 0.17943925233644858,
+            "macro_f1": 0.0729818136319863,
+            "macro_f1_observed_labels": 0.07602272253331906,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.375,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.1935483870967742,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.24299065420560748,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.09090909090909091,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.10526315789473684,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.11764705882352941,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.3333333333333333,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.36585365853658536,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.0,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.07668035154041929,
+                "samples_f1": 0.07772934472934472,
+                "exact_match": 0.3933333333333333
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.039606289727637065,
+                "samples_f1": 0.04933333333333333,
+                "exact_match": 0.34
+              }
+            },
+            "coarse_samples_f1": 0.14188888888888887
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "graph-none-87",
+          "method": "graph",
+          "encoder": "minilm",
+          "ablation": "none",
+          "seed": 87,
+          "fit_seconds": 12.663787299999967,
+          "predict_seconds": 0.2338153999990027,
+          "process_peak_rss_mb": 847.9296875,
+          "threshold": 0.1,
+          "regularization": null,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.36333333333333334,
+            "samples_f1": 0.04945021645021645,
+            "micro_f1": 0.13307240704500978,
+            "macro_f1": 0.036511296454319934,
+            "macro_f1_observed_labels": 0.03803260047324993,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.0,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.08695652173913043,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.09523809523809523,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.12389380530973451,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.09836065573770492,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.13333333333333333,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.375,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.0,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.051736846982088386,
+                "samples_f1": 0.07423376623376624,
+                "exact_match": 0.41333333333333333
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.013474509803921569,
+                "samples_f1": 0.024666666666666667,
+                "exact_match": 0.31333333333333335
+              }
+            },
+            "coarse_samples_f1": 0.1189206349206349
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "graph-self-loops-13",
+          "method": "graph",
+          "encoder": "minilm",
+          "ablation": "self-loops",
+          "seed": 13,
+          "fit_seconds": 6.687423499999568,
+          "predict_seconds": 0.12876569999934873,
+          "process_peak_rss_mb": 847.9296875,
+          "threshold": 0.1,
+          "regularization": null,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.42,
+            "samples_f1": 0.028807359307359306,
+            "micro_f1": 0.11027568922305764,
+            "macro_f1": 0.03310231886976073,
+            "macro_f1_observed_labels": 0.03448158215600076,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.1,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.1038961038961039,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.09523809523809523,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.13953488372093023,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.05555555555555555,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.0,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.3333333333333333,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.0,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.04745551343066871,
+                "samples_f1": 0.04828138528138528,
+                "exact_match": 0.4533333333333333
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.006666666666666666,
+                "samples_f1": 0.009333333333333332,
+                "exact_match": 0.38666666666666666
+              }
+            },
+            "coarse_samples_f1": 0.08355555555555555
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "graph-self-loops-42",
+          "method": "graph",
+          "encoder": "minilm",
+          "ablation": "self-loops",
+          "seed": 42,
+          "fit_seconds": 3.7020776999997906,
+          "predict_seconds": 0.145531199999823,
+          "process_peak_rss_mb": 847.9296875,
+          "threshold": 0.1,
+          "regularization": null,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.3566666666666667,
+            "samples_f1": 0.053968253968253964,
+            "micro_f1": 0.14090019569471623,
+            "macro_f1": 0.041827410913916285,
+            "macro_f1_observed_labels": 0.04357021970199613,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.09523809523809523,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.10526315789473684,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.1,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.1415929203539823,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.08823529411764706,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.13333333333333333,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.38202247191011235,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.0,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.059918330425793115,
+                "samples_f1": 0.07292063492063493,
+                "exact_match": 0.4066666666666667
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.016671824629271435,
+                "samples_f1": 0.035015873015873014,
+                "exact_match": 0.30666666666666664
+              }
+            },
+            "coarse_samples_f1": 0.1288888888888889
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "graph-self-loops-87",
+          "method": "graph",
+          "encoder": "minilm",
+          "ablation": "self-loops",
+          "seed": 87,
+          "fit_seconds": 6.797833199998422,
+          "predict_seconds": 0.22717289999854984,
+          "process_peak_rss_mb": 847.9296875,
+          "threshold": 0.1,
+          "regularization": null,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.35,
+            "samples_f1": 0.0454074074074074,
+            "micro_f1": 0.13588850174216027,
+            "macro_f1": 0.059601171823927906,
+            "macro_f1_observed_labels": 0.06208455398325824,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.08333333333333333,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.1875,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.15384615384615385,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.11940298507462686,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.08333333333333333,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.13675213675213677,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.03636363636363636,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.3333333333333333,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.3561643835616438,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.0,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.07214067656393862,
+                "samples_f1": 0.06224338624338623,
+                "exact_match": 0.41333333333333333
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.026882225119513256,
+                "samples_f1": 0.02857142857142857,
+                "exact_match": 0.2866666666666667
+              }
+            },
+            "coarse_samples_f1": 0.11364285714285714
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "graph-shuffled-edges-13",
+          "method": "graph",
+          "encoder": "minilm",
+          "ablation": "shuffled-edges",
+          "seed": 13,
+          "fit_seconds": 13.185479899999336,
+          "predict_seconds": 0.2319400999986101,
+          "process_peak_rss_mb": 847.9609375,
+          "threshold": 0.1,
+          "regularization": null,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.43666666666666665,
+            "samples_f1": 0.02418253968253968,
+            "micro_f1": 0.09195402298850575,
+            "macro_f1": 0.023697040093354424,
+            "macro_f1_observed_labels": 0.024684416763910862,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.0,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.11764705882352941,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.0,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.136986301369863,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.07692307692307693,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.0,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.2608695652173913,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.0,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.027000094471211288,
+                "samples_f1": 0.03636507936507936,
+                "exact_match": 0.47333333333333333
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.007741935483870968,
+                "samples_f1": 0.011999999999999999,
+                "exact_match": 0.4
+              }
+            },
+            "coarse_samples_f1": 0.078
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "graph-shuffled-edges-42",
+          "method": "graph",
+          "encoder": "minilm",
+          "ablation": "shuffled-edges",
+          "seed": 42,
+          "fit_seconds": 7.700145999999222,
+          "predict_seconds": 0.23077700000067125,
+          "process_peak_rss_mb": 848.125,
+          "threshold": 0.1,
+          "regularization": null,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.3466666666666667,
+            "samples_f1": 0.038635401635401634,
+            "micro_f1": 0.11713665943600868,
+            "macro_f1": 0.030226723116192407,
+            "macro_f1_observed_labels": 0.03148616991270042,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.0,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.12048192771084337,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.10526315789473684,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.1188118811881188,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.1111111111111111,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.0,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.3,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.0,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.044746645933876304,
+                "samples_f1": 0.05638191438191438,
+                "exact_match": 0.42
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.015693779904306218,
+                "samples_f1": 0.020888888888888887,
+                "exact_match": 0.2733333333333333
+              }
+            },
+            "coarse_samples_f1": 0.10277777777777779
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "graph-shuffled-edges-87",
+          "method": "graph",
+          "encoder": "minilm",
+          "ablation": "shuffled-edges",
+          "seed": 87,
+          "fit_seconds": 14.768166100002418,
+          "predict_seconds": 0.2217056000008597,
+          "process_peak_rss_mb": 848.125,
+          "threshold": 0.1,
+          "regularization": null,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.37,
+            "samples_f1": 0.058831168831168824,
+            "micro_f1": 0.15678776290630975,
+            "macro_f1": 0.059711988061779644,
+            "macro_f1_observed_labels": 0.0621999875643538,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.35294117647058826,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.1111111111111111,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.21782178217821782,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.09523809523809523,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.11764705882352941,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.13559322033898305,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.13333333333333333,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.3291139240506329,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.0,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.06443977591036415,
+                "samples_f1": 0.0661067821067821,
+                "exact_match": 0.41333333333333333
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.035493761140819965,
+                "samples_f1": 0.05155555555555555,
+                "exact_match": 0.32666666666666666
+              }
+            },
+            "coarse_samples_f1": 0.13466666666666666
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "graph-random-labels-13",
+          "method": "graph",
+          "encoder": "minilm",
+          "ablation": "random-labels",
+          "seed": 13,
+          "fit_seconds": 13.604812500001572,
+          "predict_seconds": 0.222654600001988,
+          "process_peak_rss_mb": 848.125,
+          "threshold": 0.1,
+          "regularization": null,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.43333333333333335,
+            "samples_f1": 0.02069047619047619,
+            "micro_f1": 0.08740359897172237,
+            "macro_f1": 0.030690542546262183,
+            "macro_f1_observed_labels": 0.031969315152356445,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.2222222222222222,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.0,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.1111111111111111,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.0,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.10526315789473684,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.06451612903225806,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.0,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.2641509433962264,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.0,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.036921889704498397,
+                "samples_f1": 0.03138095238095238,
+                "exact_match": 0.48
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.006666666666666666,
+                "samples_f1": 0.01,
+                "exact_match": 0.38666666666666666
+              }
+            },
+            "coarse_samples_f1": 0.06944444444444443
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "graph-random-labels-42",
+          "method": "graph",
+          "encoder": "minilm",
+          "ablation": "random-labels",
+          "seed": 42,
+          "fit_seconds": 8.09472729999834,
+          "predict_seconds": 0.23270860000047833,
+          "process_peak_rss_mb": 848.125,
+          "threshold": 0.1,
+          "regularization": null,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 300,
+            "exact_match": 0.37333333333333335,
+            "samples_f1": 0.05952958152958152,
+            "micro_f1": 0.16091954022988506,
+            "macro_f1": 0.060412282097128324,
+            "macro_f1_observed_labels": 0.062929460517842,
+            "per_label": {
+              "Appeal_to_Authority": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Fear-Prejudice": {
+                "f1": 0.0,
+                "support": 8
+              },
+              "Appeal_to_Hypocrisy": {
+                "f1": 0.35294117647058826,
+                "support": 8
+              },
+              "Appeal_to_Pity": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Appeal_to_Popularity": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Appeal_to_Time": {
+                "f1": 0.0,
+                "support": 0
+              },
+              "Appeal_to_Values": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Causal_Oversimplification": {
+                "f1": 0.12121212121212122,
+                "support": 9
+              },
+              "Consequential_Oversimplification": {
+                "f1": 0.0,
+                "support": 5
+              },
+              "Conversation_Killer": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Doubt": {
+                "f1": 0.23300970873786409,
+                "support": 24
+              },
+              "Exaggeration-Minimisation": {
+                "f1": 0.09523809523809523,
+                "support": 17
+              },
+              "False_Dilemma-No_Choice": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "False_Equivalence": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Flag_Waving": {
+                "f1": 0.0,
+                "support": 4
+              },
+              "Guilt_by_Association": {
+                "f1": 0.0,
+                "support": 3
+              },
+              "Loaded_Language": {
+                "f1": 0.11009174311926606,
+                "support": 20
+              },
+              "Name_Calling-Labeling": {
+                "f1": 0.13114754098360656,
+                "support": 10
+              },
+              "Obfuscation-Vagueness-Confusion": {
+                "f1": 0.13333333333333333,
+                "support": 14
+              },
+              "Questioning_the_Reputation": {
+                "f1": 0.3333333333333333,
+                "support": 27
+              },
+              "Red_Herring": {
+                "f1": 0.0,
+                "support": 1
+              },
+              "Repetition": {
+                "f1": 0.0,
+                "support": 6
+              },
+              "Slogans": {
+                "f1": 0.0,
+                "support": 2
+              },
+              "Straw_Man": {
+                "f1": 0.0,
+                "support": 11
+              },
+              "Whataboutism": {
+                "f1": 0.0,
+                "support": 4
+              }
+            },
+            "by_language": {
+              "bg": {
+                "count": 150,
+                "macro_f1": 0.06539697107745641,
+                "samples_f1": 0.07083694083694082,
+                "exact_match": 0.4066666666666667
+              },
+              "ru": {
+                "count": 150,
+                "macro_f1": 0.035215210932857996,
+                "samples_f1": 0.04822222222222222,
+                "exact_match": 0.34
+              }
+            },
+            "coarse_samples_f1": 0.13577777777777778
+          },
+          "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "slavic",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "graph-random-labels-87",
+          "method": "graph",
+          "encoder": "minilm",
+          "ablation": "random-labels",
+          "seed": 87,
+          "fit_seconds": 12.652983699998003,
+          "predict_seconds": 0.22091699999873526,
+          "process_peak_rss_mb": 848.125,
+          "threshold": 0.1,
+          "regularization": null,
+          "reused_predictions": false
+        }
+      ],
+      "aggregates": [
+        {
+          "method": "tfidf",
+          "ablation": "none",
+          "seeds": [
+            42
+          ],
+          "mean": 0.0323029189995699,
+          "sample_std": null
+        },
+        {
+          "method": "lsa",
+          "ablation": "none",
+          "seeds": [
+            42
+          ],
+          "mean": 0.07448488288945676,
+          "sample_std": null
+        },
+        {
+          "method": "transformer",
+          "ablation": "none",
+          "seeds": [
+            42
+          ],
+          "mean": 0.13287883005557824,
+          "sample_std": null
+        },
+        {
+          "method": "graph",
+          "ablation": "none",
+          "seeds": [
+            13,
+            42,
+            87
+          ],
+          "mean": 0.05016719494791939,
+          "sample_std": 0.02354614820806719
+        },
+        {
+          "method": "graph",
+          "ablation": "self-loops",
+          "seeds": [
+            13,
+            42,
+            87
+          ],
+          "mean": 0.03714700874599898,
+          "sample_std": 0.004397147414300608
+        },
+        {
+          "method": "graph",
+          "ablation": "shuffled-edges",
+          "seeds": [
+            13,
+            42,
+            87
+          ],
+          "mean": 0.03784164501115825,
+          "sample_std": 0.019125034521051614
+        },
+        {
+          "method": "graph",
+          "ablation": "random-labels",
+          "seeds": [
+            13,
+            42,
+            87
+          ],
+          "mean": 0.050271604235056715,
+          "sample_std": 0.01696131143453445
+        }
+      ],
+      "input_sha256": {
+        "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+        "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+        "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+        "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+      },
+      "source_sha256": {
+        "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+        "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+        "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "commit": "6fda4021192bb7cbd1dffb50ce91c971653d4da2"
+    },
+    "hindi": {
+      "dataset": "H-Prop-News native Hindi grouped pilot",
+      "runs": [
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 150,
+            "exact_match": 0.8333333333333334,
+            "samples_f1": 0.8333333333333334,
+            "micro_f1": 0.8333333333333334,
+            "macro_f1": 0.832072007523174,
+            "macro_f1_observed_labels": 0.832072007523174,
+            "per_label": {
+              "-1": {
+                "f1": 0.8466257668711656,
+                "support": 81
+              },
+              "1": {
+                "f1": 0.8175182481751825,
+                "support": 69
+              }
+            },
+            "by_language": {
+              "hi": {
+                "count": 150,
+                "macro_f1": 0.832072007523174,
+                "samples_f1": 0.8333333333333334,
+                "exact_match": 0.8333333333333334
+              }
+            },
+            "coarse_samples_f1": 0.8333333333333334
+          },
+          "scoring_provenance": "native single auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "hpropnews",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "tfidf-none-42",
+          "method": "tfidf",
+          "encoder": "minilm",
+          "ablation": "none",
+          "seed": 42,
+          "fit_seconds": 8.386984599997959,
+          "predict_seconds": 1.3613430000004882,
+          "process_peak_rss_mb": 926.1640625,
+          "threshold": 0.5,
+          "regularization": 10.0,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 150,
+            "exact_match": 0.82,
+            "samples_f1": 0.82,
+            "micro_f1": 0.82,
+            "macro_f1": 0.818637768125028,
+            "macro_f1_observed_labels": 0.818637768125028,
+            "per_label": {
+              "-1": {
+                "f1": 0.8343558282208589,
+                "support": 81
+              },
+              "1": {
+                "f1": 0.8029197080291971,
+                "support": 69
+              }
+            },
+            "by_language": {
+              "hi": {
+                "count": 150,
+                "macro_f1": 0.818637768125028,
+                "samples_f1": 0.82,
+                "exact_match": 0.82
+              }
+            },
+            "coarse_samples_f1": 0.82
+          },
+          "scoring_provenance": "native single auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "hpropnews",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "lsa-none-42",
+          "method": "lsa",
+          "encoder": "minilm",
+          "ablation": "none",
+          "seed": 42,
+          "fit_seconds": 18.703129600002285,
+          "predict_seconds": 1.8489410000001953,
+          "process_peak_rss_mb": 1042.453125,
+          "threshold": 0.5,
+          "regularization": 0.1,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 150,
+            "exact_match": 0.8,
+            "samples_f1": 0.8,
+            "micro_f1": 0.8,
+            "macro_f1": 0.7994294883223391,
+            "macro_f1_observed_labels": 0.7994294883223391,
+            "per_label": {
+              "-1": {
+                "f1": 0.810126582278481,
+                "support": 81
+              },
+              "1": {
+                "f1": 0.7887323943661971,
+                "support": 69
+              }
+            },
+            "by_language": {
+              "hi": {
+                "count": 150,
+                "macro_f1": 0.7994294883223391,
+                "samples_f1": 0.8,
+                "exact_match": 0.8
+              }
+            },
+            "coarse_samples_f1": 0.8
+          },
+          "scoring_provenance": "native single auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "hpropnews",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "transformer-none-42",
+          "method": "transformer",
+          "encoder": "minilm",
+          "ablation": "none",
+          "seed": 42,
+          "fit_seconds": 220.0990966999998,
+          "predict_seconds": 70.7228337000015,
+          "process_peak_rss_mb": 1042.453125,
+          "threshold": 0.5,
+          "regularization": 10.0,
+          "reused_predictions": false
+        }
+      ],
+      "aggregates": [
+        {
+          "method": "tfidf",
+          "ablation": "none",
+          "seeds": [
+            42
+          ],
+          "mean": 0.832072007523174,
+          "sample_std": null
+        },
+        {
+          "method": "lsa",
+          "ablation": "none",
+          "seeds": [
+            42
+          ],
+          "mean": 0.818637768125028,
+          "sample_std": null
+        },
+        {
+          "method": "transformer",
+          "ablation": "none",
+          "seeds": [
+            42
+          ],
+          "mean": 0.7994294883223391,
+          "sample_std": null
+        }
+      ],
+      "input_sha256": {
+        "train": "32ff001f2f5f0c37e510815bebaa81dd9aa6775a920952f9b613360e6c06d1a4",
+        "dev": "093d3b4e9884152653f77a9c621c69ad5b32b8543c61de13c0748932c8d17d11",
+        "test": "582fd884be57924c912ffa8dce692e8b269a9dbaa162fa98d98840fa1a7894aa",
+        "taxonomy": "be22c341f82a26a209a15fa345facf82dd06623ebf2d75ab7728ff178b3fe533"
+      },
+      "source_sha256": {
+        "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+        "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+        "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "commit": "6fda4021192bb7cbd1dffb50ce91c971653d4da2",
+      "training_majority_baseline": {
+        "count": 150,
+        "exact_match": 0.54,
+        "samples_f1": 0.54,
+        "micro_f1": 0.54,
+        "macro_f1": 0.35064935064935066,
+        "macro_f1_observed_labels": 0.35064935064935066,
+        "per_label": {
+          "-1": {
+            "f1": 0.7012987012987013,
+            "support": 81
+          },
+          "1": {
+            "f1": 0.0,
+            "support": 69
+          }
+        },
+        "by_language": {
+          "hi": {
+            "count": 150,
+            "macro_f1": 0.35064935064935066,
+            "samples_f1": 0.54,
+            "exact_match": 0.54
+          }
+        }
+      }
+    },
+    "portuguese": {
+      "dataset": "PartisanLens Portugal-publisher headline pilot",
+      "runs": [
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 33,
+            "exact_match": 0.7878787878787878,
+            "samples_f1": 0.7878787878787878,
+            "micro_f1": 0.7878787878787878,
+            "macro_f1": 0.6181818181818182,
+            "macro_f1_observed_labels": 0.6181818181818182,
+            "per_label": {
+              "0": {
+                "f1": 0.36363636363636365,
+                "support": 8
+              },
+              "1": {
+                "f1": 0.8727272727272727,
+                "support": 25
+              }
+            },
+            "by_language": {
+              "pt": {
+                "count": 33,
+                "macro_f1": 0.6181818181818182,
+                "samples_f1": 0.7878787878787878,
+                "exact_match": 0.7878787878787878
+              }
+            },
+            "coarse_samples_f1": 0.7878787878787878
+          },
+          "scoring_provenance": "native single auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "partisan-pt",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "tfidf-none-42",
+          "method": "tfidf",
+          "encoder": "minilm",
+          "ablation": "none",
+          "seed": 42,
+          "fit_seconds": 0.1817881999995734,
+          "predict_seconds": 0.014646200001152465,
+          "process_peak_rss_mb": 1042.453125,
+          "threshold": 0.5,
+          "regularization": 10.0,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 33,
+            "exact_match": 0.7575757575757576,
+            "samples_f1": 0.7575757575757576,
+            "micro_f1": 0.7575757575757576,
+            "macro_f1": 0.6699999999999999,
+            "macro_f1_observed_labels": 0.6699999999999999,
+            "per_label": {
+              "0": {
+                "f1": 0.5,
+                "support": 8
+              },
+              "1": {
+                "f1": 0.84,
+                "support": 25
+              }
+            },
+            "by_language": {
+              "pt": {
+                "count": 33,
+                "macro_f1": 0.6699999999999999,
+                "samples_f1": 0.7575757575757576,
+                "exact_match": 0.7575757575757576
+              }
+            },
+            "coarse_samples_f1": 0.7575757575757576
+          },
+          "scoring_provenance": "native single auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "partisan-pt",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "lsa-none-42",
+          "method": "lsa",
+          "encoder": "minilm",
+          "ablation": "none",
+          "seed": 42,
+          "fit_seconds": 1.7323851999972248,
+          "predict_seconds": 0.02630009999847971,
+          "process_peak_rss_mb": 1042.453125,
+          "threshold": 0.5,
+          "regularization": 10.0,
+          "reused_predictions": false
+        },
+        {
+          "task": 2,
+          "primary_metric": "macro_f1",
+          "metrics": {
+            "count": 33,
+            "exact_match": 0.8484848484848485,
+            "samples_f1": 0.8484848484848485,
+            "micro_f1": 0.8484848484848485,
+            "macro_f1": 0.7843137254901961,
+            "macro_f1_observed_labels": 0.7843137254901961,
+            "per_label": {
+              "0": {
+                "f1": 0.6666666666666666,
+                "support": 8
+              },
+              "1": {
+                "f1": 0.9019607843137255,
+                "support": 25
+              }
+            },
+            "by_language": {
+              "pt": {
+                "count": 33,
+                "macro_f1": 0.7843137254901961,
+                "samples_f1": 0.8484848484848485,
+                "exact_match": 0.8484848484848485
+              }
+            },
+            "coarse_samples_f1": 0.8484848484848485
+          },
+          "scoring_provenance": "native single auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+          "dataset": "partisan-pt",
+          "label_schema": "native",
+          "python": "3.13.5",
+          "benchmark_claim": false,
+          "name": "transformer-none-42",
+          "method": "transformer",
+          "encoder": "minilm",
+          "ablation": "none",
+          "seed": 42,
+          "fit_seconds": 9.599330900000496,
+          "predict_seconds": 1.6887002000003122,
+          "process_peak_rss_mb": 1042.453125,
+          "threshold": 0.5,
+          "regularization": 10.0,
+          "reused_predictions": false
+        }
+      ],
+      "aggregates": [
+        {
+          "method": "tfidf",
+          "ablation": "none",
+          "seeds": [
+            42
+          ],
+          "mean": 0.6181818181818182,
+          "sample_std": null
+        },
+        {
+          "method": "lsa",
+          "ablation": "none",
+          "seeds": [
+            42
+          ],
+          "mean": 0.6699999999999999,
+          "sample_std": null
+        },
+        {
+          "method": "transformer",
+          "ablation": "none",
+          "seeds": [
+            42
+          ],
+          "mean": 0.7843137254901961,
+          "sample_std": null
+        }
+      ],
+      "input_sha256": {
+        "train": "4b1e1c13bbc75a270b5162c09d38ab03b8835c032ead6027a858a2f93e78bb7c",
+        "dev": "6e3cb9de59a293302b6cdd06965148a604da0949abb1ff316308a36121dcfca0",
+        "test": "35396010387e3691282464c9710bbb91d0ac3380ee7c53216f1e130c2aa03340",
+        "taxonomy": "3c57c09b4a2702b4839a1ec3a3fdfc40da411c7858ed331197bb13f2e1c75774"
+      },
+      "source_sha256": {
+        "experiments/run.py": "6641a92ab5944ed185a0ea97cede5b4f88ef9e551dc609e8ac0991188ac58905",
+        "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+        "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+        "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+        "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+        "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+        "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+      },
+      "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+      "training_majority_baseline": {
+        "count": 33,
+        "exact_match": 0.7575757575757576,
+        "samples_f1": 0.7575757575757576,
+        "micro_f1": 0.7575757575757576,
+        "macro_f1": 0.43103448275862066,
+        "macro_f1_observed_labels": 0.43103448275862066,
+        "per_label": {
+          "0": {
+            "f1": 0.0,
+            "support": 8
+          },
+          "1": {
+            "f1": 0.8620689655172413,
+            "support": 25
+          }
+        },
+        "by_language": {
+          "pt": {
+            "count": 33,
+            "macro_f1": 0.43103448275862066,
+            "samples_f1": 0.7575757575757576,
+            "exact_match": 0.7575757575757576
+          }
+        }
+      }
+    }
+  },
+  "transfer": {
+    "dataset": "Slavic source-only transfer",
+    "runs": [
+      {
+        "task": 2,
+        "primary_metric": "macro_f1",
+        "metrics": {
+          "count": 150,
+          "exact_match": 0.20666666666666667,
+          "samples_f1": 0.13955555555555554,
+          "micro_f1": 0.2131979695431472,
+          "macro_f1": 0.09793380884402555,
+          "macro_f1_observed_labels": 0.11128841914093815,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.4,
+              "support": 4
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.1,
+              "support": 6
+            },
+            "Appeal_to_Pity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Conversation_Killer": {
+              "f1": 0.18181818181818182,
+              "support": 2
+            },
+            "Doubt": {
+              "f1": 0.2631578947368421,
+              "support": 15
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.11764705882352941,
+              "support": 4
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.13333333333333333,
+              "support": 6
+            },
+            "False_Equivalence": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Guilt_by_Association": {
+              "f1": 0.5,
+              "support": 3
+            },
+            "Loaded_Language": {
+              "f1": 0.1111111111111111,
+              "support": 7
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.18181818181818182,
+              "support": 6
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.4594594594594595,
+              "support": 26
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.09793380884402555,
+              "samples_f1": 0.13955555555555554,
+              "exact_match": 0.20666666666666667
+            }
+          },
+          "coarse_samples_f1": 0.2591111111111111
+        },
+        "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+        "dataset": "slavic",
+        "label_schema": "native",
+        "python": "3.13.5",
+        "benchmark_claim": false,
+        "source_language": "bg",
+        "target_language": "bg",
+        "method": "transformer",
+        "seed": 42,
+        "fit_seconds": 2.964728200000536
+      },
+      {
+        "task": 2,
+        "primary_metric": "macro_f1",
+        "metrics": {
+          "count": 150,
+          "exact_match": 0.06,
+          "samples_f1": 0.049349206349206344,
+          "micro_f1": 0.07606263982102908,
+          "macro_f1": 0.04596171929251554,
+          "macro_f1_observed_labels": 0.04995839053534298,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.05555555555555555,
+              "support": 2
+            },
+            "Appeal_to_Pity": {
+              "f1": 0.0,
+              "support": 5
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.2222222222222222,
+              "support": 5
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 7
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Doubt": {
+              "f1": 0.09836065573770492,
+              "support": 9
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.05405405405405406,
+              "support": 13
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "False_Equivalence": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.18181818181818182,
+              "support": 13
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.12244897959183673,
+              "support": 4
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.25,
+              "support": 5
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.03125,
+              "support": 1
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.13333333333333333,
+              "support": 8
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 4
+            }
+          },
+          "by_language": {
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.04596171929251554,
+              "samples_f1": 0.049349206349206344,
+              "exact_match": 0.06
+            }
+          },
+          "coarse_samples_f1": 0.1782222222222222
+        },
+        "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+        "dataset": "slavic",
+        "label_schema": "native",
+        "python": "3.13.5",
+        "benchmark_claim": false,
+        "source_language": "bg",
+        "target_language": "ru",
+        "method": "transformer",
+        "seed": 42,
+        "fit_seconds": 2.964728200000536
+      },
+      {
+        "task": 2,
+        "primary_metric": "macro_f1",
+        "metrics": {
+          "count": 150,
+          "exact_match": 0.38,
+          "samples_f1": 0.06353205039726778,
+          "micro_f1": 0.12690355329949238,
+          "macro_f1": 0.05288597581280508,
+          "macro_f1_observed_labels": 0.05288597581280508,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.18181818181818182,
+              "support": 4
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.14285714285714285,
+              "support": 6
+            },
+            "Appeal_to_Pity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.2857142857142857,
+              "support": 3
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Doubt": {
+              "f1": 0.15584415584415584,
+              "support": 15
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "False_Equivalence": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Loaded_Language": {
+              "f1": 0.0,
+              "support": 7
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.06060606060606061,
+              "support": 6
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.34146341463414637,
+              "support": 26
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.15384615384615385,
+              "support": 6
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.05288597581280508,
+              "samples_f1": 0.06353205039726778,
+              "exact_match": 0.38
+            }
+          },
+          "coarse_samples_f1": 0.16473015873015873
+        },
+        "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+        "dataset": "slavic",
+        "label_schema": "native",
+        "python": "3.13.5",
+        "benchmark_claim": false,
+        "source_language": "bg",
+        "target_language": "bg",
+        "method": "graph",
+        "seed": 42,
+        "fit_seconds": 5.186760999997205
+      },
+      {
+        "task": 2,
+        "primary_metric": "macro_f1",
+        "metrics": {
+          "count": 150,
+          "exact_match": 0.13333333333333333,
+          "samples_f1": 0.054854044960438816,
+          "micro_f1": 0.08205128205128205,
+          "macro_f1": 0.05138146301938338,
+          "macro_f1_observed_labels": 0.05138146301938338,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Appeal_to_Pity": {
+              "f1": 0.25,
+              "support": 5
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.15384615384615385,
+              "support": 5
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 7
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Doubt": {
+              "f1": 0.13793103448275862,
+              "support": 9
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.0,
+              "support": 13
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "False_Equivalence": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.17647058823529413,
+              "support": 13
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.13333333333333333,
+              "support": 4
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 5
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.02,
+              "support": 1
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.10526315789473684,
+              "support": 8
+            },
+            "Whataboutism": {
+              "f1": 0.3076923076923077,
+              "support": 4
+            }
+          },
+          "by_language": {
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.05138146301938338,
+              "samples_f1": 0.054854044960438816,
+              "exact_match": 0.13333333333333333
+            }
+          },
+          "coarse_samples_f1": 0.1302857142857143
+        },
+        "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+        "dataset": "slavic",
+        "label_schema": "native",
+        "python": "3.13.5",
+        "benchmark_claim": false,
+        "source_language": "bg",
+        "target_language": "ru",
+        "method": "graph",
+        "seed": 42,
+        "fit_seconds": 5.186760999997205
+      },
+      {
+        "task": 2,
+        "primary_metric": "macro_f1",
+        "metrics": {
+          "count": 150,
+          "exact_match": 0.20666666666666667,
+          "samples_f1": 0.05155555555555555,
+          "micro_f1": 0.07272727272727272,
+          "macro_f1": 0.02433853541416567,
+          "macro_f1_observed_labels": 0.02765742660700644,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Appeal_to_Pity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Doubt": {
+              "f1": 0.2,
+              "support": 15
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "False_Equivalence": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Loaded_Language": {
+              "f1": 0.04081632653061224,
+              "support": 7
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.11764705882352941,
+              "support": 6
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.25,
+              "support": 9
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.0,
+              "support": 26
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.02433853541416567,
+              "samples_f1": 0.05155555555555555,
+              "exact_match": 0.20666666666666667
+            }
+          },
+          "coarse_samples_f1": 0.16155555555555554
+        },
+        "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+        "dataset": "slavic",
+        "label_schema": "native",
+        "python": "3.13.5",
+        "benchmark_claim": false,
+        "source_language": "ru",
+        "target_language": "bg",
+        "method": "transformer",
+        "seed": 42,
+        "fit_seconds": 2.8710567000016454
+      },
+      {
+        "task": 2,
+        "primary_metric": "macro_f1",
+        "metrics": {
+          "count": 150,
+          "exact_match": 0.16,
+          "samples_f1": 0.08377777777777777,
+          "micro_f1": 0.12274368231046931,
+          "macro_f1": 0.05382119197746941,
+          "macro_f1_observed_labels": 0.0560637416431973,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Appeal_to_Pity": {
+              "f1": 0.0,
+              "support": 5
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.5454545454545454,
+              "support": 5
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.1568627450980392,
+              "support": 7
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Doubt": {
+              "f1": 0.35714285714285715,
+              "support": 9
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.0,
+              "support": 13
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "False_Equivalence": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.11940298507462686,
+              "support": 13
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 5
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.16666666666666666,
+              "support": 8
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 4
+            }
+          },
+          "by_language": {
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.05382119197746941,
+              "samples_f1": 0.08377777777777777,
+              "exact_match": 0.16
+            }
+          },
+          "coarse_samples_f1": 0.14377777777777778
+        },
+        "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+        "dataset": "slavic",
+        "label_schema": "native",
+        "python": "3.13.5",
+        "benchmark_claim": false,
+        "source_language": "ru",
+        "target_language": "ru",
+        "method": "transformer",
+        "seed": 42,
+        "fit_seconds": 2.8710567000016454
+      },
+      {
+        "task": 2,
+        "primary_metric": "macro_f1",
+        "metrics": {
+          "count": 150,
+          "exact_match": 0.2866666666666667,
+          "samples_f1": 0.01600726216412491,
+          "micro_f1": 0.0707395498392283,
+          "macro_f1": 0.04698752147972743,
+          "macro_f1_observed_labels": 0.04698752147972743,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Appeal_to_Pity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.045454545454545456,
+              "support": 2
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.2222222222222222,
+              "support": 4
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Doubt": {
+              "f1": 0.14285714285714285,
+              "support": 15
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "False_Equivalence": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Loaded_Language": {
+              "f1": 0.0547945205479452,
+              "support": 7
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.0,
+              "support": 6
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.2857142857142857,
+              "support": 9
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.13793103448275862,
+              "support": 26
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Repetition": {
+              "f1": 0.2857142857142857,
+              "support": 6
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 3
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 0
+            }
+          },
+          "by_language": {
+            "bg": {
+              "count": 150,
+              "macro_f1": 0.04698752147972743,
+              "samples_f1": 0.01600726216412491,
+              "exact_match": 0.2866666666666667
+            }
+          },
+          "coarse_samples_f1": 0.09053968253968253
+        },
+        "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+        "dataset": "slavic",
+        "label_schema": "native",
+        "python": "3.13.5",
+        "benchmark_claim": false,
+        "source_language": "ru",
+        "target_language": "bg",
+        "method": "graph",
+        "seed": 42,
+        "fit_seconds": 8.833882900002209
+      },
+      {
+        "task": 2,
+        "primary_metric": "macro_f1",
+        "metrics": {
+          "count": 150,
+          "exact_match": 0.3,
+          "samples_f1": 0.03822222222222222,
+          "micro_f1": 0.08421052631578947,
+          "macro_f1": 0.01282051282051282,
+          "macro_f1_observed_labels": 0.016025641025641024,
+          "per_label": {
+            "Appeal_to_Authority": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Appeal_to_Fear-Prejudice": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Appeal_to_Hypocrisy": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Appeal_to_Pity": {
+              "f1": 0.0,
+              "support": 5
+            },
+            "Appeal_to_Popularity": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Time": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Appeal_to_Values": {
+              "f1": 0.0,
+              "support": 5
+            },
+            "Causal_Oversimplification": {
+              "f1": 0.16666666666666666,
+              "support": 7
+            },
+            "Consequential_Oversimplification": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Conversation_Killer": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Doubt": {
+              "f1": 0.0,
+              "support": 9
+            },
+            "Exaggeration-Minimisation": {
+              "f1": 0.0,
+              "support": 13
+            },
+            "False_Dilemma-No_Choice": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "False_Equivalence": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Flag_Waving": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Guilt_by_Association": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Loaded_Language": {
+              "f1": 0.15384615384615385,
+              "support": 13
+            },
+            "Name_Calling-Labeling": {
+              "f1": 0.0,
+              "support": 4
+            },
+            "Obfuscation-Vagueness-Confusion": {
+              "f1": 0.0,
+              "support": 5
+            },
+            "Questioning_the_Reputation": {
+              "f1": 0.0,
+              "support": 1
+            },
+            "Red_Herring": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Repetition": {
+              "f1": 0.0,
+              "support": 0
+            },
+            "Slogans": {
+              "f1": 0.0,
+              "support": 2
+            },
+            "Straw_Man": {
+              "f1": 0.0,
+              "support": 8
+            },
+            "Whataboutism": {
+              "f1": 0.0,
+              "support": 4
+            }
+          },
+          "by_language": {
+            "ru": {
+              "count": 150,
+              "macro_f1": 0.01282051282051282,
+              "samples_f1": 0.03822222222222222,
+              "exact_match": 0.3
+            }
+          },
+          "coarse_samples_f1": 0.06599999999999999
+        },
+        "scoring_provenance": "native native-multilabel auxiliary task; fixed-inventory macro F1, NOT a SemEval score",
+        "dataset": "slavic",
+        "label_schema": "native",
+        "python": "3.13.5",
+        "benchmark_claim": false,
+        "source_language": "ru",
+        "target_language": "ru",
+        "method": "graph",
+        "seed": 42,
+        "fit_seconds": 8.833882900002209
+      }
+    ],
+    "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+    "source_sha256": {
+      "experiments/multilingual.py": "67b93bbdf9ab1a11f0452611929327cca21ca136150de42d2448ede25b3037be",
+      "experiments/public_multilingual.py": "bded5c8c998d130e84e8d3016d589fca974c8757867128736e05235630845eb5",
+      "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+      "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+      "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+      "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+      "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+      "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+    },
+    "input_sha256": {
+      "train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+      "dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+      "test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+      "taxonomy": "0f587f9f5d6e29c414263a3f0f53c4b5974c5b34ec0ccf9d5dc653952cc863f6"
+    },
+    "environment": {
+      "python": "3.13.5",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "packages": {
+        "numpy": "2.1.3",
+        "scikit-learn": "1.6.1",
+        "torch": "2.9.1",
+        "transformers": "4.57.6",
+        "sentence-transformers": "5.7.0"
+      }
+    }
+  },
+  "spark_audit": {
+    "tool": "Apache Spark SQL",
+    "master": "local[2]",
+    "spark_version": "4.2.0",
+    "counts": [
+      {
+        "dataset": "hindi",
+        "split": "dev",
+        "language": "hi",
+        "records": 100
+      },
+      {
+        "dataset": "hindi",
+        "split": "test",
+        "language": "hi",
+        "records": 150
+      },
+      {
+        "dataset": "hindi",
+        "split": "train",
+        "language": "hi",
+        "records": 400
+      },
+      {
+        "dataset": "portuguese",
+        "split": "dev",
+        "language": "pt",
+        "records": 32
+      },
+      {
+        "dataset": "portuguese",
+        "split": "test",
+        "language": "pt",
+        "records": 33
+      },
+      {
+        "dataset": "portuguese",
+        "split": "train",
+        "language": "pt",
+        "records": 151
+      },
+      {
+        "dataset": "slavic",
+        "split": "dev",
+        "language": "bg",
+        "records": 150
+      },
+      {
+        "dataset": "slavic",
+        "split": "dev",
+        "language": "ru",
+        "records": 150
+      },
+      {
+        "dataset": "slavic",
+        "split": "test",
+        "language": "bg",
+        "records": 150
+      },
+      {
+        "dataset": "slavic",
+        "split": "test",
+        "language": "ru",
+        "records": 150
+      },
+      {
+        "dataset": "slavic",
+        "split": "train",
+        "language": "bg",
+        "records": 500
+      },
+      {
+        "dataset": "slavic",
+        "split": "train",
+        "language": "ru",
+        "records": 500
+      }
+    ],
+    "records": 2466,
+    "invalid_records": 0,
+    "cross_split_overlap_groups": {
+      "article_id": 0,
+      "text_hash": 0,
+      "duplicate_group": 0
+    },
+    "passed": true,
+    "seconds": 39.08518980000008,
+    "commit": "6fda4021192bb7cbd1dffb50ce91c971653d4da2",
+    "source_sha256": {
+      "experiments/multilingual.py": "67b93bbdf9ab1a11f0452611929327cca21ca136150de42d2448ede25b3037be",
+      "experiments/public_multilingual.py": "bded5c8c998d130e84e8d3016d589fca974c8757867128736e05235630845eb5",
+      "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+      "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+      "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+      "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+      "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+      "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+    },
+    "input_sha256": {
+      "slavic/train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+      "slavic/dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+      "slavic/test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+      "hindi/train": "32ff001f2f5f0c37e510815bebaa81dd9aa6775a920952f9b613360e6c06d1a4",
+      "hindi/dev": "093d3b4e9884152653f77a9c621c69ad5b32b8543c61de13c0748932c8d17d11",
+      "hindi/test": "582fd884be57924c912ffa8dce692e8b269a9dbaa162fa98d98840fa1a7894aa",
+      "portuguese/train": "4b1e1c13bbc75a270b5162c09d38ab03b8835c032ead6027a858a2f93e78bb7c",
+      "portuguese/dev": "6e3cb9de59a293302b6cdd06965148a604da0949abb1ff316308a36121dcfca0",
+      "portuguese/test": "35396010387e3691282464c9710bbb91d0ac3380ee7c53216f1e130c2aa03340"
+    },
+    "environment": {
+      "python": "3.13.5",
+      "platform": "Windows-11-10.0.26300-SP0",
+      "packages": {
+        "numpy": "2.1.3",
+        "scikit-learn": "1.6.1",
+        "torch": "2.9.1",
+        "transformers": "4.57.6",
+        "sentence-transformers": "5.7.0"
+      }
+    }
+  },
+  "commit": "00f8eb2065fddbc33a41aa1e6d97168630dfc0b6",
+  "source_sha256": {
+    "experiments/multilingual.py": "67b93bbdf9ab1a11f0452611929327cca21ca136150de42d2448ede25b3037be",
+    "experiments/public_multilingual.py": "bded5c8c998d130e84e8d3016d589fca974c8757867128736e05235630845eb5",
+    "semeval/classify.py": "82e104110eb012da23746879a9fae179016fba81055459c851d0f70781501bef",
+    "semeval/data.py": "f1eacd64a8f036a13a954902aeca0aa8a368c790374a56e936ca67a8fd0dd8cf",
+    "semeval/features.py": "3018d9194d1d2bf9ed35b76aa13dc3c51347892154753a2175b78e9c9200bcff",
+    "semeval/graph.py": "f4c7f0ce3635f43e96ae2f01795d7f4138617c5481f45f9d15e9e36e7f912710",
+    "semeval/metrics.py": "b5202e7db4f3a2add2a6ca6558e028d25d2012abdb2bdf8c1dc14eb9d1542760",
+    "semeval/evaluate.py": "6a6e7ec0a131b7a61b1409a968a23be2d2e21c01e06eeb85ba3444a42f97d400"
+  },
+  "input_sha256": {
+    "slavic/train": "594a9120b0620561dea79bc215a4bc08b4d565171afdfb31d902000583b535fd",
+    "slavic/dev": "4a5cdc46d39db8a916dcd47e292ed580dec456a7b0252ccffa8d7b4fec1b12a0",
+    "slavic/test": "771c6225d95e6ab31823c3e2c8393d201f6857d61ea2428326b1db4aab79505c",
+    "hindi/train": "32ff001f2f5f0c37e510815bebaa81dd9aa6775a920952f9b613360e6c06d1a4",
+    "hindi/dev": "093d3b4e9884152653f77a9c621c69ad5b32b8543c61de13c0748932c8d17d11",
+    "hindi/test": "582fd884be57924c912ffa8dce692e8b269a9dbaa162fa98d98840fa1a7894aa",
+    "portuguese/train": "4b1e1c13bbc75a270b5162c09d38ab03b8835c032ead6027a858a2f93e78bb7c",
+    "portuguese/dev": "6e3cb9de59a293302b6cdd06965148a604da0949abb1ff316308a36121dcfca0",
+    "portuguese/test": "35396010387e3691282464c9710bbb91d0ac3380ee7c53216f1e130c2aa03340",
+    "protocol": "3d330be94f1b71eb15d0419ab41e81d2e25a7772c9b94fcf60bcfe6636d0496c"
+  },
+  "environment": {
+    "python": "3.13.5",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "numpy": "2.1.3",
+      "scikit-learn": "1.6.1",
+      "torch": "2.9.1",
+      "transformers": "4.57.6",
+      "sentence-transformers": "5.7.0"
+    }
+  },
+  "benchmark_claim": false,
+  "comparison_rule": "Compare methods within each native dataset. Only BG/RU share cross-language labels.",
+  "limitations": [
+    "Native auxiliary labels, not official narrative labels.",
+    "Slavic normalized publisher sentences joined to labels by original document/offset key; raw offsets not silently repaired.",
+    "Slavic language is confounded with domain: Bulgarian parliament, Russian social media.",
+    "Small capped pilot, custom grouped splits, minimum five words and maximum 6000 characters.",
+    "Portugal publisher location is a language-variety proxy; syndication and per-headline variety not verified.",
+    "Hindi and Portuguese binary labels have no GNN experiment or shared cross-language label space.",
+    "Exact duplicates and known source IDs checked; translations and semantic near duplicates not established.",
+    "No raw text or source identifiers are published.",
+    "Transfer uses one seed (42); graph matrices use three seeds. Bilingual training has more examples than source-only training.",
+    "Per-sentence Slavic metrics are correlated within source documents. No sentence-bootstrap interval is presented as document-level uncertainty.",
+    "Portugal test set is small; report counts and training-majority baseline. No official narrative evaluation is claimed."
+  ]
+}
