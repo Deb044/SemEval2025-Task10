@@ -89,7 +89,11 @@ def main():
         language_counts={s:dict(Counter(r['language'] for r in rows)) for s,rows in parts.items()},
         label_counts=dict(Counter(l for rows in parts.values() for r in rows for l in r['labels'])),
         rejected=sum(r['error'] is not None for r in saved),abstained=sum(r['error'] is None and r['record'] is None for r in saved),
-        annotation_provenance='Silver labels from one named quantized LLM; not independently verified gold.',benchmark_claim=False,**meta)
+        annotation_provenance='Silver labels from one named quantized LLM; not independently verified gold.',
+        annotation_signature=signature,annotation_output_sha256=sha256(raw_path),
+        protocol=dict(seed=42,encoder='minilm',frozen_encoder=True,role_nodes=25,
+            supplied_mentions=True,selection='Development loss early stopping; dev exact-match threshold selection'),
+        benchmark_claim=False,**meta)
     if args.stage in ('all','train'):
         import joblib
         for ablation in ('full','unmarked'):
@@ -101,6 +105,9 @@ def main():
             predictions=entity.predict(model,parts['test']);write_jsonl(ROOT/(ablation+'-predictions.jsonl'),predictions)
             score=entity.evaluate(parts['test'],predictions)
             summary.setdefault('silver_agreement',{})[ablation]=score
+            summary.setdefault('checkpoints',{})[ablation]=dict(sha256=sha256(path),
+                **{key:model[key] for key in ('encoder_model','encoder_revision','epochs','threshold',
+                    'training_label_counts','training_signature','development_signature','implementation_sha256')})
         summary['limits']=['Test scores measure agreement with the same silver teacher, not true role accuracy.',
             'Small nonrepresentative excerpts, teacher abstention selection bias and sparse fine-role coverage.',
             'Unmarked ablation removes target-specific and global views together; not an isolated marker-only effect.',

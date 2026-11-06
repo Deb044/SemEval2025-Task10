@@ -103,7 +103,7 @@ def analyze_entity(payload):
         outputs=prototype(rows);metadata={};note='Zero-shot multilingual NLI; no GNN used. A weak match can abstain.'
     return dict(predictions=outputs,mode=mode,note=note,training=metadata,taxonomy_sha256=ROLE_SHA256,
         trace=[dict(stage='Supplied mentions',detail='Exact strings and explicit offsets validated; no NER substitution.'),
-            dict(stage='Entity context',detail='Target occurrence marked; nearby attribution and negation retained.'),
+            dict(stage='Entity context',detail='Target occurrence marked in bounded article context.' if mode=='gcn' else 'Only the supplied occurrence is normalized in its source sentence; inspect attribution and negation.'),
             dict(stage='Model',detail='Frozen multilingual encoder with 25-node hierarchical role GNN.' if mode=='gcn' else 'Pinned multilingual MiniLMv2 NLI tests all 22 role descriptions.'),
             dict(stage='Hierarchy',detail='One broad role and compatible fine roles. Abstentions are not valid official submission rows.')])
 
