@@ -279,6 +279,16 @@ several model files and runs multiple experiments, so expect substantial downloa
 time and a longer run than the interactive demo. No paid API key or official
 SemEval dataset access is required.
 
+### Saved experiment notebook
+
+Open [Experiment run and results](experiments/experiment-results.ipynb) to view
+the completed major experiments and their saved tables, including the Spark audit,
+entity pilot, classification and transfer, explanations, and systems benchmarks.
+If reproduction fails, the saved outputs are visible without a kernel. **Run All**
+with a Python Jupyter kernel rebuilds the tables offline from the committed
+`results/` exports. The final section provides opt-in commands for fresh runs
+with the setup below.
+
 ### 1. Get the project and install its dependencies
 
 Install Git, Python 3.11–3.13 and Java 17, 21 or 25. Spark needs Java; check that
