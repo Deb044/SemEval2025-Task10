@@ -95,7 +95,7 @@ python -m semeval explain --data data/st3/test.jsonl --taxonomy data/taxonomy.js
 ```
 
 `--selection lead` runs the evidence ablation. `--predicted-labels
-artifacts/st2-predictions.jsonl` runs the end-to-end setting; these predictions must
+artifacts/st2-predictions.jsonl`  runs the end-to-end setting; these predictions must
 cover the ST3 article IDs. Outputs resume only when their input signature matches.
 An invented English example has passed the local generation path; broader
 multilingual quality and real-data performance remain unverified. Generated
