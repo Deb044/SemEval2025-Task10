@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 data/
+data/tests
 artifacts/
 work/
 .cache/
